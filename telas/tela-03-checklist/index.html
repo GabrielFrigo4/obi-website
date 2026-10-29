@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha de Estudos e Prática · Central OBI UFABC</title>
+  <meta name="description" content="Trilha de estudos, checklist interativo por nível da OBI, links para praticar no Neps Academy, provas anteriores e acompanhamento de progresso sem cadastro.">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <style>
+    /* Estilos da Tela 03: Trilha de Estudos & Checklist */
+    .chk-header {
+      padding: 10px 16px;
+      background-color: var(--cor-card);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--cor-borda);
+    }
+
+    .chk-header .btn-back {
+      border: none;
+      background: transparent;
+      color: var(--cor-primaria);
+      padding: 6px 4px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .chk-header .btn-back:hover {
+      text-decoration: underline;
+    }
+
+    .chk-title-center {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+    }
+
+    .chk-content {
+      background-color: var(--cor-fundo-suave);
+      gap: 18px;
+    }
+
+    /* Abas de Categoria */
+    .cat-tabs-scroll {
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cat-tabs {
+      display: inline-flex;
+      gap: 6px;
+      min-width: 100%;
+      background-color: var(--cor-card);
+      padding: 6px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+    }
+
+    .cat-tab {
+      min-height: 44px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--raio-botao);
+      background-color: transparent;
+      color: var(--cor-texto-secundario);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cat-tab.active {
+      background-color: var(--cor-primaria);
+      color: #ffffff;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .cat-subdesc {
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+      margin-top: -6px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    /* Cartão de Progresso Individual */
+    .progress-card {
+      background-color: var(--cor-card);
+      border: 1.5px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .progress-card-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--cor-texto-principal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .progress-stat {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+    }
+
+    .progress-track-custom {
+      width: 100%;
+      height: 10px;
+      background-color: var(--cor-borda);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill-custom {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cor-primaria) 0%, #3b82f6 100%);
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-privacy-hint {
+      font-size: 0.775rem;
+      color: var(--cor-texto-secundario);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Cartão do Checklist de Conteúdos */
+    .checklist-card {
+      background-color: var(--cor-card);
+      border: 1.5px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .checklist-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checklist-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .checklist-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-botao);
+      background-color: var(--cor-fundo-suave);
+      cursor: pointer;
+      min-height: 48px;
+      font-size: 0.875rem;
+      color: var(--cor-texto-principal);
+      line-height: 1.4;
+      transition: all 0.15s ease;
+    }
+
+    .checklist-label:hover {
+      background-color: var(--cor-primaria-fundo);
+      border-color: var(--cor-primaria-borda);
+    }
+
+    .checklist-label.checked {
+      background-color: var(--cor-sucesso-fundo);
+      border-color: var(--cor-sucesso-borda);
+      color: var(--cor-sucesso);
+      font-weight: 600;
+    }
+
+    .checklist-input {
+      width: 20px;
+      height: 20px;
+      margin-top: 1px;
+      accent-color: var(--cor-primaria);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    /* Cartão Prática de Código */
+    .practice-card {
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .practice-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .practice-links-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .practice-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-botao);
+      text-decoration: none;
+      color: var(--cor-texto-principal);
+      background-color: var(--cor-fundo-suave);
+      min-height: 48px;
+      transition: all 0.15s ease;
+    }
+
+    .practice-row:hover {
+      border-color: var(--cor-primaria);
+      background-color: var(--cor-primaria-fundo);
+    }
+
+    .practice-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .practice-cta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+    }
+
+    /* Cartão Provas Anteriores */
+    .provas-card {
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .provas-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--cor-borda);
+      font-size: 0.85rem;
+    }
+
+    .provas-item:last-child {
+      border-bottom: none;
+    }
+
+    .provas-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--cor-primaria-borda);
+      background-color: var(--cor-primaria-fundo);
+      color: var(--cor-primaria);
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .btn-pill:hover {
+      background-color: var(--cor-primaria);
+      color: #ffffff;
+    }
+
+    /* Botão Limpar */
+    .btn-reset-progress {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 48px;
+      width: 100%;
+      padding: 10px 16px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      border-radius: var(--raio-botao);
+      border: 1.5px solid #ef4444;
+      background-color: #fef2f2;
+      color: #b91c1c;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-reset-progress:hover {
+      background-color: #ef4444;
+      color: #ffffff;
+    }
+
+    /* Conexões */
+    .chk-conexao-box {
+      background-color: var(--cor-primaria-fundo);
+      border: 1px solid var(--cor-primaria-borda);
+      border-radius: var(--raio-borda);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .chk-conexao-box p {
+      font-size: 0.85rem;
+      color: var(--cor-texto-principal);
+      margin: 0;
+    }
+
+    /* Rodapé */
+    .chk-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+    }
+
+    .chk-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px 12px;
+    }
+
+    .chk-footer a {
+      color: var(--cor-texto-principal);
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--alvo-toque-minimo);
+    }
+
+    .chk-footer a:hover {
+      color: var(--cor-primaria);
+    }
+
+    /* Alto Contraste */
+    body.high-contrast .chk-header,
+    body.high-contrast .chk-content {
+      background-color: #000000;
+    }
+
+    body.high-contrast .cat-tabs,
+    body.high-contrast .progress-card,
+    body.high-contrast .checklist-card,
+    body.high-contrast .practice-card,
+    body.high-contrast .provas-card,
+    body.high-contrast .chk-conexao-box {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+    }
+
+    body.high-contrast .cat-tab.active {
+      background-color: #facc15;
+      color: #000000;
+    }
+
+    body.high-contrast .cat-tab {
+      color: #ffffff;
+    }
+
+    body.high-contrast .checklist-label {
+      background-color: #000000;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    body.high-contrast .checklist-label.checked {
+      background-color: #14532d;
+      border-color: #86efac;
+      color: #86efac;
+    }
+
+    body.high-contrast .practice-row {
+      background-color: #000000;
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    body.high-contrast .btn-reset-progress {
+      background-color: #000000;
+      color: #fca5a5;
+      border-color: #ef4444;
+    }
+
+    body.high-contrast .chk-footer a,
+    body.high-contrast .chk-header .btn-back {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOLDURA MOBILE DO PROTÓTIPO -->
+  <main class="mobile-viewport">
+
+    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO -->
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
+    <div class="chk-header">
+      <a href="../tela-01-home/index.html" class="btn-back">
+        <span aria-hidden="true">&lsaquo;</span> Voltar
+      </a>
+      <p class="chk-title-center">Central OBI UFABC</p>
+      <span style="min-width: 48px;" aria-hidden="true"></span>
+    </div>
+
+    <!-- 3. CONTEÚDO PRINCIPAL (TELA 03) -->
+    <div class="screen-content chk-content">
+
+      <header>
+        <h1 class="screen-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">
+          <span aria-hidden="true">📚</span> TRILHA DE ESTUDOS E PRÁTICA
+        </h1>
+        <p class="screen-subtitle" style="font-size: 0.875rem; margin-bottom: 12px;">
+          Selecione a sua categoria para ver o que estudar:
+        </p>
+      </header>
+
+      <!-- Abas de Categoria com Rolagem Horizontal Suave -->
+      <div class="cat-tabs-scroll">
+        <div class="cat-tabs" role="tablist" aria-label="Categorias da OBI">
+          <button type="button" class="cat-tab" id="cat-iniciacao" role="tab" onclick="selecionarCategoria('iniciacao')">
+            Iniciação
+          </button>
+          <button type="button" class="cat-tab active" id="cat-prog_jr" role="tab" onclick="selecionarCategoria('prog_jr')">
+            Prog. Júnior
+          </button>
+          <button type="button" class="cat-tab" id="cat-nivel_1" role="tab" onclick="selecionarCategoria('nivel_1')">
+            Nível 1
+          </button>
+          <button type="button" class="cat-tab" id="cat-nivel_2" role="tab" onclick="selecionarCategoria('nivel_2')">
+            Nível 2
+          </button>
+          <button type="button" class="cat-tab" id="cat-senior" role="tab" onclick="selecionarCategoria('senior')">
+            Sênior
+          </button>
+        </div>
+      </div>
+
+      <p class="cat-subdesc" id="cat-descricao-texto">
+        Programação Júnior (6º ao 9º ano)
+      </p>
+
+      <!-- Cartão de Progresso Individual Local -->
+      <section class="progress-card" aria-label="Progresso Individual">
+        <h2 class="progress-card-title">
+          <span aria-hidden="true">📈</span> O seu progresso individual (Local)
+        </h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span class="progress-stat" id="stat-texto">0 de 7 tópicos concluídos (0%)</span>
+        </div>
+        <div class="progress-track-custom" role="progressbar" id="progress-bar-el" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill-custom" id="progress-fill-el" style="width: 0%;"></div>
+        </div>
+        <p class="progress-privacy-hint">
+          <span aria-hidden="true">💡</span> Seu progresso é guardado de forma segura apenas no navegador.
+        </p>
+      </section>
+
+      <!-- Checklist de Conteúdos Interativo -->
+      <section class="checklist-card" aria-labelledby="titulo-checklist">
+        <h2 id="titulo-checklist" class="checklist-title">
+          <span aria-hidden="true">✅</span> Checklist de Conteúdos
+        </h2>
+        <ul class="checklist-items" id="lista-conteudos">
+          <!-- Gerado dinamicamente via JavaScript -->
+        </ul>
+      </section>
+
+      <!-- Onde Praticar Código Gratuito -->
+      <section class="practice-card" aria-labelledby="titulo-pratica">
+        <h2 id="titulo-pratica" class="practice-card-title">
+          <span aria-hidden="true">💻</span> Onde Praticar Código (Gratuito)
+        </h2>
+        <div class="practice-links-grid">
+          <a href="https://neps.academy/br" target="_blank" rel="noopener noreferrer" class="practice-row" aria-label="Praticar no Neps Academy (abre em nova aba)">
+            <span class="practice-name">
+              <span aria-hidden="true">🟢</span> Neps Academy
+            </span>
+            <span class="practice-cta">Praticar no Neps &nearr;</span>
+          </a>
+          <a href="https://judge.beecrowd.com/pt" target="_blank" rel="noopener noreferrer" class="practice-row" aria-label="Praticar no Beecrowd (abre em nova aba)">
+            <span class="practice-name">
+              <span aria-hidden="true">🟡</span> Beecrowd
+            </span>
+            <span class="practice-cta">Praticar no Beecrowd &nearr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Provas de Anos Anteriores -->
+      <section class="provas-card" aria-labelledby="titulo-provas">
+        <h2 id="titulo-provas" class="practice-card-title">
+          <span aria-hidden="true">📁</span> Provas de Anos Anteriores (PDF)
+        </h2>
+        <div class="provas-item">
+          <strong><span aria-hidden="true">&rarr;</span> Prova OBI 2025</strong>
+          <div class="provas-actions">
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Baixar caderno da Prova OBI 2025 (abre em nova aba)">PDF</a>
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Ver gabarito da Prova OBI 2025 (abre em nova aba)">Gabarito</a>
+          </div>
+        </div>
+        <div class="provas-item">
+          <strong><span aria-hidden="true">&rarr;</span> Prova OBI 2024</strong>
+          <div class="provas-actions">
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Baixar caderno da Prova OBI 2024 (abre em nova aba)">PDF</a>
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Ver gabarito da Prova OBI 2024 (abre em nova aba)">Gabarito</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Botão para Limpar Progresso -->
+      <button type="button" class="btn-reset-progress" onclick="limparProgressoAtual()">
+        <span aria-hidden="true">🗑️</span> Limpar o meu progresso local
+      </button>
+
+      <!-- Conexões com Outros Módulos da Central -->
+      <div class="chk-conexao-box">
+        <p><strong><span aria-hidden="true">🧭</span> Conectar com outros módulos:</strong></p>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-primary" style="min-height: 44px; padding: 8px 14px; font-size: 0.85rem;">
+            🎯 Refazer Diagnóstico de Nível (Telas 06-12)
+          </a>
+          <a href="../tela-02-calendario/index.html" class="btn-secondary" style="min-height: 44px; padding: 8px 14px; font-size: 0.85rem;">
+            📅 Ver Calendário Oficial de Fases (Tela 02)
+          </a>
+          <a href="../tela-04-editais/index.html" class="btn-secondary" style="min-height: 44px; padding: 8px 14px; font-size: 0.85rem;">
+            📖 Ler Resumo do Edital (Tela 04)
+          </a>
+        </div>
+      </div>
+
+      <!-- Rodapé -->
+      <footer class="chk-footer">
+        <p><span aria-hidden="true">🛡️</span> Sem rankings, placares públicos ou comparações. Progresso armazenado exclusivamente no seu celular.</p>
+        <div class="chk-footer-links">
+          <a href="../tela-12-comunidade-extensao/index.html">Reportar data divergente ou erro</a>
+          <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
+             aria-label="Site oficial da OBI (abre em nova aba)">Site Oficial OBI <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Banco de tópicos de estudo para cada categoria
+    const TOPICOS_CATEGORIAS = {
+      iniciacao: {
+        titulo: 'Iniciação (6º ao 9º ano - No Papel)',
+        topicos: [
+          '1. Lógica proposicional e dedução simples',
+          '2. Problemas de ordenação e agrupamento',
+          '3. Grafos visuais, caminhos e labirintos',
+          '4. Tabela verdade e operadores lógicos',
+          '5. Raciocínio combinatório e contagem',
+          '6. Resolução de cadernos anteriores da Iniciação'
+        ]
+      },
+      prog_jr: {
+        titulo: 'Programação Júnior (6º ao 9º ano)',
+        topicos: [
+          '1. Entrada e Saída Padrão (cin/cout ou input/print)',
+          '2. Estruturas Condicionais (se / senão)',
+          '3. Laços de Repetição (for / while)',
+          '4. Vetores Unidimensionais (Arrays)',
+          '5. Matrizes (Vetores Bidimensionais)',
+          '6. Funções e Modularização',
+          '7. Recursão Básica e Casos Base'
+        ]
+      },
+      nivel_1: {
+        titulo: 'Programação Nível 1 (Até 1º/2º ano do Ensino Médio)',
+        topicos: [
+          '1. Entrada/Saída rápida e formatação',
+          '2. Manipulação de Strings e Vetores',
+          '3. Algoritmos de Ordenação (sort) e Comparadores',
+          '4. Busca Binária e Dois Ponteiros',
+          '5. Algoritmos Gulosos Básicos',
+          '6. Teoria dos Números Elementar (Primos, MDC/MMC)'
+        ]
+      },
+      nivel_2: {
+        titulo: 'Programação Nível 2 (Até 3º/4º ano Técnico)',
+        topicos: [
+          '1. Estruturas de Dados STL (vector, set, map, priority_queue)',
+          '2. Teoria dos Grafos (BFS, DFS, Dijkstra)',
+          '3. Programação Dinâmica Clássica (Mochila, LCS, LIS)',
+          '4. Árvores e Menor Ancestral Comum (LCA)',
+          '5. Geometria Computacional Básica'
+        ]
+      },
+      senior: {
+        titulo: 'Programação Sênior (1º ano da Graduação)',
+        topicos: [
+          '1. Grafos Avançados (Fluxo Máximo, Componentes Conexos)',
+          '2. Programação Dinâmica Avançada e Otimizações',
+          '3. Estruturas em Árvore (Segment Tree, Fenwick Tree)',
+          '4. Teoria dos Números e Aritmética Modular',
+          '5. Algoritmos em Cadeias (KMP, Z-Algorithm)'
+        ]
+      }
+    };
+
+    let categoriaAtual = 'prog_jr';
+
+    function obterChaveChecklist(categoria) {
+      return 'obi_checklist_' + categoria;
+    }
+
+    function selecionarCategoria(cat) {
+      if (!TOPICOS_CATEGORIAS[cat]) return;
+      categoriaAtual = cat;
+
+      // Atualizar abas visuais
+      document.querySelectorAll('.cat-tab').forEach(function(btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      const abaAtiva = document.getElementById('cat-' + cat);
+      if (abaAtiva) {
+        abaAtiva.classList.add('active');
+        abaAtiva.setAttribute('aria-selected', 'true');
+      }
+
+      // Atualizar legenda de subtítulo
+      const descEl = document.getElementById('cat-descricao-texto');
+      if (descEl) {
+        descEl.textContent = TOPICOS_CATEGORIAS[cat].titulo;
+      }
+
+      // Renderizar a lista de itens
+      renderizarChecklist();
+    }
+
+    function renderizarChecklist() {
+      const listaEl = document.getElementById('lista-conteudos');
+      if (!listaEl) return;
+      listaEl.innerHTML = '';
+
+      const dados = TOPICOS_CATEGORIAS[categoriaAtual];
+      const chave = obterChaveChecklist(categoriaAtual);
+      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
+
+      dados.topicos.forEach(function(topico, index) {
+        const li = document.createElement('li');
+        const label = document.createElement('label');
+        label.className = 'checklist-label';
+        
+        const isChecked = !!marcados[index];
+        if (isChecked) {
+          label.classList.add('checked');
+        }
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.className = 'checklist-input';
+        input.checked = isChecked;
+        input.addEventListener('change', function() {
+          alternarItemChecklist(index, input.checked);
+        });
+
+        const span = document.createElement('span');
+        span.textContent = topico;
+
+        label.appendChild(input);
+        label.appendChild(span);
+        li.appendChild(label);
+        listaEl.appendChild(li);
+      });
+
+      atualizarBarraProgresso();
+    }
+
+    function alternarItemChecklist(index, checked) {
+      const chave = obterChaveChecklist(categoriaAtual);
+      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
+      if (checked) {
+        marcados[index] = true;
+      } else {
+        delete marcados[index];
+      }
+      localStorage.setItem(chave, JSON.stringify(marcados));
+      renderizarChecklist();
+    }
+
+    function atualizarBarraProgresso() {
+      const dados = TOPICOS_CATEGORIAS[categoriaAtual];
+      const chave = obterChaveChecklist(categoriaAtual);
+      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
+
+      const total = dados.topicos.length;
+      const concluidos = Object.keys(marcados).length;
+      const porcentagem = total > 0 ? Math.round((concluidos / total) * 100) : 0;
+
+      const statTexto = document.getElementById('stat-texto');
+      const progressFill = document.getElementById('progress-fill-el');
+      const progressBar = document.getElementById('progress-bar-el');
+
+      if (statTexto) {
+        statTexto.textContent = concluidos + ' de ' + total + ' tópicos concluídos (' + porcentagem + '%)';
+      }
+      if (progressFill) {
+        progressFill.style.width = porcentagem + '%';
+      }
+      if (progressBar) {
+        progressBar.setAttribute('aria-valuenow', porcentagem);
+      }
+    }
+
+    function limparProgressoAtual() {
+      if (confirm('Deseja limpar todo o progresso dos tópicos desta categoria?')) {
+        const chave = obterChaveChecklist(categoriaAtual);
+        localStorage.removeItem(chave);
+        renderizarChecklist();
+      }
+    }
+
+    // Inicialização integrada com Quiz (Telas 06-08) e parâmetros de URL
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Verificar parâmetro de URL (ex: ?cat=iniciacao)
+      const urlParams = new URLSearchParams(window.location.search);
+      const catParam = urlParams.get('cat');
+
+      if (catParam && TOPICOS_CATEGORIAS[catParam]) {
+        selecionarCategoria(catParam);
+        return;
+      }
+
+      // 2. Se o usuário completou o Quiz, abrir diretamente a categoria recomendada
+      if (typeof obterRespostas === 'function') {
+        const respostas = obterRespostas();
+        if (respostas.ano_escolar === 'fundamental_1' && respostas.preferencia === 'logica') {
+          selecionarCategoria('iniciacao');
+          return;
+        } else if (respostas.ano_escolar === 'fundamental_2' && respostas.preferencia === 'logica') {
+          selecionarCategoria('iniciacao');
+          return;
+        } else if (respostas.ano_escolar === 'medio' && (respostas.preferencia === 'codigo' || respostas.preferencia === 'logica')) {
+          selecionarCategoria('nivel_1');
+          return;
+        } else if (respostas.ano_escolar === 'superior') {
+          selecionarCategoria('senior');
+          return;
+        }
+      }
+
+      // Padrão: Prog. Júnior
+      selecionarCategoria('prog_jr');
+    });
+  </script>
+
+</body>
+</html>

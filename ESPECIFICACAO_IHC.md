@@ -112,3 +112,47 @@ As duas telas formam um par navegável por abas (`<nav aria-label="Seções da C
 - Regras sobre celular, relógio inteligente, anotações e garrafa de água.
 - Link oficial em PDF do edital, se existir.
 - Outros links de treino (por exemplo, Neps Academy e Beecrowd) ainda não verificados.
+
+---
+
+## 6. Módulos de Entrada, Calendário & Checklist (Telas 01, 02 e 03)
+
+### Tela 01 (`telas/tela-01-home/index.html`): Home / Painel da Jornada
+- **Objetivo**: Ponto de entrada do usuário no protótipo, apresentando boas-vindas, cartão "O que fazer agora?" e acessos rápidos.
+- **IHC**:
+  - Cartão de destaque temporal informando a situação atual da Fase 1.
+  - Atalhos claros de acesso rápido com ícones descritivos e setas indicativas de navegação.
+  - Seção "Dúvida comum de iniciante" com botão de ação direta conectando à Tela 06 (Diagnóstico).
+  - Rodapé com links para a comunidade/suporte (Tela 12) e para o portal oficial.
+
+### Tela 02 (`telas/tela-02-calendario/index.html`): Calendário Oficial OBI 2026
+- **Objetivo**: Linha do tempo dinâmica e acessível com todas as datas oficiais da OBI 2026.
+- **IHC**:
+  - Alternador de modalidade em Segmented Control (Iniciação vs. Programação) que sincroniza automaticamente com as escolhas feitas no diagnóstico.
+  - Linha do tempo visual com anéis de estado (Concluído, Em andamento, Aberta, Em breve).
+  - Exportação direta de compromissos para a agenda do celular/computador via arquivo `.ics` nativo.
+  - Lembrete local de 48h antes da prova com persistência no `localStorage`.
+  - Links de conexão rápida para o Diagnóstico de Nível (Tela 06) e para a Trilha de Estudos (Tela 03).
+
+### Tela 03 (`telas/tela-03-checklist/index.html`): Trilha de Estudos & Checklist
+- **Objetivo**: Acompanhamento individual de estudos sem exigência de login ou dados pessoais.
+- **IHC**:
+  - 5 abas por categoria (`Iniciação`, `Prog. Júnior`, `Nível 1`, `Nível 2`, `Sênior`) com detecção automática da categoria recomendada pelo quiz (Tela 09).
+  - Checklist interativo com persistência instantânea no `localStorage` por categoria.
+  - Barra de progresso dinâmica em tempo real calculando a porcentagem de conteúdos concluídos.
+  - Links oficiais para juízes online (Neps Academy e Beecrowd) e cadernos de provas anteriores em PDF com gabarito oficial UNICAMP.
+  - Botão ético de reset para permitir que o aluno recomece seus estudos quando desejar.
+
+---
+
+## 7. Mapa de Conexões e Interoperabilidade (Telas 01 a 12)
+
+Todas as 12 telas operam de forma integrada e bidirecional:
+1. **Hub Central (`index.html`)** ⇄ **Todas as Telas (01 a 12)**: Acesso e retorno pelo cabeçalho de acessibilidade em todas as páginas.
+2. **Tela 01 (Home)** ➔ **Telas 02, 03, 04, 05, 06 e 12**: Acessos rápidos da jornada.
+3. **Telas 06 ➔ 07 ➔ 08 ➔ 09**: Fluxo contínuo de diagnóstico com passagem e persistência de dados.
+4. **Tela 09 (Resultado)** ➔ **Telas 03 (Checklist do nível), 02 (Calendário), 04 (Edital), 10 (Apoio) e 01 (Home)**.
+5. **Tela 10 (Solicitação de Apoio)** ➔ **Tela 11 (Comprovante com Protocolo)**.
+6. **Tela 11 (Confirmação de Polo)** ➔ **Tela 12 (Comunidade WhatsApp/FAQ) e Tela 01 (Home)**.
+7. **Tela 12 (Comunidade)** ➔ **Tela 01 (Home) e Tela 03 (Trilha de Estudos)**.
+

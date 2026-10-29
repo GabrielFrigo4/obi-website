@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário Oficial OBI 2026 · Central OBI UFABC</title>
+  <meta name="description" content="Calendário oficial acessível da OBI 2026: datas das fases 1, 2 e nacional, lembretes locais e prazos da Iniciação e Programação.">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <style>
+    /* Estilos da Tela 02: Calendário & Prazos da OBI */
+    .cal-header {
+      padding: 10px 16px;
+      background-color: var(--cor-card);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--cor-borda);
+    }
+
+    .cal-header .btn-back {
+      border: none;
+      background: transparent;
+      color: var(--cor-primaria);
+      padding: 6px 4px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cal-header .btn-back:hover {
+      text-decoration: underline;
+    }
+
+    .cal-title-center {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+    }
+
+    .cal-content {
+      background-color: var(--cor-fundo-suave);
+      gap: 20px;
+    }
+
+    /* Seletor de Modalidade (Segmented Control Acessível) */
+    .mod-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background-color: var(--cor-card);
+      padding: 6px;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+    }
+
+    .mod-tab {
+      min-height: var(--alvo-toque-minimo);
+      padding: 10px 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--raio-botao);
+      background-color: transparent;
+      color: var(--cor-texto-secundario);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .mod-tab.active {
+      background-color: var(--cor-primaria);
+      color: #ffffff;
+      box-shadow: var(--sombra-suave);
+    }
+
+    /* Linha do Tempo (Timeline) */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-left: 28px;
+      gap: 18px;
+      margin-top: 4px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      bottom: 24px;
+      width: 2px;
+      background-color: var(--cor-borda);
+    }
+
+    .timeline-item {
+      position: relative;
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .timeline-item.destaque {
+      border: 2px solid var(--cor-primaria);
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.12);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 18px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 3px solid var(--cor-texto-secundario);
+      z-index: 2;
+    }
+
+    .timeline-item.destaque .timeline-dot {
+      border-color: var(--cor-primaria);
+      background-color: var(--cor-primaria);
+      box-shadow: 0 0 0 4px var(--cor-primaria-borda);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+      line-height: 1.3;
+    }
+
+    .timeline-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .badge-concluido { background: #e2e8f0; color: #475569; }
+    .badge-andamento { background: var(--cor-primaria-fundo); color: var(--cor-primaria); border: 1px solid var(--cor-primaria-borda); }
+    .badge-aberta { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .badge-breve { background: #f1f5f9; color: #64748b; }
+
+    .timeline-date {
+      font-size: 0.9rem;
+      color: var(--cor-texto-principal);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-agenda {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 40px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--cor-primaria);
+      background-color: var(--cor-fundo-suave);
+      border: 1px solid var(--cor-primaria-borda);
+      border-radius: var(--raio-botao);
+      cursor: pointer;
+      align-self: flex-start;
+      transition: all 0.15s ease;
+    }
+
+    .btn-agenda:hover {
+      background-color: var(--cor-primaria);
+      color: #ffffff;
+    }
+
+    /* Switch / Notificação 48h */
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background-color: var(--cor-primaria-fundo);
+      border: 1px solid var(--cor-primaria-borda);
+      border-radius: var(--raio-botao);
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .switch-label {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--cor-texto-principal);
+    }
+
+    .switch-input {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--cor-primaria);
+      cursor: pointer;
+    }
+
+    /* Alertas Rápidos Card */
+    .alerts-card {
+      background-color: var(--cor-card);
+      border: 1.5px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .alerts-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--cor-texto-principal);
+    }
+
+    .alerts-sub {
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: var(--alvo-toque-minimo);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cor-texto-principal);
+    }
+
+    /* Atalhos de Conexão com Telas 6 e 3 */
+    .conexao-box {
+      background-color: var(--cor-primaria-fundo);
+      border: 1px solid var(--cor-primaria-borda);
+      border-radius: var(--raio-borda);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .conexao-box p {
+      font-size: 0.85rem;
+      color: var(--cor-texto-principal);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Rodapé */
+    .cal-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+    }
+
+    .cal-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px 12px;
+    }
+
+    .cal-footer a {
+      color: var(--cor-texto-principal);
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--alvo-toque-minimo);
+    }
+
+    .cal-footer a:hover {
+      color: var(--cor-primaria);
+    }
+
+    /* Alto Contraste */
+    body.high-contrast .cal-header,
+    body.high-contrast .cal-content {
+      background-color: #000000;
+    }
+
+    body.high-contrast .mod-tabs,
+    body.high-contrast .timeline-item,
+    body.high-contrast .alerts-card,
+    body.high-contrast .conexao-box {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+    }
+
+    body.high-contrast .mod-tab.active {
+      background-color: #facc15;
+      color: #000000;
+    }
+
+    body.high-contrast .mod-tab {
+      color: #ffffff;
+    }
+
+    body.high-contrast .timeline-item.destaque {
+      border: 2px solid #facc15;
+    }
+
+    body.high-contrast .timeline-dot {
+      background-color: #000000;
+      border-color: #ffffff;
+    }
+
+    body.high-contrast .timeline-item.destaque .timeline-dot {
+      border-color: #facc15;
+      background-color: #facc15;
+    }
+
+    body.high-contrast .switch-row {
+      background-color: #000000;
+      border: 1px solid #ffffff;
+    }
+
+    body.high-contrast .cal-footer a,
+    body.high-contrast .cal-header .btn-back {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOLDURA MOBILE DO PROTÓTIPO -->
+  <main class="mobile-viewport">
+
+    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO -->
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
+    <div class="cal-header">
+      <a href="../tela-01-home/index.html" class="btn-back">
+        <span aria-hidden="true">&lsaquo;</span> Voltar
+      </a>
+      <p class="cal-title-center">Central OBI UFABC</p>
+      <span style="min-width: 48px;" aria-hidden="true"></span>
+    </div>
+
+    <!-- 3. CONTEÚDO PRINCIPAL (TELA 02) -->
+    <div class="screen-content cal-content">
+
+      <header>
+        <h1 class="screen-title" style="font-size: 1.25rem; font-weight: 800; margin-bottom: 4px;">
+          <span aria-hidden="true">📅</span> Calendário Oficial OBI 2026
+        </h1>
+        <p class="screen-subtitle" style="font-size: 0.875rem; margin-bottom: 14px;">
+          Prazos de inscrição, datas de aplicação e etapas oficiais da Olimpíada.
+        </p>
+      </header>
+
+      <!-- Alternador de Modalidade -->
+      <div class="mod-tabs" role="tablist" aria-label="Modalidades da OBI">
+        <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" aria-selected="false" onclick="alternarModalidade('iniciacao')">
+          Iniciação (Fundamental)
+        </button>
+        <button type="button" class="mod-tab active" id="tab-programacao" role="tab" aria-selected="true" onclick="alternarModalidade('programacao')">
+          Programação (Médio/Sup.)
+        </button>
+      </div>
+
+      <!-- Linha do Tempo Dinâmica -->
+      <section aria-label="Etapas da OBI">
+        <div class="timeline" id="timeline-container">
+          <!-- Item 1: Inscrições -->
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Inscrições das Escolas</h2>
+              <span class="timeline-badge badge-concluido">✓ Concluído</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 01 de março a 15 de abril</p>
+          </article>
+
+          <!-- Item 2: Treinamento -->
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Período de Treinamento</h2>
+              <span class="timeline-badge badge-andamento">● Em andamento</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 16 de abril a 10 de novembro</p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Treinos OBI UFABC', '2026-04-16', '2026-11-10', 'Oficinas e treinos gratuitos de lógica e programação da Central OBI UFABC')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+          </article>
+
+          <!-- Item 3: Fase 1 (Destaque) -->
+          <article class="timeline-item destaque">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 1 (Prova Local)</h2>
+              <span class="timeline-badge badge-aberta">⏳ Inscrições Abertas</span>
+            </div>
+            <p class="timeline-date" id="data-fase1-texto">
+              <span aria-hidden="true">📅</span> 15 de novembro de 2026 (domingo)
+            </p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 1 - Prova OBI 2026', '2026-11-15', '2026-11-15', 'Aplicação oficial da Fase 1 da OBI')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+
+            <div class="switch-row">
+              <label for="switch-aviso-48h" class="switch-label">
+                Avisar 48h antes (Lembrete no celular)
+              </label>
+              <input type="checkbox" id="switch-aviso-48h" class="switch-input" onchange="salvarAvisoLembrete(this.checked)">
+            </div>
+          </article>
+
+          <!-- Item 4: Fase 2 -->
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 2 (Estadual)</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 05 de dezembro de 2026</p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 2 - Prova Estadual OBI 2026', '2026-12-05', '2026-12-05', 'Fase 2 da OBI')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+          </article>
+
+          <!-- Item 5: Fase 3 -->
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 3 (Nacional)</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 20 de dezembro de 2026</p>
+          </article>
+
+          <!-- Item 6: Resultado Final -->
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Resultado Final & Premiação</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 15 de janeiro de 2027</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Cartão de Alertas Rápidos -->
+      <section class="alerts-card" aria-labelledby="titulo-alertas">
+        <div class="alerts-header">
+          <span aria-hidden="true">🔔</span>
+          <h2 id="titulo-alertas" style="font-size: 0.95rem; font-weight: 800; margin: 0;">Configuração de Alertas Rápidos</h2>
+        </div>
+        <p class="alerts-sub">Sem necessidade de cadastro ou e-mail. Suas preferências ficam salvas no navegador.</p>
+        <label class="checkbox-row" for="chk-alertas-todos">
+          <input type="checkbox" id="chk-alertas-todos" class="switch-input" onchange="salvarAlertaGeral(this.checked)">
+          <span>Ativar lembretes no celular para todas as fases</span>
+        </label>
+      </section>
+
+      <!-- Card Conexão com Telas 6 e 3 -->
+      <div class="conexao-box">
+        <p><strong><span aria-hidden="true">💡</span> Não sabe sua categoria ou o que estudar?</strong></p>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-primary" style="min-height: 44px; padding: 8px 14px; font-size: 0.85rem;">
+            🎯 Fazer Quiz Diagnóstico (Telas 06-12)
+          </a>
+          <a href="../tela-03-checklist/index.html" class="btn-secondary" style="min-height: 44px; padding: 8px 14px; font-size: 0.85rem;">
+            📋 Abrir Trilha de Estudos & Checklist (Tela 03)
+          </a>
+        </div>
+      </div>
+
+      <!-- Rodapé da Tela -->
+      <footer class="cal-footer">
+        <p><span aria-hidden="true">🕒</span> Todos os prazos seguem o Horário Oficial de Brasília.</p>
+        <div class="cal-footer-links">
+          <a href="../tela-12-comunidade-extensao/index.html">
+            <span aria-hidden="true">⚠️</span>&nbsp;Reportar data divergente ou erro
+          </a>
+          <a href="https://olimpiada.ic.unicamp.br/calendario/datas_importantes" target="_blank" rel="noopener noreferrer"
+             aria-label="Calendário oficial no site da UNICAMP (abre em nova aba)">
+            Site Oficial OBI <span aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script>
+    // Gerador de arquivo .ics acessível para adicionar evento ao calendário do estudante
+    function adicionarEventoAgenda(titulo, dataInicio, dataFim, descricao) {
+      const formatarData = function(str) {
+        return str.replace(/-/g, '') + 'T120000Z';
+      };
+      
+      const conteudoIcs = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Central OBI UFABC//Calendario Acessivel//PT',
+        'BEGIN:VEVENT',
+        'SUMMARY:' + titulo,
+        'DESCRIPTION:' + descricao,
+        'DTSTART:' + formatarData(dataInicio),
+        'DTEND:' + formatarData(dataFim),
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([conteudoIcs], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', titulo.toLowerCase().replace(/[^a-z0-9]/g, '_') + '.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    // Alternar entre Iniciação e Programação
+    function alternarModalidade(modalidade) {
+      const tabIni = document.getElementById('tab-iniciacao');
+      const tabProg = document.getElementById('tab-programacao');
+      const dataFase1Texto = document.getElementById('data-fase1-texto');
+
+      if (modalidade === 'iniciacao') {
+        tabIni.classList.add('active');
+        tabIni.setAttribute('aria-selected', 'true');
+        tabProg.classList.remove('active');
+        tabProg.setAttribute('aria-selected', 'false');
+        if (dataFase1Texto) {
+          dataFase1Texto.innerHTML = '<span aria-hidden="true">📅</span> 15 de novembro de 2026 (Iniciação Júnior, 1 e 2 - No Papel)';
+        }
+      } else {
+        tabProg.classList.add('active');
+        tabProg.setAttribute('aria-selected', 'true');
+        tabIni.classList.remove('active');
+        tabIni.setAttribute('aria-selected', 'false');
+        if (dataFase1Texto) {
+          dataFase1Texto.innerHTML = '<span aria-hidden="true">📅</span> 15 de novembro de 2026 (Programação Júnior, 1, 2 e Sênior - No Computador)';
+        }
+      }
+
+      if (typeof salvarResposta === 'function') {
+        salvarResposta('calendario_modalidade_visualizada', modalidade);
+      }
+    }
+
+    // Persistência das preferências locais no navegador
+    function salvarAvisoLembrete(ativo) {
+      localStorage.setItem('obi_lembrete_48h', ativo ? 'true' : 'false');
+    }
+
+    function salvarAlertaGeral(ativo) {
+      localStorage.setItem('obi_lembrete_todas_fases', ativo ? 'true' : 'false');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Restaurar estado dos checkboxes
+      const avisoSalvo = localStorage.getItem('obi_lembrete_48h') === 'true';
+      const geralSalvo = localStorage.getItem('obi_lembrete_todas_fases') === 'true';
+      const switchAviso = document.getElementById('switch-aviso-48h');
+      const chkGeral = document.getElementById('chk-alertas-todos');
+
+      if (switchAviso) switchAviso.checked = avisoSalvo;
+      if (chkGeral) chkGeral.checked = geralSalvo;
+
+      // Se o aluno fez o quiz e a modalidade foi Iniciação, pré-selecionar Iniciação!
+      const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
+      if (respostas.preferencia === 'logica' || respostas.ano_escolar === 'fundamental_1') {
+        alternarModalidade('iniciacao');
+      }
+    });
+  </script>
+
+</body>
+</html>

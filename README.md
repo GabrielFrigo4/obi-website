@@ -24,8 +24,8 @@ Abra o arquivo [`index.html`](./index.html) no navegador para acessar o painel d
 
 | Módulo | Telas | Escopo & Descrição | Status |
 | :--- | :--- | :--- | :--- |
-| **Diagnóstico & Apoio UFABC** | **Telas 06 a 12** | Fluxo contínuo completo: Quiz de Nível (Modalidade, Lógica/Código, Série/Escola), Resultado Acessível, Solicitação de Apoio Escolar, Confirmação com Protocolo/Comprovante e Central de Apoio WhatsApp/Materiais/FAQ | **100% Funcional e Integrado** |
-| **Acolhimento & Editais** | **Telas 01 a 05** | Home da Jornada, Calendário Acessível, Trilha de Estudos/Checklist, Editais Descomplicados e Kit do Monitor | Em integração final |
+| **Acolhimento & Editais** | **Telas 01 a 05** | Home da Jornada, Calendário Acessível com Timeline e .ICS, Trilha de Estudos/Checklist Interativo, Editais Descomplicados e Kit do Monitor | **100% Funcional e Integrado** |
+| **Diagnóstico & Apoio UFABC** | **Telas 06 a 12** | Fluxo contínuo completo: Quiz de Nível (Modalidade, Lógica/Código, Série/Escola), Resultado Acessível com conexões diretas, Solicitação de Apoio Escolar, Confirmação com Protocolo/Comprovante e Central de Apoio WhatsApp/Materiais/FAQ | **100% Funcional e Integrado** |
 
 ---
 
