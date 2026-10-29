@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início · Central OBI UFABC</title>
+  <meta name="description" content="Painel da jornada da Central OBI UFABC: o que fazer agora, atalhos para calendário, checklist, editais e kit do monitor.">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <style>
+    /* Estilos da Tela 01 (Home / Painel da Jornada).
+       Dependem de tokens.css e base.css. Não alteram nenhum estilo global. */
+
+    /* Cabeçalho do app: nome da plataforma e subtítulo */
+    .home-header {
+      padding: 16px 16px 14px 16px;
+      background-color: var(--cor-card);
+    }
+
+    .home-title {
+      font-size: var(--tamanho-grande);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--cor-texto-principal);
+    }
+
+    .home-subtitle {
+      margin-top: 4px;
+      font-size: var(--tamanho-pequeno);
+      color: var(--cor-texto-secundario);
+      line-height: 1.4;
+    }
+
+    /* Conteúdo com fundo suave e respiro entre as seções */
+    .home-content {
+      background-color: var(--cor-fundo-suave);
+      border-top: 1px solid var(--cor-borda);
+      gap: 24px;
+    }
+
+    .home-section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: var(--cor-texto-principal);
+    }
+
+    /* Cartão em destaque: "O que fazer agora?" */
+    .agora-cartao {
+      background-color: var(--cor-primaria-fundo);
+      border: 1px solid var(--cor-primaria-borda);
+      border-left: 5px solid var(--cor-primaria);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agora-fase {
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .agora-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .agora-texto {
+      font-size: var(--tamanho-pequeno);
+      color: var(--cor-texto-secundario);
+      line-height: 1.45;
+    }
+
+    /* Acesso rápido: lista de atalhos */
+    .atalhos-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .atalho-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 12px 14px;
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      box-shadow: var(--sombra-suave);
+      color: var(--cor-texto-principal);
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .atalho-link:hover {
+      border-color: var(--cor-primaria);
+      background-color: var(--cor-primaria-fundo);
+    }
+
+    .atalho-texto {
+      flex: 1;
+    }
+
+    .atalho-seta {
+      color: var(--cor-texto-secundario);
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    /* Dúvida comum: caixa tracejada + ação */
+    .duvida-caixa {
+      padding: 14px;
+      background-color: var(--cor-card);
+      border: 1.5px dashed var(--cor-texto-secundario);
+      border-radius: var(--raio-borda);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .duvida-caixa strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Rodapé: privacidade, transparência e links */
+    .home-footer {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+      line-height: 1.45;
+    }
+
+    .home-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 12px;
+    }
+
+    .home-footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--alvo-toque-minimo);
+      color: var(--cor-texto-principal);
+      text-decoration: underline;
+    }
+
+    .home-footer a:hover {
+      color: var(--cor-primaria);
+    }
+
+    /* Alto contraste */
+    body.high-contrast .home-header,
+    body.high-contrast .home-content {
+      background-color: #000000;
+    }
+
+    body.high-contrast .agora-cartao {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      border-left: 6px solid #facc15;
+    }
+
+    body.high-contrast .atalho-link,
+    body.high-contrast .duvida-caixa {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      box-shadow: none;
+    }
+
+    body.high-contrast .duvida-caixa {
+      border-style: dashed;
+    }
+
+    body.high-contrast .agora-cartao .btn-primary {
+      background-color: #facc15;
+      color: #000000;
+    }
+
+    body.high-contrast .atalho-link:hover {
+      border-color: #facc15;
+    }
+
+    body.high-contrast .atalho-seta {
+      color: #ffffff;
+    }
+
+    body.high-contrast .home-footer a {
+      color: #ffffff;
+    }
+
+    body.high-contrast .btn-secondary {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    /* Telas estreitas */
+    @media (max-width: 360px) {
+      .home-title { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
+  <main class="mobile-viewport">
+
+    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <!-- 2. CABEÇALHO DO APP -->
+    <div class="home-header">
+      <h1 class="home-title"><span aria-hidden="true">🏛️</span> Central OBI UFABC</h1>
+      <p class="home-subtitle">Projeto de extensão da UFABC. Plataforma aberta e acessível.</p>
+    </div>
+
+    <!-- 3. MIOLO DA TELA -->
+    <div class="screen-content home-content">
+
+      <!-- O que fazer agora? -->
+      <section aria-labelledby="titulo-agora">
+        <h2 id="titulo-agora" class="home-section-title">
+          <span aria-hidden="true">📍</span> O que fazer agora?
+        </h2>
+        <div class="agora-cartao">
+          <p class="agora-fase"><span aria-hidden="true">⚡</span> Fase 1 da OBI</p>
+          <ul class="agora-lista">
+            <li>
+              <span aria-hidden="true">📅</span> Próxima prova:
+              <strong id="agora-data">data ainda não divulgada</strong>
+            </li>
+            <li id="agora-dias-item" hidden>
+              <span aria-hidden="true">⏳</span> <strong id="agora-dias"></strong>
+            </li>
+            <li>
+              <span aria-hidden="true">🏷️</span> Situação:
+              <strong id="agora-situacao">a Fase 1 de 2026 já aconteceu</strong>
+            </li>
+          </ul>
+          <p class="agora-texto">Enquanto a nova data não sai, descubra seu nível e comece a treinar.</p>
+          <a href="../tela-02-calendario/index.html" class="btn-primary">
+            <span aria-hidden="true">👉</span>&nbsp;Ver calendário e prazos
+          </a>
+        </div>
+      </section>
+
+      <!-- Acesso rápido -->
+      <nav aria-labelledby="titulo-atalhos">
+        <h2 id="titulo-atalhos" class="home-section-title">
+          <span aria-hidden="true">🧭</span> Acesso rápido
+        </h2>
+        <ul class="atalhos-lista">
+          <li>
+            <a href="../tela-02-calendario/index.html" class="atalho-link">
+              <span aria-hidden="true">🗓️</span>
+              <span class="atalho-texto">Calendário oficial de fases</span>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="../tela-03-checklist/index.html" class="atalho-link">
+              <span aria-hidden="true">📋</span>
+              <span class="atalho-texto">Checklist de estudos por nível</span>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="../tela-04-editais/index.html" class="atalho-link">
+              <span aria-hidden="true">📖</span>
+              <span class="atalho-texto">Editais em linguagem simples</span>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://olimpiada.ic.unicamp.br/pratique/" target="_blank" rel="noopener noreferrer"
+               class="atalho-link"
+               aria-label="Provas anteriores e gabaritos oficiais da OBI (abre em nova aba)">
+              <span aria-hidden="true">📂</span>
+              <span class="atalho-texto">Provas anteriores e gabaritos</span>
+              <span class="atalho-seta" aria-hidden="true">&nearr;</span>
+            </a>
+          </li>
+          <li>
+            <a href="../tela-05-kit-monitor/index.html" class="atalho-link">
+              <span aria-hidden="true">🎒</span>
+              <span class="atalho-texto">Kit do monitor: avisos prontos</span>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Dúvida comum de iniciante -->
+      <section aria-labelledby="titulo-duvida">
+        <h2 id="titulo-duvida" class="home-section-title">
+          <span aria-hidden="true">💡</span> Dúvida comum de iniciante
+        </h2>
+        <div class="duvida-caixa">
+          <strong><span aria-hidden="true">❓</span> Não sabe em qual modalidade se inscrever?</strong>
+          Iniciação tem prova no papel. Programação tem prova no computador.
+        </div>
+        <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary">
+          <span aria-hidden="true">🎯</span>&nbsp;Descobrir meu nível em 1 minuto
+        </a>
+      </section>
+
+      <!-- Rodapé -->
+      <footer class="home-footer">
+        <p><span aria-hidden="true">🔒</span> Sem login e sem coleta de dados. Suas preferências e respostas ficam só no seu navegador.</p>
+        <p><span aria-hidden="true">🔍</span> Informações conferidas em 28/10/2026 no regulamento da OBI.</p>
+        <div class="home-footer-links">
+          <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
+             aria-label="Site oficial da OBI (abre em nova aba)">
+            <span aria-hidden="true">🌐</span>&nbsp;Site oficial OBI <span aria-hidden="true">&nearr;</span>
+          </a>
+          <a href="../tela-12-comunidade-extensao/index.html">
+            <span aria-hidden="true">💬</span>&nbsp;Reportar erro ou dúvida
+          </a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script>
+    /* Data da prova da Fase 1.
+       Enquanto a organização da OBI não publicar a data da próxima edição,
+       deixe como null: a tela mostra "data ainda não divulgada" e não exibe contagem.
+       Quando a data sair, preencha no formato 'AAAA-MM-DD' (exemplo: '2027-05-14'). */
+    const DATA_PROVA_FASE_1 = null;
+
+    // Converte 'AAAA-MM-DD' em uma data no fuso local, sem deslocar o dia.
+    function converterTextoEmData(textoData) {
+      const partes = textoData.split('-');
+      return new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
+    }
+
+    // Calcula quantos dias faltam até a data informada (negativo se já passou).
+    function calcularDiasRestantes(dataProva) {
+      const hoje = new Date();
+      hoje.setHours(0, 0, 0, 0);
+      const milissegundosPorDia = 24 * 60 * 60 * 1000;
+      return Math.round((dataProva - hoje) / milissegundosPorDia);
+    }
+
+    // Atualiza o cartão "O que fazer agora?" somente se houver data publicada.
+    function atualizarCartaoAgora() {
+      if (!DATA_PROVA_FASE_1) {
+        return;
+      }
+
+      const dataProva = converterTextoEmData(DATA_PROVA_FASE_1);
+      const diasRestantes = calcularDiasRestantes(dataProva);
+
+      document.getElementById('agora-data').textContent = dataProva.toLocaleDateString('pt-BR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      if (diasRestantes > 0) {
+        const textoDias = diasRestantes === 1 ? 'Falta 1 dia' : 'Faltam ' + diasRestantes + ' dias';
+        document.getElementById('agora-dias').textContent = textoDias + ' para a prova';
+        document.getElementById('agora-dias-item').hidden = false;
+        document.getElementById('agora-situacao').textContent = 'prepare-se com calma e confirme a inscrição com sua escola';
+      } else if (diasRestantes === 0) {
+        document.getElementById('agora-situacao').textContent = 'a prova é hoje';
+      } else {
+        document.getElementById('agora-situacao').textContent = 'esta prova já aconteceu';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', atualizarCartaoAgora);
+  </script>
+
+</body>
+</html>
