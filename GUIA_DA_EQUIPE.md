@@ -58,29 +58,53 @@ Organização dos arquivos no repositório:
 
 ```text
 obi-website/
-├── index.html                   # Hub central com visão geral de todas as telas
-├── README.md                    # Apresentação do projeto e instruções de execução
-├── ESPECIFICACAO_IHC.md         # Detalhamento técnico e arquitetura de IHC
-├── GUIA_DA_EQUIPE.md            # Este guia de padrões e boas práticas
-├── assets/                      # Recursos compartilhados
-│   ├── css/tokens.css           # Variáveis e design tokens (cores, raios, fontes)
-│   ├── css/base.css             # Estilos estruturais e moldura mobile
-│   └── js/utils.js              # Utilitários de acessibilidade, fonte e protocolo
+├── index.html
+├── README.md
+├── PROJETO.md
+├── ESPECIFICACAO_IHC.md
+├── GUIA_DA_EQUIPE.md
+├── assets/
+│   ├── css/tokens.css
+│   ├── css/base.css
+│   └── js/utils.js
 └── telas/
-    ├── template-base/           # MODELO: Só duplicar para criar uma nova tela!
-    ├── tela-01-home/            # Home / Painel da Jornada
-    ├── tela-02-calendario/      # Calendário & Prazos da OBI
-    ├── tela-03-checklist/       # Trilha de Estudos & Checklist
-    ├── tela-04-editais/         # Editais Descomplicados
-    ├── tela-05-kit-monitor/     # Kit do Monitor Universitário
-    ├── tela-06-quiz-pergunta-1/ # Diagnóstico: Pergunta 1 (Modalidade) [Funcional]
-    ├── tela-07-quiz-logica/     # Diagnóstico: Pergunta 2 (Lógica vs Código) [Funcional]
-    ├── tela-08-quiz-apoio/      # Diagnóstico: Pergunta 3 (Série & Apoio) [Funcional]
-    ├── tela-09-resultado-nivel/ # Resultado da Análise & Categoria [Funcional]
-    ├── tela-10-solicitacao-escola/ # Solicitação de Apoio para Escola [Funcional]
-    ├── tela-11-confirmacao-polo/   # Confirmação de Polo & Comprovante [Funcional]
-    └── tela-12-comunidade-extensao/ # Hub Comunitário, WhatsApp & FAQ [Funcional]
+    ├── template-base/
+    ├── tela-01-home/
+    ├── tela-02-calendario/
+    ├── tela-03-checklist/
+    ├── tela-04-editais/
+    ├── tela-05-kit-monitor/
+    ├── tela-06-quiz-pergunta-1/
+    ├── tela-07-quiz-logica/
+    ├── tela-08-quiz-apoio/
+    ├── tela-09-resultado-nivel/
+    ├── tela-10-solicitacao-escola/
+    ├── tela-11-confirmacao-polo/
+    └── tela-12-comunidade-extensao/
 ```
+
+Descrição dos arquivos e módulos:
+- `index.html`: Hub central com visão geral de todas as telas.
+- `README.md`: Apresentação do projeto e instruções de execução.
+- `PROJETO.md`: Padrões do projeto, Clean Code e convenções.
+- `ESPECIFICACAO_IHC.md`: Detalhamento técnico e arquitetura de IHC.
+- `GUIA_DA_EQUIPE.md`: Guia de padrões visuais e boas práticas da equipe.
+- `assets/css/tokens.css`: Variáveis e design tokens (cores, raios, fontes).
+- `assets/css/base.css`: Estilos estruturais e moldura mobile.
+- `assets/js/utils.js`: Utilitários de acessibilidade, fonte e protocolo.
+- `telas/template-base/`: Modelo base para replicação de novas telas.
+- `telas/tela-01-home/`: Home / Painel da Jornada.
+- `telas/tela-02-calendario/`: Calendário & Prazos da OBI com exportação `.ics`.
+- `telas/tela-03-checklist/`: Trilha de Estudos & Checklist interativo persistente.
+- `telas/tela-04-editais/`: Editais Descomplicados em linguagem simples.
+- `telas/tela-05-kit-monitor/`: Kit do Monitor Universitário e avisos prontos.
+- `telas/tela-06-quiz-pergunta-1/`: Diagnóstico: Pergunta 1 (Modalidade).
+- `telas/tela-07-quiz-logica/`: Diagnóstico: Pergunta 2 (Lógica vs Código).
+- `telas/tela-08-quiz-apoio/`: Diagnóstico: Pergunta 3 (Série & Apoio).
+- `telas/tela-09-resultado-nivel/`: Resultado da Análise & Categoria Recomendada.
+- `telas/tela-10-solicitacao-escola/`: Solicitação de Apoio para Escola Pública.
+- `telas/tela-11-confirmacao-polo/`: Confirmação de Polo & Comprovante de Inscrição.
+- `telas/tela-12-comunidade-extensao/`: Hub Comunitário, WhatsApp & FAQ.
 
 ---
 

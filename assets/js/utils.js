@@ -1,26 +1,16 @@
-/**
- * Central OBI UFABC - Utilitários Simples e Auditáveis de Acessibilidade
- * Código limpo, sem dependências, fácil de ler e modificar.
- */
-
-// 1. Gerenciamento de Tamanho da Fonte (A- / A+)
 function alterarTamanhoFonte(variacao) {
   const chave = 'obi_escala_fonte';
   let escalaAtual = parseFloat(localStorage.getItem(chave)) || 1.0;
-  
-  // Limites simples e seguros: entre 85% e 130%
   escalaAtual = Math.min(Math.max(escalaAtual + variacao, 0.85), 1.30);
   document.documentElement.style.fontSize = (16 * escalaAtual) + 'px';
   localStorage.setItem(chave, escalaAtual.toFixed(2));
 }
 
-// 2. Modo Alto Contraste
 function alternarAltoContraste() {
   const estaAtivo = document.body.classList.toggle('high-contrast');
   localStorage.setItem('obi_alto_contraste', estaAtivo ? 'true' : 'false');
 }
 
-// 3. Persistência Ética das Respostas (Simples e Transparente)
 function salvarResposta(pergunta, valor) {
   const dados = JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
   dados[pergunta] = valor;
@@ -31,7 +21,6 @@ function obterRespostas() {
   return JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
 }
 
-// 4. Gerador Simples de Protocolo para a Solicitação
 function obterProtocolo() {
   const chave = 'obi_protocolo_atual';
   let protocolo = localStorage.getItem(chave);
@@ -43,7 +32,6 @@ function obterProtocolo() {
   return protocolo;
 }
 
-// 5. Cálculo Oficial da Modalidade OBI com base nas Respostas
 function calcularModalidadeOBI() {
   const respostas = obterRespostas();
   const anoEscolar = respostas.ano_escolar;
@@ -138,7 +126,6 @@ function calcularModalidadeOBI() {
     };
   }
 
-  // Caso padrão (se o usuário abrir a Tela 9 direto sem passar pela Tela 6)
   return {
     titulo: 'Modalidade Programação — Nível Júnior',
     resumo: 'Ideal para começar a resolver desafios com código no seu ritmo, com suporte gratuito da UFABC.',
@@ -152,20 +139,16 @@ function calcularModalidadeOBI() {
   };
 }
 
-// 6. Inicialização automática ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
-  // Restaurar fonte salva
   const escalaSalva = parseFloat(localStorage.getItem('obi_escala_fonte'));
   if (escalaSalva) {
     document.documentElement.style.fontSize = (16 * escalaSalva) + 'px';
   }
 
-  // Restaurar alto contraste salvo
   if (localStorage.getItem('obi_alto_contraste') === 'true') {
     document.body.classList.add('high-contrast');
   }
 
-  // Vincular botões da barra de acessibilidade (se existirem na tela)
   const botaoAumentar = document.getElementById('btn-zoom-in');
   const botaoDiminuir = document.getElementById('btn-zoom-out');
   const botaoContraste = document.getElementById('btn-contrast');
@@ -180,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
     botaoContraste.addEventListener('click', alternarAltoContraste);
   }
 
-  // Comportamento simples e acessível dos cartões de seleção
   const cartoes = document.querySelectorAll('.option-card');
   cartoes.forEach(function (cartao) {
     const input = cartao.querySelector('input[type="radio"], input[type="checkbox"]');

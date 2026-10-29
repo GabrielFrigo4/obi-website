@@ -1,49 +1,37 @@
-/* Design Tokens: Central OBI UFABC
-   Estilo Minimalista, Moderno e Auditável (WCAG AA) */
-
 :root {
-  /* Paleta Clara & Minimalista */
   --cor-fundo: #ffffff;
   --cor-fundo-suave: #f8fafc;
   --cor-card: #ffffff;
   
-  /* Textos de Alto Contraste */
   --cor-texto-principal: #0f172a;
   --cor-texto-secundario: #475569;
   
-  /* Cor Primária Institucional (Azul Acessível) */
   --cor-primaria: #1d4ed8;
   --cor-primaria-hover: #1e40af;
   --cor-primaria-fundo: #eff6ff;
   --cor-primaria-borda: #bfdbfe;
 
-  /* Cor de Sucesso (Verde Acessível) */
   --cor-sucesso: #047857;
   --cor-sucesso-fundo: #ecfdf5;
   --cor-sucesso-borda: #a7f3d0;
 
-  /* Bordas Sutis e Limpas */
   --cor-borda: #e2e8f0;
   --cor-borda-ativa: #3b82f6;
 
-  /* Acessibilidade Obrigatória */
   --anel-foco: 3px solid #2563eb;
   --alvo-toque-minimo: 48px;
 
-  /* Tipografia Moderna e Simples */
   --fonte-padrao: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --tamanho-base: 1rem;       /* 16px */
-  --tamanho-pequeno: 0.875rem;/* 14px */
-  --tamanho-titulo: 1.25rem;   /* 20px */
-  --tamanho-grande: 1.5rem;    /* 24px */
+  --tamanho-base: 1rem;
+  --tamanho-pequeno: 0.875rem;
+  --tamanho-titulo: 1.25rem;
+  --tamanho-grande: 1.5rem;
 
-  /* Raios de Borda e Sombras Leves */
   --raio-borda: 10px;
   --raio-botao: 8px;
   --sombra-suave: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-/* Modo Alto Contraste (Simples e Imediato) */
 body.high-contrast {
   --cor-fundo: #000000;
   --cor-fundo-suave: #000000;

@@ -1,6 +1,8 @@
 # Central OBI UFABC · Protótipo Interativo de IHC
 > Aplicação Web Mobile-First desenvolvida para a disciplina de **Interação Humano-Computador (UFABC 2026.3)** com foco em Design Universal, Design Ético e conformidade com WCAG 2.1 nível AA.
 
+🌐 **Acesse o site online:** [https://gabrielfrigo4.github.io/obi-website/](https://gabrielfrigo4.github.io/obi-website/)
+
 ---
 
 ## 🎯 Objetivo do Protótipo
@@ -12,9 +14,10 @@ Democratizar e simplificar o acesso de estudantes da educação básica (com ên
 
 Para assegurar consistência de IHC, acessibilidade e harmonia de código entre todos os membros da equipe:
 
-1. **[Guia da Equipe & Acordo de Estilo](./GUIA_DA_EQUIPE.md)**: Padrão oficial de cores claras, tokens CSS compartilhados, checklist de acessibilidade e boas práticas de IHC.
-2. **[Especificação Técnica de IHC](./ESPECIFICACAO_IHC.md)**: Detalhamento dos fluxos, heurísticas de usabilidade de Nielsen, persistência ética e acessibilidade de cada uma das telas.
-3. **[Modelo Base de Tela](./telas/template-base/index.html)**: Padrão visual limpo com moldura mobile de 390px-420px, barra de acessibilidade integrada (`[ A- | A+ ]`, `[ ◐ Contraste ]`) e navegação padronizada.
+1. **[Padrões do Projeto & Clean Architecture](./PROJETO.md)**: Explicação direta dos padrões de código, Clean Code, convenções e organização.
+2. **[Guia da Equipe & Acordo de Estilo](./GUIA_DA_EQUIPE.md)**: Padrão oficial de cores claras, tokens CSS compartilhados, checklist de acessibilidade e boas práticas de IHC.
+3. **[Especificação Técnica de IHC](./ESPECIFICACAO_IHC.md)**: Detalhamento dos fluxos, heurísticas de usabilidade de Nielsen, persistência ética e acessibilidade de cada uma das telas.
+4. **[Modelo Base de Tela](./telas/template-base/index.html)**: Padrão visual limpo com moldura mobile de 390px-420px, barra de acessibilidade integrada (`[ A- | A+ ]`, `[ ◐ Contraste ]`) e navegação padronizada.
 
 ---
 
@@ -39,15 +42,19 @@ Abra o arquivo [`index.html`](./index.html) no navegador para acessar o painel d
 ---
 
 ## 🚀 Como Executar Localmente
-O protótipo foi construído em HTML5, CSS3 e JavaScript puro, sem dependências de frameworks ou processos de compilação:
+O protótipo foi construído em HTML5, CSS3 e JavaScript puro, sem dependências de frameworks ou processos de compilação.
+
+Opção 1: Iniciar servidor local leve via Python
 
 ```bash
-# Opção 1: Iniciar servidor local leve via Python
 python3 -m http.server 8000
-
-# Opção 2: Iniciar servidor local via Node.js (se instalado)
-npx serve .
-
-# Acesse no navegador:
-# http://localhost:8000
 ```
+
+Opção 2: Iniciar servidor local via Node.js (se instalado)
+
+```bash
+npx serve .
+```
+
+Acesse no navegador:
+`http://localhost:8000`
