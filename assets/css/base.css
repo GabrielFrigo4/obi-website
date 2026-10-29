@@ -1,6 +1,3 @@
-/* Base CSS: Central OBI UFABC
-   Estilo Minimalista, Moderno, Cores Claras e Código Facilmente Auditável */
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -25,7 +22,6 @@ body {
   padding: 16px 8px;
 }
 
-/* Moldura Mobile-First (Clean, 390px - 420px) */
 .mobile-viewport {
   width: 100%;
   max-width: 420px;
@@ -39,7 +35,6 @@ body {
   overflow: hidden;
 }
 
-/* Barra de Acessibilidade (Topo Minimalista) */
 .accessibility-bar {
   background-color: var(--cor-fundo-suave);
   border-bottom: 1px solid var(--cor-borda);
@@ -81,13 +76,11 @@ body {
   color: var(--cor-primaria);
 }
 
-/* Foco Acessível Obrigatório (Auditável) */
 :focus-visible {
   outline: var(--anel-foco);
   outline-offset: 2px;
 }
 
-/* Cabeçalho Interno */
 .page-header {
   padding: 12px 16px;
   background-color: var(--cor-card);
@@ -118,7 +111,6 @@ body {
   border-color: var(--cor-primaria);
 }
 
-/* Área de Conteúdo da Tela */
 .screen-content {
   flex: 1;
   padding: 20px 16px 28px 16px;
@@ -126,7 +118,6 @@ body {
   flex-direction: column;
 }
 
-/* Barra de Progresso do Quiz */
 .progress-container {
   margin-bottom: 20px;
 }
@@ -155,7 +146,6 @@ body {
   transition: width 0.3s ease;
 }
 
-/* Títulos Semânticos */
 h1.screen-title {
   font-size: var(--tamanho-titulo);
   font-weight: 700;
@@ -170,7 +160,6 @@ p.screen-subtitle {
   margin-bottom: 20px;
 }
 
-/* Cartões de Opção (Alvo de Toque >= 48px, Fundo Claro, Fácil de Auditar) */
 .options-group {
   display: flex;
   flex-direction: column;
@@ -225,7 +214,6 @@ p.screen-subtitle {
   color: var(--cor-texto-secundario);
 }
 
-/* Botões Modernos e Minimalistas */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -271,7 +259,6 @@ p.screen-subtitle {
   border-color: var(--cor-primaria);
 }
 
-/* Rodapé de Ações */
 .screen-actions {
   margin-top: auto;
   display: flex;

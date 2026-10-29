@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos específicos e acessíveis da Tela 10 (WCAG AA) */
+    
     .action-card {
       background-color: var(--cor-card);
       border: 1.5px solid var(--cor-borda);
@@ -190,7 +190,6 @@
       flex-shrink: 0;
     }
 
-    /* Adaptação para Alto Contraste */
     body.high-contrast .action-card {
       background-color: #121212;
       border-color: #ffffff;
@@ -239,10 +238,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -254,21 +251,17 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-09-resultado-nivel/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (OPÇÕES REAIS DE APOIO) -->
     <section class="screen-content">
 
-      <!-- Título Semântico Único -->
       <h1 class="screen-title">Apoio para Sua Escola</h1>
       <p class="screen-subtitle">Escolha como prefere viabilizar sua participação gratuita na OBI com o suporte da UFABC:</p>
 
-      <!-- 1. Mensagem Pronta para Enviar ao Professor -->
       <section class="action-card" aria-labelledby="titulo-msg-professor">
         <span class="card-step-badge">Opção Rápida</span>
         <h2 id="titulo-msg-professor" class="card-section-title">1. Mensagem pronta para enviar ao seu professor</h2>
@@ -294,24 +287,19 @@
         <div id="feedback-copia-msg" class="copy-feedback" role="status" aria-live="polite" style="display: none;"></div>
       </section>
 
-      <!-- Divisor Claro -->
       <div class="section-divider" aria-hidden="true">
         <span>OU</span>
       </div>
 
-      <!-- 2. Pedir para a UFABC entrar em contato com a escola -->
       <section class="action-card" aria-labelledby="titulo-solicitacao-ufabc">
         <span class="card-step-badge">Apoio UFABC</span>
         <h2 id="titulo-solicitacao-ufabc" class="card-section-title">2. Pedir para a UFABC entrar em contato com a escola</h2>
         <p class="card-section-desc">Se preferir, nossa equipe de extensão universitária entra em contato direto com a sua escola ou garante a sua vaga pelo Polo UFABC:</p>
 
-        <!-- Região de feedback acessível de erro (sem alert intrusivo) -->
         <div id="feedback-validacao" class="feedback-alert" role="status" aria-live="polite" style="display: none;"></div>
 
-        <!-- Formulário Direto e Acessível -->
         <form id="form-apoio" novalidate>
 
-          <!-- Campo 1: Nome do Estudante -->
           <div class="form-group">
             <label for="nome-estudante" class="form-label">
               Seu Nome Completo <span class="required" aria-hidden="true">*</span>
@@ -327,7 +315,6 @@
             >
           </div>
 
-          <!-- Campo 2: Nome da Escola Pública -->
           <div class="form-group">
             <label for="nome-escola" class="form-label">
               Nome da Escola Pública <span class="required" aria-hidden="true">*</span>
@@ -342,7 +329,6 @@
             >
           </div>
 
-          <!-- Campo 3: Cidade no Grande ABC -->
           <div class="form-group">
             <label for="cidade-escola" class="form-label">
               Cidade no Grande ABC <span class="required" aria-hidden="true">*</span>
@@ -360,7 +346,6 @@
             </select>
           </div>
 
-          <!-- Campo 4: Contato para Retorno -->
           <div class="form-group">
             <label for="contato-retorno" class="form-label">
               Contato para Retorno <span class="required" aria-hidden="true">*</span>
@@ -376,13 +361,11 @@
             <span class="field-hint">WhatsApp, telefone ou e-mail para confirmarmos seu protocolo.</span>
           </div>
 
-          <!-- Nota simples de transparência e ética -->
           <div class="privacy-notice">
             <span class="privacy-notice-icon" aria-hidden="true">🔒</span>
             <span>Seus dados são usados exclusivamente pela extensão da UFABC para viabilizar sua participação gratuita na OBI.</span>
           </div>
 
-          <!-- Ações de Envio -->
           <div class="screen-actions">
             <button type="submit" class="btn-primary" id="btn-enviar">
               Enviar Solicitação de Apoio
@@ -399,9 +382,7 @@
 
   </main>
 
-  <!-- Script simples, seguro e auditável -->
   <script>
-    // Função para Copiar a Mensagem ao Professor com Feedback Acessível
     function copiarMensagemProfessor() {
       var textoEl = document.getElementById('texto-msg-professor');
       var btn = document.getElementById('btn-copiar-msg');
@@ -455,7 +436,6 @@
       document.body.removeChild(areaTemp);
     }
 
-    // Validação acessível do formulário
     function validarFormulario() {
       var campoNome = document.getElementById('nome-estudante');
       var campoEscola = document.getElementById('nome-escola');
@@ -463,7 +443,6 @@
       var campoContato = document.getElementById('contato-retorno');
       var feedback = document.getElementById('feedback-validacao');
 
-      // Limpar erros anteriores
       feedback.style.display = 'none';
       feedback.textContent = '';
       [campoNome, campoEscola, campoCidade, campoContato].forEach(function (campo) {
@@ -505,7 +484,6 @@
       return true;
     }
 
-    // Envio e persistência local da solicitação
     function enviarSolicitacao(evento) {
       evento.preventDefault();
 
@@ -518,18 +496,15 @@
       var cidade = document.getElementById('cidade-escola').value;
       var contato = document.getElementById('contato-retorno').value.trim();
 
-      // Salvar os dados no localStorage com utils.js
       salvarResposta('solicitacao_estudante', nome);
       salvarResposta('solicitacao_escola', escola);
       salvarResposta('solicitacao_cidade', cidade);
       salvarResposta('solicitacao_contato', contato);
       salvarResposta('solicitacao_data', new Date().toLocaleDateString('pt-BR'));
 
-      // Gerar protocolo com utils.js
       var protocolo = typeof obterProtocolo === 'function' ? obterProtocolo() : 'OBI-UFABC-' + Math.floor(1000 + Math.random() * 9000);
       salvarResposta('solicitacao_protocolo', protocolo);
 
-      // Avançar para a tela de confirmação do polo (Tela 11)
       window.location.href = '../tela-11-confirmacao-polo/index.html';
     }
 

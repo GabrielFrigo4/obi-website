@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos específicos da Tela 12 (Auditáveis e Acessíveis) */
+    
     .whatsapp-card {
       background-color: var(--cor-card);
       border: 1.5px solid var(--cor-borda);
@@ -44,7 +44,6 @@
       line-height: 1.4;
     }
 
-    /* Botão WhatsApp em Alto Contraste (WCAG AA) */
     .btn-whatsapp {
       display: inline-flex;
       align-items: center;
@@ -53,7 +52,7 @@
       width: 100%;
       min-height: 52px;
       padding: 12px 18px;
-      background-color: #15803d; /* Verde escuro com contraste > 4.5:1 com branco */
+      background-color: #15803d; 
       color: #ffffff;
       font-weight: 700;
       font-size: 0.95rem;
@@ -84,7 +83,6 @@
       margin-top: 2px;
     }
 
-    /* Seção de Materiais Gratuitos de Treino */
     .materials-section {
       margin-bottom: 24px;
     }
@@ -177,7 +175,6 @@
       flex-shrink: 0;
     }
 
-    /* Seção de FAQ Semântica (<details>/<summary>) */
     .faq-section {
       margin-bottom: 24px;
     }
@@ -211,12 +208,12 @@
       font-weight: 600;
       color: var(--cor-texto-principal);
       cursor: pointer;
-      list-style: none; /* Remove seta padrão em browsers modernos */
+      list-style: none; 
       user-select: none;
     }
 
     .faq-question::-webkit-details-marker {
-      display: none; /* Remove seta padrão no Safari/Chrome */
+      display: none; 
     }
 
     .faq-question:hover {
@@ -250,7 +247,6 @@
       padding-top: 10px;
     }
 
-    /* Adaptação para Alto Contraste */
     body.high-contrast .whatsapp-card,
     body.high-contrast .material-link-card {
       background-color: #000000;
@@ -295,10 +291,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -310,21 +304,17 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-11-confirmacao-polo/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. MIOLO DA TELA -->
     <section class="screen-content">
 
-      <!-- Título Semântico Único -->
       <h1 class="screen-title">Comunidade e Suporte Gratuito</h1>
       <p class="screen-subtitle">Projeto de extensão universitária da UFABC. Aqui ninguém estuda sozinho para a OBI.</p>
 
-      <!-- Cartão com Botão de Destaque para o WhatsApp -->
       <section class="whatsapp-card" aria-label="Grupo de Estudos">
         <div class="community-tag">
           <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
@@ -351,7 +341,6 @@
         </div>
       </section>
 
-      <!-- Nova Seção: Materiais Gratuitos de Treino (Links Reais UNICAMP) -->
       <section class="materials-section" aria-label="Materiais Gratuitos de Treino">
         <h2 class="section-header-title">
           <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--cor-primaria);">
@@ -407,7 +396,6 @@
         </div>
       </section>
 
-      <!-- Seção de Dúvidas Frequentes (FAQ) com <details> e <summary> Semânticos -->
       <section class="faq-section" aria-label="Perguntas Frequentes">
         <h2 class="section-header-title">
           <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--cor-primaria);">
@@ -467,7 +455,6 @@
         </div>
       </section>
 
-      <!-- Ações no Rodapé da Tela -->
       <div class="screen-actions">
         <a href="../tela-01-home/index.html" class="btn-primary">
           <span aria-hidden="true">🏠</span>&nbsp;Ir para o Início / Painel da Jornada (Tela 01)

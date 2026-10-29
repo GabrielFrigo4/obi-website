@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos da Tela 01 (Home / Painel da Jornada).
-       Dependem de tokens.css e base.css. Não alteram nenhum estilo global. */
 
-    /* Cabeçalho do app: nome da plataforma e subtítulo */
     .home-header {
       padding: 16px 16px 14px 16px;
       background-color: var(--cor-card);
@@ -32,7 +29,6 @@
       line-height: 1.4;
     }
 
-    /* Conteúdo com fundo suave e respiro entre as seções */
     .home-content {
       background-color: var(--cor-fundo-suave);
       border-top: 1px solid var(--cor-borda);
@@ -50,7 +46,6 @@
       color: var(--cor-texto-principal);
     }
 
-    /* Cartão em destaque: "O que fazer agora?" */
     .agora-cartao {
       background-color: var(--cor-primaria-fundo);
       border: 1px solid var(--cor-primaria-borda);
@@ -82,7 +77,6 @@
       line-height: 1.45;
     }
 
-    /* Acesso rápido: lista de atalhos */
     .atalhos-lista {
       list-style: none;
       display: flex;
@@ -121,7 +115,6 @@
       line-height: 1;
     }
 
-    /* Dúvida comum: caixa tracejada + ação */
     .duvida-caixa {
       padding: 14px;
       background-color: var(--cor-card);
@@ -136,7 +129,6 @@
       margin-bottom: 2px;
     }
 
-    /* Rodapé: privacidade, transparência e links */
     .home-footer {
       margin-top: auto;
       display: flex;
@@ -166,7 +158,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Alto contraste */
     body.high-contrast .home-header,
     body.high-contrast .home-content {
       background-color: #000000;
@@ -212,7 +203,6 @@
       border: 2px solid #ffffff;
     }
 
-    /* Telas estreitas */
     @media (max-width: 360px) {
       .home-title { font-size: 1.3rem; }
     }
@@ -220,10 +210,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -235,16 +223,13 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO DO APP -->
     <div class="home-header">
       <h1 class="home-title"><span aria-hidden="true">🏛️</span> Central OBI UFABC</h1>
       <p class="home-subtitle">Projeto de extensão da UFABC. Plataforma aberta e acessível.</p>
     </div>
 
-    <!-- 3. MIOLO DA TELA -->
     <div class="screen-content home-content">
 
-      <!-- O que fazer agora? -->
       <section aria-labelledby="titulo-agora">
         <h2 id="titulo-agora" class="home-section-title">
           <span aria-hidden="true">📍</span> O que fazer agora?
@@ -271,7 +256,6 @@
         </div>
       </section>
 
-      <!-- Acesso rápido -->
       <nav aria-labelledby="titulo-atalhos">
         <h2 id="titulo-atalhos" class="home-section-title">
           <span aria-hidden="true">🧭</span> Acesso rápido
@@ -317,7 +301,6 @@
         </ul>
       </nav>
 
-      <!-- Dúvida comum de iniciante -->
       <section aria-labelledby="titulo-duvida">
         <h2 id="titulo-duvida" class="home-section-title">
           <span aria-hidden="true">💡</span> Dúvida comum de iniciante
@@ -331,7 +314,6 @@
         </a>
       </section>
 
-      <!-- Rodapé -->
       <footer class="home-footer">
         <p><span aria-hidden="true">🔒</span> Sem login e sem coleta de dados. Suas preferências e respostas ficam só no seu navegador.</p>
         <p><span aria-hidden="true">🔍</span> Informações conferidas em 28/10/2026 no regulamento da OBI.</p>
@@ -351,19 +333,14 @@
   </main>
 
   <script>
-    /* Data da prova da Fase 1.
-       Enquanto a organização da OBI não publicar a data da próxima edição,
-       deixe como null: a tela mostra "data ainda não divulgada" e não exibe contagem.
-       Quando a data sair, preencha no formato 'AAAA-MM-DD' (exemplo: '2027-05-14'). */
+    
     const DATA_PROVA_FASE_1 = null;
 
-    // Converte 'AAAA-MM-DD' em uma data no fuso local, sem deslocar o dia.
     function converterTextoEmData(textoData) {
       const partes = textoData.split('-');
       return new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
     }
 
-    // Calcula quantos dias faltam até a data informada (negativo se já passou).
     function calcularDiasRestantes(dataProva) {
       const hoje = new Date();
       hoje.setHours(0, 0, 0, 0);
@@ -371,7 +348,6 @@
       return Math.round((dataProva - hoje) / milissegundosPorDia);
     }
 
-    // Atualiza o cartão "O que fazer agora?" somente se houver data publicada.
     function atualizarCartaoAgora() {
       if (!DATA_PROVA_FASE_1) {
         return;

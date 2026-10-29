@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos da Tela 02: Calendário & Prazos da OBI */
+    
     .cal-header {
       padding: 10px 16px;
       background-color: var(--cor-card);
@@ -45,7 +45,6 @@
       gap: 20px;
     }
 
-    /* Seletor de Modalidade (Segmented Control Acessível) */
     .mod-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -79,7 +78,6 @@
       box-shadow: var(--sombra-suave);
     }
 
-    /* Linha do Tempo (Timeline) */
     .timeline {
       display: flex;
       flex-direction: column;
@@ -196,7 +194,6 @@
       color: #ffffff;
     }
 
-    /* Switch / Notificação 48h */
     .switch-row {
       display: flex;
       align-items: center;
@@ -222,7 +219,6 @@
       cursor: pointer;
     }
 
-    /* Alertas Rápidos Card */
     .alerts-card {
       background-color: var(--cor-card);
       border: 1.5px solid var(--cor-borda);
@@ -258,7 +254,6 @@
       color: var(--cor-texto-principal);
     }
 
-    /* Atalhos de Conexão com Telas 6 e 3 */
     .conexao-box {
       background-color: var(--cor-primaria-fundo);
       border: 1px solid var(--cor-primaria-borda);
@@ -276,7 +271,6 @@
       margin: 0;
     }
 
-    /* Rodapé */
     .cal-footer {
       margin-top: auto;
       padding-top: 8px;
@@ -306,7 +300,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Alto Contraste */
     body.high-contrast .cal-header,
     body.high-contrast .cal-content {
       background-color: #000000;
@@ -356,10 +349,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA MOBILE DO PROTÓTIPO -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -371,7 +362,6 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <div class="cal-header">
       <a href="../tela-01-home/index.html" class="btn-back">
         <span aria-hidden="true">&lsaquo;</span> Voltar
@@ -380,7 +370,6 @@
       <span style="min-width: 48px;" aria-hidden="true"></span>
     </div>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (TELA 02) -->
     <div class="screen-content cal-content">
 
       <header>
@@ -392,7 +381,6 @@
         </p>
       </header>
 
-      <!-- Alternador de Modalidade -->
       <div class="mod-tabs" role="tablist" aria-label="Modalidades da OBI">
         <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" aria-selected="false" onclick="alternarModalidade('iniciacao')">
           Iniciação (Fundamental)
@@ -402,10 +390,9 @@
         </button>
       </div>
 
-      <!-- Linha do Tempo Dinâmica -->
       <section aria-label="Etapas da OBI">
         <div class="timeline" id="timeline-container">
-          <!-- Item 1: Inscrições -->
+          
           <article class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -415,7 +402,6 @@
             <p class="timeline-date"><span aria-hidden="true">🗓️</span> 01 de março a 15 de abril</p>
           </article>
 
-          <!-- Item 2: Treinamento -->
           <article class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -428,7 +414,6 @@
             </button>
           </article>
 
-          <!-- Item 3: Fase 1 (Destaque) -->
           <article class="timeline-item destaque">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -450,7 +435,6 @@
             </div>
           </article>
 
-          <!-- Item 4: Fase 2 -->
           <article class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -463,7 +447,6 @@
             </button>
           </article>
 
-          <!-- Item 5: Fase 3 -->
           <article class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -473,7 +456,6 @@
             <p class="timeline-date"><span aria-hidden="true">🗓️</span> 20 de dezembro de 2026</p>
           </article>
 
-          <!-- Item 6: Resultado Final -->
           <article class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
             <div class="timeline-header">
@@ -485,7 +467,6 @@
         </div>
       </section>
 
-      <!-- Cartão de Alertas Rápidos -->
       <section class="alerts-card" aria-labelledby="titulo-alertas">
         <div class="alerts-header">
           <span aria-hidden="true">🔔</span>
@@ -498,7 +479,6 @@
         </label>
       </section>
 
-      <!-- Card Conexão com Telas 6 e 3 -->
       <div class="conexao-box">
         <p><strong><span aria-hidden="true">💡</span> Não sabe sua categoria ou o que estudar?</strong></p>
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
@@ -511,7 +491,6 @@
         </div>
       </div>
 
-      <!-- Rodapé da Tela -->
       <footer class="cal-footer">
         <p><span aria-hidden="true">🕒</span> Todos os prazos seguem o Horário Oficial de Brasília.</p>
         <div class="cal-footer-links">
@@ -530,7 +509,6 @@
   </main>
 
   <script>
-    // Gerador de arquivo .ics acessível para adicionar evento ao calendário do estudante
     function adicionarEventoAgenda(titulo, dataInicio, dataFim, descricao) {
       const formatarData = function(str) {
         return str.replace(/-/g, '') + 'T120000Z';
@@ -560,7 +538,6 @@
       URL.revokeObjectURL(url);
     }
 
-    // Alternar entre Iniciação e Programação
     function alternarModalidade(modalidade) {
       const tabIni = document.getElementById('tab-iniciacao');
       const tabProg = document.getElementById('tab-programacao');
@@ -589,7 +566,6 @@
       }
     }
 
-    // Persistência das preferências locais no navegador
     function salvarAvisoLembrete(ativo) {
       localStorage.setItem('obi_lembrete_48h', ativo ? 'true' : 'false');
     }
@@ -599,7 +575,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      // Restaurar estado dos checkboxes
+
       const avisoSalvo = localStorage.getItem('obi_lembrete_48h') === 'true';
       const geralSalvo = localStorage.getItem('obi_lembrete_todas_fases') === 'true';
       const switchAviso = document.getElementById('switch-aviso-48h');
@@ -608,7 +584,6 @@
       if (switchAviso) switchAviso.checked = avisoSalvo;
       if (chkGeral) chkGeral.checked = geralSalvo;
 
-      // Se o aluno fez o quiz e a modalidade foi Iniciação, pré-selecionar Iniciação!
       const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
       if (respostas.preferencia === 'logica' || respostas.ano_escolar === 'fundamental_1') {
         alternarModalidade('iniciacao');

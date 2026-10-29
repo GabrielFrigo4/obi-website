@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,12 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos compartilhados entre as Telas 04 e 05 (cabeçalho, abas, cartões e rodapé) */
-    /* Estilos compartilhados pelas Telas 04 (Editais) e 05 (Kit do Monitor):
-       título do app, abas de navegação, cartões, títulos de seção e rodapé.
-       Depende de tokens.css e base.css. Não altera nenhum estilo global. */
 
-    /* Cabeçalho: botão Voltar + título central do app */
     .central-header {
       padding: 8px 16px;
       background-color: var(--cor-card);
@@ -43,12 +38,10 @@
       line-height: 1.2;
     }
 
-    /* Espaçador com a mesma largura do botão Voltar para centralizar o título */
     .central-header-spacer {
       min-width: var(--alvo-toque-minimo);
     }
 
-    /* Abas (links entre as telas 04 e 05) */
     .central-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -88,7 +81,6 @@
       outline-offset: -4px;
     }
 
-    /* Conteúdo e títulos de seção */
     .central-content {
       background-color: var(--cor-fundo-suave);
       gap: 22px;
@@ -115,7 +107,6 @@
       padding: 16px;
     }
 
-    /* Aviso de conteúdo pendente de confirmação */
     .aviso-pendente {
       background-color: #fef3c7;
       color: #78350f;
@@ -126,7 +117,6 @@
       line-height: 1.4;
     }
 
-    /* Rodapé compartilhado */
     .central-footer {
       margin-top: auto;
       padding-top: 4px;
@@ -156,7 +146,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Texto somente para leitores de tela */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -169,7 +158,6 @@
       border: 0;
     }
 
-    /* Alto contraste */
     body.high-contrast .central-header,
     body.high-contrast .central-content {
       background-color: #000000;
@@ -208,13 +196,11 @@
       color: #ffffff;
     }
 
-    /* Telas estreitas */
     @media (max-width: 360px) {
       .central-tab { font-size: 0.8rem; }
       .central-title { font-size: 0.95rem; }
     }
 
-    /* Estilos específicos da Tela 05 */
     .kit-intro-titulo {
       display: flex;
       align-items: center;
@@ -367,10 +353,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -382,7 +366,6 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO: VOLTAR + TÍTULO DO APP -->
     <div class="central-header">
       <a href="../tela-01-home/index.html" class="btn-back">
         <span aria-hidden="true">&lsaquo;</span> Voltar
@@ -391,7 +374,6 @@
       <span class="central-header-spacer" aria-hidden="true"></span>
     </div>
 
-    <!-- 3. ABAS: NAVEGAÇÃO ENTRE TELA 04 E TELA 05 -->
     <nav class="central-tabs" aria-label="Seções da Central OBI">
       <a href="../tela-04-editais/index.html" class="central-tab">
         <span aria-hidden="true">📖</span> Editais Simplificados
@@ -401,7 +383,6 @@
       </a>
     </nav>
 
-    <!-- 4. MIOLO DA TELA -->
     <div class="screen-content central-content">
 
       <header>
@@ -411,7 +392,6 @@
 
       <ul class="kit-lista">
 
-        <!-- Cartão 1: Aviso da Fase 1 -->
         <li>
           <section class="central-card kit-card" aria-labelledby="titulo-aviso">
             <h2 id="titulo-aviso" class="kit-card-titulo"><span aria-hidden="true">📣</span> Aviso: data da Fase 1</h2>
@@ -440,7 +420,6 @@
           </section>
         </li>
 
-        <!-- Cartão 2: Links e exercícios de treino -->
         <li>
           <section class="central-card kit-card" aria-labelledby="titulo-treino">
             <h2 id="titulo-treino" class="kit-card-titulo"><span aria-hidden="true">💻</span> Links e exercícios de treino</h2>
@@ -455,7 +434,6 @@
           </section>
         </li>
 
-        <!-- Cartão 3: Guia de categoria -->
         <li>
           <section class="central-card kit-card" aria-labelledby="titulo-guia">
             <h2 id="titulo-guia" class="kit-card-titulo"><span aria-hidden="true">📄</span> Guia: qual é minha categoria?</h2>
@@ -463,7 +441,6 @@
             <p id="mensagem-guia" class="kit-mensagem"></p>
             <textarea id="manual-guia" class="kit-manual" readonly hidden aria-label="Link do guia para copiar manualmente"></textarea>
 
-            <!-- Link relativo: o endereço completo é calculado pelo JavaScript -->
             <a id="link-guia" href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary">Abrir o diagnóstico de categoria</a>
 
             <button type="button" class="btn-primary btn-copiar" data-copiar="guia">
@@ -473,7 +450,6 @@
           </section>
         </li>
 
-        <!-- Cartão 4: Apoio para Escolas Públicas -->
         <li>
           <section class="central-card kit-card" aria-labelledby="titulo-apoio-escola">
             <h2 id="titulo-apoio-escola" class="kit-card-titulo"><span aria-hidden="true">🏛️</span> Apoio Institucional da UFABC</h2>
@@ -490,7 +466,6 @@
 
       </ul>
 
-      <!-- Rodapé -->
       <footer class="central-footer">
         <p><span aria-hidden="true">🛡️</span> Privacidade: nenhum dado de alunos ou professores é enviado ou monitorado. O texto digitado aqui não é salvo.</p>
         <div class="central-footer-links">
@@ -505,12 +480,9 @@
   </main>
 
   <script>
-    /* Tela 05 · Kit do Monitor: mensagens prontas e botões de cópia.
-       Cada mensagem é montada por uma função; o mesmo texto é exibido e copiado. */
 
     var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_importantes';
 
-    // Links de treino verificados no site oficial da OBI. Para incluir outro, basta adicionar um item.
     var LINKS_DE_TREINO = [
       { nome: 'Provas anteriores da OBI, com correção automática', url: 'https://olimpiada.ic.unicamp.br/pratique/' }
     ];
@@ -535,7 +507,7 @@
     }
 
     function obterUrlDoGuia() {
-      // a propriedade href de um link devolve o endereço completo já resolvido
+
       return document.getElementById('link-guia').href;
     }
 
@@ -551,7 +523,6 @@
       guia: montarMensagemGuia
     };
 
-    // Mostra o texto no cartão, transformando endereços http(s) em links clicáveis
     function exibirMensagem(idElemento, texto) {
       var elemento = document.getElementById(idElemento);
       elemento.textContent = '';
@@ -575,7 +546,6 @@
       exibirMensagem('mensagem-guia', montarMensagemGuia());
     }
 
-    // Copia o texto. Devolve uma Promise que resolve com true (copiou) ou false (falhou).
     function copiarTexto(texto) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         return navigator.clipboard.writeText(texto).then(
@@ -632,7 +602,6 @@
       botao.temporizadorRotulo = setTimeout(function () { restaurarBotao(botao); }, 2500);
     }
 
-    // Se a cópia automática falhar, mostra o texto selecionado para copiar manualmente
     function oferecerCopiaManual(chave, texto) {
       var area = document.getElementById('manual-' + chave);
       area.value = texto;

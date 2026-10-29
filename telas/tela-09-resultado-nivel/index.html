@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos específicos e minimalistas da Tela 9 (WCAG AA) */
+    
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -63,7 +63,6 @@
       margin-bottom: 12px;
     }
 
-    /* Detalhes expansíveis modernos e acessíveis (sem telas em desenvolvimento) */
     .step-details {
       border: 1.5px solid var(--cor-borda);
       border-radius: var(--raio-borda);
@@ -201,7 +200,6 @@
       outline-offset: 2px;
     }
 
-    /* Calendário */
     .calendar-list {
       display: flex;
       flex-direction: column;
@@ -236,7 +234,6 @@
       white-space: nowrap;
     }
 
-    /* Regras do Edital */
     .rules-list {
       display: flex;
       flex-direction: column;
@@ -282,7 +279,6 @@
       margin: 0;
     }
 
-    /* Adaptação para Alto Contraste */
     body.high-contrast .status-badge {
       background-color: #000000;
       color: #6ee7b7;
@@ -341,10 +337,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -356,17 +350,14 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-08-quiz-apoio/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL -->
     <section class="screen-content">
 
-      <!-- Região acessível com anúncio imediato para leitores de tela -->
       <div class="announcement-region" aria-live="polite">
         <div class="status-badge" role="status">
           <span class="badge-icon" aria-hidden="true">✓</span> ANÁLISE CONCLUÍDA
@@ -375,18 +366,15 @@
         <h1 class="screen-title" id="titulo-pagina">Sua Categoria Recomendada</h1>
         <p class="screen-subtitle">Com base nas respostas do seu diagnóstico rápido:</p>
 
-        <!-- Cartão de Destaque Limpo e Elegante -->
         <div class="result-highlight-card">
           <div class="result-category-name" id="nome-categoria">Modalidade Programação — Nível Júnior</div>
           <p class="result-category-desc" id="descricao-categoria">Ideal para começar a resolver desafios com código no seu ritmo, sem pressão.</p>
         </div>
       </div>
 
-      <!-- Seção Próximos Passos: 3 blocos expansíveis práticos e reais (sem telas incompletas) -->
       <section aria-labelledby="titulo-passos">
         <h2 id="titulo-passos" class="section-heading-sm">Próximos Passos</h2>
 
-        <!-- Bloco 1: O que estudar para o seu nível -->
         <details class="step-details" id="details-estudo" open>
           <summary class="step-summary" aria-label="Ver tópicos e links de estudo para o seu nível">
             <div class="step-summary-content">
@@ -417,7 +405,6 @@
           </div>
         </details>
 
-        <!-- Bloco 2: Calendário oficial da OBI -->
         <details class="step-details" id="details-calendario">
           <summary class="step-summary" aria-label="Ver calendário e datas oficiais da OBI">
             <div class="step-summary-content">
@@ -451,7 +438,6 @@
           </div>
         </details>
 
-        <!-- Bloco 3: Regras principais do edital -->
         <details class="step-details" id="details-edital">
           <summary class="step-summary" aria-label="Ler resumo descomplicado do edital">
             <div class="step-summary-content">
@@ -486,13 +472,11 @@
         </details>
       </section>
 
-      <!-- Seção de Apoio UFABC -->
       <section class="support-box" aria-labelledby="titulo-apoio">
         <h2 id="titulo-apoio" class="support-box-title">Sua escola ainda não participa?</h2>
         <p class="support-box-text">A equipe de extensão da UFABC cadastra sua escola pública ou garante sua participação direto pelo Polo Universitário.</p>
       </section>
 
-      <!-- Ações da Tela Conectadas -->
       <div class="screen-actions">
         <a href="../tela-10-solicitacao-escola/index.html" class="btn-primary">
           Minha escola não participa? Solicite Apoio da UFABC (Tela 10)
@@ -509,16 +493,14 @@
 
   </main>
 
-  <!-- Script dinâmico com calcularModalidadeOBI() e fallback seguro -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var resultado;
 
-      // Usar a função de cálculo oficial se disponível em utils.js
       if (typeof calcularModalidadeOBI === 'function') {
         resultado = calcularModalidadeOBI();
       } else {
-        // Fallback seguro caso utils.js ainda não tenha carregado
+
         var respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
         if (respostas.preferencia === 'iniciacao' || respostas.preferencia === 'logica') {
           resultado = {
@@ -543,7 +525,6 @@
         }
       }
 
-      // Preencher Categoria e Descrição calculadas
       var elNome = document.getElementById('nome-categoria');
       var elDesc = document.getElementById('descricao-categoria');
 
@@ -554,7 +535,6 @@
         elDesc.textContent = resultado.resumo;
       }
 
-      // Preencher Tópicos de Estudo Reais
       var elListaTopicos = document.getElementById('lista-topicos-estudo');
       if (elListaTopicos && resultado && Array.isArray(resultado.topicosEstudo)) {
         elListaTopicos.innerHTML = '';

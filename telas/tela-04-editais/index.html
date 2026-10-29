@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,12 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos compartilhados entre as Telas 04 e 05 (cabeçalho, abas, cartões e rodapé) */
-    /* Estilos compartilhados pelas Telas 04 (Editais) e 05 (Kit do Monitor):
-       título do app, abas de navegação, cartões, títulos de seção e rodapé.
-       Depende de tokens.css e base.css. Não altera nenhum estilo global. */
 
-    /* Cabeçalho: botão Voltar + título central do app */
     .central-header {
       padding: 8px 16px;
       background-color: var(--cor-card);
@@ -43,12 +38,10 @@
       line-height: 1.2;
     }
 
-    /* Espaçador com a mesma largura do botão Voltar para centralizar o título */
     .central-header-spacer {
       min-width: var(--alvo-toque-minimo);
     }
 
-    /* Abas (links entre as telas 04 e 05) */
     .central-tabs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -88,7 +81,6 @@
       outline-offset: -4px;
     }
 
-    /* Conteúdo e títulos de seção */
     .central-content {
       background-color: var(--cor-fundo-suave);
       gap: 22px;
@@ -115,7 +107,6 @@
       padding: 16px;
     }
 
-    /* Aviso de conteúdo pendente de confirmação */
     .aviso-pendente {
       background-color: #fef3c7;
       color: #78350f;
@@ -126,7 +117,6 @@
       line-height: 1.4;
     }
 
-    /* Rodapé compartilhado */
     .central-footer {
       margin-top: auto;
       padding-top: 4px;
@@ -156,7 +146,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Texto somente para leitores de tela */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -169,7 +158,6 @@
       border: 0;
     }
 
-    /* Alto contraste */
     body.high-contrast .central-header,
     body.high-contrast .central-content {
       background-color: #000000;
@@ -208,13 +196,11 @@
       color: #ffffff;
     }
 
-    /* Telas estreitas */
     @media (max-width: 360px) {
       .central-tab { font-size: 0.8rem; }
       .central-title { font-size: 0.95rem; }
     }
 
-    /* Estilos específicos da Tela 04 */
     .categoria-lista,
     .regras-lista {
       list-style: none;
@@ -294,10 +280,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -309,7 +293,6 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO: VOLTAR + TÍTULO DO APP -->
     <div class="central-header">
       <a href="../tela-01-home/index.html" class="btn-back">
         <span aria-hidden="true">&lsaquo;</span> Voltar
@@ -318,7 +301,6 @@
       <span class="central-header-spacer" aria-hidden="true"></span>
     </div>
 
-    <!-- 3. ABAS: NAVEGAÇÃO ENTRE TELA 04 E TELA 05 -->
     <nav class="central-tabs" aria-label="Seções da Central OBI">
       <a href="../tela-04-editais/index.html" class="central-tab" aria-current="page">
         <span aria-hidden="true">📖</span> Editais Simplificados
@@ -328,12 +310,10 @@
       </a>
     </nav>
 
-    <!-- 4. MIOLO DA TELA -->
     <div class="screen-content central-content">
 
       <h1 class="sr-only">Editais Simplificados da OBI</h1>
 
-      <!-- Categoria / modalidade -->
       <section aria-labelledby="titulo-categoria">
         <h2 id="titulo-categoria" class="central-section-title">
           <span aria-hidden="true">🎯</span> Qual é a sua categoria / modalidade?
@@ -362,7 +342,6 @@
         </div>
       </section>
 
-      <!-- Regras básicas -->
       <section aria-labelledby="titulo-regras">
         <h2 id="titulo-regras" class="central-section-title">
           <span aria-hidden="true">📋</span> Regras básicas (o que levar no dia)
@@ -386,7 +365,6 @@
         </div>
       </section>
 
-      <!-- Transparência -->
       <section aria-labelledby="titulo-transparencia">
         <h2 id="titulo-transparencia" class="central-section-title">
           <span aria-hidden="true">🔍</span> Transparência
@@ -401,7 +379,6 @@
         </a>
       </section>
 
-      <!-- Rodapé -->
       <footer class="central-footer">
         <p><span aria-hidden="true">🛡️</span> Privacidade: nenhum dado seu é enviado ou monitorado. Só guardamos no seu navegador o tamanho da fonte e o contraste.</p>
         <div class="central-footer-links">

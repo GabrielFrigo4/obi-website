@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos específicos da Tela 11 (Auditáveis e Acessíveis) */
+    
     .success-badge {
       display: inline-flex;
       align-items: center;
@@ -120,7 +120,6 @@
       color: #ffffff;
     }
 
-    /* Resumo dos Dados Registrados */
     .registration-summary {
       background-color: var(--cor-card);
       border: 1px solid var(--cor-borda);
@@ -160,7 +159,6 @@
       white-space: nowrap;
     }
 
-    /* Botão Imprimir / Salvar PDF */
     .protocol-actions {
       display: flex;
       flex-direction: column;
@@ -259,7 +257,6 @@
       border: 0;
     }
 
-    /* Alto Contraste */
     body.high-contrast .success-badge {
       background-color: #000000;
       border-color: #ffffff;
@@ -300,7 +297,6 @@
       color: #ffffff;
     }
 
-    /* Estilos de Impressão Limpos (PDF Comprovante) */
     @media print {
       body {
         background: #ffffff !important;
@@ -340,10 +336,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -355,17 +349,14 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-10-solicitacao-escola/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. MIOLO DA TELA -->
     <section class="screen-content" aria-live="polite">
 
-      <!-- Feedback de Sucesso Acessível -->
       <div class="success-badge" aria-hidden="true">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -375,7 +366,6 @@
       <h1 class="screen-title">Solicitação Confirmada!</h1>
       <p class="screen-subtitle">Recebemos seu pedido. Sua participação na OBI já está totalmente garantida pela UFABC.</p>
 
-      <!-- Cartão de Destaque com o Protocolo e Resumo -->
       <section class="protocol-card" aria-label="Comprovante e Informações de Protocolo">
         <div class="protocol-header">
           <span class="protocol-label">Comprovante de Inscrição</span>
@@ -395,7 +385,6 @@
           </button>
         </div>
 
-        <!-- Resumo da Solicitação Registrada -->
         <div class="registration-summary" aria-label="Resumo dos dados cadastrados">
           <div class="summary-item">
             <span class="summary-label">Estudante:</span>
@@ -415,7 +404,6 @@
           </div>
         </div>
 
-        <!-- Ação de Impressão / Salvar PDF -->
         <div class="protocol-actions">
           <button type="button" class="btn-print" onclick="window.print()" aria-label="Imprimir comprovante ou salvar em formato PDF">
             <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -429,7 +417,6 @@
         <span id="status-copia" class="sr-only" aria-live="polite"></span>
       </section>
 
-      <!-- Cartão de Garantia de Participação Independente (3 Tópicos Diretos) -->
       <section class="guarantee-card" aria-label="Próximos Passos e Garantia">
         <h2 class="guarantee-title">
           <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--cor-primaria);">
@@ -463,7 +450,6 @@
         </ol>
       </section>
 
-      <!-- Ações no Rodapé da Tela -->
       <div class="screen-actions">
         <a href="../tela-12-comunidade-extensao/index.html" class="btn-primary">
           Acessar Comunidade e Suporte UFABC &rarr;
@@ -481,9 +467,8 @@
   </main>
 
   <script>
-    // Inicialização do Protocolo, Resumo e Acessibilidade
     document.addEventListener('DOMContentLoaded', function () {
-      // 1. Número do protocolo
+
       const display = document.getElementById('protocolo-display');
       if (display) {
         if (typeof obterProtocolo === 'function') {
@@ -495,7 +480,6 @@
         }
       }
 
-      // 2. Resumo da solicitação ética gravada na Tela 10
       var respostas = (typeof obterRespostas === 'function') ? obterRespostas() : {};
       var elEstudante = document.getElementById('resumo-estudante');
       var elEscola = document.getElementById('resumo-escola');
@@ -524,7 +508,6 @@
       }
     });
 
-    // Função de Cópia com Feedback Acessível para Leitores de Tela
     function copiarProtocolo() {
       const display = document.getElementById('protocolo-display');
       const btn = document.getElementById('btn-copiar');

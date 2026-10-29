@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -10,10 +10,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA EM TODAS AS TELAS) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -25,17 +23,14 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (QUIZ - ETAPA 2) -->
     <section class="screen-content">
 
-      <!-- Barra de Progresso do Diagnóstico (66%) -->
       <div class="progress-container" aria-label="Progresso do Diagnóstico">
         <div class="progress-header">
           <span>Pergunta 2 de 3</span>
@@ -46,17 +41,14 @@
         </div>
       </div>
 
-      <!-- Título Semântico Único -->
       <h1 class="screen-title">Descobrir Meu Nível</h1>
       <p class="screen-subtitle">Escolha o formato que combina mais com você.</p>
 
-      <!-- Grupo de Opções com Legend Acessível -->
       <fieldset class="options-group">
         <legend class="screen-subtitle" style="margin-bottom: 12px; font-weight: 600; color: var(--cor-texto-principal);">
           2. Qual é a sua preferência na hora de resolver desafios?
         </legend>
 
-        <!-- Opção 1: Lógica no papel -->
         <label class="option-card" for="opt-logica">
           <input type="radio" id="opt-logica" name="preferencia" value="logica">
           <div class="option-text">
@@ -65,7 +57,6 @@
           </div>
         </label>
 
-        <!-- Opção 2: Código no computador -->
         <label class="option-card selected" for="opt-codigo">
           <input type="radio" id="opt-codigo" name="preferencia" value="codigo" checked>
           <div class="option-text">
@@ -75,7 +66,6 @@
         </label>
       </fieldset>
 
-      <!-- Ações no Rodapé da Tela -->
       <div class="screen-actions">
         <button type="button" id="btn-avancar" class="btn-primary" onclick="avancarParaApoio()">
           Avançar para Pergunta 3 &rarr;
@@ -87,7 +77,6 @@
   </main>
 
   <script>
-    // Restaurar resposta anterior se já salva no navegador
     document.addEventListener('DOMContentLoaded', function () {
       const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
       const valorSalvo = respostas['preferencia'] || respostas['preferencia_estudo'];
@@ -106,7 +95,6 @@
       }
     });
 
-    // Salvar preferência e avançar para a Tela 8
     function avancarParaApoio() {
       const selecionado = document.querySelector('input[name="preferencia"]:checked');
       const valor = selecionado ? selecionado.value : 'logica';

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
   <style>
-    /* Estilos da Tela 03: Trilha de Estudos & Checklist */
+    
     .chk-header {
       padding: 10px 16px;
       background-color: var(--cor-card);
@@ -45,7 +45,6 @@
       gap: 18px;
     }
 
-    /* Abas de Categoria */
     .cat-tabs-scroll {
       overflow-x: auto;
       padding-bottom: 4px;
@@ -94,7 +93,6 @@
       text-align: center;
     }
 
-    /* Cartão de Progresso Individual */
     .progress-card {
       background-color: var(--cor-card);
       border: 1.5px solid var(--cor-borda);
@@ -146,7 +144,6 @@
       gap: 6px;
     }
 
-    /* Cartão do Checklist de Conteúdos */
     .checklist-card {
       background-color: var(--cor-card);
       border: 1.5px solid var(--cor-borda);
@@ -211,7 +208,6 @@
       cursor: pointer;
     }
 
-    /* Cartão Prática de Código */
     .practice-card {
       background-color: var(--cor-card);
       border: 1px solid var(--cor-borda);
@@ -271,7 +267,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Cartão Provas Anteriores */
     .provas-card {
       background-color: var(--cor-card);
       border: 1px solid var(--cor-borda);
@@ -319,7 +314,6 @@
       color: #ffffff;
     }
 
-    /* Botão Limpar */
     .btn-reset-progress {
       display: inline-flex;
       align-items: center;
@@ -343,7 +337,6 @@
       color: #ffffff;
     }
 
-    /* Conexões */
     .chk-conexao-box {
       background-color: var(--cor-primaria-fundo);
       border: 1px solid var(--cor-primaria-borda);
@@ -360,7 +353,6 @@
       margin: 0;
     }
 
-    /* Rodapé */
     .chk-footer {
       margin-top: auto;
       padding-top: 8px;
@@ -390,7 +382,6 @@
       color: var(--cor-primaria);
     }
 
-    /* Alto Contraste */
     body.high-contrast .chk-header,
     body.high-contrast .chk-content {
       background-color: #000000;
@@ -447,10 +438,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA MOBILE DO PROTÓTIPO -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -462,7 +451,6 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <div class="chk-header">
       <a href="../tela-01-home/index.html" class="btn-back">
         <span aria-hidden="true">&lsaquo;</span> Voltar
@@ -471,7 +459,6 @@
       <span style="min-width: 48px;" aria-hidden="true"></span>
     </div>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (TELA 03) -->
     <div class="screen-content chk-content">
 
       <header>
@@ -483,7 +470,6 @@
         </p>
       </header>
 
-      <!-- Abas de Categoria com Rolagem Horizontal Suave -->
       <div class="cat-tabs-scroll">
         <div class="cat-tabs" role="tablist" aria-label="Categorias da OBI">
           <button type="button" class="cat-tab" id="cat-iniciacao" role="tab" onclick="selecionarCategoria('iniciacao')">
@@ -508,7 +494,6 @@
         Programação Júnior (6º ao 9º ano)
       </p>
 
-      <!-- Cartão de Progresso Individual Local -->
       <section class="progress-card" aria-label="Progresso Individual">
         <h2 class="progress-card-title">
           <span aria-hidden="true">📈</span> O seu progresso individual (Local)
@@ -524,17 +509,15 @@
         </p>
       </section>
 
-      <!-- Checklist de Conteúdos Interativo -->
       <section class="checklist-card" aria-labelledby="titulo-checklist">
         <h2 id="titulo-checklist" class="checklist-title">
           <span aria-hidden="true">✅</span> Checklist de Conteúdos
         </h2>
         <ul class="checklist-items" id="lista-conteudos">
-          <!-- Gerado dinamicamente via JavaScript -->
+          
         </ul>
       </section>
 
-      <!-- Onde Praticar Código Gratuito -->
       <section class="practice-card" aria-labelledby="titulo-pratica">
         <h2 id="titulo-pratica" class="practice-card-title">
           <span aria-hidden="true">💻</span> Onde Praticar Código (Gratuito)
@@ -555,7 +538,6 @@
         </div>
       </section>
 
-      <!-- Provas de Anos Anteriores -->
       <section class="provas-card" aria-labelledby="titulo-provas">
         <h2 id="titulo-provas" class="practice-card-title">
           <span aria-hidden="true">📁</span> Provas de Anos Anteriores (PDF)
@@ -576,12 +558,10 @@
         </div>
       </section>
 
-      <!-- Botão para Limpar Progresso -->
       <button type="button" class="btn-reset-progress" onclick="limparProgressoAtual()">
         <span aria-hidden="true">🗑️</span> Limpar o meu progresso local
       </button>
 
-      <!-- Conexões com Outros Módulos da Central -->
       <div class="chk-conexao-box">
         <p><strong><span aria-hidden="true">🧭</span> Conectar com outros módulos:</strong></p>
         <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
@@ -597,7 +577,6 @@
         </div>
       </div>
 
-      <!-- Rodapé -->
       <footer class="chk-footer">
         <p><span aria-hidden="true">🛡️</span> Sem rankings, placares públicos ou comparações. Progresso armazenado exclusivamente no seu celular.</p>
         <div class="chk-footer-links">
@@ -612,7 +591,6 @@
   </main>
 
   <script>
-    // Banco de tópicos de estudo para cada categoria
     const TOPICOS_CATEGORIAS = {
       iniciacao: {
         titulo: 'Iniciação (6º ao 9º ano - No Papel)',
@@ -680,7 +658,6 @@
       if (!TOPICOS_CATEGORIAS[cat]) return;
       categoriaAtual = cat;
 
-      // Atualizar abas visuais
       document.querySelectorAll('.cat-tab').forEach(function(btn) {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
@@ -691,13 +668,11 @@
         abaAtiva.setAttribute('aria-selected', 'true');
       }
 
-      // Atualizar legenda de subtítulo
       const descEl = document.getElementById('cat-descricao-texto');
       if (descEl) {
         descEl.textContent = TOPICOS_CATEGORIAS[cat].titulo;
       }
 
-      // Renderizar a lista de itens
       renderizarChecklist();
     }
 
@@ -784,9 +759,8 @@
       }
     }
 
-    // Inicialização integrada com Quiz (Telas 06-08) e parâmetros de URL
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Verificar parâmetro de URL (ex: ?cat=iniciacao)
+
       const urlParams = new URLSearchParams(window.location.search);
       const catParam = urlParams.get('cat');
 
@@ -795,7 +769,6 @@
         return;
       }
 
-      // 2. Se o usuário completou o Quiz, abrir diretamente a categoria recomendada
       if (typeof obterRespostas === 'function') {
         const respostas = obterRespostas();
         if (respostas.ano_escolar === 'fundamental_1' && respostas.preferencia === 'logica') {
@@ -813,7 +786,6 @@
         }
       }
 
-      // Padrão: Prog. Júnior
       selecionarCategoria('prog_jr');
     });
   </script>

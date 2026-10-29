@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -10,10 +10,8 @@
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA EM TODAS AS TELAS) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link">
         <span>Central OBI</span>
@@ -25,17 +23,14 @@
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
       <a href="../tela-01-home/index.html" class="btn-back">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (QUIZ - ETAPA 1) -->
     <section class="screen-content">
 
-      <!-- Barra de Progresso do Diagnóstico (33%) -->
       <div class="progress-container" aria-label="Progresso do Diagnóstico">
         <div class="progress-header">
           <span>Pergunta 1 de 3</span>
@@ -46,17 +41,14 @@
         </div>
       </div>
 
-      <!-- Título Semântico Único -->
       <h1 class="screen-title">Descobrir Meu Nível</h1>
       <p class="screen-subtitle">Responda a 3 perguntas rápidas para descobrir sua categoria oficial na OBI.</p>
 
-      <!-- Grupo de Opções com Legend Acessível -->
       <fieldset class="options-group">
         <legend class="screen-subtitle" style="margin-bottom: 12px; font-weight: 600; color: var(--cor-texto-principal);">
           1. Qual é o seu ano ou série escolar atual?
         </legend>
 
-        <!-- Opção 1: Fundamental 1 (6º ou 7º ano) -->
         <label class="option-card" for="opt-fund1">
           <input type="radio" id="opt-fund1" name="ano_escolar" value="fundamental_1">
           <div class="option-text">
@@ -65,7 +57,6 @@
           </div>
         </label>
 
-        <!-- Opção 2: Fundamental 2 (8º ou 9º ano) - Padrão -->
         <label class="option-card" for="opt-fund2">
           <input type="radio" id="opt-fund2" name="ano_escolar" value="fundamental_2" checked>
           <div class="option-text">
@@ -74,7 +65,6 @@
           </div>
         </label>
 
-        <!-- Opção 3: Ensino Médio ou Técnico -->
         <label class="option-card" for="opt-medio">
           <input type="radio" id="opt-medio" name="ano_escolar" value="medio">
           <div class="option-text">
@@ -83,7 +73,6 @@
           </div>
         </label>
 
-        <!-- Opção 4: Ensino Superior -->
         <label class="option-card" for="opt-superior">
           <input type="radio" id="opt-superior" name="ano_escolar" value="superior">
           <div class="option-text">
@@ -93,7 +82,6 @@
         </label>
       </fieldset>
 
-      <!-- Ações no Rodapé da Tela -->
       <div class="screen-actions">
         <button type="button" id="btn-avancar" class="btn-primary" onclick="avancarParaPergunta2()">
           Avançar para Pergunta 2 &rarr;
@@ -105,7 +93,6 @@
   </main>
 
   <script>
-    // Restaurar resposta anterior se já salva no navegador
     document.addEventListener('DOMContentLoaded', function () {
       const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
       const valorSalvo = respostas['ano_escolar'];
@@ -124,7 +111,6 @@
       }
     });
 
-    // Salvar ano escolar e avançar para a Tela 7 (Pergunta 2)
     function avancarParaPergunta2() {
       const selecionado = document.querySelector('input[name="ano_escolar"]:checked');
       const valor = selecionado ? selecionado.value : 'fundamental_2';
