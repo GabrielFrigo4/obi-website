@@ -576,22 +576,7 @@ body.high-contrast .bottom-nav-item.active {
 
 
 
-/* Identificação de origem dos links (IHC: prevenção de erros e consistência). */
-.origin-tag {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0.3rem 0.15rem 0.15rem 0;
-  padding: 0.15rem 0.45rem;
-  border: 1px solid currentColor;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  line-height: 1.35;
-  white-space: normal;
-  text-align: left;
-}
-.origin-official .origin-tag { color: inherit; }
-.origin-third-party .origin-tag { color: inherit; border-style: dashed; }
+/* Avisos de origem dos conteúdos (IHC). */
 .origin-notice {
   margin: 1rem 0;
   padding: 0.9rem 1rem;
@@ -604,3 +589,6 @@ body.high-contrast .bottom-nav-item.active {
 }
 .origin-notice p { margin-top: 0.4rem; }
 .source-explanation { margin: 0.5rem 0 0.75rem; font-size: 0.85rem; }
+
+/* Seta discreta para links que levam a outros sites. */
+.external-arrow { display: inline-block; margin-inline-start: .3em; font-weight: 600; text-decoration: none; }
