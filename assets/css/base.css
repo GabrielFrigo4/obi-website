@@ -575,3 +575,32 @@ body.high-contrast .bottom-nav-item.active {
 }
 
 
+
+/* Identificação de origem dos links (IHC: prevenção de erros e consistência). */
+.origin-tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0.3rem 0.15rem 0.15rem 0;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: normal;
+  text-align: left;
+}
+.origin-official .origin-tag { color: inherit; }
+.origin-third-party .origin-tag { color: inherit; border-style: dashed; }
+.origin-notice {
+  margin: 1rem 0;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-primaria);
+  border-radius: var(--raio-borda);
+  background: var(--cor-fundo-suave);
+  color: var(--cor-texto-principal);
+  font-size: 0.9rem;
+}
+.origin-notice p { margin-top: 0.4rem; }
+.source-explanation { margin: 0.5rem 0 0.75rem; font-size: 0.85rem; }
