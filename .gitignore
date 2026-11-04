@@ -1,4 +1,14 @@
-.agents/
+# Dependências e caches
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+
+# Arquivos de Sistema e Editores
 .DS_Store
 Thumbs.db
 *.swp
+*.swo
+*~
+.vscode/
+.idea/

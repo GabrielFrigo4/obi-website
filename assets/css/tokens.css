@@ -51,8 +51,14 @@ body.high-contrast {
   --cor-texto-principal: #ffffff;
   --cor-texto-secundario: #f1f5f9;
   --cor-primaria: #60a5fa;
+  --cor-primaria-hover: #93c5fd;
   --cor-primaria-fundo: #1e3a8a;
   --cor-primaria-borda: #ffffff;
+  --cor-sucesso: #34d399;
+  --cor-sucesso-fundo: #064e3b;
+  --cor-sucesso-borda: #6ee7b7;
   --cor-borda: #ffffff;
+  --cor-borda-ativa: #facc15;
   --anel-foco: 3px solid #facc15;
+  --sombra-suave: none;
 }

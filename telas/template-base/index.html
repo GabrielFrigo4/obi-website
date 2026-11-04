@@ -3,78 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nome da Tela · Central OBI UFABC</title>
+  <title>Template Base (Padrão Ouro) · Central OBI UFABC</title>
+
+  <!-- Design Tokens e Estilos Globais Obrigatórios -->
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+
+  <!-- Estilização Modular Contextualizada da Tela -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Utilitários Compartilhados de Acessibilidade e Persistência Ética -->
   <script src="../../assets/js/utils.js" defer></script>
+
+  <!-- Lógica Comportamental Pura da Tela -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px) -->
+  <!-- Moldura Mobile-First Acessível (390px a 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA EM TODAS AS TELAS) -->
+    <!-- 1. Barra de Acessibilidade Universal (Topo da Moldura) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
+    <!-- 2. Cabeçalho Semântico de Retorno e Navegação -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../../index.html" class="btn-back">
+      <a href="../../index.html" class="btn-back" aria-label="Voltar para a tela anterior">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. MIOLO DA TELA (PERSONALIZE AQUI) -->
-    <section class="screen-content">
+    <!-- 3. Conteúdo Principal da Tela -->
+    <section class="screen-content" aria-labelledby="screen-title">
 
-      <!-- Barra de Progresso Opcional (usada em questionários/etapas) -->
+      <!-- Barra de Progresso Semântica e Auditável (WCAG 2.1 AA) -->
       <div class="progress-container" aria-label="Progresso da Etapa">
         <div class="progress-header">
-          <span>Etapa 1 de 3</span>
-          <span>33%</span>
+          <span id="label-progresso-etapa">Etapa 1 de 3</span>
+          <span id="label-progresso-porcentagem" aria-hidden="true">33%</span>
         </div>
-        <div class="progress-bar-track" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar-fill" style="width: 33%;"></div>
+        <div class="progress-bar-track" 
+             role="progressbar" 
+             aria-valuenow="33" 
+             aria-valuemin="0" 
+             aria-valuemax="100" 
+             aria-labelledby="label-progresso-etapa"
+             aria-valuetext="Etapa 1 de 3: 33 por cento concluído">
+          <div class="progress-bar-fill w-33"></div>
         </div>
       </div>
 
-      <!-- Título Semântico Único -->
-      <h1 class="screen-title">Título Claro e Direto</h1>
-      <p class="screen-subtitle">Subtítulo explicativo sem enrolação ou textos longos.</p>
+      <!-- Títulos Semânticos Diretos -->
+      <h1 id="screen-title" class="screen-title">Título Claro e Direto</h1>
+      <p class="screen-subtitle">Subtítulo explicativo com orientações concisas, amigáveis e livres de jargões técnicos.</p>
 
-      <!-- Cartões de Opções / Conteúdo -->
-      <fieldset class="options-group">
-        <legend class="screen-subtitle" style="margin-bottom: 12px; font-weight: 600;">Selecione a sua opção:</legend>
+      <!-- Grupo de Opções e Formulário Semântico -->
+      <form id="form-template" novalidate>
+        <fieldset class="options-group" aria-describedby="status-feedback">
+          <legend class="options-legend" id="legend-opcoes">Selecione uma das alternativas abaixo:</legend>
 
-        <label class="option-card">
-          <input type="radio" name="exemplo_opcao" value="opcao_1" checked>
-          <div class="option-text">
-            <strong>Primeira Opção</strong>
-            <span>Descrição curta de no máximo duas linhas explicando a opção.</span>
-          </div>
-        </label>
+          <!-- Card de Opção 1 (Touch Target >= 48px, for/id estritamente vinculados) -->
+          <label class="option-card" for="opt-exemplo-1">
+            <input type="radio" 
+                   id="opt-exemplo-1" 
+                   name="opcao_template" 
+                   value="opcao_1" 
+                   aria-describedby="desc-opcao-1">
+            <div class="option-text">
+              <strong id="titulo-opcao-1">Primeira Opção</strong>
+              <span id="desc-opcao-1">Descrição curta e objetiva explicando o propósito e escopo desta alternativa.</span>
+            </div>
+          </label>
 
-        <label class="option-card">
-          <input type="radio" name="exemplo_opcao" value="opcao_2">
-          <div class="option-text">
-            <strong>Segunda Opção</strong>
-            <span>Outra alternativa clara e com bom contraste.</span>
-          </div>
-        </label>
-      </fieldset>
+          <!-- Card de Opção 2 (Touch Target >= 48px, for/id estritamente vinculados) -->
+          <label class="option-card" for="opt-exemplo-2">
+            <input type="radio" 
+                   id="opt-exemplo-2" 
+                   name="opcao_template" 
+                   value="opcao_2" 
+                   aria-describedby="desc-opcao-2">
+            <div class="option-text">
+              <strong id="titulo-opcao-2">Segunda Opção</strong>
+              <span id="desc-opcao-2">Outra alternativa com alto contraste, excelente legibilidade e foco visível nítido.</span>
+            </div>
+          </label>
+        </fieldset>
 
-      <!-- Ações no Rodapé da Tela -->
-      <div class="screen-actions">
-        <button type="button" class="btn-primary">Avançar para Próxima Etapa</button>
-      </div>
+        <!-- Área de Feedback Acessível em Tempo Real (WCAG 2.1 AA) -->
+        <div id="status-feedback" 
+             class="feedback-status" 
+             role="status" 
+             aria-live="polite" 
+             aria-atomic="true">
+        </div>
+
+        <!-- Rodapé de Ações com Alvo de Toque Amplo -->
+        <div class="screen-actions">
+          <button type="button" id="btn-avancar" class="btn-primary">
+            Avançar para Próxima Etapa
+          </button>
+        </div>
+      </form>
 
     </section>
 

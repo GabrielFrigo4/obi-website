@@ -6,123 +6,112 @@
   <title>Pergunta 3: Série e Apoio Escolar · Central OBI UFABC</title>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../../assets/js/utils.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA EM TODAS AS TELAS) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../tela-07-quiz-logica/index.html" class="btn-back">
+      <a href="../tela-07-quiz-logica/index.html" class="btn-back" aria-label="Voltar para a Pergunta 2">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (QUIZ - ETAPA 3) -->
-    <section class="screen-content">
+    <section class="screen-content" aria-labelledby="screen-title">
 
-      <!-- Barra de Progresso do Diagnóstico (100%) -->
       <div class="progress-container" aria-label="Progresso do Diagnóstico">
         <div class="progress-header">
-          <span>Pergunta 3 de 3</span>
-          <span>100%</span>
+          <span id="label-progresso-etapa">Pergunta 3 de 3</span>
+          <span id="label-progresso-porcentagem" aria-hidden="true">100%</span>
         </div>
-        <div class="progress-bar-track" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar-fill" style="width: 100%;"></div>
+        <div class="progress-bar-track" 
+             role="progressbar" 
+             aria-valuenow="100" 
+             aria-valuemin="0" 
+             aria-valuemax="100" 
+             aria-labelledby="label-progresso-etapa"
+             aria-valuetext="Pergunta 3 de 3: 100 por cento concluído">
+          <div class="progress-bar-fill w-100"></div>
         </div>
       </div>
 
-      <!-- Título Semântico Único -->
-      <h1 class="screen-title">Descobrir Meu Nível</h1>
+      <h1 id="screen-title" class="screen-title">Descobrir Meu Nível</h1>
       <p class="screen-subtitle">Última etapa para identificar a sua categoria e o apoio disponível.</p>
 
-      <!-- Grupo de Opções com Legend Acessível -->
-      <fieldset class="options-group">
-        <legend class="screen-subtitle" style="margin-bottom: 12px; font-weight: 600; color: var(--cor-texto-principal);">
-          3. Qual é a sua série e situação da sua escola na OBI?
-        </legend>
+      <form id="form-pergunta-3" novalidate>
+        <fieldset class="options-group" aria-describedby="status-feedback">
+          <legend class="screen-subtitle quiz-legend" id="legend-pergunta-3">
+            3. Qual é a sua série e situação da sua escola na OBI?
+          </legend>
 
-        <!-- Opção 1: Fundamental com Apoio -->
-        <label class="option-card" for="opt-fundamental">
-          <input type="radio" id="opt-fundamental" name="escola_apoio" value="fundamental_com_apoio" checked>
-          <div class="option-text">
-            <strong>Ensino Fundamental (6º ao 9º ano)</strong>
-            <span>Minha escola já participa ou quero ver materiais do Nível Júnior / Iniciação.</span>
-          </div>
-        </label>
+          <label class="option-card" for="opt-fundamental">
+            <input type="radio" 
+                   id="opt-fundamental" 
+                   name="escola_apoio" 
+                   value="fundamental_com_apoio" 
+                   aria-describedby="desc-fundamental">
+            <div class="option-text">
+              <strong id="titulo-fundamental">Ensino Fundamental (6º ao 9º ano)</strong>
+              <span id="desc-fundamental">Minha escola já participa ou quero ver materiais do Nível Júnior / Iniciação.</span>
+            </div>
+          </label>
 
-        <!-- Opção 2: Médio / Técnico com Apoio -->
-        <label class="option-card" for="opt-medio">
-          <input type="radio" id="opt-medio" name="escola_apoio" value="medio_com_apoio">
-          <div class="option-text">
-            <strong>Ensino Médio ou Técnico</strong>
-            <span>Quero ver materiais e cronograma para Nível 1 ou 2.</span>
-          </div>
-        </label>
+          <label class="option-card" for="opt-medio">
+            <input type="radio" 
+                   id="opt-medio" 
+                   name="escola_apoio" 
+                   value="medio_com_apoio" 
+                   aria-describedby="desc-medio">
+            <div class="option-text">
+              <strong id="titulo-medio">Ensino Médio ou Técnico</strong>
+              <span id="desc-medio">Quero ver materiais e cronograma para Nível 1 ou 2.</span>
+            </div>
+          </label>
 
-        <!-- Opção 3: Escola sem Cadastro / Carência de Apoio -->
-        <label class="option-card" for="opt-sem-cadastro">
-          <input type="radio" id="opt-sem-cadastro" name="escola_apoio" value="escola_sem_cadastro">
-          <div class="option-text">
-            <strong>Minha escola não participa (ou não sei)</strong>
-            <span>Quero apoio gratuito do projeto da UFABC para conseguir participar.</span>
-          </div>
-        </label>
-      </fieldset>
+          <label class="option-card" for="opt-sem-cadastro">
+            <input type="radio" 
+                   id="opt-sem-cadastro" 
+                   name="escola_apoio" 
+                   value="escola_sem_cadastro" 
+                   aria-describedby="desc-sem-cadastro">
+            <div class="option-text">
+              <strong id="titulo-sem-cadastro">Minha escola não participa (ou não sei)</strong>
+              <span id="desc-sem-cadastro">Quero apoio gratuito do projeto da UFABC para conseguir participar.</span>
+            </div>
+          </label>
+        </fieldset>
 
-      <!-- Ações no Rodapé da Tela -->
-      <div class="screen-actions">
-        <button type="button" id="btn-finalizar" class="btn-primary" onclick="concluirQuiz()">
-          Ver Meu Resultado &rarr;
-        </button>
-      </div>
+        <div id="status-feedback" 
+             class="feedback-status" 
+             role="status" 
+             aria-live="polite" 
+             aria-atomic="true">
+        </div>
+
+        <div class="screen-actions">
+          <button type="button" id="btn-finalizar" class="btn-primary">
+            Ver Meu Resultado &rarr;
+          </button>
+        </div>
+      </form>
 
     </section>
 
   </main>
-
-  <script>
-    // Restaurar resposta anterior se já salva no navegador
-    document.addEventListener('DOMContentLoaded', function () {
-      const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
-      const valorSalvo = respostas['escola_apoio'];
-      if (valorSalvo) {
-        const radio = document.querySelector('input[name="escola_apoio"][value="' + valorSalvo + '"]');
-        if (radio) {
-          radio.checked = true;
-          document.querySelectorAll('.option-card').forEach(function (cartao) {
-            cartao.classList.remove('selected');
-          });
-          const cardPai = radio.closest('.option-card');
-          if (cardPai) {
-            cardPai.classList.add('selected');
-          }
-        }
-      }
-    });
-
-    // Salvar situação escolar e avançar para o Resultado (Tela 9)
-    function concluirQuiz() {
-      const selecionado = document.querySelector('input[name="escola_apoio"]:checked');
-      const valor = selecionado ? selecionado.value : 'fundamental_com_apoio';
-      salvarResposta('escola_apoio', valor);
-      window.location.href = '../tela-09-resultado-nivel/index.html';
-    }
-  </script>
 
 </body>
 </html>

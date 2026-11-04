@@ -16,18 +16,25 @@ Todas as telas devem seguir **exatamente** as mesmas variáveis CSS já definida
 * **Textos**: Preto azulado de alto contraste (`#0f172a`) e cinza para textos auxiliares (`#475569`).
 
 > [!IMPORTANT]
-> **Como usar no seu HTML**:
-> Basta importar os dois arquivos CSS e o utilitário compartilhado no `<head>` da sua tela:
+> **A Arquitetura Tripartite e o Padrão Ouro (`telas/template-base/`)**:
+> Nenhuma tela deve misturar CSS ou JavaScript dentro do HTML. Cada tela possui seu próprio diretório contendo estritamente três arquivos:
+> 1. `index.html`: Apenas marcação semântica limpa. **Proibido o uso de `<style>` ou `<script>` embutidos/inline**.
+> 2. `style.css`: Estilização contextual da tela, consumindo tokens compartilhados.
+> 3. `script.js`: Lógica comportamental pura, manipulando eventos dentro de `document.addEventListener('DOMContentLoaded', ...)`.
+>
+> **Como incluir no `<head>` do seu `index.html`**:
 > ```html
 > <link rel="stylesheet" href="../../assets/css/tokens.css">
 > <link rel="stylesheet" href="../../assets/css/base.css">
+> <link rel="stylesheet" href="style.css">
 > <script src="../../assets/js/utils.js" defer></script>
+> <script src="script.js" defer></script>
 > ```
-> Fazendo isso, sua tela ganha automaticamente o container mobile de 390px-420px, a tipografia limpa do sistema e os botões padronizados.
+> Fazendo isso, sua tela ganha automaticamente o container mobile de 390px-420px, a tipografia limpa do sistema, os botões padronizados e todo o comportamento desacoplado.
 
 ---
 
-## 🚫 2. Boas Práticas de IHC: Linguagem Natural e Foco no Estudante
+## 🚫 2. Boas Práticas de IHC: Linguagem Natural, Foco no Estudante e Design Ético
 
 1. **Chega de "Textão"**:
    * Substitua parágrafos longos por **frases curtas, diretas e acolhedoras**.
@@ -38,6 +45,10 @@ Todas as telas devem seguir **exatamente** as mesmas variáveis CSS já definida
    * Escreva como se estivesse conversando com um estudante do Ensino Médio ou Fundamental: tom encorajador, simples e direto. Evite jargões corporativos ou termos computacionais herméticos desnecessários.
 4. **Hierarquia Visual Clara**:
    * Cada tela deve ter apenas 1 botão principal de destaque (`.btn-primary`). Os outros botões devem ser secundários (`.btn-secondary`) para não dispersar a atenção do usuário.
+5. **Design Ético: Proibição Absoluta de Pré-seleção (`checked`)**:
+   * **Nenhum input do tipo radio ou checkbox pode vir marcado previamente por padrão (`checked`)**. A pré-seleção induz escolhas acidentais (*default bias*), violando os princípios de Design Ético da Profª. Juliana Braga. O estudante deve sempre tomar uma decisão ativa e consciente.
+6. **Zero Dark Patterns e Máxima Transparência**:
+   * Sem falsos contadores de escassez, sem formulários com armadilhas (*roach motel*), sem campos ocultos e sem obrigatoriedade de login para acesso a informações públicas. Armazenamento puramente local no navegador (`localStorage`), em total respeito à privacidade e à LGPD.
 
 ---
 

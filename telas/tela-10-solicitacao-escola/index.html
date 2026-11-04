@@ -6,269 +6,36 @@
   <title>Apoio para Sua Escola · Central OBI UFABC</title>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../../assets/js/utils.js" defer></script>
-  <style>
-    /* Estilos específicos e acessíveis da Tela 10 (WCAG AA) */
-    .action-card {
-      background-color: var(--cor-card);
-      border: 1.5px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      padding: 18px 16px;
-      margin-bottom: 20px;
-    }
-
-    .card-step-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--cor-primaria);
-      background-color: var(--cor-primaria-fundo);
-      border: 1px solid var(--cor-primaria-borda);
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-section-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--cor-texto-principal);
-      margin-bottom: 6px;
-      line-height: 1.35;
-    }
-
-    .card-section-desc {
-      font-size: var(--tamanho-pequeno);
-      color: var(--cor-texto-secundario);
-      margin-bottom: 14px;
-      line-height: 1.4;
-    }
-
-    .message-preview-box {
-      background-color: var(--cor-fundo-suave);
-      border-left: 4px solid var(--cor-primaria);
-      padding: 12px 14px;
-      border-radius: 4px;
-      margin-bottom: 14px;
-    }
-
-    .message-quote {
-      font-size: 0.875rem;
-      color: var(--cor-texto-principal);
-      font-style: italic;
-      line-height: 1.45;
-      margin: 0;
-    }
-
-    .copy-feedback {
-      font-size: 0.85rem;
-      color: var(--cor-sucesso);
-      font-weight: 600;
-      text-align: center;
-      margin-top: 8px;
-    }
-
-    .section-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin: 10px 0 24px 0;
-      text-align: center;
-    }
-
-    .section-divider::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background-color: var(--cor-borda);
-    }
-
-    .section-divider span {
-      position: relative;
-      background-color: var(--cor-fundo-suave);
-      padding: 2px 12px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--cor-texto-secundario);
-      border: 1px solid var(--cor-borda);
-      border-radius: 999px;
-    }
-
-    .btn-secondary.copied {
-      background-color: var(--cor-sucesso-fundo);
-      border-color: var(--cor-sucesso-borda);
-      color: var(--cor-sucesso);
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 16px;
-    }
-
-    .form-label {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--cor-texto-principal);
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-    }
-
-    .form-label .required {
-      color: #dc2626;
-      font-weight: 700;
-      margin-left: 4px;
-    }
-
-    .form-control {
-      width: 100%;
-      min-height: var(--alvo-toque-minimo);
-      padding: 12px 14px;
-      background-color: var(--cor-card);
-      border: 1.5px solid var(--cor-borda);
-      border-radius: var(--raio-botao);
-      font-size: 1rem;
-      font-family: inherit;
-      color: var(--cor-texto-principal);
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-      box-sizing: border-box;
-    }
-
-    .form-control:focus-visible {
-      outline: var(--anel-foco);
-      outline-offset: 2px;
-      border-color: var(--cor-borda-ativa);
-    }
-
-    .form-control.input-erro {
-      border-color: #dc2626;
-      background-color: #fef2f2;
-    }
-
-    .field-hint {
-      font-size: var(--tamanho-pequeno);
-      color: var(--cor-texto-secundario);
-      margin-top: 5px;
-      line-height: 1.35;
-    }
-
-    .feedback-alert {
-      padding: 12px 14px;
-      border-radius: var(--raio-botao);
-      font-size: 0.9rem;
-      font-weight: 600;
-      line-height: 1.4;
-      margin-bottom: 18px;
-      background-color: #fef2f2;
-      border: 1.5px solid #fecaca;
-      color: #991b1b;
-    }
-
-    .privacy-notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      background-color: var(--cor-fundo-suave);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-botao);
-      padding: 12px 14px;
-      margin-bottom: 20px;
-      font-size: var(--tamanho-pequeno);
-      color: var(--cor-texto-secundario);
-      line-height: 1.4;
-    }
-
-    .privacy-notice-icon {
-      font-size: 1rem;
-      line-height: 1.2;
-      flex-shrink: 0;
-    }
-
-    /* Adaptação para Alto Contraste */
-    body.high-contrast .action-card {
-      background-color: #121212;
-      border-color: #ffffff;
-    }
-
-    body.high-contrast .card-step-badge {
-      background-color: #1e3a8a;
-      border-color: #ffffff;
-      color: #93c5fd;
-    }
-
-    body.high-contrast .message-preview-box {
-      background-color: #000000;
-      border-left-color: #60a5fa;
-    }
-
-    body.high-contrast .form-control {
-      background-color: #000000;
-      color: #ffffff;
-      border-color: #ffffff;
-    }
-
-    body.high-contrast .form-control.input-erro {
-      border-color: #f87171;
-      background-color: #000000;
-    }
-
-    body.high-contrast .feedback-alert {
-      background-color: #000000;
-      color: #fca5a5;
-      border-color: #ef4444;
-    }
-
-    body.high-contrast .privacy-notice {
-      background-color: #121212;
-      border-color: #ffffff;
-      color: #ffffff;
-    }
-
-    body.high-contrast .section-divider span {
-      background-color: #121212;
-      border-color: #ffffff;
-      color: #ffffff;
-    }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../tela-09-resultado-nivel/index.html" class="btn-back">
+      <a href="../tela-09-resultado-nivel/index.html" class="btn-back" aria-label="Voltar para a Categoria Recomendada">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (OPÇÕES REAIS DE APOIO) -->
-    <section class="screen-content">
+    <section class="screen-content" aria-labelledby="screen-title">
 
-      <!-- Título Semântico Único -->
-      <h1 class="screen-title">Apoio para Sua Escola</h1>
+      <h1 id="screen-title" class="screen-title">Apoio para Sua Escola</h1>
       <p class="screen-subtitle">Escolha como prefere viabilizar sua participação gratuita na OBI com o suporte da UFABC:</p>
 
-      <!-- 1. Mensagem Pronta para Enviar ao Professor -->
       <section class="action-card" aria-labelledby="titulo-msg-professor">
         <span class="card-step-badge">Opção Rápida</span>
         <h2 id="titulo-msg-professor" class="card-section-title">1. Mensagem pronta para enviar ao seu professor</h2>
@@ -284,34 +51,28 @@
           type="button"
           id="btn-copiar-msg"
           class="btn-secondary"
-          onclick="copiarMensagemProfessor()"
-          aria-label="Copiar mensagem para a área de transferência"
+          aria-label="Copiar mensagem para o professor para a área de transferência"
         >
           <span id="icone-copiar" aria-hidden="true">📋</span>
           <span id="texto-btn-copiar">Copiar mensagem para o professor</span>
         </button>
 
-        <div id="feedback-copia-msg" class="copy-feedback" role="status" aria-live="polite" style="display: none;"></div>
+        <div id="feedback-copia-msg" class="copy-feedback is-hidden" role="status" aria-live="polite"></div>
       </section>
 
-      <!-- Divisor Claro -->
       <div class="section-divider" aria-hidden="true">
         <span>OU</span>
       </div>
 
-      <!-- 2. Pedir para a UFABC entrar em contato com a escola -->
       <section class="action-card" aria-labelledby="titulo-solicitacao-ufabc">
         <span class="card-step-badge">Apoio UFABC</span>
         <h2 id="titulo-solicitacao-ufabc" class="card-section-title">2. Pedir para a UFABC entrar em contato com a escola</h2>
         <p class="card-section-desc">Se preferir, nossa equipe de extensão universitária entra em contato direto com a sua escola ou garante a sua vaga pelo Polo UFABC:</p>
 
-        <!-- Região de feedback acessível de erro (sem alert intrusivo) -->
-        <div id="feedback-validacao" class="feedback-alert" role="status" aria-live="polite" style="display: none;"></div>
+        <div id="feedback-validacao" class="feedback-alert is-hidden" role="status" aria-live="polite"></div>
 
-        <!-- Formulário Direto e Acessível -->
         <form id="form-apoio" novalidate>
 
-          <!-- Campo 1: Nome do Estudante -->
           <div class="form-group">
             <label for="nome-estudante" class="form-label">
               Seu Nome Completo <span class="required" aria-hidden="true">*</span>
@@ -327,7 +88,6 @@
             >
           </div>
 
-          <!-- Campo 2: Nome da Escola Pública -->
           <div class="form-group">
             <label for="nome-escola" class="form-label">
               Nome da Escola Pública <span class="required" aria-hidden="true">*</span>
@@ -342,7 +102,6 @@
             >
           </div>
 
-          <!-- Campo 3: Cidade no Grande ABC -->
           <div class="form-group">
             <label for="cidade-escola" class="form-label">
               Cidade no Grande ABC <span class="required" aria-hidden="true">*</span>
@@ -360,7 +119,6 @@
             </select>
           </div>
 
-          <!-- Campo 4: Contato para Retorno -->
           <div class="form-group">
             <label for="contato-retorno" class="form-label">
               Contato para Retorno <span class="required" aria-hidden="true">*</span>
@@ -372,17 +130,16 @@
               class="form-control"
               placeholder="Ex: (11) 98765-4321 ou seu@email.com"
               required
+              aria-describedby="dica-contato"
             >
-            <span class="field-hint">WhatsApp, telefone ou e-mail para confirmarmos seu protocolo.</span>
+            <span id="dica-contato" class="field-hint">WhatsApp, telefone ou e-mail para confirmarmos seu protocolo.</span>
           </div>
 
-          <!-- Nota simples de transparência e ética -->
           <div class="privacy-notice">
             <span class="privacy-notice-icon" aria-hidden="true">🔒</span>
-            <span>Seus dados são usados exclusivamente pela extensão da UFABC para viabilizar sua participação gratuita na OBI.</span>
+            <span>Seus dados são usados exclusivamente pela extensão da UFABC para viabilizar sua participação gratuita na OBI. Proteção de privacidade garantida (sem cookies ou rastreadores).</span>
           </div>
 
-          <!-- Ações de Envio -->
           <div class="screen-actions">
             <button type="submit" class="btn-primary" id="btn-enviar">
               Enviar Solicitação de Apoio
@@ -398,148 +155,6 @@
     </section>
 
   </main>
-
-  <!-- Script simples, seguro e auditável -->
-  <script>
-    // Função para Copiar a Mensagem ao Professor com Feedback Acessível
-    function copiarMensagemProfessor() {
-      var textoEl = document.getElementById('texto-msg-professor');
-      var btn = document.getElementById('btn-copiar-msg');
-      var btnTexto = document.getElementById('texto-btn-copiar');
-      var btnIcone = document.getElementById('icone-copiar');
-      var feedback = document.getElementById('feedback-copia-msg');
-
-      if (!textoEl) return;
-      var texto = textoEl.textContent.trim();
-
-      function feedbackSucesso() {
-        if (btn) btn.classList.add('copied');
-        if (btnTexto) btnTexto.textContent = '✓ Mensagem copiada!';
-        if (btnIcone) btnIcone.textContent = '';
-        if (feedback) {
-          feedback.textContent = 'Mensagem copiada para a área de transferência com sucesso.';
-          feedback.style.display = 'block';
-        }
-
-        setTimeout(function () {
-          if (btn) btn.classList.remove('copied');
-          if (btnTexto) btnTexto.textContent = 'Copiar mensagem para o professor';
-          if (btnIcone) btnIcone.textContent = '📋';
-          if (feedback) feedback.style.display = 'none';
-        }, 3000);
-      }
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texto).then(feedbackSucesso).catch(function () {
-          fallbackCopiaTexto(texto, feedbackSucesso);
-        });
-      } else {
-        fallbackCopiaTexto(texto, feedbackSucesso);
-      }
-    }
-
-    function fallbackCopiaTexto(texto, callback) {
-      var areaTemp = document.createElement('textarea');
-      areaTemp.value = texto;
-      areaTemp.setAttribute('readonly', '');
-      areaTemp.style.position = 'absolute';
-      areaTemp.style.left = '-9999px';
-      document.body.appendChild(areaTemp);
-      areaTemp.select();
-      try {
-        document.execCommand('copy');
-        callback();
-      } catch (e) {
-        console.warn('Fallback de cópia não disponível:', e);
-      }
-      document.body.removeChild(areaTemp);
-    }
-
-    // Validação acessível do formulário
-    function validarFormulario() {
-      var campoNome = document.getElementById('nome-estudante');
-      var campoEscola = document.getElementById('nome-escola');
-      var campoCidade = document.getElementById('cidade-escola');
-      var campoContato = document.getElementById('contato-retorno');
-      var feedback = document.getElementById('feedback-validacao');
-
-      // Limpar erros anteriores
-      feedback.style.display = 'none';
-      feedback.textContent = '';
-      [campoNome, campoEscola, campoCidade, campoContato].forEach(function (campo) {
-        campo.classList.remove('input-erro');
-      });
-
-      if (!campoNome.value.trim()) {
-        feedback.textContent = 'Por favor, informe seu nome completo.';
-        feedback.style.display = 'block';
-        campoNome.classList.add('input-erro');
-        campoNome.focus();
-        return false;
-      }
-
-      if (!campoEscola.value.trim()) {
-        feedback.textContent = 'Por favor, informe o nome da sua escola pública.';
-        feedback.style.display = 'block';
-        campoEscola.classList.add('input-erro');
-        campoEscola.focus();
-        return false;
-      }
-
-      if (!campoCidade.value) {
-        feedback.textContent = 'Por favor, selecione a cidade da sua escola no Grande ABC.';
-        feedback.style.display = 'block';
-        campoCidade.classList.add('input-erro');
-        campoCidade.focus();
-        return false;
-      }
-
-      if (!campoContato.value.trim()) {
-        feedback.textContent = 'Por favor, informe um contato (WhatsApp ou e-mail) para retorno.';
-        feedback.style.display = 'block';
-        campoContato.classList.add('input-erro');
-        campoContato.focus();
-        return false;
-      }
-
-      return true;
-    }
-
-    // Envio e persistência local da solicitação
-    function enviarSolicitacao(evento) {
-      evento.preventDefault();
-
-      if (!validarFormulario()) {
-        return;
-      }
-
-      var nome = document.getElementById('nome-estudante').value.trim();
-      var escola = document.getElementById('nome-escola').value.trim();
-      var cidade = document.getElementById('cidade-escola').value;
-      var contato = document.getElementById('contato-retorno').value.trim();
-
-      // Salvar os dados no localStorage com utils.js
-      salvarResposta('solicitacao_estudante', nome);
-      salvarResposta('solicitacao_escola', escola);
-      salvarResposta('solicitacao_cidade', cidade);
-      salvarResposta('solicitacao_contato', contato);
-      salvarResposta('solicitacao_data', new Date().toLocaleDateString('pt-BR'));
-
-      // Gerar protocolo com utils.js
-      var protocolo = typeof obterProtocolo === 'function' ? obterProtocolo() : 'OBI-UFABC-' + Math.floor(1000 + Math.random() * 9000);
-      salvarResposta('solicitacao_protocolo', protocolo);
-
-      // Avançar para a tela de confirmação do polo (Tela 11)
-      window.location.href = '../tela-11-confirmacao-polo/index.html';
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      var form = document.getElementById('form-apoio');
-      if (form) {
-        form.addEventListener('submit', enviarSolicitacao);
-      }
-    });
-  </script>
 
 </body>
 </html>

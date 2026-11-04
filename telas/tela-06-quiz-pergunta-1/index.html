@@ -6,132 +6,124 @@
   <title>Pergunta 1: Ano Escolar · Central OBI UFABC</title>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../../assets/js/utils.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA EM TODAS AS TELAS) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../../index.html" class="btn-back">
+      <a href="../../index.html" class="btn-back" aria-label="Voltar para a página inicial">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL (QUIZ - ETAPA 1) -->
-    <section class="screen-content">
+    <section class="screen-content" aria-labelledby="screen-title">
 
-      <!-- Barra de Progresso do Diagnóstico (33%) -->
       <div class="progress-container" aria-label="Progresso do Diagnóstico">
         <div class="progress-header">
-          <span>Pergunta 1 de 3</span>
-          <span>33%</span>
+          <span id="label-progresso-etapa">Pergunta 1 de 3</span>
+          <span id="label-progresso-porcentagem" aria-hidden="true">33%</span>
         </div>
-        <div class="progress-bar-track" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-bar-fill" style="width: 33%;"></div>
+        <div class="progress-bar-track" 
+             role="progressbar" 
+             aria-valuenow="33" 
+             aria-valuemin="0" 
+             aria-valuemax="100" 
+             aria-labelledby="label-progresso-etapa"
+             aria-valuetext="Pergunta 1 de 3: 33 por cento concluído">
+          <div class="progress-bar-fill w-33"></div>
         </div>
       </div>
 
-      <!-- Título Semântico Único -->
-      <h1 class="screen-title">Descobrir Meu Nível</h1>
+      <h1 id="screen-title" class="screen-title">Descobrir Meu Nível</h1>
       <p class="screen-subtitle">Responda a 3 perguntas rápidas para descobrir sua categoria oficial na OBI.</p>
 
-      <!-- Grupo de Opções com Legend Acessível -->
-      <fieldset class="options-group">
-        <legend class="screen-subtitle" style="margin-bottom: 12px; font-weight: 600; color: var(--cor-texto-principal);">
-          1. Qual é o seu ano ou série escolar atual?
-        </legend>
+      <form id="form-pergunta-1" novalidate>
+        <fieldset class="options-group" aria-describedby="status-feedback">
+          <legend class="screen-subtitle quiz-legend" id="legend-pergunta-1">
+            1. Qual é o seu ano ou série escolar atual?
+          </legend>
 
-        <!-- Opção 1: Fundamental 1 (6º ou 7º ano) -->
-        <label class="option-card" for="opt-fund1">
-          <input type="radio" id="opt-fund1" name="ano_escolar" value="fundamental_1">
-          <div class="option-text">
-            <strong>6º ou 7º ano do Ensino Fundamental</strong>
-            <span>Modalidade Iniciação Nível 1 ou Programação Júnior.</span>
-          </div>
-        </label>
+          <label class="option-card" for="opt-fund1">
+            <input type="radio" 
+                   id="opt-fund1" 
+                   name="ano_escolar" 
+                   value="fundamental_1" 
+                   aria-describedby="desc-fund1">
+            <div class="option-text">
+              <strong id="titulo-fund1">6º ou 7º ano do Ensino Fundamental</strong>
+              <span id="desc-fund1">Modalidade Iniciação Nível 1 ou Programação Júnior.</span>
+            </div>
+          </label>
 
-        <!-- Opção 2: Fundamental 2 (8º ou 9º ano) - Padrão -->
-        <label class="option-card" for="opt-fund2">
-          <input type="radio" id="opt-fund2" name="ano_escolar" value="fundamental_2" checked>
-          <div class="option-text">
-            <strong>8º ou 9º ano do Ensino Fundamental</strong>
-            <span>Modalidade Iniciação Nível 2 ou Programação Júnior.</span>
-          </div>
-        </label>
+          <label class="option-card" for="opt-fund2">
+            <input type="radio" 
+                   id="opt-fund2" 
+                   name="ano_escolar" 
+                   value="fundamental_2" 
+                   aria-describedby="desc-fund2">
+            <div class="option-text">
+              <strong id="titulo-fund2">8º ou 9º ano do Ensino Fundamental</strong>
+              <span id="desc-fund2">Modalidade Iniciação Nível 2 ou Programação Júnior.</span>
+            </div>
+          </label>
 
-        <!-- Opção 3: Ensino Médio ou Técnico -->
-        <label class="option-card" for="opt-medio">
-          <input type="radio" id="opt-medio" name="ano_escolar" value="medio">
-          <div class="option-text">
-            <strong>Ensino Médio ou Técnico (qualquer ano)</strong>
-            <span>Modalidade Programação (Nível Júnior, 1 ou 2).</span>
-          </div>
-        </label>
+          <label class="option-card" for="opt-medio">
+            <input type="radio" 
+                   id="opt-medio" 
+                   name="ano_escolar" 
+                   value="medio" 
+                   aria-describedby="desc-medio">
+            <div class="option-text">
+              <strong id="titulo-medio">Ensino Médio ou Técnico (qualquer ano)</strong>
+              <span id="desc-medio">Modalidade Programação (Nível Júnior, 1 ou 2).</span>
+            </div>
+          </label>
 
-        <!-- Opção 4: Ensino Superior -->
-        <label class="option-card" for="opt-superior">
-          <input type="radio" id="opt-superior" name="ano_escolar" value="superior">
-          <div class="option-text">
-            <strong>1º ano do Ensino Superior (Graduação)</strong>
-            <span>Modalidade Programação Sênior.</span>
-          </div>
-        </label>
-      </fieldset>
+          <label class="option-card" for="opt-superior">
+            <input type="radio" 
+                   id="opt-superior" 
+                   name="ano_escolar" 
+                   value="superior" 
+                   aria-describedby="desc-superior">
+            <div class="option-text">
+              <strong id="titulo-superior">1º ano do Ensino Superior (Graduação)</strong>
+              <span id="desc-superior">Modalidade Programação Sênior.</span>
+            </div>
+          </label>
+        </fieldset>
 
-      <!-- Ações no Rodapé da Tela -->
-      <div class="screen-actions">
-        <button type="button" id="btn-avancar" class="btn-primary" onclick="avancarParaPergunta2()">
-          Avançar para Pergunta 2 &rarr;
-        </button>
-      </div>
+        <div id="status-feedback" 
+             class="feedback-status" 
+             role="status" 
+             aria-live="polite" 
+             aria-atomic="true">
+        </div>
+
+        <div class="screen-actions">
+          <button type="button" id="btn-avancar" class="btn-primary">
+            Avançar para Pergunta 2 &rarr;
+          </button>
+        </div>
+      </form>
 
     </section>
 
   </main>
-
-  <script>
-    // Restaurar resposta anterior se já salva no navegador
-    document.addEventListener('DOMContentLoaded', function () {
-      const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
-      const valorSalvo = respostas['ano_escolar'];
-      if (valorSalvo) {
-        const radio = document.querySelector('input[name="ano_escolar"][value="' + valorSalvo + '"]');
-        if (radio) {
-          radio.checked = true;
-          document.querySelectorAll('.option-card').forEach(function (cartao) {
-            cartao.classList.remove('selected');
-          });
-          const cardPai = radio.closest('.option-card');
-          if (cardPai) {
-            cardPai.classList.add('selected');
-          }
-        }
-      }
-    });
-
-    // Salvar ano escolar e avançar para a Tela 7 (Pergunta 2)
-    function avancarParaPergunta2() {
-      const selecionado = document.querySelector('input[name="ano_escolar"]:checked');
-      const valor = selecionado ? selecionado.value : 'fundamental_2';
-      salvarResposta('ano_escolar', valor);
-      window.location.href = '../tela-07-quiz-logica/index.html';
-    }
-  </script>
 
 </body>
 </html>

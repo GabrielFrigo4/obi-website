@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Central OBI UFABC · Template Base (Padrão Ouro)
+   Estilização Modular e Contextualizada da Tela
+   Consumo Estrito de Tokens CSS Compartilhados (tokens.css / base.css)
+   Conformidade WCAG 2.1 Nível AA e Design Universal
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Estilos Específicos e Contextuais da Tela de Exemplo
+   -------------------------------------------------------------------------- */
+
+/* Espaçamento e refinamentos ergonômicos específicos desta tela */
+.screen-content {
+  padding-bottom: 24px;
+}
+
+/* Exemplo de elemento contextual: realce de instrução rápida */
+.template-instruction-tip {
+  font-size: var(--tamanho-pequeno);
+  color: var(--cor-texto-secundario);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+body.high-contrast .template-instruction-tip {
+  color: #f1f5f9;
+}
+

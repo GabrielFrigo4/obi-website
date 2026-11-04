@@ -1,0 +1,30 @@
+/* Estilização específica da Tela 07: Quiz - Pergunta 2 (WCAG 2.1 AA) */
+
+.quiz-legend {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+}
+
+/* Foco Visível Obrigatório em Elementos Interativos */
+.option-card:focus-within,
+.option-card:has(:focus-visible) {
+  outline: var(--anel-foco);
+  outline-offset: 2px;
+}
+
+/* Modo Alto Contraste: Garantia de Contraste Máximo no Cartão Selecionado */
+body.high-contrast .quiz-legend {
+  color: #ffffff;
+}
+
+body.high-contrast .option-card.selected {
+  border-color: #60a5fa;
+  background-color: #1e3a8a;
+}
+
+body.high-contrast .option-card.selected .option-text strong,
+body.high-contrast .option-card.selected .option-text span {
+  color: #ffffff;
+}
+

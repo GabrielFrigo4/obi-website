@@ -6,376 +6,42 @@
   <title>Solicitação Confirmada · Central OBI UFABC</title>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../../assets/js/utils.js" defer></script>
-  <style>
-    /* Estilos específicos da Tela 11 (Auditáveis e Acessíveis) */
-    .success-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background-color: var(--cor-sucesso-fundo);
-      border: 2px solid var(--cor-sucesso-borda);
-      color: var(--cor-sucesso);
-      margin-bottom: 16px;
-    }
-
-    .success-badge svg {
-      width: 28px;
-      height: 28px;
-      stroke-width: 2.5;
-    }
-
-    .protocol-card {
-      background-color: var(--cor-primaria-fundo);
-      border: 1.5px dashed var(--cor-primaria-borda);
-      border-radius: var(--raio-borda);
-      padding: 18px 16px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .protocol-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .protocol-label {
-      font-size: var(--tamanho-pequeno);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--cor-texto-secundario);
-    }
-
-    .protocol-status-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background-color: var(--cor-sucesso-fundo);
-      color: var(--cor-sucesso);
-      border: 1px solid var(--cor-sucesso-borda);
-    }
-
-    .protocol-code-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      background-color: var(--cor-card);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-botao);
-      padding: 8px 12px;
-    }
-
-    .protocol-mini-label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--cor-texto-secundario);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .protocol-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--cor-primaria);
-      letter-spacing: 0.04em;
-    }
-
-    .btn-copy {
-      min-height: var(--alvo-toque-minimo);
-      min-width: 88px;
-      padding: 8px 14px;
-      font-size: var(--tamanho-pequeno);
-      font-weight: 700;
-      border-radius: var(--raio-botao);
-      border: 1.5px solid var(--cor-primaria);
-      background-color: var(--cor-fundo);
-      color: var(--cor-primaria);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .btn-copy:hover {
-      background-color: var(--cor-primaria);
-      color: #ffffff;
-    }
-
-    .btn-copy.copied {
-      background-color: var(--cor-sucesso);
-      border-color: var(--cor-sucesso);
-      color: #ffffff;
-    }
-
-    /* Resumo dos Dados Registrados */
-    .registration-summary {
-      background-color: var(--cor-card);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-botao);
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.85rem;
-      border-bottom: 1px solid var(--cor-fundo-suave);
-      padding-bottom: 4px;
-    }
-
-    .summary-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .summary-label {
-      color: var(--cor-texto-secundario);
-      flex-shrink: 0;
-    }
-
-    .summary-value {
-      color: var(--cor-texto-principal);
-      font-weight: 600;
-      text-align: right;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    /* Botão Imprimir / Salvar PDF */
-    .protocol-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .btn-print {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      min-height: var(--alvo-toque-minimo);
-      padding: 10px 16px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: var(--raio-botao);
-      border: 1.5px solid var(--cor-borda);
-      background-color: var(--cor-fundo);
-      color: var(--cor-texto-principal);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .btn-print:hover {
-      background-color: var(--cor-fundo-suave);
-      border-color: var(--cor-primaria);
-      color: var(--cor-primaria);
-    }
-
-    .protocol-hint {
-      font-size: 0.825rem;
-      color: var(--cor-texto-secundario);
-      line-height: 1.4;
-    }
-
-    .guarantee-card {
-      background-color: var(--cor-card);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      padding: 18px 16px;
-      margin-bottom: 24px;
-    }
-
-    .guarantee-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--cor-texto-principal);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .steps-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.9rem;
-      color: var(--cor-texto-principal);
-      line-height: 1.4;
-    }
-
-    .step-number {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background-color: var(--cor-primaria-fundo);
-      color: var(--cor-primaria);
-      border: 1px solid var(--cor-primaria-borda);
-      font-weight: 700;
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* Alto Contraste */
-    body.high-contrast .success-badge {
-      background-color: #000000;
-      border-color: #ffffff;
-      color: #4ade80;
-    }
-
-    body.high-contrast .protocol-card {
-      background-color: #000000;
-      border: 2px dashed #ffffff;
-    }
-
-    body.high-contrast .protocol-code-row,
-    body.high-contrast .registration-summary {
-      background-color: #121212;
-      border: 1px solid #ffffff;
-    }
-
-    body.high-contrast .protocol-code {
-      color: #93c5fd;
-    }
-
-    body.high-contrast .btn-copy,
-    body.high-contrast .btn-print {
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      background-color: #000000;
-    }
-
-    body.high-contrast .btn-copy:hover,
-    body.high-contrast .btn-print:hover {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    body.high-contrast .step-number {
-      background-color: #1e3a8a;
-      border-color: #ffffff;
-      color: #ffffff;
-    }
-
-    /* Estilos de Impressão Limpos (PDF Comprovante) */
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        padding: 0 !important;
-      }
-
-      .mobile-viewport {
-        box-shadow: none !important;
-        border: none !important;
-        max-width: 100% !important;
-        min-height: auto !important;
-      }
-
-      .accessibility-bar,
-      .page-header,
-      .btn-copy,
-      .btn-print,
-      .screen-actions {
-        display: none !important;
-      }
-
-      .protocol-card {
-        border: 2px solid #000000 !important;
-        background: #ffffff !important;
-      }
-
-      .guarantee-card {
-        border: 1px solid #000000 !important;
-      }
-
-      .protocol-code {
-        color: #000000 !important;
-      }
-    }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../tela-10-solicitacao-escola/index.html" class="btn-back">
+      <a href="../tela-10-solicitacao-escola/index.html" class="btn-back" aria-label="Voltar para a Solicitação de Apoio">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. MIOLO DA TELA -->
-    <section class="screen-content" aria-live="polite">
+    <section class="screen-content" aria-labelledby="screen-title">
 
-      <!-- Feedback de Sucesso Acessível -->
       <div class="success-badge" aria-hidden="true">
-        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
         </svg>
       </div>
 
-      <h1 class="screen-title">Solicitação Confirmada!</h1>
+      <h1 id="screen-title" class="screen-title">Solicitação Confirmada!</h1>
       <p class="screen-subtitle">Recebemos seu pedido. Sua participação na OBI já está totalmente garantida pela UFABC.</p>
 
-      <!-- Cartão de Destaque com o Protocolo e Resumo -->
       <section class="protocol-card" aria-label="Comprovante e Informações de Protocolo">
         <div class="protocol-header">
           <span class="protocol-label">Comprovante de Inscrição</span>
@@ -387,7 +53,7 @@
             <span class="protocol-mini-label">Protocolo</span>
             <div id="protocolo-display" class="protocol-code">OBI-UFABC-Carregando...</div>
           </div>
-          <button type="button" id="btn-copiar" class="btn-copy" onclick="copiarProtocolo()" aria-label="Copiar número do protocolo para a área de transferência">
+          <button type="button" id="btn-copiar" class="btn-copy" aria-label="Copiar número do protocolo para a área de transferência">
             <svg aria-hidden="true" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
@@ -395,7 +61,6 @@
           </button>
         </div>
 
-        <!-- Resumo da Solicitação Registrada -->
         <div class="registration-summary" aria-label="Resumo dos dados cadastrados">
           <div class="summary-item">
             <span class="summary-label">Estudante:</span>
@@ -415,9 +80,8 @@
           </div>
         </div>
 
-        <!-- Ação de Impressão / Salvar PDF -->
         <div class="protocol-actions">
-          <button type="button" class="btn-print" onclick="window.print()" aria-label="Imprimir comprovante ou salvar em formato PDF">
+          <button type="button" id="btn-print-action" class="btn-print" aria-label="Imprimir comprovante ou salvar em formato PDF">
             <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H7v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
             </svg>
@@ -426,13 +90,12 @@
         </div>
 
         <p class="protocol-hint">Apresente este protocolo ou o PDF impresso no primeiro dia de oficina presencial na UFABC.</p>
-        <span id="status-copia" class="sr-only" aria-live="polite"></span>
+        <span id="status-copia" class="sr-only" role="status" aria-live="polite"></span>
       </section>
 
-      <!-- Cartão de Garantia de Participação Independente (3 Tópicos Diretos) -->
       <section class="guarantee-card" aria-label="Próximos Passos e Garantia">
         <h2 class="guarantee-title">
-          <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--cor-primaria);">
+          <svg aria-hidden="true" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
           Garantia de Participação
@@ -463,12 +126,11 @@
         </ol>
       </section>
 
-      <!-- Ações no Rodapé da Tela -->
       <div class="screen-actions">
-        <a href="../tela-12-comunidade-extensao/index.html" class="btn-primary">
+        <a href="../tela-12-comunidade-extensao/index.html" class="btn-primary" id="btn-avancar-comunidade">
           Acessar Comunidade e Suporte UFABC &rarr;
         </a>
-        <a href="../../index.html" class="btn-secondary">
+        <a href="../../index.html" class="btn-secondary" id="btn-voltar-hub">
           Voltar ao Início (Hub Central)
         </a>
       </div>
@@ -476,99 +138,6 @@
     </section>
 
   </main>
-
-  <script>
-    // Inicialização do Protocolo, Resumo e Acessibilidade
-    document.addEventListener('DOMContentLoaded', function () {
-      // 1. Número do protocolo
-      const display = document.getElementById('protocolo-display');
-      if (display) {
-        if (typeof obterProtocolo === 'function') {
-          display.textContent = obterProtocolo();
-        } else {
-          const salvo = localStorage.getItem('obi_protocolo_atual') || 'OBI-UFABC-' + Math.floor(1000 + Math.random() * 9000);
-          localStorage.setItem('obi_protocolo_atual', salvo);
-          display.textContent = salvo;
-        }
-      }
-
-      // 2. Resumo da solicitação ética gravada na Tela 10
-      var respostas = (typeof obterRespostas === 'function') ? obterRespostas() : {};
-      var elEstudante = document.getElementById('resumo-estudante');
-      var elEscola = document.getElementById('resumo-escola');
-      var elCidade = document.getElementById('resumo-cidade');
-      var elData = document.getElementById('resumo-data');
-
-      if (elEstudante) {
-        elEstudante.textContent = respostas['solicitacao_estudante'] || 'Estudante Convidado';
-      }
-      if (elEscola) {
-        elEscola.textContent = respostas['solicitacao_escola'] || 'Polo Regional Grande ABC';
-      }
-      if (elCidade) {
-        var cidade = respostas['solicitacao_cidade'] || 'Grande ABC';
-        elCidade.textContent = cidade + ' — Polo UFABC';
-      }
-      if (elData) {
-        var dataSalva = respostas['solicitacao_data'];
-        if (!dataSalva) {
-          dataSalva = new Date().toLocaleDateString('pt-BR');
-          if (typeof salvarResposta === 'function') {
-            salvarResposta('solicitacao_data', dataSalva);
-          }
-        }
-        elData.textContent = dataSalva;
-      }
-    });
-
-    // Função de Cópia com Feedback Acessível para Leitores de Tela
-    function copiarProtocolo() {
-      const display = document.getElementById('protocolo-display');
-      const btn = document.getElementById('btn-copiar');
-      const btnTexto = document.getElementById('btn-copiar-texto');
-      const feedback = document.getElementById('status-copia');
-
-      if (!display) return;
-      const texto = display.textContent.trim();
-
-      const aposCopiar = function () {
-        if (btn) btn.classList.add('copied');
-        if (btnTexto) btnTexto.textContent = 'Copiado!';
-        if (feedback) feedback.textContent = 'Protocolo ' + texto + ' copiado para a área de transferência com sucesso.';
-
-        setTimeout(function () {
-          if (btn) btn.classList.remove('copied');
-          if (btnTexto) btnTexto.textContent = 'Copiar';
-          if (feedback) feedback.textContent = '';
-        }, 2500);
-      };
-
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(texto).then(aposCopiar).catch(function () {
-          fallbackCopia(texto, aposCopiar);
-        });
-      } else {
-        fallbackCopia(texto, aposCopiar);
-      }
-    }
-
-    function fallbackCopia(texto, callback) {
-      const inputTemp = document.createElement('input');
-      inputTemp.value = texto;
-      inputTemp.setAttribute('readonly', '');
-      inputTemp.style.position = 'absolute';
-      inputTemp.style.left = '-9999px';
-      document.body.appendChild(inputTemp);
-      inputTemp.select();
-      try {
-        document.execCommand('copy');
-        callback();
-      } catch (e) {
-        console.warn('Não foi possível copiar automaticamente:', e);
-      }
-      document.body.removeChild(inputTemp);
-    }
-  </script>
 
 </body>
 </html>

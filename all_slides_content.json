@@ -1,0 +1,132 @@
+[
+  {
+    "slide": 1,
+    "id": "slhodybni4hwbib",
+    "text": "UNIDADE 1: INTRODUÇÃO A IHC\n\nFundamentos de Interação Humano-Computador\n\n120 minutos | Presencial"
+  },
+  {
+    "slide": 2,
+    "id": "6u123xa0axik56w",
+    "text": "Por que IHC importa?\n\nQuanto tempo vocês usam apps por dia?\n\n4-6 horas? 8 horas?\nTUDO depende de IHC\nSe interface é ruim → frustração\nSe é boa → invisível (funciona!)\n\nHoje: Aprender a DESENHAR INTERFACES que FUNCIONAM"
+  },
+  {
+    "slide": 3,
+    "id": "pjuutw3kx0k7cd4",
+    "text": "IHC = Poder & Responsabilidade\n❌ RUIM: App confuso, ninguém usa\n\nItaú: botão escondido → Moveram para home → +CENTENAS DE MILHÕES de reais\n\n✅ BOM: Interface intuitiva, bilhões de pessoas usam\n\nWhatsApp: intuitivo, rápido\n\nInstagram: visual, viciante\n\nYouTube: recomendação perfeita"
+  },
+  {
+    "slide": 4,
+    "id": "xm8zpln2i0v1jbu",
+    "text": "Evolução das Interfaces\n1\n1980s\n\nCLI (Command Line Interface)\n\n2\n1990s\n\nGUI (Graphical Interface)\n\n3\n2000s\n\nWEB (HTML, Navegadores)\n\n4\n2010s\n\nMOBILE (Touch, Apps)\n\n5\n2020s\n\nIA (Conversação, IA)\n\n→ Cada evolução = MAIS FÁCIL de usar → Por quê? Designers pensaram NAS PESSOAS"
+  },
+  {
+    "slide": 5,
+    "id": "0mweoavpemii0fu",
+    "text": "Dois Jeitos de Pensar\n❌ CENTRADO NA TECNOLOGIA\n\n\"Que legal que EU POSSO fazer!\"\n\nBetamax: tecnicamente superior ❌ Perdeu para VHS\n\n✅ CENTRADO NO USUÁRIO\n\n\"QUE O USUÁRIO PRECISA?\"\n\nVHS: barato, fácil ✓ Venceu\n\niPhone: intuitivo ✓ Revolucionou"
+  },
+  {
+    "slide": 6,
+    "id": "11qaa2b7vhdhr8d",
+    "text": "Fundamentos: Interface\nINTERFACE = O que você VÊ e TOCA\n\nBotões, menus, ícones, cores, fontes\n\n✓ Interface clara = usuário não se perde\n\n❌ Interface confusa = frustração\n\nExemplo: Itaú — Botão de parcelar estava ESCONDIDO → Mudaram posição e layout → CENTENAS DE MILHÕES de reais"
+  },
+  {
+    "slide": 7,
+    "id": "mtfvajds41bsiez",
+    "text": "Fundamentos: Interação\nINTERAÇÃO = O que ACONTECE quando você age\n\nClica botão → aparece menu\n\nDigita → busca funciona\n\nConceito chave: Ação-Reação\n\nBoa interação = rápida, clara, previsível"
+  },
+  {
+    "slide": 8,
+    "id": "8cwhmce2uy6grel",
+    "text": ""
+  },
+  {
+    "slide": 9,
+    "id": "f3ij63k7pxi2ta8",
+    "text": "Fundamentos: Affordance\nAFFORDANCE - A forma da maçaneta comunica a ação esperada.\n\nMaçaneta REDONDA\n→ PUXAR\n\nMaçaneta QUADRADA\n→ EMPURRAR?\n\n❌ Affordance ruim = usuário confuso"
+  },
+  {
+    "slide": 10,
+    "id": "twc26alafl2bj5q",
+    "text": "Fundamentos: Affordance\nAFFORDANCE = Forma SUGERE o uso\n\nSlider → ARRASTAR\n\nRange → SELECIONAR INTERVALO\n\n❌ Affordance ruim = usuário confuso"
+  },
+  {
+    "slide": 11,
+    "id": "tucgals417bhmkm",
+    "text": "Usabilidade\nUSABILIDADE = Consegue usar fácil?\n✓ Página carrega em 2 segundos (rápido)\n✓ Acha o que procura em 3 cliques (fácil)\n✓ Entende cada botão (claro)\n✓ Recupera de erros (resiliente)"
+  },
+  {
+    "slide": 12,
+    "id": "mxz1cyxqh6oxkvw",
+    "text": "UX = Como se SENTE usando?\n\nSatisfeito? Feliz? Confiante? Seguro?"
+  },
+  {
+    "slide": 13,
+    "id": "l7ibe2o3b4b51eg",
+    "text": "UX = Como se SENTE usando?\n\nSatisfeito? Feliz? Confiante? Seguro?\n\nAspectos Hedônicos: Vai além de tarefas utilitárias para cobrir aspectos hedônicos (relacionados ao prazer), como estética, diversão, atração, motivação, desafio e provocação\n\n\n\n\n\nClique aqui"
+  },
+  {
+    "slide": 14,
+    "id": "vk5idllgpfyztev",
+    "text": "Acessibilidade\nFunciona para TODOS?\n✓ Cego consegue? (descrição de imagens)\n✓ Surdo consegue? (legendas em vídeos)\n✓ Deficiência motora consegue? (teclado, não mouse)\n✓ Idoso consegue? (fonte grande, contraste)\n\nSem acessibilidade = EXCLUSÃO"
+  },
+  {
+    "slide": 15,
+    "id": "nbc1813rjaish6k",
+    "text": "Desenho Universal\nUm para Todos\n\nBraille\n\nInterface acessível\n\n✓ Cego consegue? (descrição de imagens)\n✓ Surdo consegue? (legendas em vídeos)\n✓ Deficiência motora consegue? (teclado, não mouse)\n✓ Idoso consegue? (fonte grande, contraste)\n\nSem acessibilidade = EXCLUSÃO"
+  },
+  {
+    "slide": 16,
+    "id": "n3oifyxe2mxxd08",
+    "text": "Comunicabilidade\nInterface explica a si mesma?\n✓ Usuário entende COMO usar\n✓ Sem estudar manual\n✓ Erros CLAROS (não \"erro 404\", mas \"arquivo não encontrado\")\n✓ Sistema comunica o que está FAZENDO (feedback)"
+  },
+  {
+    "slide": 17,
+    "id": "cejq5c9ormmbiqd",
+    "text": "Comunicabilidade\nInterface explica a si mesma?\n✓ Usuário entende COMO usar\n✓ Sem estudar manual\n✓ Erros CLAROS (não \"erro 404\", mas \"arquivo não encontrado\")\n✓ Sistema comunica o que está FAZENDO (feedback)"
+  },
+  {
+    "slide": 18,
+    "id": "8919rlcshvmoyiy",
+    "text": "Tecnologias Assistivas (TA)\n\nFerramentas que AJUDAM pessoas com deficiência\n\n🔊 Screen Reader (NVDA, JAWS)\n\nLê texto em voz alta → Cego navega\n\n🔍 Magnifier (Zoom de tela)\n\nAmplia texto → Baixa visão lê\n\n🎤 Voice Control\n\nComando de voz → Deficiência motora usa"
+  },
+  {
+    "slide": 19,
+    "id": "i58olvmz9jmidt9",
+    "text": "Tecnologias Assistivas (cont.)\n⚙️ Switch Control\n\nUm botão controla TUDO → Paralisia consegue\n\n👁️ Eye Tracker\n\nOlha para botão = clica → ELA consegue\n\n⌨️ Teclado Braille\n\nToque tátil → Cego e surdo (surdocegueira)\n\nVOCÊS VÃO DESENHAR PARA ESSAS PESSOAS — Se não desenham → EXCLUEM"
+  },
+  {
+    "slide": 20,
+    "id": "2jjnu770fyx7r4f",
+    "text": "✏️ PRÁTICA INDIVIDUAL: Auditoria de App\n\nEscolha 1 app brasileiro:\n\nWhatsApp | Itaú | IFood | Spotify | Instagram\n\nOU website: Gov.br, Moodle, YouTube\n\nVocê tem 10 minutos. Responda:\n\nINTERFACE: Cores claras? Fonte legível? Ícones intuitivos?\n1.\nAFFORDANCE: Está óbvio o que clicar?\n2.\nUSABILIDADE: Consegue fazer tarefa em 3 cliques?\n3.\nACESSIBILIDADE: Cego conseguiria? Idoso? Surdo?\n4."
+  },
+  {
+    "slide": 21,
+    "id": "bjpetpbcfsux4la",
+    "text": "Resultado: 3-5 PROBLEMAS DE IHC\n\nExemplos:\n\n\"Botão de buscar é muito pequeno (44x44px mínimo)\"\n\"Menu é confuso, não sei onde está X\"\n\"Vídeo não tem legenda\"\n\"Cores têm contraste baixo\"\n\"Affordance: botão não parece clicável\"\n\n⏱️ 10 minutos para testar + escrever"
+  },
+  {
+    "slide": 22,
+    "id": "l4dpe8umut5hkvb",
+    "text": "🎤 Compartilhando Descobertas\n\n3-4 pessoas compartilham 1 PROBLEMA cada:\n\nPessoa 1\n\n\"Achei o app X confuso porque...\"\n\nPessoa 2\n\n\"O botão Y não parece clicável\"\n\nPessoa 3\n\n\"Sem legendas, surdo não consegue\"\n\n✓ Vocês já estão pensando como designers!"
+  },
+  {
+    "slide": 23,
+    "id": "lmz8zrbns5r4j5q",
+    "text": "👥 Formação de Grupos (6 pessoas)\n\nMétodo: Numeração (1, 2, 3, 4, 5, 6...)\n\nCada número = um grupo — Grupo 1, Grupo 2, Grupo 3, ...\n\nVocês trabalham JUNTOS por TODO semestre:\n\nProjeto prático (13 semanas)\nPesquisa de usuário\nPrototipagem\nTestes com usuários"
+  },
+  {
+    "slide": 24,
+    "id": "t9s9h87irr2hgr0",
+    "text": "📅 Roadmap de 13 Semanas\n01\nUnidade 1 (AGORA)\n\nFundamentos\n\n02\nUnidade 2\n\nDesign Ético\n\n03\nUnidade 3\n\nAcessibilidade\n\n04\nUnidade 4\n\nColeta de Requisitos (entrevista usuários)\n\n05\nUnidade 5\n\nAvaliação de Usabilidade (testes)\n\nUnidades 6-11: PROTOTIPAGEM (você FARÁ)\n\nUnidade 12: Testes com Usuários\n\nUnidade 13: Apresentação Final"
+  },
+  {
+    "slide": 25,
+    "id": "k0jsz9cod9eysw6",
+    "text": "O que Vocês Vão Aprender\n✓ Desenhar interfaces que FUNCIONAM\n✓ Testar com usuários REAIS\n✓ Pensar em ACESSIBILIDADE desde o início\n✓ Validar decisões com DADOS, não opinião\n✓ Trabalhar em EQUIPE\n✓ Comunicar ideias VISUALMENTE"
+  },
+  {
+    "slide": 26,
+    "id": "mv3ofesq8vrpbee",
+    "text": "Vocês aprenderam\nFUNDAMENTOS de IHC\n\nInterface • Interação • Affordance\n\nUsabilidade • UX • Acessibilidade • Comunicabilidade\n\nTecnologias Assistivas\n\nAgora vocês vão DESENHAR SISTEMAS que funcionam. É responsabilidade. É poder. É importante."
+  }
+]

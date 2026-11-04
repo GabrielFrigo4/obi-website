@@ -7,111 +7,34 @@
   <meta name="description" content="Protótipo navegável mobile-first da Central OBI UFABC com foco em Design Universal, Design Ético e WCAG 2.1 AA.">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
-  <style>
-    .hub-container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--cor-card);
-      padding: 32px 24px;
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      box-shadow: var(--sombra-suave);
-    }
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .badge-primary { background: var(--cor-primaria-fundo); color: var(--cor-primaria); border: 1px solid var(--cor-primaria-borda); }
-    .badge-success { background: var(--cor-sucesso-fundo); color: var(--cor-sucesso); border: 1px solid var(--cor-sucesso-borda); }
-    .badge-pending { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .screen-link-card {
-      display: flex;
-      flex-direction: column;
-      padding: 16px;
-      background: var(--cor-fundo-suave);
-      border: 1.5px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      text-decoration: none;
-      color: var(--cor-texto-principal);
-      transition: all 0.2s ease;
-    }
-    .screen-link-card:hover {
-      border-color: var(--cor-primaria);
-      background: var(--cor-primaria-fundo);
-      transform: translateY(-2px);
-      box-shadow: var(--sombra-suave);
-    }
-    .screen-num {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--cor-primaria);
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .screen-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .screen-desc {
-      font-size: 0.85rem;
-      color: var(--cor-texto-secundario);
-      line-height: 1.4;
-      margin-top: auto;
-    }
-    .cta-banner {
-      margin-top: 32px;
-      padding: 20px;
-      background: var(--cor-primaria-fundo);
-      border: 1px solid var(--cor-primaria-borda);
-      border-radius: var(--raio-borda);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/hub.css">
+  <script src="assets/js/utils.js" defer></script>
+  <script src="assets/js/hub.js" defer></script>
 </head>
-<body style="display: block; padding: 24px 16px;">
+<body class="hub-page">
   <main class="hub-container">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+    <header class="hub-header">
       <div>
         <span class="badge badge-primary">UFABC · Disciplina de IHC 2026.3</span>
-        <h1 style="font-size: 1.75rem; font-weight: 800; color: var(--cor-primaria); margin-top: 8px;">Central OBI UFABC · Hub de Protótipos</h1>
-        <p style="color: var(--cor-texto-secundario); margin-top: 4px;">Web-App Mobile-First de Acesso e Democratização da Olimpíada Brasileira de Informática</p>
+        <h1 class="hub-title">Central OBI UFABC · Hub de Protótipos</h1>
+        <p class="hub-subtitle">Web-App Mobile-First de Acesso e Democratização da Olimpíada Brasileira de Informática</p>
       </div>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Alternar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
-    </div>
+    </header>
 
-    <div class="cta-banner">
+    <section class="cta-banner" aria-label="Acesso Rápido ao Fluxo Completo">
       <div>
-        <h2 style="font-size: 1.1rem; font-weight: 700; color: var(--cor-primaria);">Pronto para Testar o Fluxo Completo (Telas 06 a 12)?</h2>
-        <p style="font-size: 0.9rem; color: var(--cor-texto-secundario);">Inicie a jornada diagnóstica desde a Pergunta 1 até a garantia de polo e suporte comunitário.</p>
+        <h2 class="cta-title">Pronto para Testar o Fluxo Completo (Telas 06 a 12)?</h2>
+        <p class="cta-desc">Inicie a jornada diagnóstica desde a Pergunta 1 até a garantia de polo e suporte comunitário.</p>
       </div>
-      <a href="telas/tela-06-quiz-pergunta-1/index.html" class="btn-primary" style="width: auto; padding: 12px 24px;">▶ Iniciar Fluxo Completo (Tela 06)</a>
-    </div>
+      <a href="telas/tela-06-quiz-pergunta-1/index.html" class="btn-primary cta-btn">▶ Iniciar Fluxo Completo (Tela 06)</a>
+    </section>
 
-    <!-- Bloco 1: Fluxo Integrado Funcional (Telas 06 a 12) -->
-    <h2 style="font-size: 1.25rem; font-weight: 700; margin-top: 36px; border-bottom: 2px solid var(--cor-borda); padding-bottom: 8px;">
+    <h2 class="section-divider-title">
       Fluxo Integrado: Diagnóstico, Polo & Comunidade (Telas 06 a 12)
     </h2>
     <div class="screens-grid">
@@ -158,38 +81,36 @@
       </a>
     </div>
 
-    <!-- Bloco 2: Telas de Apoio Institucional (Telas 01 a 05) -->
-    <h2 style="font-size: 1.25rem; font-weight: 700; margin-top: 36px; border-bottom: 2px solid var(--cor-borda); padding-bottom: 8px;">
+    <h2 class="section-divider-title">
       Demais Módulos da Jornada (Telas 01 a 05)
     </h2>
     <div class="screens-grid">
-      <div class="screen-link-card" style="opacity: 0.75;">
+      <div class="screen-link-card is-pending">
         <div class="screen-num"><span>TELA 01</span> <span class="badge badge-pending">Em Integração</span></div>
         <div class="screen-title">Home / Painel da Jornada</div>
         <div class="screen-desc">Interface principal com atalhos e boas-vindas ao competidor.</div>
       </div>
-      <div class="screen-link-card" style="opacity: 0.75;">
+      <div class="screen-link-card is-pending">
         <div class="screen-num"><span>TELA 02</span> <span class="badge badge-pending">Em Integração</span></div>
         <div class="screen-title">Calendário & Prazos Acessíveis</div>
         <div class="screen-desc">Linha do tempo com datas das fases 1, 2 e nacional.</div>
       </div>
-      <div class="screen-link-card" style="opacity: 0.75;">
+      <div class="screen-link-card is-pending">
         <div class="screen-num"><span>TELA 03</span> <span class="badge badge-pending">Em Integração</span></div>
         <div class="screen-title">Trilha de Estudos & Checklist</div>
         <div class="screen-desc">Checklist persistente no navegador sem cadastro.</div>
       </div>
-      <div class="screen-link-card" style="opacity: 0.75;">
+      <div class="screen-link-card is-pending">
         <div class="screen-num"><span>TELA 04</span> <span class="badge badge-pending">Em Integração</span></div>
         <div class="screen-title">Editais Descomplicados</div>
         <div class="screen-desc">Regras oficiais em linguagem simples e clara.</div>
       </div>
-      <div class="screen-link-card" style="opacity: 0.75;">
+      <div class="screen-link-card is-pending">
         <div class="screen-num"><span>TELA 05</span> <span class="badge badge-pending">Em Integração</span></div>
         <div class="screen-title">Kit do Monitor & Ferramentas</div>
         <div class="screen-desc">Modelos de mensagens e avisos para compartilhamento rápido.</div>
       </div>
     </div>
   </main>
-  <script src="assets/js/utils.js"></script>
 </body>
 </html>

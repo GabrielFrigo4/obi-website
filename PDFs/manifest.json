@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "description": "Manifesto incremental de compilação de PDFs para Markdown - IHC UFABC",
+  "last_run": "2026-11-04T03:20:19.999789+00:00",
+  "total_documents": 12,
+  "documents": {
+    "Slides/Slide 01.pdf": {
+      "sha256": "93bbc5db287330eebd480ec4e99e2a90c16523e6578d6d0bb32c12764f69965f",
+      "size_bytes": 2166344,
+      "pages": 26,
+      "compiled_at": "2026-11-04T03:18:18.269075+00:00",
+      "markdown_path": "Slides/Slide 01.md",
+      "status": "compiled_clean"
+    },
+    "Slides/Slide 02.pdf": {
+      "sha256": "50c79d574ff2b90765db043719e05b026e905500948ff39d2328fe7a5a547cef",
+      "size_bytes": 5351549,
+      "pages": 74,
+      "compiled_at": "2026-11-04T03:18:18.784689+00:00",
+      "markdown_path": "Slides/Slide 02.md",
+      "status": "compiled_clean"
+    },
+    "Slides/Slide 03.pdf": {
+      "sha256": "62a43711e7dbafdde08eb7ca21b6f75665ccea1be4f046f0e978282e39791fe6",
+      "size_bytes": 6146024,
+      "pages": 165,
+      "compiled_at": "2026-11-04T03:18:19.870290+00:00",
+      "markdown_path": "Slides/Slide 03.md",
+      "status": "compiled_clean"
+    },
+    "Slides/Slide 04.pdf": {
+      "sha256": "d04c65300834370ebf5aa7b358924932ce9704a73afee2c91d05e161527de763",
+      "size_bytes": 1303167,
+      "pages": 15,
+      "compiled_at": "2026-11-04T03:18:20.079480+00:00",
+      "markdown_path": "Slides/Slide 04.md",
+      "status": "compiled_clean"
+    },
+    "Slides/Slide 05.pdf": {
+      "sha256": "fac2654f52d6cc9b362cf687afa587c54f57e7f12e6f7c985e1f2329f177f428",
+      "size_bytes": 1420499,
+      "pages": 36,
+      "compiled_at": "2026-11-04T03:18:20.281844+00:00",
+      "markdown_path": "Slides/Slide 05.md",
+      "status": "compiled_clean"
+    },
+    "Slides/UNIDADE_1_INTRODUCAO_A_IHC.pdf": {
+      "sha256": "a3c55deeaea64fcee21b0e50d00f8942adeba91711c4896002d2011f54e11e12",
+      "size_bytes": 9157855,
+      "pages": 26,
+      "compiled_at": "2026-11-04T03:18:20.293958+00:00",
+      "markdown_path": "Slides/UNIDADE_1_INTRODUCAO_A_IHC.md",
+      "status": "compiled_clean"
+    },
+    "Guia/Documento de Requisitos.pdf": {
+      "sha256": "abbf898e9517ff319a423cbbf48087c5af1c1a0e8d2593dd47b1775b7430cd9f",
+      "size_bytes": 937940,
+      "pages": 11,
+      "compiled_at": "2026-11-04T03:18:20.488700+00:00",
+      "markdown_path": "Guia/Documento de Requisitos.md",
+      "status": "compiled_clean"
+    },
+    "Guia/Estudo de Caso.pdf": {
+      "sha256": "baca190efdf1a8153c2d010cbc19b2f609294cd17954d44fa99140d941d186f6",
+      "size_bytes": 4643951,
+      "pages": 47,
+      "compiled_at": "2026-11-04T03:18:20.723782+00:00",
+      "markdown_path": "Guia/Estudo de Caso.md",
+      "status": "compiled_clean"
+    },
+    "Guia/Uso de IA.pdf": {
+      "sha256": "38a2d6e018472f1de03a45aeff43db8eb12759838febb961ec02f00d7a0f424b",
+      "size_bytes": 2047168,
+      "pages": 10,
+      "compiled_at": "2026-11-04T03:18:20.860944+00:00",
+      "markdown_path": "Guia/Uso de IA.md",
+      "status": "compiled_clean"
+    },
+    "Atividades/Atividade_1_Auditoria_IHC_Grupo.pdf": {
+      "sha256": "562edc73f6b22dbbf79dd80e45393a86fbe8f5daaa9a33e356370ac03493ecbd",
+      "size_bytes": 139947,
+      "pages": 9,
+      "compiled_at": "2026-11-04T03:18:21.023291+00:00",
+      "markdown_path": "Atividades/Atividade_1_Auditoria_IHC_Grupo.md",
+      "status": "compiled_clean"
+    },
+    "Atividades/Canvas_Etapa_1_-_IHC.pptx.pdf": {
+      "sha256": "bbb02453e8905813f59e9ef8dece748d35f7b022376215cc84986250b55d1688",
+      "size_bytes": 75286,
+      "pages": 8,
+      "compiled_at": "2026-11-04T03:18:21.119200+00:00",
+      "markdown_path": "Atividades/Canvas_Etapa_1_-_IHC.pptx.md",
+      "status": "compiled_clean"
+    },
+    "Atividades/atv1.1_IHC.pdf": {
+      "sha256": "75bcf4351e943c5f1d6aa5f7158483fcb809c2e0617f3e8fbab814efdf09b60f",
+      "size_bytes": 40463,
+      "pages": 1,
+      "compiled_at": "2026-11-04T03:18:21.203222+00:00",
+      "markdown_path": "Atividades/atv1.1_IHC.md",
+      "status": "compiled_clean"
+    }
+  }
+}

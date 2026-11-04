@@ -1,44 +1,104 @@
 /**
  * Central OBI UFABC - Utilitários Simples e Auditáveis de Acessibilidade
  * Código limpo, sem dependências, fácil de ler e modificar.
+ * Conformidade estrita com WCAG 2.1 Nível AA e Diretrizes de IHC.
  */
 
+'use strict';
+
 // 1. Gerenciamento de Tamanho da Fonte (A- / A+)
+function atualizarBotoesZoom(escala) {
+  const btnIn = document.getElementById('btn-zoom-in');
+  const btnOut = document.getElementById('btn-zoom-out');
+  if (btnIn) {
+    if (escala >= 1.30) {
+      btnIn.setAttribute('aria-disabled', 'true');
+    } else {
+      btnIn.removeAttribute('aria-disabled');
+    }
+  }
+  if (btnOut) {
+    if (escala <= 0.85) {
+      btnOut.setAttribute('aria-disabled', 'true');
+    } else {
+      btnOut.removeAttribute('aria-disabled');
+    }
+  }
+}
+
 function alterarTamanhoFonte(variacao) {
   const chave = 'obi_escala_fonte';
-  let escalaAtual = parseFloat(localStorage.getItem(chave)) || 1.0;
+  let escalaAtual = 1.0;
+  
+  try {
+    escalaAtual = parseFloat(localStorage.getItem(chave)) || 1.0;
+  } catch (e) {}
   
   // Limites simples e seguros: entre 85% e 130%
   escalaAtual = Math.min(Math.max(escalaAtual + variacao, 0.85), 1.30);
   document.documentElement.style.fontSize = (16 * escalaAtual) + 'px';
-  localStorage.setItem(chave, escalaAtual.toFixed(2));
+  
+  try {
+    localStorage.setItem(chave, escalaAtual.toFixed(2));
+  } catch (e) {}
+  atualizarBotoesZoom(escalaAtual);
 }
 
-// 2. Modo Alto Contraste
+// 2. Modo Alto Contraste com Acessibilidade Completa (WCAG 4.1.2)
+function atualizarEstadoAcessibilidadeContraste(estaAtivo) {
+  const botoes = document.querySelectorAll('#btn-contrast');
+  botoes.forEach(function (btn) {
+    btn.setAttribute('aria-pressed', estaAtivo ? 'true' : 'false');
+  });
+}
+
 function alternarAltoContraste() {
   const estaAtivo = document.body.classList.toggle('high-contrast');
-  localStorage.setItem('obi_alto_contraste', estaAtivo ? 'true' : 'false');
+  try {
+    localStorage.setItem('obi_alto_contraste', estaAtivo ? 'true' : 'false');
+  } catch (e) {}
+  atualizarEstadoAcessibilidadeContraste(estaAtivo);
+  return estaAtivo;
 }
 
 // 3. Persistência Ética das Respostas (Simples e Transparente)
 function salvarResposta(pergunta, valor) {
-  const dados = JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
-  dados[pergunta] = valor;
-  localStorage.setItem('obi_quiz_respostas', JSON.stringify(dados));
+  try {
+    const dados = JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
+    dados[pergunta] = valor;
+    localStorage.setItem('obi_quiz_respostas', JSON.stringify(dados));
+  } catch (e) {
+    console.warn('Erro ao salvar resposta no storage local:', e);
+  }
 }
 
 function obterRespostas() {
-  return JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
+  try {
+    return JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
+  } catch (e) {
+    return {};
+  }
 }
 
 // 4. Gerador Simples de Protocolo para a Solicitação
+function gerarNovoProtocolo() {
+  const chave = 'obi_protocolo_atual';
+  const numeroAleatorio = Math.floor(1000 + Math.random() * 9000);
+  const protocolo = 'OBI-UFABC-' + numeroAleatorio;
+  try {
+    localStorage.setItem(chave, protocolo);
+  } catch (e) {}
+  return protocolo;
+}
+
 function obterProtocolo() {
   const chave = 'obi_protocolo_atual';
-  let protocolo = localStorage.getItem(chave);
+  let protocolo = null;
+  try {
+    protocolo = localStorage.getItem(chave);
+  } catch (e) {}
   if (!protocolo) {
-    const numeroAleatorio = Math.floor(1000 + Math.random() * 9000);
-    protocolo = 'OBI-UFABC-' + numeroAleatorio;
-    localStorage.setItem(chave, protocolo);
+    protocolo = gerarNovoProtocolo();
   }
   return protocolo;
 }
@@ -155,15 +215,26 @@ function calcularModalidadeOBI() {
 // 6. Inicialização automática ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
   // Restaurar fonte salva
-  const escalaSalva = parseFloat(localStorage.getItem('obi_escala_fonte'));
-  if (escalaSalva) {
+  let escalaSalva = 1.0;
+  try {
+    escalaSalva = parseFloat(localStorage.getItem('obi_escala_fonte')) || 1.0;
+  } catch (e) {}
+
+  if (escalaSalva !== 1.0) {
     document.documentElement.style.fontSize = (16 * escalaSalva) + 'px';
   }
+  atualizarBotoesZoom(escalaSalva);
 
-  // Restaurar alto contraste salvo
-  if (localStorage.getItem('obi_alto_contraste') === 'true') {
+  // Restaurar alto contraste salvo e atualizar acessibilidade (aria-pressed)
+  let altoContrasteAtivo = false;
+  try {
+    altoContrasteAtivo = localStorage.getItem('obi_alto_contraste') === 'true';
+  } catch (e) {}
+
+  if (altoContrasteAtivo) {
     document.body.classList.add('high-contrast');
   }
+  atualizarEstadoAcessibilidadeContraste(altoContrasteAtivo);
 
   // Vincular botões da barra de acessibilidade (se existirem na tela)
   const botaoAumentar = document.getElementById('btn-zoom-in');
@@ -180,21 +251,25 @@ document.addEventListener('DOMContentLoaded', function () {
     botaoContraste.addEventListener('click', alternarAltoContraste);
   }
 
-  // Comportamento simples e acessível dos cartões de seleção
+  // Comportamento simples e acessível dos cartões de seleção (.option-card)
+  // Prevenção rigorosa de conflitos de listeners: se o cartão for uma tag <label>,
+  // o clique já ativa o input nativamente pelo navegador.
   const cartoes = document.querySelectorAll('.option-card');
   cartoes.forEach(function (cartao) {
     const input = cartao.querySelector('input[type="radio"], input[type="checkbox"]');
     if (input) {
-      cartao.addEventListener('click', function (evento) {
-        if (evento.target !== input) {
-          if (input.type === 'radio') {
-            input.checked = true;
-          } else {
-            input.checked = !input.checked;
+      if (cartao.tagName !== 'LABEL') {
+        cartao.addEventListener('click', function (evento) {
+          if (evento.target !== input) {
+            if (input.type === 'radio') {
+              input.checked = true;
+            } else {
+              input.checked = !input.checked;
+            }
+            input.dispatchEvent(new Event('change', { bubbles: true }));
           }
-          input.dispatchEvent(new Event('change'));
-        }
-      });
+        });
+      }
 
       input.addEventListener('change', function () {
         if (input.type === 'radio') {
@@ -215,3 +290,30 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+// Exportações globais estritas para navegadores e ambientes modulares
+if (typeof window !== 'undefined') {
+  window.alterarTamanhoFonte = alterarTamanhoFonte;
+  window.atualizarBotoesZoom = atualizarBotoesZoom;
+  window.alternarAltoContraste = alternarAltoContraste;
+  window.atualizarEstadoAcessibilidadeContraste = atualizarEstadoAcessibilidadeContraste;
+  window.salvarResposta = salvarResposta;
+  window.obterRespostas = obterRespostas;
+  window.gerarNovoProtocolo = gerarNovoProtocolo;
+  window.obterProtocolo = obterProtocolo;
+  window.calcularModalidadeOBI = calcularModalidadeOBI;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    alterarTamanhoFonte,
+    atualizarBotoesZoom,
+    alternarAltoContraste,
+    atualizarEstadoAcessibilidadeContraste,
+    salvarResposta,
+    obterRespostas,
+    gerarNovoProtocolo,
+    obterProtocolo,
+    calcularModalidadeOBI
+  };
+}

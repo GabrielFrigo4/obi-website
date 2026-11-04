@@ -6,368 +6,41 @@
   <title>Sua Categoria Recomendada · Central OBI UFABC</title>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="style.css">
   <script src="../../assets/js/utils.js" defer></script>
-  <style>
-    /* Estilos específicos e minimalistas da Tela 9 (WCAG AA) */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background-color: var(--cor-sucesso-fundo);
-      color: var(--cor-sucesso);
-      border: 1px solid var(--cor-sucesso-borda);
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
-      align-self: flex-start;
-    }
-
-    .badge-icon {
-      font-size: 0.85rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .result-highlight-card {
-      background-color: var(--cor-primaria-fundo);
-      border: 2px solid var(--cor-primaria-borda);
-      border-radius: var(--raio-borda);
-      padding: 20px 18px;
-      margin-bottom: 24px;
-      box-shadow: var(--sombra-suave);
-    }
-
-    .result-category-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--cor-primaria);
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-
-    .result-category-desc {
-      font-size: 0.95rem;
-      color: var(--cor-texto-principal);
-      line-height: 1.45;
-      margin: 0;
-    }
-
-    .section-heading-sm {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--cor-texto-principal);
-      margin-bottom: 12px;
-    }
-
-    /* Detalhes expansíveis modernos e acessíveis (sem telas em desenvolvimento) */
-    .step-details {
-      border: 1.5px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      background-color: var(--cor-card);
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: border-color 0.15s ease;
-    }
-
-    .step-details[open] {
-      border-color: var(--cor-primaria-borda);
-    }
-
-    .step-summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 14px 16px;
-      min-height: var(--alvo-toque-minimo);
-      cursor: pointer;
-      list-style: none;
-      user-select: none;
-      background-color: var(--cor-card);
-      transition: background-color 0.15s ease;
-    }
-
-    .step-summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .step-summary:hover {
-      background-color: var(--cor-primaria-fundo);
-    }
-
-    .step-summary:focus-visible {
-      outline: var(--anel-foco);
-      outline-offset: -2px;
-    }
-
-    .step-summary-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      text-align: left;
-    }
-
-    .step-summary-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--cor-texto-principal);
-    }
-
-    .step-summary-hint {
-      font-size: var(--tamanho-pequeno);
-      font-weight: 400;
-      color: var(--cor-texto-secundario);
-    }
-
-    .step-chevron {
-      font-size: 0.9rem;
-      color: var(--cor-primaria);
-      transition: transform 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .step-details[open] .step-chevron {
-      transform: rotate(90deg);
-    }
-
-    .step-content {
-      padding: 14px 16px 16px 16px;
-      border-top: 1px solid var(--cor-borda);
-      background-color: var(--cor-fundo-suave);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
-
-    .study-list {
-      list-style: none;
-      margin: 8px 0 14px 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .study-list li {
-      position: relative;
-      padding-left: 18px;
-      color: var(--cor-texto-principal);
-      font-size: 0.875rem;
-    }
-
-    .study-list li::before {
-      content: "•";
-      position: absolute;
-      left: 4px;
-      color: var(--cor-primaria);
-      font-weight: bold;
-      font-size: 1.1rem;
-      line-height: 1;
-    }
-
-    .practice-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .btn-link-practice {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      min-height: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--cor-primaria);
-      background-color: var(--cor-card);
-      border: 1px solid var(--cor-primaria-borda);
-      border-radius: var(--raio-botao);
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-
-    .btn-link-practice:hover {
-      background-color: var(--cor-primaria);
-      color: #ffffff;
-    }
-
-    .btn-link-practice:focus-visible {
-      outline: var(--anel-foco);
-      outline-offset: 2px;
-    }
-
-    /* Calendário */
-    .calendar-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 8px 0 0 0;
-    }
-
-    .calendar-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      padding: 9px 12px;
-      background-color: var(--cor-card);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-botao);
-      font-size: 0.85rem;
-    }
-
-    .calendar-phase {
-      font-weight: 600;
-      color: var(--cor-texto-principal);
-    }
-
-    .calendar-date {
-      font-weight: 700;
-      color: var(--cor-primaria);
-      background-color: var(--cor-primaria-fundo);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-    }
-
-    /* Regras do Edital */
-    .rules-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 8px 0 0 0;
-    }
-
-    .rule-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--cor-texto-principal);
-      line-height: 1.4;
-    }
-
-    .rule-icon {
-      font-size: 1rem;
-      line-height: 1.2;
-      flex-shrink: 0;
-    }
-
-    .support-box {
-      background-color: var(--cor-fundo-suave);
-      border: 1px solid var(--cor-borda);
-      border-radius: var(--raio-borda);
-      padding: 16px;
-      margin-top: 12px;
-      margin-bottom: 16px;
-    }
-
-    .support-box-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--cor-texto-principal);
-      margin-bottom: 6px;
-    }
-
-    .support-box-text {
-      font-size: var(--tamanho-pequeno);
-      color: var(--cor-texto-secundario);
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    /* Adaptação para Alto Contraste */
-    body.high-contrast .status-badge {
-      background-color: #000000;
-      color: #6ee7b7;
-      border-color: #6ee7b7;
-    }
-
-    body.high-contrast .result-highlight-card {
-      background-color: #121212;
-      border-color: #60a5fa;
-    }
-
-    body.high-contrast .result-category-name {
-      color: #93c5fd;
-    }
-
-    body.high-contrast .step-details {
-      border-color: #ffffff;
-      background-color: #121212;
-    }
-
-    body.high-contrast .step-summary {
-      background-color: #121212;
-      color: #ffffff;
-    }
-
-    body.high-contrast .step-chevron {
-      color: #60a5fa;
-    }
-
-    body.high-contrast .step-content {
-      background-color: #000000;
-      border-top-color: #ffffff;
-    }
-
-    body.high-contrast .btn-link-practice {
-      background-color: #121212;
-      color: #60a5fa;
-      border-color: #ffffff;
-    }
-
-    body.high-contrast .calendar-item {
-      background-color: #121212;
-      border-color: #ffffff;
-    }
-
-    body.high-contrast .calendar-date {
-      background-color: #1e3a8a;
-      color: #93c5fd;
-    }
-
-    body.high-contrast .support-box {
-      background-color: #121212;
-      border-color: #ffffff;
-    }
-  </style>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <!-- MOLDURA DO SMARTPHONE (390px - 420px) -->
   <main class="mobile-viewport">
 
-    <!-- 1. BARRA DE ACESSIBILIDADE PADRÃO (OBRIGATÓRIA) -->
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
-    <!-- 2. CABEÇALHO COM BOTÃO VOLTAR -->
     <nav class="page-header" aria-label="Navegação da tela">
-      <a href="../tela-08-quiz-apoio/index.html" class="btn-back">
+      <a href="../tela-08-quiz-apoio/index.html" class="btn-back" aria-label="Voltar para a Pergunta 3">
         <span aria-hidden="true">&larr;</span> Voltar
       </a>
     </nav>
 
-    <!-- 3. CONTEÚDO PRINCIPAL -->
-    <section class="screen-content">
+    <section class="screen-content" aria-labelledby="titulo-pagina">
 
-      <!-- Região acessível com anúncio imediato para leitores de tela -->
-      <div class="announcement-region" aria-live="polite">
+      <div class="announcement-region">
+        <div id="aviso-diagnostico-padrao" class="aviso-padrao-card is-hidden" role="region" aria-label="Aviso sobre Diagnóstico Padrão">
+          <p class="aviso-padrao-texto">
+            ℹ️ <strong>Recomendação Padrão:</strong> Para receber o diagnóstico sob medida para o seu ano escolar e preferências, 
+            <a href="../tela-06-quiz-pergunta-1/index.html" class="aviso-padrao-link">faça o teste rápido de 3 perguntas</a>.
+          </p>
+        </div>
+
         <div class="status-badge" role="status">
           <span class="badge-icon" aria-hidden="true">✓</span> ANÁLISE CONCLUÍDA
         </div>
@@ -375,18 +48,17 @@
         <h1 class="screen-title" id="titulo-pagina">Sua Categoria Recomendada</h1>
         <p class="screen-subtitle">Com base nas respostas do seu diagnóstico rápido:</p>
 
-        <!-- Cartão de Destaque Limpo e Elegante -->
-        <div class="result-highlight-card">
+        <div class="result-highlight-card" aria-labelledby="nome-categoria" aria-describedby="descricao-categoria">
           <div class="result-category-name" id="nome-categoria">Modalidade Programação — Nível Júnior</div>
           <p class="result-category-desc" id="descricao-categoria">Ideal para começar a resolver desafios com código no seu ritmo, sem pressão.</p>
         </div>
+
+        <div id="status-anuncio-categoria" class="sr-only" role="status" aria-live="polite"></div>
       </div>
 
-      <!-- Seção Próximos Passos: 3 blocos expansíveis práticos e reais (sem telas incompletas) -->
       <section aria-labelledby="titulo-passos">
         <h2 id="titulo-passos" class="section-heading-sm">Próximos Passos</h2>
 
-        <!-- Bloco 1: O que estudar para o seu nível -->
         <details class="step-details" id="details-estudo" open>
           <summary class="step-summary" aria-label="Ver tópicos e links de estudo para o seu nível">
             <div class="step-summary-content">
@@ -396,25 +68,24 @@
             <span class="step-chevron" aria-hidden="true">&#9654;</span>
           </summary>
           <div class="step-content">
-            <p style="margin-bottom: 6px; font-weight: 600; color: var(--cor-texto-principal);">Tópicos prioritários para focar:</p>
+            <p class="study-section-title">Tópicos prioritários para focar:</p>
             <ul class="study-list" id="lista-topicos-estudo">
               <li>Entrada, saída e estruturas condicionais (if/else)</li>
               <li>Laços de repetição (for/while) e vetores simples</li>
               <li>Simulação passo a passo em Python ou C++</li>
             </ul>
-            <p style="margin-bottom: 6px; font-weight: 600; color: var(--cor-texto-principal);">Onde praticar gratuitamente:</p>
+            <p class="study-section-title">Onde praticar gratuitamente:</p>
             <div class="practice-links">
-              <a href="https://olimpiada.ic.unicamp.br/pratique/" target="_blank" rel="noopener noreferrer" class="btn-link-practice">
+              <a href="https://olimpiada.ic.unicamp.br/pratique/" target="_blank" rel="noopener noreferrer" class="btn-link-practice" aria-label="Portal Oficial OBI (abre em nova aba)">
                 Portal Oficial OBI <span aria-hidden="true">&nearr;</span>
               </a>
-              <a href="https://neps.academy/br" target="_blank" rel="noopener noreferrer" class="btn-link-practice">
+              <a href="https://neps.academy/br" target="_blank" rel="noopener noreferrer" class="btn-link-practice" aria-label="Neps Academy (abre em nova aba)">
                 Neps Academy <span aria-hidden="true">&nearr;</span>
               </a>
             </div>
           </div>
         </details>
 
-        <!-- Bloco 2: Calendário oficial da OBI -->
         <details class="step-details" id="details-calendario">
           <summary class="step-summary" aria-label="Ver calendário e datas oficiais da OBI">
             <div class="step-summary-content">
@@ -445,7 +116,6 @@
           </div>
         </details>
 
-        <!-- Bloco 3: Regras principais do edital -->
         <details class="step-details" id="details-edital">
           <summary class="step-summary" aria-label="Ler resumo descomplicado do edital">
             <div class="step-summary-content">
@@ -477,18 +147,16 @@
         </details>
       </section>
 
-      <!-- Seção de Apoio UFABC -->
       <section class="support-box" aria-labelledby="titulo-apoio">
         <h2 id="titulo-apoio" class="support-box-title">Sua escola ainda não participa?</h2>
-        <p class="support-box-text">A equipe de extensão da UFABC cadastra sua escola pública ou garante sua participação direto pelo Polo Universitário.</p>
+        <p class="support-box-text" id="texto-apoio">A equipe de extensão da UFABC cadastra sua escola pública ou garante sua participação direto pelo Polo Universitário.</p>
       </section>
 
-      <!-- Ações da Tela -->
       <div class="screen-actions">
-        <a href="../tela-10-solicitacao-escola/index.html" class="btn-primary">
+        <a href="../tela-10-solicitacao-escola/index.html" class="btn-primary" id="btn-solicitar-apoio">
           Minha escola não participa? Solicite Apoio da UFABC
         </a>
-        <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary">
+        <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary" id="btn-refazer-diagnostico">
           Refazer Diagnóstico (Pergunta 1)
         </a>
       </div>
@@ -496,64 +164,6 @@
     </section>
 
   </main>
-
-  <!-- Script dinâmico com calcularModalidadeOBI() e fallback seguro -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var resultado;
-
-      // Usar a função de cálculo oficial se disponível em utils.js
-      if (typeof calcularModalidadeOBI === 'function') {
-        resultado = calcularModalidadeOBI();
-      } else {
-        // Fallback seguro caso utils.js ainda não tenha carregado
-        var respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
-        if (respostas.preferencia === 'iniciacao' || respostas.preferencia === 'logica') {
-          resultado = {
-            titulo: 'Modalidade Iniciação — Nível 2',
-            resumo: 'Indicada para estudantes que preferem resolver problemas lógicos no papel, sem uso de código.',
-            topicosEstudo: [
-              'Raciocínio combinatório e restrições lógicas',
-              'Problemas de caminho, grafos visuais e tabela verdade',
-              'Resolução de cadernos anteriores da Modalidade Iniciação'
-            ]
-          };
-        } else {
-          resultado = {
-            titulo: 'Modalidade Programação — Nível Júnior',
-            resumo: 'Ideal para começar a resolver desafios com código no seu ritmo, sem pressão.',
-            topicosEstudo: [
-              'Entrada, saída e estruturas condicionais (if/else)',
-              'Laços de repetição (for/while) e vetores simples',
-              'Simulação passo a passo em Python ou C++'
-            ]
-          };
-        }
-      }
-
-      // Preencher Categoria e Descrição calculadas
-      var elNome = document.getElementById('nome-categoria');
-      var elDesc = document.getElementById('descricao-categoria');
-
-      if (elNome && resultado && resultado.titulo) {
-        elNome.textContent = resultado.titulo;
-      }
-      if (elDesc && resultado && resultado.resumo) {
-        elDesc.textContent = resultado.resumo;
-      }
-
-      // Preencher Tópicos de Estudo Reais
-      var elListaTopicos = document.getElementById('lista-topicos-estudo');
-      if (elListaTopicos && resultado && Array.isArray(resultado.topicosEstudo)) {
-        elListaTopicos.innerHTML = '';
-        resultado.topicosEstudo.forEach(function (topico) {
-          var li = document.createElement('li');
-          li.textContent = topico;
-          elListaTopicos.appendChild(li);
-        });
-      }
-    });
-  </script>
 
 </body>
 </html>
