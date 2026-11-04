@@ -1,197 +1,367 @@
-/* Estilos do Hub Central de Protótipos · Central OBI UFABC (WCAG AA) */
+/* ==============================================================================
+   Central OBI UFABC · Estilos da Tela Inicial do Aplicativo (index.html)
+   Design Universal · Mobile-First · WCAG 2.1 AA · Alto Contraste
+   ============================================================================== */
 
-body.hub-page {
-  display: block;
-  padding: 24px 16px;
+.home-header {
+  padding: 16px 16px 14px 16px;
+  background-color: var(--cor-card);
+}
+
+.home-title {
+  font-size: var(--tamanho-grande);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--cor-texto-principal);
+}
+
+.home-subtitle {
+  margin-top: 4px;
+  font-size: var(--tamanho-pequeno);
+  color: var(--cor-texto-secundario);
+  line-height: 1.4;
+}
+
+.home-content {
   background-color: var(--cor-fundo-suave);
+  border-top: 1px solid var(--cor-borda);
+  gap: 20px;
 }
 
-.hub-container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--cor-card);
-  padding: 32px 24px;
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--raio-borda);
-  box-shadow: var(--sombra-suave);
-}
-
-.hub-header {
+.home-section-title {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: var(--cor-texto-principal);
 }
 
-.hub-title {
-  font-size: 1.75rem;
+/* 1. Banner de Nível / Diagnóstico em Destaque */
+.banner-nivel-card {
+  background-color: var(--cor-card);
+  border: 1.5px solid var(--cor-primaria-borda);
+  border-radius: var(--raio-borda);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--sombra-suave);
+  transition: all 0.2s ease;
+}
+
+.banner-nivel-card:hover {
+  border-color: var(--cor-primaria);
+}
+
+.banner-nivel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.banner-nivel-title {
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--cor-primaria);
-  margin-top: 8px;
-  line-height: 1.25;
-  word-break: break-word;
+  line-height: 1.3;
 }
 
-.hub-subtitle {
+.banner-nivel-desc {
+  font-size: 0.88rem;
   color: var(--cor-texto-secundario);
-  margin-top: 4px;
-  font-size: 0.95rem;
+  line-height: 1.45;
 }
 
+/* Badges Semânticos */
 .badge {
   display: inline-block;
-  padding: 4px 10px;
+  align-self: flex-start;
+  padding: 3px 10px;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 .badge-primary {
-  background: var(--cor-primaria-fundo);
+  background-color: var(--cor-primaria-fundo);
   color: var(--cor-primaria);
   border: 1px solid var(--cor-primaria-borda);
 }
 
 .badge-success {
-  background: var(--cor-sucesso-fundo);
+  background-color: var(--cor-sucesso-fundo);
   color: var(--cor-sucesso);
   border: 1px solid var(--cor-sucesso-borda);
 }
 
-.badge-pending {
-  background: #fef3c7;
-  color: #92400e;
-  border: 1px solid #fde68a;
-}
-
-.cta-banner {
-  margin-top: 32px;
-  padding: 20px;
-  background: var(--cor-primaria-fundo);
+/* 2. Cartão O que Fazer Agora */
+.agora-cartao {
+  background-color: var(--cor-primaria-fundo);
   border: 1px solid var(--cor-primaria-borda);
+  border-left: 5px solid var(--cor-primaria);
   border-radius: var(--raio-borda);
+  padding: 16px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.cta-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--cor-primaria);
-  margin-bottom: 4px;
-}
-
-.cta-desc {
-  font-size: 0.9rem;
-  color: var(--cor-texto-secundario);
-  margin: 0;
-}
-
-.cta-btn {
-  width: auto;
-  padding: 12px 24px;
-}
-
-.section-divider-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-top: 36px;
-  border-bottom: 2px solid var(--cor-borda);
-  padding-bottom: 8px;
+.agora-fase {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.3;
   color: var(--cor-texto-principal);
 }
 
-.screens-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
+.agora-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.agora-texto {
+  font-size: 0.85rem;
+  color: var(--cor-texto-secundario);
+  line-height: 1.45;
+}
+
+/* 3. Atalhos de Acesso Rápido */
+.atalhos-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.atalho-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 12px 14px;
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-suave);
+  color: var(--cor-texto-principal);
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.atalho-link:hover {
+  border-color: var(--cor-primaria);
+  background-color: var(--cor-primaria-fundo);
+  transform: translateY(-1px);
+}
+
+.atalho-link:focus-visible {
+  outline: var(--anel-foco);
+  outline-offset: 2px;
+}
+
+.atalho-icone {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.atalho-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.atalho-texto {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--cor-texto-principal);
+}
+
+.atalho-subtexto {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--cor-texto-secundario);
+  line-height: 1.3;
+}
+
+.atalho-seta {
+  color: var(--cor-texto-secundario);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* 4. Rodapé Ético */
+.home-footer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--cor-texto-secundario);
+  line-height: 1.45;
+  border-top: 1px solid var(--cor-borda);
+  padding-top: 14px;
+}
+
+.home-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 12px;
+  margin-top: 4px;
+}
+
+.home-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque-minimo);
+  color: var(--cor-texto-principal);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.home-footer a:hover {
+  color: var(--cor-primaria);
+}
+
+/* 5. Drawer de Arquitetura Discreto com Acesso Direto (Telas 01 a 12) */
+.dev-screens-drawer {
+  margin-top: 16px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  background-color: var(--cor-card);
+  overflow: hidden;
+}
+
+.dev-drawer-summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cor-texto-secundario);
+  cursor: pointer;
+  background-color: var(--cor-fundo-suave);
+  user-select: none;
+}
+
+.dev-drawer-summary:hover {
+  color: var(--cor-primaria);
+}
+
+.dev-drawer-summary:focus-visible {
+  outline: var(--anel-foco);
+  outline-offset: 2px;
+}
+
+.drawer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background-color: var(--cor-fundo-suave);
 }
 
 .screen-link-card {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  gap: 4px;
+  padding: 12px 14px;
   min-height: var(--alvo-toque-minimo);
-  background: var(--cor-fundo-suave);
-  border: 1.5px solid var(--cor-borda);
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
   border-radius: var(--raio-borda);
   text-decoration: none;
   color: var(--cor-texto-principal);
-  transition: all 0.2s ease;
-}
-
-.screen-link-card:focus-visible,
-.cta-btn:focus-visible {
-  outline: var(--anel-foco);
-  outline-offset: 2px;
+  transition: all 0.15s ease;
 }
 
 .screen-link-card:hover {
   border-color: var(--cor-primaria);
-  background: var(--cor-primaria-fundo);
-  transform: translateY(-2px);
-  box-shadow: var(--sombra-suave);
+  background-color: var(--cor-primaria-fundo);
 }
 
-.screen-link-card.is-pending {
-  opacity: 0.75;
-  cursor: default;
-}
-
-.screen-link-card.is-pending:hover {
-  transform: none;
-  border-color: var(--cor-borda);
-  background: var(--cor-fundo-suave);
-  box-shadow: none;
+.screen-link-card:focus-visible {
+  outline: var(--anel-foco);
+  outline-offset: 2px;
 }
 
 .screen-num {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--cor-primaria);
-  margin-bottom: 6px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .screen-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .screen-desc {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--cor-texto-secundario);
-  line-height: 1.4;
-  margin-top: auto;
+  line-height: 1.35;
 }
 
-/* Alto Contraste */
-body.high-contrast .hub-container {
+/* ==============================================================================
+   Modo Alto Contraste (body.high-contrast)
+   ============================================================================== */
+body.high-contrast .home-header,
+body.high-contrast .banner-nivel-card,
+body.high-contrast .atalho-link,
+body.high-contrast .dev-screens-drawer,
+body.high-contrast .screen-link-card {
   background-color: #000000;
   border-color: #ffffff;
 }
 
-body.high-contrast .cta-banner {
-  background-color: #121212;
+body.high-contrast .home-content {
+  background-color: #000000;
   border-color: #ffffff;
 }
 
-body.high-contrast .cta-title {
-  color: #93c5fd;
+body.high-contrast .agora-cartao {
+  background-color: #121212;
+  border-color: #ffffff;
+  border-left-color: var(--cor-primaria);
 }
 
-body.high-contrast .cta-desc {
+body.high-contrast .home-title,
+body.high-contrast .banner-nivel-title,
+body.high-contrast .agora-fase,
+body.high-contrast .atalho-texto,
+body.high-contrast .screen-title {
+  color: #ffffff;
+}
+
+body.high-contrast .home-subtitle,
+body.high-contrast .banner-nivel-desc,
+body.high-contrast .agora-texto,
+body.high-contrast .atalho-subtexto,
+body.high-contrast .home-footer,
+body.high-contrast .screen-desc,
+body.high-contrast .dev-drawer-summary {
   color: #f1f5f9;
+}
+
+body.high-contrast .atalho-link:hover,
+body.high-contrast .screen-link-card:hover {
+  background-color: #1e3a8a;
+  border-color: #facc15;
 }
 
 body.high-contrast .badge-primary {
@@ -206,41 +376,11 @@ body.high-contrast .badge-success {
   border-color: #6ee7b7;
 }
 
-body.high-contrast .badge-pending {
-  background-color: #451a03;
-  color: #fde68a;
-  border-color: #fbbf24;
-}
-
-body.high-contrast .screen-link-card {
+body.high-contrast .dev-drawer-summary {
   background-color: #121212;
-  border-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
 }
 
-body.high-contrast .screen-num {
-  color: #93c5fd;
-}
-
-body.high-contrast .screen-link-card:hover {
-  background-color: #1e3a8a;
-  border-color: #facc15;
-}
-
-body.high-contrast .screen-link-card:hover .screen-num,
-body.high-contrast .screen-link-card:hover .screen-title,
-body.high-contrast .screen-link-card:hover .screen-desc {
-  color: #ffffff;
-}
-
-body.high-contrast .screen-link-card.is-pending {
-  opacity: 1;
-  border-style: dashed;
-  border-color: #64748b;
-  background-color: #09090b;
-}
-
-body.high-contrast .screen-link-card.is-pending .screen-num,
-body.high-contrast .screen-link-card.is-pending .screen-title,
-body.high-contrast .screen-link-card.is-pending .screen-desc {
-  color: #94a3b8;
+body.high-contrast .drawer-grid {
+  background-color: #000000;
 }

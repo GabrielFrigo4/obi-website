@@ -158,6 +158,25 @@ async function executarTodosOsTestes() {
     }
   });
 
+  it('App Unificado: index.html é a Home Direta do Aplicativo em .mobile-viewport', () => {
+    const { window } = carregarTela('index.html', 'assets/js/hub.js');
+    const viewport = window.document.querySelector('main.mobile-viewport');
+    assert.strictEqual(Boolean(viewport), true, 'index.html deve conter a moldura mobile-viewport');
+    const bannerNivel = window.document.getElementById('banner-nivel-container');
+    assert.strictEqual(Boolean(bannerNivel), true, 'Deve conter o banner de diagnóstico rápido');
+  });
+
+  it('Barra de Navegação Inferior (.app-bottom-nav): 5 abas ativas e acessíveis', () => {
+    const { window } = carregarTela('index.html', 'assets/js/hub.js');
+    const nav = window.document.querySelector('.app-bottom-nav');
+    assert.strictEqual(Boolean(nav), true, 'A barra de navegação inferior deve existir no DOM');
+    const abas = nav.querySelectorAll('.bottom-nav-item');
+    assert.strictEqual(abas.length, 5, 'Devem existir exatamente 5 abas de navegação');
+    const abaAtiva = nav.querySelector('.bottom-nav-item.active');
+    assert.strictEqual(Boolean(abaAtiva), true, 'A aba Início deve estar ativa');
+    assert.strictEqual(abaAtiva.getAttribute('aria-current'), 'page');
+  });
+
   // -----------------------------------------------------------------------------
   // 2. TEMPLATE BASE (PADRÃO OURO)
   // -----------------------------------------------------------------------------

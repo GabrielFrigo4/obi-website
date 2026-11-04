@@ -17,7 +17,7 @@ function copiarMensagemProfessor() {
 
   function feedbackSucesso() {
     if (btn) btn.classList.add('copied');
-    if (btnTexto) btnTexto.textContent = '✓ Mensagem copiada!';
+    if (btnTexto) btnTexto.textContent = 'Mensagem copiada!';
     if (btnIcone) btnIcone.textContent = '';
     if (feedback) {
       feedback.textContent = 'Mensagem copiada para a área de transferência com sucesso.';
@@ -28,7 +28,7 @@ function copiarMensagemProfessor() {
     setTimeout(function () {
       if (btn) btn.classList.remove('copied');
       if (btnTexto) btnTexto.textContent = 'Copiar mensagem para o professor';
-      if (btnIcone) btnIcone.textContent = '📋';
+      if (btnIcone) btnIcone.textContent = '';
       if (feedback) {
         feedback.classList.add('is-hidden');
         feedback.style.display = 'none';

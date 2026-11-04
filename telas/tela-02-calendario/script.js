@@ -53,7 +53,7 @@ function alternarModalidade(modalidade) {
       tabProg.setAttribute('aria-selected', 'false');
     }
     if (dataFase1Texto) {
-      dataFase1Texto.innerHTML = '<span aria-hidden="true">📅</span> 15 de novembro de 2026 (Iniciação Júnior, 1 e 2 - No Papel)';
+      dataFase1Texto.textContent = '15 de novembro de 2026 (Iniciação Júnior, 1 e 2 - No Papel)';
     }
   } else {
     if (tabProg) {
@@ -65,7 +65,7 @@ function alternarModalidade(modalidade) {
       tabIni.setAttribute('aria-selected', 'false');
     }
     if (dataFase1Texto) {
-      dataFase1Texto.innerHTML = '<span aria-hidden="true">📅</span> 15 de novembro de 2026 (Programação Júnior, 1, 2 e Sênior - No Computador)';
+      dataFase1Texto.textContent = '15 de novembro de 2026 (Programação Júnior, 1, 2 e Sênior - No Computador)';
     }
   }
 

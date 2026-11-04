@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central OBI UFABC · Protótipo Interativo de IHC</title>
-  <meta name="description" content="Protótipo navegável mobile-first da Central OBI UFABC com foco em Design Universal, Design Ético e WCAG 2.1 AA.">
+  <title>Central OBI UFABC · Aplicativo Oficial</title>
+  <meta name="description" content="Central OBI UFABC: Aplicativo mobile-first aberto e acessível para preparação, diagnóstico de nível e apoio escolar na Olimpíada Brasileira de Informática.">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/hub.css">
   <script src="assets/js/utils.js" defer></script>
   <script src="assets/js/hub.js" defer></script>
 </head>
-<body class="hub-page">
-  <main class="hub-container">
-    <header class="hub-header">
-      <div>
-        <span class="badge badge-primary">UFABC · Disciplina de IHC 2026.3</span>
-        <h1 class="hub-title">Central OBI UFABC · Hub de Protótipos</h1>
-        <p class="hub-subtitle">Web-App Mobile-First de Acesso e Democratização da Olimpíada Brasileira de Informática</p>
-      </div>
+<body>
+
+  <main class="mobile-viewport">
+
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="index.html" class="brand-link" aria-label="Central OBI UFABC - Início">
+        <span>Central OBI</span>
+      </a>
       <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
         <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
         <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
@@ -26,96 +26,218 @@
       </div>
     </header>
 
-    <section class="cta-banner" aria-label="Acesso Rápido ao Fluxo Completo">
-      <div>
-        <h2 class="cta-title">Pronto para Testar o Fluxo Completo (Telas 06 a 12)?</h2>
-        <p class="cta-desc">Inicie a jornada diagnóstica desde a Pergunta 1 até a garantia de polo e suporte comunitário.</p>
-      </div>
-      <a href="telas/tela-06-quiz-pergunta-1/index.html" class="btn-primary cta-btn">▶ Iniciar Fluxo Completo (Tela 06)</a>
-    </section>
-
-    <h2 class="section-divider-title">
-      Fluxo Integrado: Diagnóstico, Polo & Comunidade (Telas 06 a 12)
-    </h2>
-    <div class="screens-grid">
-      <a href="telas/tela-06-quiz-pergunta-1/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 06</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Quiz: Pergunta 1 (Modalidade)</div>
-        <div class="screen-desc">Início do diagnóstico de nível: identificação de objetivos e afinidade do competidor.</div>
-      </a>
-
-      <a href="telas/tela-07-quiz-logica/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 07</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Quiz: Pergunta 2 (Lógica vs Código)</div>
-        <div class="screen-desc">Diagnóstico de preferência na resolução de problemas sem termos técnicos difíceis.</div>
-      </a>
-
-      <a href="telas/tela-08-quiz-apoio/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 08</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Quiz: Pergunta 3 (Série & Escola)</div>
-        <div class="screen-desc">Mapeamento da série escolar e verificação de apoio docente cadastrado na escola.</div>
-      </a>
-
-      <a href="telas/tela-09-resultado-nivel/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 09</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Resultado da Análise & Categoria</div>
-        <div class="screen-desc">Exibição acessível da categoria recomendada com aria-live e opção de apoio institucional.</div>
-      </a>
-
-      <a href="telas/tela-10-solicitacao-escola/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 10</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Solicitação de Apoio para Escola</div>
-        <div class="screen-desc">Formulário ético e acessível para inclusão da escola pelo projeto de extensão da UFABC.</div>
-      </a>
-
-      <a href="telas/tela-11-confirmacao-polo/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 11</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Confirmação de Solicitação & Polo</div>
-        <div class="screen-desc">Número de protocolo dinâmico, resumo cadastral, botão de impressão e garantia de polo.</div>
-      </a>
-
-      <a href="telas/tela-12-comunidade-extensao/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 12</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Hub Comunitário & Extensão UFABC</div>
-        <div class="screen-desc">Canal no WhatsApp, materiais de treino oficiais UNICAMP e FAQ colapsável semântico.</div>
-      </a>
+    <div class="home-header">
+      <h1 class="home-title">Central OBI UFABC</h1>
+      <p class="home-subtitle">Projeto de extensão da UFABC · Plataforma aberta e acessível</p>
     </div>
 
-    <h2 class="section-divider-title">
-      Módulos Informativos & Jornada do Competidor (Telas 01 a 05)
-    </h2>
-    <div class="screens-grid">
-      <a href="telas/tela-01-home/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 01</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Home / Painel da Jornada</div>
-        <div class="screen-desc">Interface principal com avisos da próxima prova e atalhos rápidos.</div>
-      </a>
-      <a href="telas/tela-02-calendario/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 02</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Calendário & Prazos Acessíveis</div>
-        <div class="screen-desc">Linha do tempo oficial com datas das fases 1, 2, nacional e lembretes locais.</div>
-      </a>
-      <a href="telas/tela-03-checklist/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 03</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Trilha de Estudos & Checklist</div>
-        <div class="screen-desc">Checklist persistente por categoria (Iniciação e Programação) sem cadastro.</div>
-      </a>
-      <a href="telas/tela-04-editais/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 04</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Editais Descomplicados</div>
-        <div class="screen-desc">Regras oficiais, materiais permitidos e linguagens em linguagem simples e clara.</div>
-      </a>
-      <a href="telas/tela-05-kit-monitor/index.html" class="screen-link-card">
-        <div class="screen-num"><span>TELA 05</span> <span class="badge badge-success">Funcional</span></div>
-        <div class="screen-title">Kit do Monitor & Ferramentas</div>
-        <div class="screen-desc">Modelos de mensagens prontas para avisos e treinos com cópia facilitada.</div>
-      </a>
-      <a href="telas/template-base/index.html" class="screen-link-card">
-        <div class="screen-num"><span>PADRÃO OURO</span> <span class="badge badge-success">Referência</span></div>
-        <div class="screen-title">Template Base de Engenharia & IHC</div>
-        <div class="screen-desc">Arquitetura canônica tripartite e componentes de acessibilidade universal.</div>
-      </a>
+    <div class="screen-content home-content">
+
+      <!-- Banner de Diagnóstico / Nível com Estado Reativo -->
+      <section class="banner-nivel-card" id="banner-nivel-container" aria-labelledby="titulo-banner-nivel">
+        <div class="banner-nivel-info">
+          <span class="badge badge-primary" id="badge-nivel-status">Diagnóstico Rápido</span>
+          <h2 id="titulo-banner-nivel" class="banner-nivel-title">Descubra seu Nível na OBI</h2>
+          <p class="banner-nivel-desc" id="desc-banner-nivel">Responda a 3 perguntas simples em 1 minuto para saber se sua prova é de Iniciação (no papel) ou Programação (no computador).</p>
+        </div>
+        <a href="telas/tela-06-quiz-pergunta-1/index.html" class="btn-primary" id="btn-cta-nivel">
+          Descobrir Meu Nível Agora
+        </a>
+      </section>
+
+      <!-- Seção O que fazer agora -->
+      <section aria-labelledby="titulo-agora">
+        <h2 id="titulo-agora" class="home-section-title">
+          O que fazer agora?
+        </h2>
+        <div class="agora-cartao">
+          <p class="agora-fase">Fase 1 da OBI</p>
+          <ul class="agora-lista">
+            <li>
+              Próxima prova:
+              <strong id="agora-data">data oficial em breve</strong>
+            </li>
+            <li id="agora-dias-item" hidden>
+              <strong id="agora-dias"></strong>
+            </li>
+            <li>
+              Situação:
+              <strong id="agora-situacao">a Fase 1 de 2026 já aconteceu</strong>
+            </li>
+          </ul>
+          <p class="agora-texto">Enquanto as próximas datas são definidas pela UNICAMP, descubra seu nível e explore a trilha de treinos.</p>
+          <a href="telas/tela-02-calendario/index.html" class="btn-secondary">
+            Ver calendário e prazos
+          </a>
+        </div>
+      </section>
+
+      <!-- Seção Acesso Rápido -->
+      <nav aria-labelledby="titulo-atalhos">
+        <h2 id="titulo-atalhos" class="home-section-title">
+          Acesso Rápido às Áreas do App
+        </h2>
+        <ul class="atalhos-lista">
+          <li>
+            <a href="telas/tela-02-calendario/index.html" class="atalho-link">
+              <div class="atalho-info">
+                <span class="atalho-texto">Calendário Oficial & Lembretes</span>
+                <span class="atalho-subtexto">Fases 1, 2 e Nacional com lembretes locais</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="telas/tela-03-checklist/index.html" class="atalho-link" id="link-checklist-home">
+              <div class="atalho-info">
+                <span class="atalho-texto">Trilha de Estudos & Checklist</span>
+                <span class="atalho-subtexto" id="subtexto-progresso-checklist">Tópicos essenciais organizados por modalidade</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="telas/tela-04-editais/index.html" class="atalho-link">
+              <div class="atalho-info">
+                <span class="atalho-texto">Editais Descomplicados</span>
+                <span class="atalho-subtexto">Regras oficiais, materiais e linguagens em texto claro</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="telas/tela-10-solicitacao-escola/index.html" class="atalho-link" id="link-escola-home">
+              <div class="atalho-info">
+                <span class="atalho-texto">Apoio para Minha Escola / Polo UFABC</span>
+                <span class="atalho-subtexto" id="subtexto-polo-home">Sua escola não aplica a prova? Peça inclusão gratuita</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="telas/tela-05-kit-monitor/index.html" class="atalho-link">
+              <div class="atalho-info">
+                <span class="atalho-texto">Kit do Monitor & Professor</span>
+                <span class="atalho-subtexto">Avisos prontos para grupos de WhatsApp e mural</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="telas/tela-12-comunidade-extensao/index.html" class="atalho-link">
+              <div class="atalho-info">
+                <span class="atalho-texto">Comunidade UFABC & Dúvidas (FAQ)</span>
+                <span class="atalho-subtexto">Canal de suporte, dúvidas frequentes e tutoriais</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&rsaquo;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://olimpiada.ic.unicamp.br/pratique/" target="_blank" rel="noopener noreferrer"
+               class="atalho-link"
+               aria-label="Provas anteriores e gabaritos oficiais da OBI na UNICAMP (abre em nova aba)">
+              <div class="atalho-info">
+                <span class="atalho-texto">Provas Anteriores Oficiais</span>
+                <span class="atalho-subtexto">Acervo oficial UNICAMP com caderno de tarefas</span>
+              </div>
+              <span class="atalho-seta" aria-hidden="true">&nearr;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Rodapé Ético -->
+      <footer class="home-footer">
+        <p>Sem login, sem anúncios e sem coleta de dados. Suas respostas ficam guardadas apenas no seu dispositivo.</p>
+        <p>Projeto de extensão universitária · Universidade Federal do ABC (UFABC).</p>
+        <div class="home-footer-links">
+          <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
+             aria-label="Site oficial da OBI na UNICAMP (abre em nova aba)">
+            Site Oficial OBI &nearr;
+          </a>
+          <a href="telas/tela-12-comunidade-extensao/index.html">
+            Dúvidas e Suporte
+          </a>
+        </div>
+      </footer>
+
+      <!-- Acordeão Discreto para Arquitetura e Acesso Direto às 12 Telas -->
+      <details class="dev-screens-drawer">
+        <summary class="dev-drawer-summary">
+          <span>Mapa Completo do App (Telas 01 a 12 e Padrão Ouro)</span>
+        </summary>
+        <div class="drawer-grid">
+          <a href="telas/tela-01-home/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 01</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Painel da Jornada (Home)</div>
+            <div class="screen-desc">Próxima prova e atalhos rápidos.</div>
+          </a>
+          <a href="telas/tela-02-calendario/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 02</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Calendário & Prazos</div>
+            <div class="screen-desc">Datas oficiais das 3 fases e lembretes.</div>
+          </a>
+          <a href="telas/tela-03-checklist/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 03</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Trilha & Checklist</div>
+            <div class="screen-desc">Checklist persistente por nível.</div>
+          </a>
+          <a href="telas/tela-04-editais/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 04</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Editais Descomplicados</div>
+            <div class="screen-desc">Regras oficiais em linguagem simples.</div>
+          </a>
+          <a href="telas/tela-05-kit-monitor/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 05</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Kit do Monitor & Ferramentas</div>
+            <div class="screen-desc">Mensagens prontas com cópia em 1 clique.</div>
+          </a>
+          <a href="telas/tela-06-quiz-pergunta-1/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 06</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Quiz: Pergunta 1 (Modalidade)</div>
+            <div class="screen-desc">Objetivos e interesse do competidor.</div>
+          </a>
+          <a href="telas/tela-07-quiz-logica/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 07</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Quiz: Pergunta 2 (Lógica vs Código)</div>
+            <div class="screen-desc">Preferência de resolução sem jargões.</div>
+          </a>
+          <a href="telas/tela-08-quiz-apoio/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 08</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Quiz: Pergunta 3 (Série & Escola)</div>
+            <div class="screen-desc">Ano escolar e suporte da escola.</div>
+          </a>
+          <a href="telas/tela-09-resultado-nivel/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 09</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Resultado da Análise</div>
+            <div class="screen-desc">Categoria recomendada e tópicos.</div>
+          </a>
+          <a href="telas/tela-10-solicitacao-escola/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 10</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Apoio para Minha Escola</div>
+            <div class="screen-desc">Formulário de inclusão de polo UFABC.</div>
+          </a>
+          <a href="telas/tela-11-confirmacao-polo/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 11</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Confirmação & Protocolo</div>
+            <div class="screen-desc">Comprovante gerado e impressão.</div>
+          </a>
+          <a href="telas/tela-12-comunidade-extensao/index.html" class="screen-link-card">
+            <div class="screen-num"><span>TELA 12</span> <span class="badge badge-success">Funcional</span></div>
+            <div class="screen-title">Hub Comunitário & Dúvidas</div>
+            <div class="screen-desc">Canal UFABC e dúvidas frequentes.</div>
+          </a>
+          <a href="telas/template-base/index.html" class="screen-link-card">
+            <div class="screen-num"><span>PADRÃO OURO</span> <span class="badge badge-success">Referência</span></div>
+            <div class="screen-title">Template Base de Engenharia</div>
+            <div class="screen-desc">Arquitetura canônica e acessibilidade.</div>
+          </a>
+        </div>
+      </details>
+
     </div>
+
   </main>
+
 </body>
 </html>

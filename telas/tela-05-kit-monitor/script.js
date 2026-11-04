@@ -8,14 +8,14 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       var campo = document.getElementById('campo-data-fase1');
       var data = campo ? campo.value.trim() : '';
       var textoData = data || '[preencha a data]';
-      return '⚠️ Atenção, turma! A Fase 1 da OBI está chegando.\n' +
+      return 'Atenção, turma! A Fase 1 da OBI está chegando.\n' +
              'A prova será em ' + textoData + '.\n' +
              'Confirmem a inscrição com a sua escola.\n' +
              'Calendário oficial: ' + URL_CALENDARIO_OBI;
     }
 
     function montarMensagemTreino() {
-      var linhas = ['📚 Pessoal, aqui estão os links para praticar algoritmos:'];
+      var linhas = ['Pessoal, aqui estão os links para praticar algoritmos:'];
       LINKS_DE_TREINO.forEach(function (item) {
         linhas.push('• ' + item.nome + ': ' + item.url);
       });
@@ -29,7 +29,7 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
     }
 
     function montarMensagemGuia() {
-      return '🤔 Está em dúvida se sua categoria é Iniciação ou Programação?\n' +
+      return 'Está em dúvida se sua categoria é Iniciação ou Programação?\n' +
              'Faça o diagnóstico rápido da Central OBI UFABC:\n' +
              obterUrlDoGuia();
     }

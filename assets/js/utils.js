@@ -289,7 +289,104 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+
+  // Injetar Barra de Navegação Inferior Unificada
+  injetarBarraNavegacaoInferior();
 });
+
+// 7. Barra de Navegação Inferior Unificada (App Bottom Navigation)
+function injetarBarraNavegacaoInferior() {
+  const container = document.querySelector('.mobile-viewport');
+  if (!container || document.querySelector('.app-bottom-nav')) {
+    return;
+  }
+
+  // Detectar localização relativa da tela atual
+  const pathname = (typeof window !== 'undefined' && window.location && window.location.pathname) ? window.location.pathname : '';
+  const emTelas = pathname.includes('/telas/') || Boolean(document.querySelector('link[href^="../../assets"]'));
+
+  const linkInicio = emTelas ? '../../index.html' : 'index.html';
+  const prefixoTelas = emTelas ? '../' : 'telas/';
+
+  let linkNivel = prefixoTelas + 'tela-06-quiz-pergunta-1/index.html';
+  try {
+    const respostas = JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
+    if (respostas.ano_escolar) {
+      linkNivel = prefixoTelas + 'tela-09-resultado-nivel/index.html';
+    }
+  } catch (e) {}
+
+  const linkDatas = prefixoTelas + 'tela-02-calendario/index.html';
+  const linkEstudos = prefixoTelas + 'tela-03-checklist/index.html';
+  const linkApoio = prefixoTelas + 'tela-12-comunidade-extensao/index.html';
+
+  // Identificar qual aba está ativa com base na URL
+  let abaAtiva = 'inicio';
+  if (pathname.includes('tela-06') || pathname.includes('tela-07') || pathname.includes('tela-08') || pathname.includes('tela-09')) {
+    abaAtiva = 'nivel';
+  } else if (pathname.includes('tela-02-calendario')) {
+    abaAtiva = 'datas';
+  } else if (pathname.includes('tela-03-checklist')) {
+    abaAtiva = 'estudos';
+  } else if (pathname.includes('tela-10') || pathname.includes('tela-11') || pathname.includes('tela-12')) {
+    abaAtiva = 'apoio';
+  } else if (pathname.includes('tela-01-home') || !emTelas || pathname.endsWith('index.html') || pathname === '/' || pathname === '') {
+    abaAtiva = 'inicio';
+  } else {
+    abaAtiva = '';
+  }
+
+  const nav = document.createElement('nav');
+  nav.className = 'app-bottom-nav';
+  nav.setAttribute('aria-label', 'Menu Principal do Aplicativo');
+
+  const abas = [
+    {
+      id: 'inicio',
+      rotulo: 'Início',
+      svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+      href: linkInicio
+    },
+    {
+      id: 'nivel',
+      rotulo: 'Nível',
+      svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>',
+      href: linkNivel
+    },
+    {
+      id: 'datas',
+      rotulo: 'Datas',
+      svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
+      href: linkDatas
+    },
+    {
+      id: 'estudos',
+      rotulo: 'Estudos',
+      svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+      href: linkEstudos
+    },
+    {
+      id: 'apoio',
+      rotulo: 'Apoio',
+      svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+      href: linkApoio
+    }
+  ];
+
+  abas.forEach(function (aba) {
+    const item = document.createElement('a');
+    item.href = aba.href;
+    item.className = 'bottom-nav-item' + (abaAtiva === aba.id ? ' active' : '');
+    if (abaAtiva === aba.id) {
+      item.setAttribute('aria-current', 'page');
+    }
+    item.setAttribute('aria-label', aba.rotulo + (abaAtiva === aba.id ? ' (página atual)' : ''));
+    item.innerHTML = aba.svg + '<span class="nav-text">' + aba.rotulo + '</span>';
+    nav.appendChild(item);
+  });
+
+  container.appendChild(nav);
+}
 
 // Exportações globais estritas para navegadores e ambientes modulares
 if (typeof window !== 'undefined') {
@@ -302,6 +399,7 @@ if (typeof window !== 'undefined') {
   window.gerarNovoProtocolo = gerarNovoProtocolo;
   window.obterProtocolo = obterProtocolo;
   window.calcularModalidadeOBI = calcularModalidadeOBI;
+  window.injetarBarraNavegacaoInferior = injetarBarraNavegacaoInferior;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -314,6 +412,7 @@ if (typeof module !== 'undefined' && module.exports) {
     obterRespostas,
     gerarNovoProtocolo,
     obterProtocolo,
-    calcularModalidadeOBI
+    calcularModalidadeOBI,
+    injetarBarraNavegacaoInferior
   };
 }
