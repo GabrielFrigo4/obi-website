@@ -207,19 +207,21 @@ async function executarTodosOsTestes() {
   // -----------------------------------------------------------------------------
   console.log('\n3. Tela 01 (Home / Painel da Jornada):');
 
-  it('Tela 01: Cartão agora e links de atalhos estão presentes e apontam para telas corretas', () => {
-    const { window } = carregarTela('telas/tela-01-home/index.html', 'script.js');
+  it('Tela 01: O endereço legado redireciona para a Home única', () => {
+    const fs = require('fs');
+    const html = fs.readFileSync(require('path').join(__dirname, 'telas/tela-01-home/index.html'), 'utf8');
+    assert.match(html, /http-equiv="refresh" content="0; url=\.\.\/\.\.\/index\.html"/);
+    assert.match(html, /location\.replace/);
+    assert.doesNotMatch(html, /(?:style\.css|script\.js)/);
+  });
+
+  it('Home única: Cartão agora e atalhos apontam para as telas corretas', () => {
+    const { window } = carregarTela('index.html', 'assets/js/hub.js');
     assert.strictEqual(Boolean(window.document.getElementById('titulo-agora')), true);
-
-    const linkCal = window.document.querySelector('a[href="../tela-02-calendario/index.html"]');
-    const linkChk = window.document.querySelector('a[href="../tela-03-checklist/index.html"]');
-    const linkEdital = window.document.querySelector('a[href="../tela-04-editais/index.html"]');
-    const linkQuiz = window.document.querySelector('a[href="../tela-06-quiz-pergunta-1/index.html"]');
-
-    assert.strictEqual(Boolean(linkCal), true, 'Link do Calendário deve existir na Home');
-    assert.strictEqual(Boolean(linkChk), true, 'Link do Checklist deve existir na Home');
-    assert.strictEqual(Boolean(linkEdital), true, 'Link dos Editais deve existir na Home');
-    assert.strictEqual(Boolean(linkQuiz), true, 'Link do Quiz Diagnóstico deve existir na Home');
+    for (const destino of ['02-calendario', '03-checklist', '04-editais', '06-quiz-pergunta-1']) {
+      const link = window.document.querySelector('a[href="telas/tela-' + destino + '/index.html"]');
+      assert.strictEqual(Boolean(link), true, 'Link para tela ' + destino + ' deve existir');
+    }
   });
 
   // -----------------------------------------------------------------------------
