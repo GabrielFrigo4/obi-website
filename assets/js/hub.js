@@ -55,9 +55,14 @@ function atualizarCartaoAgora() {
 }
 
 function sincronizarEstadoDoUsuario() {
-  // 1. Diagnóstico do Nível (Quiz)
   const respostas = (typeof window.obterRespostas === 'function') ? window.obterRespostas() : {};
-  if (respostas.ano_escolar) {
+  const quizCompleto = Boolean(
+    respostas.ano_escolar &&
+    (respostas.preferencia || respostas.preferencia_estudo) &&
+    respostas.escola_apoio
+  );
+
+  if (quizCompleto) {
     const elBadge = document.getElementById('badge-nivel-status');
     const elTitulo = document.getElementById('titulo-banner-nivel');
     const elDesc = document.getElementById('desc-banner-nivel');
@@ -81,13 +86,17 @@ function sincronizarEstadoDoUsuario() {
     }
   }
 
-  // 2. Progresso do Checklist de Estudos
   const elSubChecklist = document.getElementById('subtexto-progresso-checklist');
   if (elSubChecklist) {
     try {
-      const progressoIniciacao = JSON.parse(localStorage.getItem('obi_checklist_prog_iniciacao') || '[]');
-      const progressoProgramacao = JSON.parse(localStorage.getItem('obi_checklist_prog_programacao') || '[]');
-      const totalMarcados = progressoIniciacao.length + progressoProgramacao.length;
+      const categorias = ['iniciacao', 'prog_jr', 'nivel_1', 'nivel_2', 'senior'];
+      let totalMarcados = 0;
+      categorias.forEach(function (cat) {
+        const obj = JSON.parse(localStorage.getItem('obi_checklist_' + cat) || '{}');
+        if (obj && typeof obj === 'object') {
+          totalMarcados += Object.keys(obj).filter(function (k) { return Boolean(obj[k]); }).length;
+        }
+      });
 
       if (totalMarcados > 0) {
         elSubChecklist.textContent = totalMarcados + ' tópico(s) concluído(s) na sua trilha';
@@ -95,7 +104,6 @@ function sincronizarEstadoDoUsuario() {
     } catch (e) {}
   }
 
-  // 3. Apoio Escolar / Protocolo de Polo
   const elSubPolo = document.getElementById('subtexto-polo-home');
   const elLinkEscola = document.getElementById('link-escola-home');
   try {

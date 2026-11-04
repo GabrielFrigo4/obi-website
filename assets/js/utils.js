@@ -311,7 +311,7 @@ function injetarBarraNavegacaoInferior() {
   let linkNivel = prefixoTelas + 'tela-06-quiz-pergunta-1/index.html';
   try {
     const respostas = JSON.parse(localStorage.getItem('obi_quiz_respostas') || '{}');
-    if (respostas.ano_escolar) {
+    if (respostas.ano_escolar && (respostas.preferencia || respostas.preferencia_estudo) && respostas.escola_apoio) {
       linkNivel = prefixoTelas + 'tela-09-resultado-nivel/index.html';
     }
   } catch (e) {}

@@ -3,7 +3,7 @@
 > **Docente:** Profª. Dra. Juliana Braga | **Centro:** CMCC / UFABC  
 > **Padrão Normativo:** WCAG 2.1 Nível AA · Design Ético · Arquitetura Tripartite Desacoplada
 
-🌐 **Acesse o site online:** [https://gabrielfrigo4.github.io/obi-website/](https://gabrielfrigo4.github.io/obi-website/)
+**Acesse o aplicativo em produção:** [https://obiwebapp.vercel.app](https://obiwebapp.vercel.app) | [Espelho GitHub Pages](https://gabrielfrigo4.github.io/obi-website/)
 
 ---
 
