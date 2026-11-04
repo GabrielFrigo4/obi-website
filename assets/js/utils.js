@@ -428,3 +428,18 @@ if (typeof module !== 'undefined' && module.exports) {
     injetarBarraNavegacaoInferior
   };
 }
+
+// Mantém as âncoras e o foco abaixo do cabeçalho, inclusive com fonte ampliada.
+document.addEventListener('DOMContentLoaded', function observarAlturaCabecalho() {
+  const cabecalho = document.querySelector('.accessibility-bar');
+  if (!cabecalho) return;
+  function atualizarAlturaCabecalho() {
+    document.documentElement.style.setProperty('--altura-cabecalho', cabecalho.getBoundingClientRect().height + 'px');
+  }
+  atualizarAlturaCabecalho();
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(atualizarAlturaCabecalho).observe(cabecalho);
+  } else {
+    window.addEventListener('resize', atualizarAlturaCabecalho);
+  }
+});

@@ -65,3 +65,19 @@
   body:not(.high-contrast) .btn-whatsapp:hover { background: #166534; }
   body:not(.high-contrast) .timeline-item.destaque { box-shadow: var(--sombra-suave); }
 }
+
+/* Setas simétricas e botões com a mesma métrica em todas as etapas. */
+.layout-quiz .screen-actions > :is(a, button) {
+  gap: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  min-height: 52px;
+  padding: 14px 18px;
+  border-width: 1px;
+  border-style: solid;
+}
+.layout-quiz .screen-actions > .btn-primary { border-color: transparent; }
+.quiz-arrow { display: block; width: 20px; height: 20px; flex: 0 0 20px; }
+.quiz-arrow-back { transform: rotate(180deg); }
