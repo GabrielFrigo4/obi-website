@@ -11,8 +11,8 @@
   
   --cor-primaria: #980900;
   --cor-primaria-hover: #760600;
-  --cor-primaria-fundo: #fff4e5;
-  --cor-primaria-borda: #edc6ad;
+  --cor-primaria-fundo: #fff3f1;
+  --cor-primaria-borda: #e9bfba;
 
   --cor-sucesso: #047857;
   --cor-sucesso-fundo: #ecfdf5;
@@ -30,8 +30,8 @@
   --tamanho-titulo: 1.25rem;
   --tamanho-grande: 1.5rem;
 
-  --raio-borda: 6px;
-  --raio-botao: 5px;
+  --raio-borda: 12px;
+  --raio-botao: 10px;
   --sombra-suave: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 

@@ -1,0 +1,67 @@
+/* Acabamento compartilhado das telas internas da Central OBI UFABC. */
+@media screen {
+  .mobile-viewport { background: var(--cor-fundo-suave); }
+  .screen-content { background: var(--cor-fundo-suave); padding: 24px 18px 32px; }
+  :is(.page-header, .cal-header, .chk-header, .central-header) {
+    background: var(--cor-fundo-suave);
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--cor-borda);
+  }
+  :is(.cal-title-center, .chk-title-center, .central-title) {
+    font-size: .875rem;
+    line-height: 1.4;
+    color: var(--cor-texto-secundario);
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+  h1.screen-title, .screen-title-compact { font-size: 1.5rem; font-weight: 800; line-height: 1.25; margin-bottom: 10px; }
+  p.screen-subtitle, .screen-subtitle-compact { line-height: 1.6; margin-bottom: 24px; }
+  :is(.card-section-title, .section-heading-sm, .checklist-title, .practice-card-title, .kit-card-titulo, .section-header-title) { line-height: 1.4; }
+  :is(.btn-primary, .btn-secondary, .btn-agenda, .btn-copiar, .btn-whatsapp, .btn-print) { border-radius: var(--raio-botao); line-height: 1.4; text-align: center; font-weight: 700; }
+  .btn-primary { min-height: 52px; padding: 14px 18px; box-shadow: 0 3px 8px rgb(80 10 4 / 12%); }
+  .btn-secondary { min-height: 50px; }
+  .screen-actions { gap: 12px; padding-top: 8px; }
+  .progress-container { margin-bottom: 24px; }
+  .progress-bar-track { height: 8px; }
+  .option-card { padding: 18px 16px; border-radius: var(--raio-borda); gap: 14px; }
+  .option-text { min-width: 0; overflow-wrap: anywhere; }
+  .option-text strong { font-size: 1rem; margin-bottom: 5px; }
+  .option-text span { line-height: 1.55; }
+  :is(.mod-tabs, .cat-tabs) { padding: 5px; gap: 5px; border-radius: 14px; }
+  :is(.mod-tab, .cat-tab) { border-radius: 9px; line-height: 1.4; }
+  .central-tabs { margin: 0 18px; border: 1px solid var(--cor-borda); border-radius: 12px; overflow: hidden; }
+  .central-tab { padding: 13px 8px; line-height: 1.4; border-bottom-width: 3px; }
+  :is(.timeline-item, .progress-card, .checklist-card, .practice-card, .provas-card,
+      .central-card, .kit-card, .action-card, .result-highlight-card, .protocol-card,
+      .guarantee-card, .whatsapp-card, .material-link-card, .faq-item, .step-details) {
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-suave);
+  }
+  :is(.progress-card, .checklist-card, .practice-card, .provas-card, .central-card, .kit-card, .action-card, .whatsapp-card) { padding: 20px 18px; }
+  .timeline { gap: 16px; }
+  .timeline-item { padding: 18px 16px; gap: 10px; }
+  .timeline-header { flex-wrap: wrap; }
+  .timeline-badge { white-space: normal; }
+  .result-highlight-card { padding: 24px 20px; border-width: 1px; border-top: 4px solid var(--cor-primaria); }
+  .result-category-name { font-size: 1.4rem; }
+  :is(.step-summary, .faq-question) { padding: 18px 16px; line-height: 1.45; }
+  :is(.step-details[open], .faq-item[open]) { border-color: var(--cor-primaria); }
+  .form-group { margin-bottom: 20px; }
+  :is(.form-control, .kit-campo) { border-radius: var(--raio-botao); min-height: 52px; padding: 13px 14px; font: inherit; }
+  .form-label { margin-bottom: 8px; }
+  :is(.field-hint, .kit-ajuda, .privacy-notice, .origin-notice) { line-height: 1.6; }
+  :is(.message-preview-box, .kit-mensagem) { border-radius: 8px; padding: 16px; }
+  .protocol-code { overflow-wrap: anywhere; }
+  .material-info { min-width: 0; overflow-wrap: anywhere; }
+  .app-bottom-nav { box-shadow: 0 -4px 18px rgb(65 30 20 / 6%); }
+  .bottom-nav-item.active { background: var(--cor-primaria-fundo); }
+  body:not(.high-contrast) :is(.option-card, .option-card:hover, .option-card.selected,
+      .result-highlight-card, .timeline-item, .timeline-item.destaque, .central-card,
+      .kit-card, .action-card, .protocol-card, .guarantee-card, .whatsapp-card,
+      .material-link-card, .material-link-card:hover, .faq-item, .step-details) { background: var(--cor-card); }
+  body:not(.high-contrast) .option-card.selected { border-color: var(--cor-primaria); box-shadow: inset 4px 0 var(--cor-primaria), 0 0 0 1px var(--cor-primaria); }
+  body:not(.high-contrast) :is(.btn-secondary, .btn-agenda, .btn-print, .kit-card-titulo, .checklist-title, .practice-card-title) { color: var(--cor-primaria); }
+  body:not(.high-contrast) .btn-whatsapp { background: #15803d; }
+  body:not(.high-contrast) .btn-whatsapp:hover { background: #166534; }
+  body:not(.high-contrast) .timeline-item.destaque { box-shadow: var(--sombra-suave); }
+}

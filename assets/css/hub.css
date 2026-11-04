@@ -393,15 +393,43 @@ body.high-contrast .drawer-grid {
 .banner-nivel-card { border-top: 4px solid var(--cor-amarela); padding: 20px; box-shadow: none; }
 .banner-nivel-title { font-size: 1.25rem; }
 .banner-nivel-desc { font-size: .95rem; }
-.home-section-title { font-size: 1.15rem; margin-bottom: 14px; }
-.atalhos-lista { gap: 0; background: var(--cor-card); border: 1px solid var(--cor-borda); border-radius: var(--raio-borda); overflow: hidden; }
-.atalho-link { padding: 16px; min-height: 78px; border: 0; border-bottom: 1px solid var(--cor-borda); border-radius: 0; box-shadow: none; }
-.atalhos-lista li:last-child .atalho-link { border-bottom: 0; }
-.atalho-link:hover { transform: none; }
-.atalho-link:focus-visible { outline-offset: -4px; }
-.atalho-texto { font-size: 1rem; }
+.home-section-title { font-size: 1.15rem; margin-bottom: 16px; gap: 10px; }
+.home-section-title::before { content: ""; width: 5px; height: 1.2em; border-radius: 3px; background: var(--cor-primaria); }
+.atalhos-lista {
+  gap: 12px;
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+.atalho-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 12px;
+  padding: 18px 14px;
+  min-height: 94px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  border-color: var(--cor-borda);
+  border-left: 4px solid var(--cor-primaria);
+  background: var(--cor-card);
+  box-shadow: 0 3px 10px rgb(110 12 5 / 5%);
+}
+.atalhos-lista li:last-child .atalho-link { border-bottom: 1px solid var(--cor-borda); }
+.atalho-info { min-width: 0; gap: 5px; overflow-wrap: anywhere; }
+.atalho-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--cor-primaria);
+  background: var(--cor-card);
+  box-shadow: 0 5px 16px rgb(110 12 5 / 10%);
+}
+.atalho-link:focus-visible { outline-offset: 3px; }
+.atalho-texto { font-size: 1rem; line-height: 1.35; color: var(--cor-primaria); }
 .atalho-subtexto { font-size: .85rem; line-height: 1.5; }
-.atalho-seta { color: var(--cor-primaria); }
+.atalho-seta { color: var(--cor-primaria); text-align: center; }
+.atalhos-lista li .atalho-link:hover { background: var(--cor-card); }
+body.high-contrast .atalhos-lista li .atalho-link { background: var(--cor-card); border-color: var(--cor-borda); }
+body.high-contrast .atalho-texto { color: var(--cor-texto-principal); }
+body.high-contrast .atalhos-lista li .atalho-link:hover { background: var(--cor-primaria-fundo); }
 .home-footer { border-top: 1px solid var(--cor-borda); padding-top: 24px; text-align: center; }
 .partner-logo { display: block; width: 88px; height: auto; margin: 0 auto 16px; border-radius: 50%; }
 .home-footer-links { justify-content: center; }
@@ -454,3 +482,6 @@ body.high-contrast .home-intro { background: #000; }
   .home-intro { min-height: auto; }
   .scroll-hint { display: none; }
 }
+
+/* Mantém o fundo pastel também no espaço reservado ao menu fixo. */
+.home-viewport { background-color: var(--cor-fundo-suave); }

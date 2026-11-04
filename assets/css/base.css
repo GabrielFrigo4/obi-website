@@ -118,23 +118,47 @@ body {
 .btn-back {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--cor-texto-principal);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: var(--tamanho-pequeno);
+  justify-content: center;
+  gap: 9px;
+  width: fit-content;
   min-height: var(--alvo-toque-minimo);
   min-width: var(--alvo-toque-minimo);
-  padding: 6px 10px;
-  border-radius: var(--raio-botao);
-  border: 1px solid var(--cor-borda);
-  background-color: var(--cor-fundo-suave);
+  padding: 8px 15px;
+  border: 1px solid var(--cor-primaria-borda);
+  border-radius: 999px;
+  background-color: var(--cor-card);
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--tamanho-pequeno);
+  line-height: 1.3;
+  box-shadow: var(--sombra-suave);
+  transition: background-color .15s ease, border-color .15s ease;
 }
-
+.btn-back > span[aria-hidden="true"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--cor-primaria-fundo);
+  font-size: 0;
+}
+.btn-back > span[aria-hidden="true"]::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateX(2px) rotate(45deg);
+}
 .btn-back:hover {
-  background-color: var(--cor-fundo);
+  background-color: var(--cor-primaria-fundo);
   border-color: var(--cor-primaria);
 }
+.btn-back:active { box-shadow: none; }
 
 /* Área de Conteúdo da Tela */
 .screen-content {
@@ -594,11 +618,25 @@ body.high-contrast .bottom-nav-item.active {
 /* Seta discreta para links que levam a outros sites. */
 .external-arrow { display: inline-block; margin-inline-start: .3em; font-weight: 600; text-decoration: none; }
 /* Identidade OBI compartilhada por todas as telas. */
-.accessibility-bar { background: var(--cor-marca); border-bottom: 3px solid var(--cor-amarela); padding: 12px 16px; }
-.brand-link { color: var(--cor-sobre-marca); gap: 8px; min-height: 48px; font-size: 1.4rem; }
-.brand-link small { font-size: .75rem; font-weight: 600; }
+.accessibility-bar {
+  background: var(--cor-marca);
+  border-bottom: 3px solid var(--cor-amarela);
+  padding: 12px 16px;
+  container-type: inline-size;
+}
+.brand-link {
+  color: var(--cor-sobre-marca);
+  gap: 8px;
+  min-height: 48px;
+  font-size: clamp(22.4px, 1.4rem, 26px);
+}
+.brand-link small { font-size: clamp(12px, .75rem, 14px); font-weight: 600; }
 .brand-symbol { display: block; flex-shrink: 0; object-fit: contain; background: #fff; border-radius: 50%; }
 .accessibility-controls { margin-left: auto; }
+/* O limite em rem acompanha também o aumento da fonte do aplicativo. */
+@container (max-width: 18rem) {
+  .brand-link > span { display: flex; flex-direction: column; line-height: 1.1; gap: 3px; }
+}
 .accessibility-bar .btn-a11y { background: transparent; color: var(--cor-sobre-marca); border-color: #ffffff80; }
 .accessibility-bar .btn-a11y:hover { background: #ffffff20; border-color: var(--cor-amarela); }
 .accessibility-bar :focus-visible { outline-color: var(--cor-amarela); }

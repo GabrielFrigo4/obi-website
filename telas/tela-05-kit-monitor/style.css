@@ -7,14 +7,7 @@
       gap: 8px;
     }
 
-    .central-header .btn-back {
-      border: none;
-      background: transparent;
-      color: var(--cor-primaria);
-      padding: 6px 4px;
-    }
-
-    .central-header .btn-back:hover {
+.central-header .btn-back:hover {
       background: transparent;
       text-decoration: underline;
     }
