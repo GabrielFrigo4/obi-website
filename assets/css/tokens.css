@@ -1,22 +1,25 @@
 :root {
+  --cor-marca: #980900;
+  --cor-amarela: #ffcc33;
+  --cor-sobre-marca: #ffffff;
   --cor-fundo: #ffffff;
-  --cor-fundo-suave: #f8fafc;
+  --cor-fundo-suave: #f8f6f2;
   --cor-card: #ffffff;
   
-  --cor-texto-principal: #0f172a;
-  --cor-texto-secundario: #475569;
+  --cor-texto-principal: #242424;
+  --cor-texto-secundario: #59534e;
   
-  --cor-primaria: #1d4ed8;
-  --cor-primaria-hover: #1e40af;
-  --cor-primaria-fundo: #eff6ff;
-  --cor-primaria-borda: #bfdbfe;
+  --cor-primaria: #980900;
+  --cor-primaria-hover: #760600;
+  --cor-primaria-fundo: #fff4e5;
+  --cor-primaria-borda: #edc6ad;
 
   --cor-sucesso: #047857;
   --cor-sucesso-fundo: #ecfdf5;
   --cor-sucesso-borda: #a7f3d0;
 
-  --cor-borda: #e2e8f0;
-  --cor-borda-ativa: #3b82f6;
+  --cor-borda: #e4ddd6;
+  --cor-borda-ativa: #980900;
 
   --anel-foco: 3px solid #2563eb;
   --alvo-toque-minimo: 48px;
@@ -27,8 +30,8 @@
   --tamanho-titulo: 1.25rem;
   --tamanho-grande: 1.5rem;
 
-  --raio-borda: 10px;
-  --raio-botao: 8px;
+  --raio-borda: 6px;
+  --raio-botao: 5px;
   --sombra-suave: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 

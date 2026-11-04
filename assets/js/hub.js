@@ -5,55 +5,6 @@
 
 'use strict';
 
-const DATA_PROVA_FASE_1 = null;
-
-function converterTextoEmData(textoData) {
-  const partes = textoData.split('-');
-  return new Date(Number(partes[0]), Number(partes[1]) - 1, Number(partes[2]));
-}
-
-function calcularDiasRestantes(dataProva) {
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
-  const milissegundosPorDia = 24 * 60 * 60 * 1000;
-  return Math.round((dataProva - hoje) / milissegundosPorDia);
-}
-
-function atualizarCartaoAgora() {
-  const elData = document.getElementById('agora-data');
-  const elDias = document.getElementById('agora-dias');
-  const elDiasItem = document.getElementById('agora-dias-item');
-  const elSituacao = document.getElementById('agora-situacao');
-
-  if (!elData || !elSituacao) return;
-
-  if (!DATA_PROVA_FASE_1) {
-    elData.textContent = 'datas oficiais em breve';
-    elSituacao.textContent = 'a Fase 1 de 2026 já aconteceu';
-    return;
-  }
-
-  const dataProva = converterTextoEmData(DATA_PROVA_FASE_1);
-  const diasRestantes = calcularDiasRestantes(dataProva);
-
-  elData.textContent = dataProva.toLocaleDateString('pt-BR', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  });
-
-  if (diasRestantes > 0) {
-    const textoDias = diasRestantes === 1 ? 'Falta 1 dia' : 'Faltam ' + diasRestantes + ' dias';
-    if (elDias) elDias.textContent = textoDias + ' para a prova';
-    if (elDiasItem) elDiasItem.hidden = false;
-    elSituacao.textContent = 'prepare-se com calma e confirme sua participação na escola';
-  } else if (diasRestantes === 0) {
-    elSituacao.textContent = 'a prova é hoje';
-  } else {
-    elSituacao.textContent = 'esta prova já aconteceu';
-  }
-}
-
 function sincronizarEstadoDoUsuario() {
   const respostas = (typeof window.obterRespostas === 'function') ? window.obterRespostas() : {};
   const quizCompleto = Boolean(
@@ -121,12 +72,6 @@ function sincronizarEstadoDoUsuario() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  atualizarCartaoAgora();
   sincronizarEstadoDoUsuario();
 
-  // Acessibilidade semântica nos links de navegação da gaveta de telas
-  const cards = document.querySelectorAll('a.screen-link-card');
-  cards.forEach(function (card) {
-    card.setAttribute('role', 'link');
-  });
 });

@@ -386,6 +386,18 @@ function injetarBarraNavegacaoInferior() {
   });
 
   container.appendChild(nav);
+
+  // Reserva a altura real do menu para não encobrir o fim da página.
+  function atualizarEspacoDoMenu() {
+    container.style.setProperty('--altura-menu-inferior', nav.getBoundingClientRect().height + 'px');
+  }
+  atualizarEspacoDoMenu();
+  if (typeof ResizeObserver !== 'undefined') {
+    const observadorMenu = new ResizeObserver(atualizarEspacoDoMenu);
+    observadorMenu.observe(nav);
+  } else {
+    window.addEventListener('resize', atualizarEspacoDoMenu);
+  }
 }
 
 // Exportações globais estritas para navegadores e ambientes modulares

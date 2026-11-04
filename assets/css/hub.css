@@ -384,3 +384,73 @@ body.high-contrast .dev-drawer-summary {
 body.high-contrast .drawer-grid {
   background-color: #000000;
 }
+/* Abertura inspirada no site oficial da OBI. */
+.home-header { background: var(--cor-marca); color: var(--cor-sobre-marca); text-align: center; padding: 30px 24px 34px; }
+.hero-symbol { display: block; margin: 0 auto 22px; object-fit: contain; background: #fff; border-radius: 50%; }
+.home-title { color: inherit; font-size: 1.85rem; line-height: 1.2; }
+.home-subtitle { color: inherit; font-size: 1rem; line-height: 1.6; margin-top: 12px; }
+.home-content { padding: 24px 18px; gap: 28px; }
+.banner-nivel-card { border-top: 4px solid var(--cor-amarela); padding: 20px; box-shadow: none; }
+.banner-nivel-title { font-size: 1.25rem; }
+.banner-nivel-desc { font-size: .95rem; }
+.home-section-title { font-size: 1.15rem; margin-bottom: 14px; }
+.atalhos-lista { gap: 0; background: var(--cor-card); border: 1px solid var(--cor-borda); border-radius: var(--raio-borda); overflow: hidden; }
+.atalho-link { padding: 16px; min-height: 78px; border: 0; border-bottom: 1px solid var(--cor-borda); border-radius: 0; box-shadow: none; }
+.atalhos-lista li:last-child .atalho-link { border-bottom: 0; }
+.atalho-link:hover { transform: none; }
+.atalho-link:focus-visible { outline-offset: -4px; }
+.atalho-texto { font-size: 1rem; }
+.atalho-subtexto { font-size: .85rem; line-height: 1.5; }
+.atalho-seta { color: var(--cor-primaria); }
+.home-footer { border-top: 1px solid var(--cor-borda); padding-top: 24px; text-align: center; }
+.partner-logo { display: block; width: 88px; height: auto; margin: 0 auto 16px; border-radius: 50%; }
+.home-footer-links { justify-content: center; }
+.home-footer-links a { display: inline-flex; align-items: center; }
+body.high-contrast .home-header { background: #000; }
+
+/* A primeira dobra apresenta somente a abertura e o menu fixo. */
+.home-intro {
+  min-height: calc(100svh - var(--altura-menu-inferior, 80px) - 17px);
+  display: flex;
+  flex-direction: column;
+  background: var(--cor-marca);
+}
+.home-intro .accessibility-bar { flex-shrink: 0; }
+.home-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+.hero-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 0 32px;
+}
+.hero-symbol { width: 140px; height: 140px; }
+.scroll-hint {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 48px;
+  min-height: 64px;
+  color: var(--cor-sobre-marca);
+  text-decoration: none;
+  font-size: .875rem;
+}
+.scroll-hint:hover { text-decoration: underline; }
+.scroll-hint:focus-visible { outline-color: var(--cor-amarela); }
+#conteudo-inicial { scroll-margin-top: 16px; }
+body.high-contrast .home-intro { background: #000; }
+@media (max-width: 440px) {
+  .home-intro { min-height: calc(100svh - var(--altura-menu-inferior, 80px)); }
+}
+@media print {
+  .home-intro { min-height: auto; }
+  .scroll-hint { display: none; }
+}
