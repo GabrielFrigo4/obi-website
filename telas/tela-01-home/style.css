@@ -1,0 +1,196 @@
+.home-header {
+      padding: 16px 16px 14px 16px;
+      background-color: var(--cor-card);
+    }
+
+    .home-title {
+      font-size: var(--tamanho-grande);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--cor-texto-principal);
+    }
+
+    .home-subtitle {
+      margin-top: 4px;
+      font-size: var(--tamanho-pequeno);
+      color: var(--cor-texto-secundario);
+      line-height: 1.4;
+    }
+
+    .home-content {
+      background-color: var(--cor-fundo-suave);
+      border-top: 1px solid var(--cor-borda);
+      gap: 24px;
+    }
+
+    .home-section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: var(--cor-texto-principal);
+    }
+
+    .agora-cartao {
+      background-color: var(--cor-primaria-fundo);
+      border: 1px solid var(--cor-primaria-borda);
+      border-left: 5px solid var(--cor-primaria);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agora-fase {
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .agora-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .agora-texto {
+      font-size: var(--tamanho-pequeno);
+      color: var(--cor-texto-secundario);
+      line-height: 1.45;
+    }
+
+    .atalhos-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .atalho-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 12px 14px;
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-borda);
+      box-shadow: var(--sombra-suave);
+      color: var(--cor-texto-principal);
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .atalho-link:hover {
+      border-color: var(--cor-primaria);
+      background-color: var(--cor-primaria-fundo);
+    }
+
+    .atalho-texto {
+      flex: 1;
+    }
+
+    .atalho-seta {
+      color: var(--cor-texto-secundario);
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .duvida-caixa {
+      padding: 14px;
+      background-color: var(--cor-card);
+      border: 1.5px dashed var(--cor-texto-secundario);
+      border-radius: var(--raio-borda);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .duvida-caixa strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .home-footer {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+      line-height: 1.45;
+    }
+
+    .home-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 12px;
+    }
+
+    .home-footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--alvo-toque-minimo);
+      color: var(--cor-texto-principal);
+      text-decoration: underline;
+    }
+
+    .home-footer a:hover {
+      color: var(--cor-primaria);
+    }
+
+    body.high-contrast .home-header,
+    body.high-contrast .home-content {
+      background-color: #000000;
+    }
+
+    body.high-contrast .agora-cartao {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      border-left: 6px solid #facc15;
+    }
+
+    body.high-contrast .atalho-link,
+    body.high-contrast .duvida-caixa {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      box-shadow: none;
+    }
+
+    body.high-contrast .duvida-caixa {
+      border-style: dashed;
+    }
+
+    body.high-contrast .agora-cartao .btn-primary {
+      background-color: #facc15;
+      color: #000000;
+    }
+
+    body.high-contrast .atalho-link:hover {
+      border-color: #facc15;
+    }
+
+    body.high-contrast .atalho-seta {
+      color: #ffffff;
+    }
+
+    body.high-contrast .home-footer a {
+      color: #ffffff;
+    }
+
+    body.high-contrast .btn-secondary {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    @media (max-width: 360px) {
+      .home-title { font-size: 1.3rem; }
+    }

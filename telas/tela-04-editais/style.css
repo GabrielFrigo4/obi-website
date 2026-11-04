@@ -1,0 +1,271 @@
+.central-header {
+      padding: 8px 16px;
+      background-color: var(--cor-card);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .central-header .btn-back {
+      border: none;
+      background: transparent;
+      color: var(--cor-primaria);
+      padding: 6px 4px;
+    }
+
+    .central-header .btn-back:hover {
+      background: transparent;
+      text-decoration: underline;
+    }
+
+    .central-title {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--cor-texto-principal);
+      line-height: 1.2;
+    }
+
+    .central-header-spacer {
+      min-width: var(--alvo-toque-minimo);
+    }
+
+    .central-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--cor-borda);
+      border-bottom: 1px solid var(--cor-borda);
+      background-color: var(--cor-fundo-suave);
+    }
+
+    .central-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: var(--alvo-toque-minimo);
+      padding: 10px 6px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+      color: var(--cor-texto-secundario);
+      background-color: var(--cor-fundo-suave);
+      border-bottom: 4px solid var(--cor-borda);
+    }
+
+    .central-tab:hover {
+      color: var(--cor-primaria);
+    }
+
+    .central-tab[aria-current="page"] {
+      color: var(--cor-primaria);
+      background-color: var(--cor-card);
+      border-bottom-color: var(--cor-primaria);
+    }
+
+    .central-tab:focus-visible {
+      outline-offset: -4px;
+    }
+
+    .central-content {
+      background-color: var(--cor-fundo-suave);
+      gap: 22px;
+    }
+
+    .central-section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--cor-texto-principal);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .central-card {
+      background-color: var(--cor-card);
+      border: 1px solid var(--cor-borda);
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      padding: 16px;
+    }
+
+    .aviso-pendente {
+      background-color: #fef3c7;
+      color: #78350f;
+      border: 1px solid #fde68a;
+      border-radius: var(--raio-botao);
+      padding: 10px 12px;
+      font-size: var(--tamanho-pequeno);
+      line-height: 1.4;
+    }
+
+    .central-footer {
+      margin-top: auto;
+      padding-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      color: var(--cor-texto-secundario);
+    }
+
+    .central-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 12px;
+    }
+
+    .central-footer a {
+      display: inline-flex;
+      align-items: center;
+      min-height: var(--alvo-toque-minimo);
+      color: var(--cor-texto-principal);
+      text-decoration: underline;
+    }
+
+    .central-footer a:hover {
+      color: var(--cor-primaria);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    body.high-contrast .central-header,
+    body.high-contrast .central-content {
+      background-color: #000000;
+    }
+
+    body.high-contrast .central-tabs,
+    body.high-contrast .central-tab {
+      background-color: #000000;
+      border-color: #ffffff;
+    }
+
+    body.high-contrast .central-tab {
+      color: #ffffff;
+      border-bottom-color: #555555;
+    }
+
+    body.high-contrast .central-tab[aria-current="page"] {
+      color: #facc15;
+      border-bottom-color: #facc15;
+    }
+
+    body.high-contrast .central-card {
+      background-color: #000000;
+      border: 2px solid #ffffff;
+      box-shadow: none;
+    }
+
+    body.high-contrast .aviso-pendente {
+      background-color: #000000;
+      color: #facc15;
+      border-color: #facc15;
+    }
+
+    body.high-contrast .central-footer a,
+    body.high-contrast .central-header .btn-back {
+      color: #ffffff;
+    }
+
+    @media (max-width: 360px) {
+      .central-tab { font-size: 0.8rem; }
+      .central-title { font-size: 0.95rem; }
+    }
+
+    .categoria-lista,
+    .regras-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .categoria-nivel {
+      font-weight: 800;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .categoria-modalidade {
+      display: block;
+      margin-top: 2px;
+      font-weight: 800;
+      font-size: 1.02rem;
+      color: var(--cor-primaria);
+      line-height: 1.35;
+    }
+
+    .categoria-detalhe {
+      display: block;
+      margin-top: 2px;
+      font-size: var(--tamanho-pequeno);
+      font-weight: 500;
+      color: var(--cor-texto-secundario);
+      line-height: 1.4;
+    }
+
+    .regras-lista li {
+      line-height: 1.45;
+    }
+
+    .regra-pendente {
+      display: block;
+      margin-top: 4px;
+      font-size: var(--tamanho-pequeno);
+      color: #78350f;
+      background-color: #fef3c7;
+      border-radius: 6px;
+      padding: 4px 8px;
+    }
+
+    .transparencia-texto {
+      font-size: var(--tamanho-pequeno);
+      color: var(--cor-texto-secundario);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .btn-edital {
+      min-height: 52px;
+      border-radius: 999px;
+      gap: 8px;
+      text-align: center;
+    }
+
+    body.high-contrast .regra-pendente {
+      background-color: #000000;
+      color: #facc15;
+      border: 1px solid #facc15;
+    }
+
+    body.high-contrast .categoria-modalidade {
+      color: #60a5fa;
+    }
+
+    body.high-contrast .btn-edital {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+/* Classes para substituição de estilos inline */
+.btn-edital-quiz { margin-top: 14px; min-height: 48px; font-size: 0.85rem; border-color: var(--cor-primaria); color: var(--cor-primaria); }
+.btn-edital-checklist { margin-top: 14px; min-height: 48px; font-size: 0.85rem; }

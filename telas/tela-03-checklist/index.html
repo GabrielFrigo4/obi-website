@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha de Estudos e Prática · Central OBI UFABC</title>
+  <meta name="description" content="Trilha de estudos, checklist interativo por nível da OBI, links para praticar no Neps Academy, provas anteriores e acompanhamento de progresso sem cadastro.">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="mobile-viewport">
+
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <div class="chk-header">
+      <a href="../tela-01-home/index.html" class="btn-back">
+        <span aria-hidden="true">&lsaquo;</span> Voltar
+      </a>
+      <p class="chk-title-center">Central OBI UFABC</p>
+      <span class="header-spacer" aria-hidden="true"></span>
+    </div>
+
+    <div class="screen-content chk-content">
+
+      <header>
+        <h1 class="screen-title screen-title-compact">
+          <span aria-hidden="true">📚</span> TRILHA DE ESTUDOS E PRÁTICA
+        </h1>
+        <p class="screen-subtitle screen-subtitle-compact">
+          Selecione a sua categoria para ver o que estudar:
+        </p>
+      </header>
+
+      <div class="cat-tabs-scroll">
+        <div class="cat-tabs" role="tablist" aria-label="Categorias da OBI">
+          <button type="button" class="cat-tab" id="cat-iniciacao" role="tab" onclick="selecionarCategoria('iniciacao')">
+            Iniciação
+          </button>
+          <button type="button" class="cat-tab active" id="cat-prog_jr" role="tab" onclick="selecionarCategoria('prog_jr')">
+            Prog. Júnior
+          </button>
+          <button type="button" class="cat-tab" id="cat-nivel_1" role="tab" onclick="selecionarCategoria('nivel_1')">
+            Nível 1
+          </button>
+          <button type="button" class="cat-tab" id="cat-nivel_2" role="tab" onclick="selecionarCategoria('nivel_2')">
+            Nível 2
+          </button>
+          <button type="button" class="cat-tab" id="cat-senior" role="tab" onclick="selecionarCategoria('senior')">
+            Sênior
+          </button>
+        </div>
+      </div>
+
+      <p class="cat-subdesc" id="cat-descricao-texto">
+        Programação Júnior (6º ao 9º ano)
+      </p>
+
+      <section class="progress-card" aria-label="Progresso Individual">
+        <h2 class="progress-card-title">
+          <span aria-hidden="true">📈</span> O seu progresso individual (Local)
+        </h2>
+        <div class="progress-header-row">
+          <span class="progress-stat" id="stat-texto">0 de 7 tópicos concluídos (0%)</span>
+        </div>
+        <div class="progress-track-custom" role="progressbar" id="progress-bar-el" aria-label="Progresso da trilha de estudos" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill-custom progress-fill-initial" id="progress-fill-el"></div>
+        </div>
+        <p class="progress-privacy-hint">
+          <span aria-hidden="true">💡</span> Seu progresso é guardado de forma segura apenas no navegador.
+        </p>
+      </section>
+
+      <section class="checklist-card" aria-labelledby="titulo-checklist">
+        <h2 id="titulo-checklist" class="checklist-title">
+          <span aria-hidden="true">✅</span> Checklist de Conteúdos
+        </h2>
+        <ul class="checklist-items" id="lista-conteudos">
+          
+        </ul>
+      </section>
+
+      <section class="practice-card" aria-labelledby="titulo-pratica">
+        <h2 id="titulo-pratica" class="practice-card-title">
+          <span aria-hidden="true">💻</span> Onde Praticar Código (Gratuito)
+        </h2>
+        <div class="practice-links-grid">
+          <a href="https://neps.academy/br" target="_blank" rel="noopener noreferrer" class="practice-row" aria-label="Praticar no Neps Academy (abre em nova aba)">
+            <span class="practice-name">
+              <span aria-hidden="true">🟢</span> Neps Academy
+            </span>
+            <span class="practice-cta">Praticar no Neps &nearr;</span>
+          </a>
+          <a href="https://judge.beecrowd.com/pt" target="_blank" rel="noopener noreferrer" class="practice-row" aria-label="Praticar no Beecrowd (abre em nova aba)">
+            <span class="practice-name">
+              <span aria-hidden="true">🟡</span> Beecrowd
+            </span>
+            <span class="practice-cta">Praticar no Beecrowd &nearr;</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="provas-card" aria-labelledby="titulo-provas">
+        <h2 id="titulo-provas" class="practice-card-title">
+          <span aria-hidden="true">📁</span> Provas de Anos Anteriores (PDF)
+        </h2>
+        <div class="provas-item">
+          <strong><span aria-hidden="true">&rarr;</span> Prova OBI 2025</strong>
+          <div class="provas-actions">
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Baixar caderno da Prova OBI 2025 (abre em nova aba)">PDF</a>
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Ver gabarito da Prova OBI 2025 (abre em nova aba)">Gabarito</a>
+          </div>
+        </div>
+        <div class="provas-item">
+          <strong><span aria-hidden="true">&rarr;</span> Prova OBI 2024</strong>
+          <div class="provas-actions">
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Baixar caderno da Prova OBI 2024 (abre em nova aba)">PDF</a>
+            <a href="https://olimpiada.ic.unicamp.br/passadas/" target="_blank" rel="noopener noreferrer" class="btn-pill" aria-label="Ver gabarito da Prova OBI 2024 (abre em nova aba)">Gabarito</a>
+          </div>
+        </div>
+      </section>
+
+      <button type="button" class="btn-reset-progress" onclick="limparProgressoAtual()">
+        <span aria-hidden="true">🗑️</span> Limpar o meu progresso local
+      </button>
+
+      <div class="chk-conexao-box">
+        <p><strong><span aria-hidden="true">🧭</span> Conectar com outros módulos:</strong></p>
+        <div class="checklist-actions">
+          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-primary btn-compact">
+            🎯 Refazer Diagnóstico de Nível (Telas 06-12)
+          </a>
+          <a href="../tela-02-calendario/index.html" class="btn-secondary btn-compact">
+            📅 Ver Calendário Oficial de Fases (Tela 02)
+          </a>
+          <a href="../tela-04-editais/index.html" class="btn-secondary btn-compact">
+            📖 Ler Resumo do Edital (Tela 04)
+          </a>
+        </div>
+      </div>
+
+      <footer class="chk-footer">
+        <p><span aria-hidden="true">🛡️</span> Sem rankings, placares públicos ou comparações. Progresso armazenado exclusivamente no seu celular.</p>
+        <div class="chk-footer-links">
+          <a href="../tela-12-comunidade-extensao/index.html">Reportar data divergente ou erro</a>
+          <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
+             aria-label="Site oficial da OBI (abre em nova aba)">Site Oficial OBI <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>

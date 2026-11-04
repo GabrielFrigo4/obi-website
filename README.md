@@ -3,6 +3,8 @@
 > **Docente:** Profª. Dra. Juliana Braga | **Centro:** CMCC / UFABC  
 > **Padrão Normativo:** WCAG 2.1 Nível AA · Design Ético · Arquitetura Tripartite Desacoplada
 
+🌐 **Acesse o site online:** [https://gabrielfrigo4.github.io/obi-website/](https://gabrielfrigo4.github.io/obi-website/)
+
 ---
 
 ## 🎯 1. Visão Geral e Propósito Social
@@ -76,6 +78,7 @@ O ponto de entrada geral da aplicação é o [**Hub de Protótipos (`index.html`
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Hub** | **Painel Central de Navegação e Apresentação**<br>Visão panorâmica de todas as telas, alternador global de acessibilidade e banner de início rápido. | [`index.html`](./index.html) | [`assets/css/hub.css`](./assets/css/hub.css) | [`assets/js/hub.js`](./assets/js/hub.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Template Base** | **Padrão Ouro de Referência**<br>Molde canônico para criação de novas telas com barra acessível, progresso, fieldset e botões de ação. | [`index.html`](./telas/template-base/index.html) | [`style.css`](./telas/template-base/style.css) | [`script.js`](./telas/template-base/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
+| **Telas 01-05** | **Acolhimento, Calendário, Trilha e Editais**<br>Home da Jornada, Calendário Acessível, Trilha de Estudos/Checklist, Editais Descomplicados e Kit do Monitor. | `telas/tela-01` a `05` | `style.css` | `script.js` | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Tela 06** | **Quiz: Pergunta 1 — Ano Escolar**<br>Início da jornada diagnóstica (Barra em 33%). Identifica Fundamental I, II, Médio ou Superior. | [`index.html`](./telas/tela-06-quiz-pergunta-1/index.html) | [`style.css`](./telas/tela-06-quiz-pergunta-1/style.css) | [`script.js`](./telas/tela-06-quiz-pergunta-1/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Tela 07** | **Quiz: Pergunta 2 — Preferência de Desafios**<br>Identificação de afinidade (Barra em 66%). Escolha acolhedora entre raciocínio lógico no papel ou código no computador. | [`index.html`](./telas/tela-07-quiz-logica/index.html) | [`style.css`](./telas/tela-07-quiz-logica/style.css) | [`script.js`](./telas/tela-07-quiz-logica/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Tela 08** | **Quiz: Pergunta 3 — Série & Apoio Escolar**<br>Mapeamento de suporte docente (Barra em 100%). Detecta se a escola já tem professor ou se o aluno precisará de polo. | [`index.html`](./telas/tela-08-quiz-apoio/index.html) | [`style.css`](./telas/tela-08-quiz-apoio/style.css) | [`script.js`](./telas/tela-08-quiz-apoio/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
@@ -83,7 +86,6 @@ O ponto de entrada geral da aplicação é o [**Hub de Protótipos (`index.html`
 | **Tela 10** | **Solicitação de Apoio para Escola Pública**<br>Formulário simples e ético para inclusão da escola pelo projeto de extensão universitária da UFABC. | [`index.html`](./telas/tela-10-solicitacao-escola/index.html) | [`style.css`](./telas/tela-10-solicitacao-escola/style.css) | [`script.js`](./telas/tela-10-solicitacao-escola/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Tela 11** | **Confirmação de Solicitação & Polo UFABC**<br>Comprovante formal com código de protocolo dinâmico, resumo cadastral, botão de cópia, impressão limpa e garantia de vaga. | [`index.html`](./telas/tela-11-confirmacao-polo/index.html) | [`style.css`](./telas/tela-11-confirmacao-polo/style.css) | [`script.js`](./telas/tela-11-confirmacao-polo/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
 | **Tela 12** | **Hub Comunitário & Extensão UFABC**<br>Central de integração com botão do grupo WhatsApp da UFABC, links diretos de treino oficial da UNICAMP e FAQ expansível. | [`index.html`](./telas/tela-12-comunidade-extensao/index.html) | [`style.css`](./telas/tela-12-comunidade-extensao/style.css) | [`script.js`](./telas/tela-12-comunidade-extensao/script.js) | <span style="color:#047857;font-weight:bold;">100% Funcional</span> |
-| **Telas 01-05** | **Acolhimento, Calendário, Trilha e Editais**<br>Home da Jornada, Calendário Acessível, Trilha de Estudos/Checklist, Editais Descomplicados e Kit do Monitor. | `telas/tela-01` a `05` | `style.css` | `script.js` | Em integração |
 
 ---
 

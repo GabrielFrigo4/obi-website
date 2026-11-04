@@ -95,3 +95,79 @@ O fluxo principal do protótipo é composto por sete telas encadeadas (todas seg
   - Seção com links diretos para os **Materiais Gratuitos de Treino Oficiais** da UNICAMP (provas anteriores com gabarito e apostilas didáticas de programação).
   - Seção de Dúvidas Frequentes (FAQ) nativa em HTML5 semântico com `<details>` e `<summary>`, focando em respostas de até duas linhas e navegação por teclado.
   - Botão de retorno ao Hub Central.
+
+---
+
+## 5. Módulo de Editais e Apoio ao Monitor (Telas 04 e 05)
+
+As duas telas formam um par navegável por abas (`<nav aria-label="Seções da Central OBI">`, com `aria-current="page"` na aba ativa). Ambas seguem a moldura mobile, a barra de acessibilidade padrão (`[ A- | A+ ]` e `[ ◐ Contraste ]`) e o rodapé de privacidade. Não coletam nem gravam dados do usuário: o texto digitado na Tela 05 não é salvo.
+
+### Tela 04 (`telas/tela-04-editais/index.html`): Editais Simplificados
+- **Objetivo**: ajudar o estudante a descobrir sua categoria/modalidade e o que levar no dia da prova, em linguagem simples.
+- **Conteúdo**:
+  - Categoria por etapa de ensino: Fundamental → Iniciação (Júnior, Nível 1 ou 2); Médio/Técnico → Programação Nível 1 ou 2 (Sênior no 4º ano do Técnico); Graduação → Programação Sênior.
+  - Regras básicas: material permitido (lápis, caneta ou lapiseira, borracha, régua e papel de rascunho), proibido (calculadora) e linguagens da Programação (C, C++, Java e Python).
+  - Itens que o regulamento não cita (celular, relógio inteligente, anotações, garrafa de água) aparecem sinalizados como **"a confirmar"** com a coordenação da escola.
+- **Transparência**: data de conferência do resumo e botão para o regulamento oficial da OBI (não foi localizado PDF oficial do edital).
+- **Rodapé**: aviso de privacidade, link "Reportar erro ou dúvida" (leva à Tela 12) e link para o site oficial da OBI.
+- **IHC/Acessibilidade**: `<h1>` oculto visualmente (`sr-only`) e títulos de seção em `<h2>`; emojis apenas decorativos (`aria-hidden="true"`); links externos com aviso de nova aba; alvos de toque de 48px ou mais; adaptação ao alto contraste.
+
+### Tela 05 (`telas/tela-05-kit-monitor/index.html`): Kit do Monitor / Professor
+- **Objetivo**: oferecer mensagens prontas para voluntários e professores copiarem e enviarem em grupos de WhatsApp ou Discord.
+- **Cartões**:
+  1. **Aviso: data da Fase 1**: o monitor preenche a data oficial num campo e a mensagem é atualizada na hora. Sem data, a cópia é bloqueada, o campo recebe `aria-invalid` e o foco. A data não vem pré-preenchida porque a Fase 1 de 2026 já ocorreu e a data da próxima edição ainda não está publicada.
+  2. **Links e exercícios de treino**: lista `LINKS_DE_TREINO` no script, com apenas links oficiais verificados (para incluir outro, basta acrescentar um item).
+  3. **Guia: qual é minha categoria?**: link para o diagnóstico (Tela 06); o endereço completo é calculado pelo navegador.
+- **Cópia**: função `copiarTexto()` usa a Clipboard API e, se falhar, `document.execCommand('copy')`. Se as duas falharem, o texto aparece selecionado numa caixa para cópia manual e **nenhum sucesso é anunciado**.
+- **Feedback**: cada cartão tem `role="status"` com `aria-live="polite"`; o botão mostra "Copiado!" por 2,5 s apenas quando a cópia realmente ocorreu.
+- **Teclado**: botões nativos (`<button>`), acionáveis por Enter e Espaço, com foco visível.
+
+### Pendências de confirmação (Telas 04 e 05)
+- Data da Fase 1 da próxima edição da OBI.
+- Regras sobre celular, relógio inteligente, anotações e garrafa de água.
+- Link oficial em PDF do edital, se existir.
+- Outros links de treino (por exemplo, Neps Academy e Beecrowd) ainda não verificados.
+
+---
+
+## 6. Módulos de Entrada, Calendário & Checklist (Telas 01, 02 e 03)
+
+### Tela 01 (`telas/tela-01-home/index.html`): Home / Painel da Jornada
+- **Objetivo**: Ponto de entrada do usuário no protótipo, apresentando boas-vindas, cartão "O que fazer agora?" e acessos rápidos.
+- **IHC**:
+  - Cartão de destaque temporal informando a situação atual da Fase 1.
+  - Atalhos claros de acesso rápido com ícones descritivos e setas indicativas de navegação.
+  - Seção "Dúvida comum de iniciante" com botão de ação direta conectando à Tela 06 (Diagnóstico).
+  - Rodapé com links para a comunidade/suporte (Tela 12) e para o portal oficial.
+
+### Tela 02 (`telas/tela-02-calendario/index.html`): Calendário Oficial OBI 2026
+- **Objetivo**: Linha do tempo dinâmica e acessível com todas as datas oficiais da OBI 2026.
+- **IHC**:
+  - Alternador de modalidade em Segmented Control (Iniciação vs. Programação) que sincroniza automaticamente com as escolhas feitas no diagnóstico.
+  - Linha do tempo visual com anéis de estado (Concluído, Em andamento, Aberta, Em breve).
+  - Exportação direta de compromissos para a agenda do celular/computador via arquivo `.ics` nativo.
+  - Lembrete local de 48h antes da prova com persistência no `localStorage`.
+  - Links de conexão rápida para o Diagnóstico de Nível (Tela 06) e para a Trilha de Estudos (Tela 03).
+
+### Tela 03 (`telas/tela-03-checklist/index.html`): Trilha de Estudos & Checklist
+- **Objetivo**: Acompanhamento individual de estudos sem exigência de login ou dados pessoais.
+- **IHC**:
+  - 5 abas por categoria (`Iniciação`, `Prog. Júnior`, `Nível 1`, `Nível 2`, `Sênior`) com detecção automática da categoria recomendada pelo quiz (Tela 09).
+  - Checklist interativo com persistência instantânea no `localStorage` por categoria.
+  - Barra de progresso dinâmica em tempo real calculando a porcentagem de conteúdos concluídos.
+  - Links oficiais para juízes online (Neps Academy e Beecrowd) e cadernos de provas anteriores em PDF com gabarito oficial UNICAMP.
+  - Botão ético de reset para permitir que o aluno recomece seus estudos quando desejar.
+
+---
+
+## 7. Mapa de Conexões e Interoperabilidade (Telas 01 a 12)
+
+Todas as 12 telas operam de forma integrada e bidirecional:
+1. **Hub Central (`index.html`)** ⇄ **Todas as Telas (01 a 12)**: Acesso e retorno pelo cabeçalho de acessibilidade em todas as páginas.
+2. **Tela 01 (Home)** ➔ **Telas 02, 03, 04, 05, 06 e 12**: Acessos rápidos da jornada.
+3. **Telas 06 ➔ 07 ➔ 08 ➔ 09**: Fluxo contínuo de diagnóstico com passagem e persistência de dados.
+4. **Tela 09 (Resultado)** ➔ **Telas 03 (Checklist do nível), 02 (Calendário), 04 (Edital), 10 (Apoio) e 01 (Home)**.
+5. **Tela 10 (Solicitação de Apoio)** ➔ **Tela 11 (Comprovante com Protocolo)**.
+6. **Tela 11 (Confirmação de Polo)** ➔ **Tela 12 (Comunidade WhatsApp/FAQ) e Tela 01 (Home)**.
+7. **Tela 12 (Comunidade)** ➔ **Tela 01 (Home) e Tela 03 (Trilha de Estudos)**.
+

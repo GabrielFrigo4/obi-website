@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editais Simplificados · Central OBI UFABC</title>
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="mobile-viewport">
+
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <div class="central-header">
+      <a href="../tela-01-home/index.html" class="btn-back">
+        <span aria-hidden="true">&lsaquo;</span> Voltar
+      </a>
+      <p class="central-title">Central OBI UFABC</p>
+      <span class="central-header-spacer" aria-hidden="true"></span>
+    </div>
+
+    <nav class="central-tabs" aria-label="Seções da Central OBI">
+      <a href="../tela-04-editais/index.html" class="central-tab" aria-current="page">
+        <span aria-hidden="true">📖</span> Editais Simplificados
+      </a>
+      <a href="../tela-05-kit-monitor/index.html" class="central-tab">
+        <span aria-hidden="true">🎒</span> Kit do Monitor
+      </a>
+    </nav>
+
+    <div class="screen-content central-content">
+
+      <h1 class="sr-only">Editais Simplificados da OBI</h1>
+
+      <section aria-labelledby="titulo-categoria">
+        <h2 id="titulo-categoria" class="central-section-title">
+          <span aria-hidden="true">🎯</span> Qual é a sua categoria / modalidade?
+        </h2>
+        <div class="central-card">
+          <ul class="categoria-lista">
+            <li>
+              <span class="categoria-nivel"><span aria-hidden="true">👦</span> Ensino Fundamental (até o 9º ano):</span>
+              <span class="categoria-modalidade"><span aria-hidden="true">👉</span> Iniciação Nível 1 ou 2</span>
+              <span class="categoria-detalhe">Nível 1: 6º e 7º ano · Nível 2: 8º e 9º ano · Júnior: 4º e 5º ano.</span>
+            </li>
+            <li>
+              <span class="categoria-nivel"><span aria-hidden="true">👦</span> Ensino Médio ou Técnico:</span>
+              <span class="categoria-modalidade"><span aria-hidden="true">👉</span> Programação Nível 1 ou 2</span>
+              <span class="categoria-detalhe">Nível 1: até o 1º ano do Médio · Nível 2: até o 3º ano · Sênior: 4º ano do Técnico.</span>
+            </li>
+            <li>
+              <span class="categoria-nivel"><span aria-hidden="true">🎓</span> Ensino Superior (Graduação):</span>
+              <span class="categoria-modalidade"><span aria-hidden="true">👉</span> Programação Sênior</span>
+              <span class="categoria-detalhe">Para quem está no 1º ano da graduação, pela primeira vez.</span>
+            </li>
+          </ul>
+          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary btn-edital-quiz">
+            <span aria-hidden="true">🎯</span>&nbsp;Descobrir minha categoria em 1 minuto (Quiz)
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="titulo-regras">
+        <h2 id="titulo-regras" class="central-section-title">
+          <span aria-hidden="true">📋</span> Regras básicas (o que levar no dia)
+        </h2>
+        <div class="central-card">
+          <ul class="regras-lista">
+            <li>
+              <span aria-hidden="true">✅</span> <strong>Permitido:</strong> lápis, caneta ou lapiseira, borracha, régua e papel de rascunho.
+            </li>
+            <li>
+              <span aria-hidden="true">❌</span> <strong>Proibido:</strong> calculadora.
+              <span class="regra-pendente"><strong>A confirmar:</strong> celular, relógio inteligente, anotações e garrafa de água não aparecem no regulamento. Pergunte à coordenação da sua escola.</span>
+            </li>
+            <li>
+              <span aria-hidden="true">💻</span> <strong>Linguagens (Programação):</strong> C, C++, Java e Python.
+            </li>
+          </ul>
+          <a href="../tela-03-checklist/index.html" class="btn-secondary btn-edital-checklist">
+            <span aria-hidden="true">📚</span>&nbsp;Ver Trilha de Conteúdos e Checklist por Nível
+          </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="titulo-transparencia">
+        <h2 id="titulo-transparencia" class="central-section-title">
+          <span aria-hidden="true">🔍</span> Transparência
+        </h2>
+        <p class="transparencia-texto">
+          Resumo conferido em 28/10/2026 no regulamento da OBI 2026. Para detalhes jurídicos, consulte a fonte original:
+        </p>
+        <a href="https://olimpiada.ic.unicamp.br/info/regulamento/" target="_blank" rel="noopener noreferrer"
+           class="btn-primary btn-edital"
+           aria-label="Abrir o regulamento oficial completo da OBI (abre em nova aba)">
+          <span aria-hidden="true">🔗</span> Abrir regulamento oficial completo <span aria-hidden="true">&nearr;</span>
+        </a>
+      </section>
+
+      <footer class="central-footer">
+        <p><span aria-hidden="true">🛡️</span> Privacidade: nenhum dado seu é enviado ou monitorado. Só guardamos no seu navegador o tamanho da fonte e o contraste.</p>
+        <div class="central-footer-links">
+          <a href="../tela-12-comunidade-extensao/index.html">Reportar erro ou dúvida no edital</a>
+          <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
+             aria-label="Site oficial da OBI (abre em nova aba)">Site oficial OBI <span aria-hidden="true">&nearr;</span></a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

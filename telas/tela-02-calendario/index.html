@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendário Oficial OBI 2026 · Central OBI UFABC</title>
+  <meta name="description" content="Calendário oficial acessível da OBI 2026: datas das fases 1, 2 e nacional, lembretes locais e prazos da Iniciação e Programação.">
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <script src="../../assets/js/utils.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="mobile-viewport">
+
+    <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
+      <a href="../../index.html" class="brand-link">
+        <span>Central OBI</span>
+      </a>
+      <div class="accessibility-controls">
+        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      </div>
+    </header>
+
+    <div class="cal-header">
+      <a href="../tela-01-home/index.html" class="btn-back">
+        <span aria-hidden="true">&lsaquo;</span> Voltar
+      </a>
+      <p class="cal-title-center">Central OBI UFABC</p>
+      <span class="header-spacer" aria-hidden="true"></span>
+    </div>
+
+    <div class="screen-content cal-content">
+
+      <header>
+        <h1 class="screen-title screen-title-compact">
+          <span aria-hidden="true">📅</span> Calendário Oficial OBI 2026
+        </h1>
+        <p class="screen-subtitle screen-subtitle-compact">
+          Prazos de inscrição, datas de aplicação e etapas oficiais da Olimpíada.
+        </p>
+      </header>
+
+      <div class="mod-tabs" role="tablist" aria-label="Modalidades da OBI">
+        <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" aria-selected="false" onclick="alternarModalidade('iniciacao')">
+          Iniciação (Fundamental)
+        </button>
+        <button type="button" class="mod-tab active" id="tab-programacao" role="tab" aria-selected="true" onclick="alternarModalidade('programacao')">
+          Programação (Médio/Sup.)
+        </button>
+      </div>
+
+      <section aria-label="Etapas da OBI">
+        <div class="timeline" id="timeline-container">
+          
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Inscrições das Escolas</h2>
+              <span class="timeline-badge badge-concluido">✓ Concluído</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 01 de março a 15 de abril</p>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Período de Treinamento</h2>
+              <span class="timeline-badge badge-andamento">● Em andamento</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 16 de abril a 10 de novembro</p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Treinos OBI UFABC', '2026-04-16', '2026-11-10', 'Oficinas e treinos gratuitos de lógica e programação da Central OBI UFABC')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+          </article>
+
+          <article class="timeline-item destaque">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 1 (Prova Local)</h2>
+              <span class="timeline-badge badge-aberta">⏳ Inscrições Abertas</span>
+            </div>
+            <p class="timeline-date" id="data-fase1-texto">
+              <span aria-hidden="true">📅</span> 15 de novembro de 2026 (domingo)
+            </p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 1 - Prova OBI 2026', '2026-11-15', '2026-11-15', 'Aplicação oficial da Fase 1 da OBI')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+
+            <div class="switch-row">
+              <label for="switch-aviso-48h" class="switch-label">
+                Avisar 48h antes (Lembrete no celular)
+              </label>
+              <input type="checkbox" id="switch-aviso-48h" class="switch-input" onchange="salvarAvisoLembrete(this.checked)">
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 2 (Estadual)</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 05 de dezembro de 2026</p>
+            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 2 - Prova Estadual OBI 2026', '2026-12-05', '2026-12-05', 'Fase 2 da OBI')">
+              <span aria-hidden="true">📅</span> Adicionar à agenda
+            </button>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Fase 3 (Nacional)</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 20 de dezembro de 2026</p>
+          </article>
+
+          <article class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-header">
+              <h2 class="timeline-title">Resultado Final & Premiação</h2>
+              <span class="timeline-badge badge-breve">🔒 Em breve</span>
+            </div>
+            <p class="timeline-date"><span aria-hidden="true">🗓️</span> 15 de janeiro de 2027</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="alerts-card" aria-labelledby="titulo-alertas">
+        <div class="alerts-header">
+          <span aria-hidden="true">🔔</span>
+          <h2 id="titulo-alertas" class="alertas-title">Configuração de Alertas Rápidos</h2>
+        </div>
+        <p class="alerts-sub">Sem necessidade de cadastro ou e-mail. Suas preferências ficam salvas no navegador.</p>
+        <label class="checkbox-row" for="chk-alertas-todos">
+          <input type="checkbox" id="chk-alertas-todos" class="switch-input" onchange="salvarAlertaGeral(this.checked)">
+          <span>Ativar lembretes no celular para todas as fases</span>
+        </label>
+      </section>
+
+      <div class="conexao-box">
+        <p><strong><span aria-hidden="true">💡</span> Não sabe sua categoria ou o que estudar?</strong></p>
+        <div class="alertas-actions">
+          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-primary btn-compact">
+            🎯 Fazer Quiz Diagnóstico (Telas 06-12)
+          </a>
+          <a href="../tela-03-checklist/index.html" class="btn-secondary btn-compact">
+            📋 Abrir Trilha de Estudos & Checklist (Tela 03)
+          </a>
+        </div>
+      </div>
+
+      <footer class="cal-footer">
+        <p><span aria-hidden="true">🕒</span> Todos os prazos seguem o Horário Oficial de Brasília.</p>
+        <div class="cal-footer-links">
+          <a href="../tela-12-comunidade-extensao/index.html">
+            <span aria-hidden="true">⚠️</span>&nbsp;Reportar data divergente ou erro
+          </a>
+          <a href="https://olimpiada.ic.unicamp.br/calendario/datas_importantes" target="_blank" rel="noopener noreferrer"
+             aria-label="Calendário oficial no site da UNICAMP (abre em nova aba)">
+            Site Oficial OBI <span aria-hidden="true">&nearr;</span>
+          </a>
+        </div>
+      </footer>
+
+    </div>
+
+  </main>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>
