@@ -412,6 +412,32 @@
       color: #ffffff;
     }
 
+    body.high-contrast .progress-track-custom {
+      background-color: #27272a;
+      border: 1px solid #ffffff;
+    }
+
+    body.high-contrast .progress-fill-custom {
+      background: #facc15;
+    }
+
+    body.high-contrast .progress-stat,
+    body.high-contrast .cat-subdesc {
+      color: #facc15;
+    }
+
+    body.high-contrast .btn-pill {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1.5px solid #ffffff;
+    }
+
+    body.high-contrast .btn-pill:hover {
+      background-color: #facc15;
+      color: #000000;
+      border-color: #facc15;
+    }
+
     body.high-contrast .btn-reset-progress {
       background-color: #000000;
       color: #fca5a5;

@@ -339,5 +339,17 @@
       color: #fca5a5;
     }
 
+    body.high-contrast .btn-outline-primaria {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    body.high-contrast .btn-outline-primaria:hover {
+      background-color: #facc15;
+      color: #000000;
+      border-color: #facc15;
+    }
+
 /* Classes para substituição de estilos inline */
 .btn-outline-primaria { border-color: var(--cor-primaria); color: var(--cor-primaria); }

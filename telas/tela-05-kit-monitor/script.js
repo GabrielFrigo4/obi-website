@@ -42,6 +42,7 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
 
     function exibirMensagem(idElemento, texto) {
       var elemento = document.getElementById(idElemento);
+      if (!elemento) return;
       elemento.textContent = '';
       texto.split(/(https?:\/\/[^\s]+)/g).forEach(function (parte) {
         if (/^https?:\/\//.test(parte)) {
@@ -95,6 +96,7 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
 
     function mostrarStatus(chave, mensagem, ehErro) {
       var status = document.getElementById('status-' + chave);
+      if (!status) return;
       status.textContent = mensagem;
       status.classList.toggle('erro', !!ehErro);
       clearTimeout(temporizadores[chave]);
@@ -168,3 +170,12 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
         botao.addEventListener('click', function () { aoClicarEmCopiar(botao); });
       });
     });
+
+    if (typeof window !== 'undefined') {
+      window.montarMensagemAviso = montarMensagemAviso;
+      window.montarMensagemTreino = montarMensagemTreino;
+      window.montarMensagemGuia = montarMensagemGuia;
+      window.aoClicarEmCopiar = aoClicarEmCopiar;
+      window.exibirMensagem = exibirMensagem;
+      window.atualizarMensagens = atualizarMensagens;
+    }

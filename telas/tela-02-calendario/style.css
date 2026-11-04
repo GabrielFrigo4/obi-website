@@ -329,6 +329,42 @@
       border: 1px solid #ffffff;
     }
 
+    body.high-contrast .badge-concluido {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    body.high-contrast .badge-andamento {
+      background-color: #000000;
+      color: #facc15;
+      border: 1px solid #facc15;
+    }
+
+    body.high-contrast .badge-aberta {
+      background-color: #000000;
+      color: #facc15;
+      border: 2px solid #facc15;
+    }
+
+    body.high-contrast .badge-breve {
+      background-color: #000000;
+      color: #cbd5e1;
+      border: 1px solid #64748b;
+    }
+
+    body.high-contrast .btn-agenda {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1.5px solid #ffffff;
+    }
+
+    body.high-contrast .btn-agenda:hover {
+      background-color: #facc15;
+      color: #000000;
+      border-color: #facc15;
+    }
+
     body.high-contrast .cal-footer a,
     body.high-contrast .cal-header .btn-back {
       color: #ffffff;

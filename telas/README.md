@@ -14,6 +14,11 @@ O diretório `obi-website/telas/` abriga os módulos de tela independentes do pr
 obi-website/telas/
 ├── README.md                      # Este catálogo técnico e guia de contratos de dados
 ├── template-base/                 # [PADRÃO OURO] Molde normativo para criação de novas telas
+├── tela-01-home/                  # Início: Painel da Jornada & Atalhos Rápidos
+├── tela-02-calendario/            # Calendário: Datas Oficiais, Lembretes & Exportação .ics
+├── tela-03-checklist/             # Trilha de Estudos: Checklist por Nível & Prática Online
+├── tela-04-editais/               # Editais Descomplicados: Linguagem Simples & Materiais Permitidos
+├── tela-05-kit-monitor/           # Kit do Monitor: Avisos Prontos para Compartilhamento
 ├── tela-06-quiz-pergunta-1/       # Pergunta 1: Ano Escolar (Barra em 33%)
 ├── tela-07-quiz-logica/           # Pergunta 2: Lógica vs. Código (Barra em 66%)
 ├── tela-08-quiz-apoio/            # Pergunta 3: Mapeamento de Apoio Escolar (Barra em 100%)
@@ -67,6 +72,9 @@ Para garantir os princípios de **Design Ético** e respeito estrito à **LGPD**
 | `obi_alto_contraste` | `String` (boolean) | `'true'` \| `'false'` | Flag que ativa a classe CSS `.high-contrast` no elemento `<body>`, invertendo a paleta para conformidade WCAG AAA. |
 | `obi_quiz_respostas` | `String` (JSON) | Objeto serializado (ver seção 3.2) | Repositório central de todas as respostas do diagnóstico e dados cadastrais da solicitação escolar. |
 | `obi_protocolo_atual` | `String` | `'OBI-UFABC-XXXX'` (ex.: `'OBI-UFABC-4921'`) | Código formal único gerado por `obterProtocolo()` para rastreio da solicitação e impressão do comprovante. |
+| `obi_lembrete_48h` | `String` (boolean) | `'true'` \| `'false'` | Lembrete local no navegador para avisos com 48h de antecedência da prova (Tela 02). |
+| `obi_lembrete_todas_fases` | `String` (boolean) | `'true'` \| `'false'` | Configuração local de alertas para todas as fases da OBI (Tela 02). |
+| `obi_checklist_{categoria}` | `String` (JSON) | Objeto mapeando índices de tópicos (ex.: `{"0":true,"1":true}`) | Armazena o progresso de estudos assinalado pelo competidor por categoria (Tela 03). |
 
 ---
 

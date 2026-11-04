@@ -167,7 +167,22 @@ const TOPICOS_CATEGORIAS = {
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      // 1. Vincular abas de categoria
+      const botoesCategoria = document.querySelectorAll('.cat-tab[data-categoria]');
+      botoesCategoria.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const cat = btn.getAttribute('data-categoria');
+          selecionarCategoria(cat);
+        });
+      });
 
+      // 2. Vincular botão de limpar progresso
+      const btnLimpar = document.getElementById('btn-limpar-progresso');
+      if (btnLimpar) {
+        btnLimpar.addEventListener('click', limparProgressoAtual);
+      }
+
+      // 3. Checar parâmetros de URL e respostas salvas
       const urlParams = new URLSearchParams(window.location.search);
       const catParam = urlParams.get('cat');
 
@@ -195,3 +210,11 @@ const TOPICOS_CATEGORIAS = {
 
       selecionarCategoria('prog_jr');
     });
+
+    // Exportações globais limpas para ambiente de testes e compatibilidade
+    if (typeof window !== 'undefined') {
+      window.selecionarCategoria = selecionarCategoria;
+      window.limparProgressoAtual = limparProgressoAtual;
+      window.renderizarChecklist = renderizarChecklist;
+      window.atualizarBarraProgresso = atualizarBarraProgresso;
+    }

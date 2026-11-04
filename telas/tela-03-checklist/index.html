@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,13 +15,13 @@
   <main class="mobile-viewport">
 
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
@@ -46,19 +46,19 @@
 
       <div class="cat-tabs-scroll">
         <div class="cat-tabs" role="tablist" aria-label="Categorias da OBI">
-          <button type="button" class="cat-tab" id="cat-iniciacao" role="tab" onclick="selecionarCategoria('iniciacao')">
+          <button type="button" class="cat-tab" id="cat-iniciacao" role="tab" data-categoria="iniciacao">
             Iniciação
           </button>
-          <button type="button" class="cat-tab active" id="cat-prog_jr" role="tab" onclick="selecionarCategoria('prog_jr')">
+          <button type="button" class="cat-tab active" id="cat-prog_jr" role="tab" data-categoria="prog_jr">
             Prog. Júnior
           </button>
-          <button type="button" class="cat-tab" id="cat-nivel_1" role="tab" onclick="selecionarCategoria('nivel_1')">
+          <button type="button" class="cat-tab" id="cat-nivel_1" role="tab" data-categoria="nivel_1">
             Nível 1
           </button>
-          <button type="button" class="cat-tab" id="cat-nivel_2" role="tab" onclick="selecionarCategoria('nivel_2')">
+          <button type="button" class="cat-tab" id="cat-nivel_2" role="tab" data-categoria="nivel_2">
             Nível 2
           </button>
-          <button type="button" class="cat-tab" id="cat-senior" role="tab" onclick="selecionarCategoria('senior')">
+          <button type="button" class="cat-tab" id="cat-senior" role="tab" data-categoria="senior">
             Sênior
           </button>
         </div>
@@ -132,7 +132,7 @@
         </div>
       </section>
 
-      <button type="button" class="btn-reset-progress" onclick="limparProgressoAtual()">
+      <button type="button" class="btn-reset-progress" id="btn-limpar-progresso">
         <span aria-hidden="true">🗑️</span> Limpar o meu progresso local
       </button>
 

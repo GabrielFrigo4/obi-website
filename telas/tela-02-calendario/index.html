@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,13 +15,13 @@
   <main class="mobile-viewport">
 
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 
@@ -45,10 +45,10 @@
       </header>
 
       <div class="mod-tabs" role="tablist" aria-label="Modalidades da OBI">
-        <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" aria-selected="false" onclick="alternarModalidade('iniciacao')">
+        <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" aria-selected="false" data-modalidade="iniciacao">
           Iniciação (Fundamental)
         </button>
-        <button type="button" class="mod-tab active" id="tab-programacao" role="tab" aria-selected="true" onclick="alternarModalidade('programacao')">
+        <button type="button" class="mod-tab active" id="tab-programacao" role="tab" aria-selected="true" data-modalidade="programacao">
           Programação (Médio/Sup.)
         </button>
       </div>
@@ -72,7 +72,7 @@
               <span class="timeline-badge badge-andamento">● Em andamento</span>
             </div>
             <p class="timeline-date"><span aria-hidden="true">🗓️</span> 16 de abril a 10 de novembro</p>
-            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Treinos OBI UFABC', '2026-04-16', '2026-11-10', 'Oficinas e treinos gratuitos de lógica e programação da Central OBI UFABC')">
+            <button type="button" class="btn-agenda" data-agenda-titulo="Treinos OBI UFABC" data-agenda-inicio="2026-04-16" data-agenda-fim="2026-11-10" data-agenda-desc="Oficinas e treinos gratuitos de lógica e programação da Central OBI UFABC">
               <span aria-hidden="true">📅</span> Adicionar à agenda
             </button>
           </article>
@@ -86,7 +86,7 @@
             <p class="timeline-date" id="data-fase1-texto">
               <span aria-hidden="true">📅</span> 15 de novembro de 2026 (domingo)
             </p>
-            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 1 - Prova OBI 2026', '2026-11-15', '2026-11-15', 'Aplicação oficial da Fase 1 da OBI')">
+            <button type="button" class="btn-agenda" data-agenda-titulo="Fase 1 - Prova OBI 2026" data-agenda-inicio="2026-11-15" data-agenda-fim="2026-11-15" data-agenda-desc="Aplicação oficial da Fase 1 da OBI">
               <span aria-hidden="true">📅</span> Adicionar à agenda
             </button>
 
@@ -94,7 +94,7 @@
               <label for="switch-aviso-48h" class="switch-label">
                 Avisar 48h antes (Lembrete no celular)
               </label>
-              <input type="checkbox" id="switch-aviso-48h" class="switch-input" onchange="salvarAvisoLembrete(this.checked)">
+              <input type="checkbox" id="switch-aviso-48h" class="switch-input">
             </div>
           </article>
 
@@ -105,7 +105,7 @@
               <span class="timeline-badge badge-breve">🔒 Em breve</span>
             </div>
             <p class="timeline-date"><span aria-hidden="true">🗓️</span> 05 de dezembro de 2026</p>
-            <button type="button" class="btn-agenda" onclick="adicionarEventoAgenda('Fase 2 - Prova Estadual OBI 2026', '2026-12-05', '2026-12-05', 'Fase 2 da OBI')">
+            <button type="button" class="btn-agenda" data-agenda-titulo="Fase 2 - Prova Estadual OBI 2026" data-agenda-inicio="2026-12-05" data-agenda-fim="2026-12-05" data-agenda-desc="Fase 2 da OBI">
               <span aria-hidden="true">📅</span> Adicionar à agenda
             </button>
           </article>
@@ -137,7 +137,7 @@
         </div>
         <p class="alerts-sub">Sem necessidade de cadastro ou e-mail. Suas preferências ficam salvas no navegador.</p>
         <label class="checkbox-row" for="chk-alertas-todos">
-          <input type="checkbox" id="chk-alertas-todos" class="switch-input" onchange="salvarAlertaGeral(this.checked)">
+          <input type="checkbox" id="chk-alertas-todos" class="switch-input">
           <span>Ativar lembretes no celular para todas as fases</span>
         </label>
       </section>

@@ -266,6 +266,20 @@
       border: 2px solid #ffffff;
     }
 
+    body.high-contrast .btn-edital-quiz,
+    body.high-contrast .btn-edital-checklist {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    body.high-contrast .btn-edital-quiz:hover,
+    body.high-contrast .btn-edital-checklist:hover {
+      background-color: #facc15;
+      color: #000000;
+      border-color: #facc15;
+    }
+
 /* Classes para substituição de estilos inline */
 .btn-edital-quiz { margin-top: 14px; min-height: 48px; font-size: 0.85rem; border-color: var(--cor-primaria); color: var(--cor-primaria); }
 .btn-edital-checklist { margin-top: 14px; min-height: 48px; font-size: 0.85rem; }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,13 +15,13 @@
   <main class="mobile-viewport">
 
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
-      <a href="../../index.html" class="brand-link">
+      <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <span>Central OBI</span>
       </a>
-      <div class="accessibility-controls">
-        <button id="btn-zoom-out" class="btn-a11y" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" aria-label="Ativar alto contraste">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
+        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
       </div>
     </header>
 

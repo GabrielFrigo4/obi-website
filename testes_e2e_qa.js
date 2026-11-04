@@ -1,7 +1,7 @@
 /**
  * ==============================================================================
- * Central OBI UFABC · Suíte de Testes Automatizados End-to-End e QA
- * Validação profunda de lógica, acessibilidade, localStorage e listeners.
+ * Central OBI UFABC · Suíte Completa de Testes Automatizados E2E e QA
+ * Validação rigorosa de lógica, acessibilidade, localStorage e listeners (Telas 01 a 12).
  * ==============================================================================
  */
 
@@ -63,6 +63,7 @@ function carregarTela(caminhoHtml, scriptRelativo, localStorageInicial = {}) {
   };
   window.__printed = false;
   window.print = () => { window.__printed = true; };
+  window.confirm = () => true;
 
   // Inicializar localStorage com valores prévios
   if (localStorageInicial) {
@@ -93,6 +94,7 @@ function carregarTela(caminhoHtml, scriptRelativo, localStorageInicial = {}) {
 async function executarTodosOsTestes() {
   console.log('\n======================================================');
   console.log(' INICIANDO BATERIA DE TESTES DE QA E2E · CENTRAL OBI');
+  console.log(' Cobertura: Hub Central, Template Base e Telas 01 a 12');
   console.log('======================================================\n');
 
   // -----------------------------------------------------------------------------
@@ -141,11 +143,19 @@ async function executarTodosOsTestes() {
     let escala = parseFloat(window.localStorage.getItem('obi_escala_fonte'));
     assert.strictEqual(escala > 1.0, true);
 
-    // Reduzir até o limite
     for (let i = 0; i < 10; i++) btnOut.click();
     escala = parseFloat(window.localStorage.getItem('obi_escala_fonte'));
     assert.strictEqual(escala, 0.85);
     assert.strictEqual(btnOut.getAttribute('aria-disabled'), 'true');
+  });
+
+  it('Hub Central: Todas as 12 telas possuem links clicáveis e funcionais no grid', () => {
+    const { window } = carregarTela('index.html', 'assets/js/hub.js');
+    for (let i = 1; i <= 12; i++) {
+      const numStr = i < 10 ? '0' + i : '' + i;
+      const link = window.document.querySelector(`a[href*="tela-${numStr}"]`);
+      assert.strictEqual(Boolean(link), true, `Link da Tela ${numStr} deve existir no Hub Central`);
+    }
   });
 
   // -----------------------------------------------------------------------------
@@ -174,9 +184,130 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 3. TELA 06 (QUIZ - PERGUNTA 1) E AUSÊNCIA DE EVENTOS DUPLICADOS
+  // 3. TELA 01 (HOME / PAINEL DA JORNADA)
   // -----------------------------------------------------------------------------
-  console.log('\n3. Tela 06 (Quiz: Pergunta 1) & Ausência de Eventos Duplicados:');
+  console.log('\n3. Tela 01 (Home / Painel da Jornada):');
+
+  it('Tela 01: Cartão agora e links de atalhos estão presentes e apontam para telas corretas', () => {
+    const { window } = carregarTela('telas/tela-01-home/index.html', 'script.js');
+    assert.strictEqual(Boolean(window.document.getElementById('titulo-agora')), true);
+
+    const linkCal = window.document.querySelector('a[href="../tela-02-calendario/index.html"]');
+    const linkChk = window.document.querySelector('a[href="../tela-03-checklist/index.html"]');
+    const linkEdital = window.document.querySelector('a[href="../tela-04-editais/index.html"]');
+    const linkQuiz = window.document.querySelector('a[href="../tela-06-quiz-pergunta-1/index.html"]');
+
+    assert.strictEqual(Boolean(linkCal), true, 'Link do Calendário deve existir na Home');
+    assert.strictEqual(Boolean(linkChk), true, 'Link do Checklist deve existir na Home');
+    assert.strictEqual(Boolean(linkEdital), true, 'Link dos Editais deve existir na Home');
+    assert.strictEqual(Boolean(linkQuiz), true, 'Link do Quiz Diagnóstico deve existir na Home');
+  });
+
+  // -----------------------------------------------------------------------------
+  // 4. TELA 02 (CALENDÁRIO OFICIAL & PRAZOS)
+  // -----------------------------------------------------------------------------
+  console.log('\n4. Tela 02 (Calendário Oficial & Prazos):');
+
+  it('Tela 02: Alternância de modalidade via abas atualiza aria-selected e texto da Fase 1', () => {
+    const { window } = carregarTela('telas/tela-02-calendario/index.html', 'script.js');
+    const tabIni = window.document.getElementById('tab-iniciacao');
+    const tabProg = window.document.getElementById('tab-programacao');
+    const textoFase1 = window.document.getElementById('data-fase1-texto');
+
+    tabIni.click();
+    assert.strictEqual(tabIni.getAttribute('aria-selected'), 'true');
+    assert.strictEqual(tabProg.getAttribute('aria-selected'), 'false');
+    assert.strictEqual(textoFase1.textContent.includes('No Papel'), true);
+
+    tabProg.click();
+    assert.strictEqual(tabProg.getAttribute('aria-selected'), 'true');
+    assert.strictEqual(tabIni.getAttribute('aria-selected'), 'false');
+    assert.strictEqual(textoFase1.textContent.includes('No Computador'), true);
+  });
+
+  it('Tela 02: Switches de lembretes persistem preferências no localStorage', () => {
+    const { window } = carregarTela('telas/tela-02-calendario/index.html', 'script.js');
+    const switch48h = window.document.getElementById('switch-aviso-48h');
+    const switchTodos = window.document.getElementById('chk-alertas-todos');
+
+    switch48h.click();
+    assert.strictEqual(window.localStorage.getItem('obi_lembrete_48h'), 'true');
+
+    switchTodos.click();
+    assert.strictEqual(window.localStorage.getItem('obi_lembrete_todas_fases'), 'true');
+  });
+
+  // -----------------------------------------------------------------------------
+  // 5. TELA 03 (TRILHA DE ESTUDOS & CHECKLIST)
+  // -----------------------------------------------------------------------------
+  console.log('\n5. Tela 03 (Trilha de Estudos & Checklist):');
+
+  it('Tela 03: Selecionar abas carrega tópicos e marcar item atualiza barra de progresso', () => {
+    const { window } = carregarTela('telas/tela-03-checklist/index.html', 'script.js');
+    const abaIni = window.document.getElementById('cat-iniciacao');
+    abaIni.click();
+
+    const lista = window.document.getElementById('lista-conteudos');
+    const itens = lista.querySelectorAll('li');
+    assert.strictEqual(itens.length > 0, true, 'Lista de conteúdos deve conter tópicos renderizados');
+
+    // Marcar primeiro checkbox
+    const primeiroInput = itens[0].querySelector('input[type="checkbox"]');
+    primeiroInput.click();
+
+    const progressBar = window.document.getElementById('progress-bar-el');
+    const valuenow = parseInt(progressBar.getAttribute('aria-valuenow'), 10);
+    assert.strictEqual(valuenow > 0, true, 'Progresso deve ser maior que 0 após marcar item');
+
+    // Limpar progresso
+    const btnLimpar = window.document.getElementById('btn-limpar-progresso');
+    btnLimpar.click();
+
+    const valuenowAposLimpar = parseInt(progressBar.getAttribute('aria-valuenow'), 10);
+    assert.strictEqual(valuenowAposLimpar, 0, 'Progresso deve zerar após confirmação de limpeza');
+  });
+
+  // -----------------------------------------------------------------------------
+  // 6. TELA 04 (EDITAIS DESCOMPLICADOS)
+  // -----------------------------------------------------------------------------
+  console.log('\n6. Tela 04 (Editais Descomplicados):');
+
+  it('Tela 04: Estrutura semântica e links de ação rápida estão íntegros', () => {
+    const { window } = carregarTela('telas/tela-04-editais/index.html', 'script.js');
+    const linkQuiz = window.document.querySelector('.btn-edital-quiz');
+    const linkChecklist = window.document.querySelector('.btn-edital-checklist');
+
+    assert.strictEqual(linkQuiz.getAttribute('href'), '../tela-06-quiz-pergunta-1/index.html');
+    assert.strictEqual(linkChecklist.getAttribute('href'), '../tela-03-checklist/index.html');
+  });
+
+  // -----------------------------------------------------------------------------
+  // 7. TELA 05 (KIT DO MONITOR / PROFESSOR)
+  // -----------------------------------------------------------------------------
+  console.log('\n7. Tela 05 (Kit do Monitor / Professor):');
+
+  await itAsync('Tela 05: Validação exige preenchimento de data antes de copiar aviso', async () => {
+    const { window } = carregarTela('telas/tela-05-kit-monitor/index.html', 'script.js');
+    const btnCopiarAviso = window.document.querySelector('button[data-copiar="aviso"]');
+    const campoData = window.document.getElementById('campo-data-fase1');
+
+    btnCopiarAviso.click();
+    assert.strictEqual(campoData.getAttribute('aria-invalid'), 'true');
+
+    // Preenche a data e tenta novamente
+    campoData.value = '15/11 (domingo)';
+    campoData.dispatchEvent(new window.Event('input'));
+    btnCopiarAviso.click();
+
+    await new Promise(resolve => setTimeout(resolve, 50));
+    assert.strictEqual(window.__clipboardContent !== null, true);
+    assert.strictEqual(window.__clipboardContent.includes('15/11 (domingo)'), true);
+  });
+
+  // -----------------------------------------------------------------------------
+  // 8. TELA 06 (QUIZ - PERGUNTA 1) E AUSÊNCIA DE EVENTOS DUPLICADOS
+  // -----------------------------------------------------------------------------
+  console.log('\n8. Tela 06 (Quiz: Pergunta 1) & Ausência de Eventos Duplicados:');
 
   it('Avançar sem selecionar opção exibe aviso e devolve foco ao primeiro campo', () => {
     const { window } = carregarTela('telas/tela-06-quiz-pergunta-1/index.html', 'script.js');
@@ -194,7 +325,6 @@ async function executarTodosOsTestes() {
     let changeCount = 0;
     input.addEventListener('change', () => { changeCount++; });
 
-    // Clica no strong dentro do label
     strong.click();
 
     assert.strictEqual(changeCount, 1, `Esperava 1 evento change, mas foram disparados ${changeCount}`);
@@ -206,9 +336,9 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 4. TELA 07 (QUIZ - PERGUNTA 2)
+  // 9. TELA 07 (QUIZ - PERGUNTA 2)
   // -----------------------------------------------------------------------------
-  console.log('\n4. Tela 07 (Quiz: Pergunta 2):');
+  console.log('\n9. Tela 07 (Quiz: Pergunta 2):');
 
   it('Salva preferência de estudo (logica / codigo) de forma consistente', () => {
     const { window } = carregarTela('telas/tela-07-quiz-logica/index.html', 'script.js');
@@ -224,9 +354,9 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 5. TELA 08 (QUIZ - PERGUNTA 3) E CÁLCULO DE MODALIDADE
+  // 10. TELA 08 (QUIZ - PERGUNTA 3) E CÁLCULO DE MODALIDADE
   // -----------------------------------------------------------------------------
-  console.log('\n5. Tela 08 (Quiz: Pergunta 3) e Cálculo de Modalidade:');
+  console.log('\n10. Tela 08 (Quiz: Pergunta 3) e Mapeamento de Apoio:');
 
   it('Salva escola_apoio e valida valores compatíveis com calcularModalidadeOBI', () => {
     const { window } = carregarTela('telas/tela-08-quiz-apoio/index.html', 'script.js');
@@ -238,9 +368,9 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 6. TELA 09 (RESULTADO DO NÍVEL) · TESTES DE PRECISÃO DE IHC
+  // 11. TELA 09 (RESULTADO DO NÍVEL) · TESTES DE PRECISÃO DE IHC
   // -----------------------------------------------------------------------------
-  console.log('\n6. Tela 09 (Resultado do Nível):');
+  console.log('\n11. Tela 09 (Resultado do Nível):');
 
   it('Cenário A: Fundamental 1 + Lógica + Sem Cadastro -> Iniciação 1 e precisa de apoio', () => {
     const respostas = {
@@ -293,9 +423,9 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 7. TELA 10 (SOLICITAÇÃO DE APOIO) E TELA 11 (CONFIRMAÇÃO)
+  // 12. TELAS 10 E 11 (SOLICITAÇÃO DE APOIO E CONFIRMAÇÃO DE POLO)
   // -----------------------------------------------------------------------------
-  console.log('\n7. Telas 10 e 11 (Solicitação e Confirmação de Polo):');
+  console.log('\n12. Telas 10 e 11 (Solicitação e Confirmação de Polo):');
 
   await itAsync('Tela 10: Cópia da mensagem para o professor copia texto com sucesso', async () => {
     const { window } = carregarTela('telas/tela-10-solicitacao-escola/index.html', 'script.js');
@@ -335,7 +465,6 @@ async function executarTodosOsTestes() {
     assert.strictEqual(parsed['solicitacao_estudante'], 'Gabriel Souza');
     assert.strictEqual(parsed['solicitacao_escola'], 'EE Senador Fláquer');
 
-    // Agora carregar Tela 11 com o storage preenchido
     const storage11 = {
       obi_quiz_respostas: rawRespostas,
       obi_protocolo_atual: protocoloGerado
@@ -357,9 +486,9 @@ async function executarTodosOsTestes() {
   });
 
   // -----------------------------------------------------------------------------
-  // 8. TELA 12 (HUB COMUNITÁRIO & EXTENSÃO)
+  // 13. TELA 12 (HUB COMUNITÁRIO & EXTENSÃO)
   // -----------------------------------------------------------------------------
-  console.log('\n8. Tela 12 (Hub Comunitário & Extensão):');
+  console.log('\n13. Tela 12 (Hub Comunitário & Extensão):');
 
   it('FAQ itens sincronizam aria-expanded nos resumos ao alternar', () => {
     const { window } = carregarTela('telas/tela-12-comunidade-extensao/index.html', 'script.js');
