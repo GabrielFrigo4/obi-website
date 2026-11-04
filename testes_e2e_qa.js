@@ -474,6 +474,8 @@ async function executarTodosOsTestes() {
     win10.document.getElementById('cidade-escola').value = 'Santo André';
     win10.document.getElementById('contato-retorno').value = '(11) 97777-6666';
 
+    assert.strictEqual(win10.validarFormulario(), false, 'Série deve ser obrigatória');
+    win10.document.getElementById('serie-estudante').value = '7º ano do Ensino Fundamental';
     win10.enviarSolicitacao({ preventDefault: () => {} });
 
     const rawRespostas = win10.localStorage.getItem('obi_quiz_respostas');
@@ -494,6 +496,7 @@ async function executarTodosOsTestes() {
     const { window: win11 } = carregarTela('telas/tela-11-confirmacao-polo/index.html', 'script.js', storage11);
 
     assert.strictEqual(win11.document.getElementById('protocolo-display').textContent, protocoloGerado);
+    assert.strictEqual(win11.document.getElementById('resumo-serie').textContent, '7º ano do Ensino Fundamental');
     assert.strictEqual(win11.document.getElementById('resumo-estudante').textContent, 'Gabriel Souza');
     assert.strictEqual(win11.document.getElementById('resumo-escola').textContent, 'EE Senador Fláquer');
     assert.strictEqual(win11.document.getElementById('resumo-cidade').textContent, 'Santo André — Polo UFABC');

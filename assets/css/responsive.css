@@ -1,0 +1,275 @@
+/* Adaptação ao espaço disponível sem alterar as preferências de fonte. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter: stable; }
+@media screen {
+  body { --margem-app: 0px; padding: 0; }
+  .mobile-viewport {
+    --largura-app: 100%;
+    width: 100%;
+    max-width: var(--largura-app);
+    min-width: 0;
+    min-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+  .app-bottom-nav {
+    width: min(var(--largura-app), calc(100% - var(--margem-app)));
+    margin-top: 0;
+  }
+  .home-intro { min-height: calc(100svh - var(--altura-menu-inferior, 80px)); }
+  .screen-content { min-width: 0; }
+  :is(input, select, textarea, button) { max-width: 100%; }
+  :is(.screen-title, .screen-subtitle, .protocol-code, .result-category-name) { overflow-wrap: anywhere; }
+  .bottom-nav-item { min-width: 0; }
+  .bottom-nav-item .nav-text { white-space: normal; overflow-wrap: anywhere; }
+  .screen-actions { flex-shrink: 0; }
+}
+@media screen and (min-width: 640px) {
+  body { --margem-app: 32px; padding: 16px; }
+  .mobile-viewport {
+    --largura-app: 1120px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+    min-height: calc(100dvh - 32px);
+  }
+  .layout-quiz { --largura-app: 760px; }
+  .layout-form { --largura-app: 900px; }
+  .accessibility-bar { padding: 16px 28px; }
+  .accessibility-controls { flex-wrap: nowrap; }
+  .app-bottom-nav { padding-inline: 24px; }
+  .bottom-nav-item { flex-direction: row; gap: 9px; font-size: .875rem; }
+  .bottom-nav-item .nav-icon { margin-bottom: 0; }
+  .screen-content { padding: 32px; }
+  .layout-quiz .screen-content { width: 100%; max-width: 640px; align-self: center; }
+  .layout-form .screen-content { width: 100%; max-width: 760px; align-self: center; }
+  :is(.page-header, .cal-header, .chk-header, .central-header) { padding: 16px 28px; }
+  .central-tabs { margin-inline: 32px; }
+  .home-intro { min-height: calc(100svh - var(--altura-menu-inferior, 80px) - 17px); }
+  .home-header { padding: 32px 40px 20px; }
+  .home-content { padding: 36px; gap: 32px; }
+  .home-subtitle { max-width: 36rem; margin-inline: auto; }
+  .atalhos-lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .atalhos-lista li { display: flex; min-width: 0; }
+  .atalho-link { width: 100%; min-height: 112px; padding: 22px 20px; }
+  .banner-nivel-card { padding: 24px; }
+  .banner-nivel-card .btn-primary { width: auto; align-self: flex-start; padding-inline: 28px; }
+  .kit-lista { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 20px; }
+  .materials-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cat-tabs { display: flex; flex-wrap: wrap; }
+  .cat-tab { flex: 1; }
+}
+@media screen and (min-width: 960px) {
+  .hero-copy {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    align-content: center;
+    align-items: center;
+    column-gap: 48px;
+    text-align: left;
+    max-width: 850px;
+    width: 100%;
+    align-self: center;
+  }
+  .hero-symbol { grid-row: 1 / 3; width: 200px; height: 200px; margin: 0; }
+  .home-title { font-size: 2.75rem; }
+  .home-subtitle { margin: 16px 0 0; }
+  .banner-nivel-card { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; }
+  .banner-nivel-info { max-width: 36rem; }
+  .banner-nivel-card .btn-primary { flex-shrink: 0; align-self: center; }
+  .timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-left: 0; gap: 20px; }
+  .timeline::before, .timeline-dot { display: none; }
+}
+@media screen and (max-width: 359px) {
+  .accessibility-bar { padding: 10px; gap: 8px; }
+  .screen-content, .home-content { padding-inline: 12px; }
+  :is(.cal-header, .chk-header, .central-header) { grid-template-columns: auto minmax(0, 1fr); }
+  :is(.header-spacer, .central-header-spacer) { display: none; }
+  .protocol-code-row { flex-wrap: wrap; }
+}
+/* Organização de desktop: área de trabalho ampla e leitura em blocos. */
+@media screen and (min-width: 960px) {
+  body { --margem-app: 48px; padding: 24px; }
+  .mobile-viewport { --largura-app: 1360px; border-radius: 20px; min-height: calc(100dvh - 48px); }
+  .layout-quiz { --largura-app: 1000px; }
+  .layout-form { --largura-app: 1120px; }
+  .accessibility-bar { padding: 20px 40px; }
+  .screen-content { padding: 40px; }
+  .layout-quiz .screen-content { max-width: 760px; }
+  .layout-form .screen-content { max-width: 880px; }
+  .home-intro { min-height: calc(100svh - var(--altura-menu-inferior, 80px) - 25px); }
+  .hero-copy { max-width: 1040px; grid-template-columns: minmax(200px, .7fr) minmax(0, 1.3fr); gap: 24px 64px; }
+  .hero-symbol { width: clamp(200px, 20vw, 280px); height: auto; justify-self: center; }
+  .home-title { font-size: clamp(2.5rem, 4vw, 3.75rem); letter-spacing: -.025em; }
+  .home-subtitle { font-size: 1.125rem; line-height: 1.7; margin-top: 0; }
+  .home-content { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 48px 40px; align-items: start; }
+  .banner-nivel-card { flex-direction: column; align-items: stretch; gap: 20px; padding: 28px; }
+  .banner-nivel-title { font-size: 1.5rem; }
+  .banner-nivel-desc { font-size: 1rem; line-height: 1.65; }
+  .banner-nivel-card .btn-primary { align-self: stretch; width: 100%; white-space: normal; }
+  .home-content > nav { min-width: 0; }
+  .home-section-title { font-size: 1.5rem; margin-bottom: 24px; }
+  .atalhos-lista { gap: 18px; }
+  .atalho-link { min-height: 142px; padding: 24px; gap: 16px; }
+  .atalho-texto { font-size: 1.1rem; }
+  .atalho-subtexto { font-size: .9rem; }
+  .home-footer { grid-column: 1 / -1; margin-top: 8px; padding-top: 32px; }
+  .app-bottom-nav { padding: 10px 32px calc(10px + env(safe-area-inset-bottom, 0px)); gap: 12px; }
+  .bottom-nav-item { min-height: 52px; padding: 12px 18px; font-size: 1rem; border-radius: 12px; }
+  .bottom-nav-item.active { box-shadow: inset 0 -3px var(--cor-primaria); }
+  .screen-actions { flex-direction: row; flex-wrap: wrap; gap: 14px; }
+  .screen-actions > :is(a, button) { width: auto; flex: 1 1 220px; }
+  :is(.btn-primary, .btn-secondary, .btn-agenda, .btn-print, .btn-copiar) { min-height: 52px; font-size: 1rem; padding: 14px 22px; }
+  :is(.btn-primary, .btn-secondary):focus-visible { outline-offset: 4px; }
+  .timeline-item { padding: 24px; }
+}
+@media screen and (max-width: 639px) {
+  .home-header { padding-inline: 24px; }
+  .hero-copy { padding-block: 24px 32px; }
+  .home-title { font-size: 2rem; line-height: 1.2; }
+  .home-subtitle { line-height: 1.65; }
+  .home-content { padding: 28px 16px; gap: 28px; }
+  .banner-nivel-card { padding: 22px 18px; gap: 16px; }
+  .atalho-link { padding: 19px 16px; min-height: 96px; }
+  .atalho-info { gap: 6px; }
+  .screen-content { padding-top: 24px; }
+  .app-bottom-nav { padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)); gap: 4px; }
+  .bottom-nav-item { border-radius: 10px; padding: 7px 2px; min-height: 56px; }
+  .bottom-nav-item.active { background: var(--cor-primaria-fundo); }
+  .bottom-nav-item .nav-text { line-height: 1.25; }
+  :is(.btn-primary, .btn-secondary) { min-height: 52px; }
+  .central-tabs { margin-inline: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atalho-link:hover { transform: none; }
+}
+/* Desktop usa uma estrutura de aplicação, sem moldura ou limites de celular. */
+@media screen and (min-width: 960px) {
+  body { --largura-menu: 208px; padding: 0 0 0 var(--largura-menu); display: block; }
+  .mobile-viewport, .mobile-viewport.layout-quiz, .mobile-viewport.layout-form {
+    --largura-app: 100%;
+    width: 100%; max-width: none; min-height: 100dvh;
+    border: 0; border-radius: 0; box-shadow: none; padding-bottom: 0;
+  }
+  .screen-content, .layout-quiz .screen-content, .layout-form .screen-content {
+    width: 100%; max-width: none; align-self: stretch;
+    padding: 36px clamp(24px, 3vw, 64px);
+  }
+  .accessibility-bar { padding: 20px clamp(24px, 3vw, 64px); }
+  .app-bottom-nav {
+    position: fixed; inset: 0 auto 0 0; transform: none;
+    width: var(--largura-menu); height: 100dvh;
+    flex-direction: column; align-items: stretch; justify-content: flex-start;
+    gap: 8px; padding: 32px 16px; overflow-y: auto;
+    border-top: 0; border-right: 1px solid var(--cor-borda); box-shadow: none;
+  }
+  .app-bottom-nav::before {
+    content: 'Navegação'; color: var(--cor-texto-secundario);
+    font-size: .8rem; font-weight: 700; letter-spacing: .04em;
+    padding: 8px 14px 20px;
+  }
+  .bottom-nav-item { flex: 0 0 auto; justify-content: flex-start; padding: 15px 14px; gap: 12px; min-height: 56px; text-align: left; }
+  .bottom-nav-item.active { box-shadow: inset 3px 0 var(--cor-primaria); }
+  .bottom-nav-item .nav-icon { flex-shrink: 0; }
+  .home-intro { min-height: 100svh; }
+  .hero-copy { max-width: none; grid-template-columns: minmax(180px, .8fr) minmax(0, 1.4fr); }
+  .home-content { grid-template-columns: minmax(0, 1fr); }
+  .home-header { padding-inline: clamp(24px, 4vw, 80px); }
+  .layout-quiz .options-group { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .layout-quiz .options-group legend { grid-column: 1 / -1; }
+  .layout-quiz .option-card { height: 100%; min-height: 100px; }
+  .layout-quiz .screen-actions { justify-content: flex-end; margin-top: 28px; }
+  .screen-actions > :is(a, button) { flex: 0 1 auto; min-width: 180px; }
+  .layout-quiz .progress-container { max-width: none; }
+  #form-apoio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+  #form-apoio > :not(.form-group) { grid-column: 1 / -1; }
+  #form-apoio .form-group { min-width: 0; }
+  .kit-lista { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .materials-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .timeline { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  :is(.central-card, .action-card, .whatsapp-card, .protocol-card) { padding: 28px; }
+  .central-tabs { margin-inline: clamp(24px, 3vw, 64px); }
+}
+@media screen and (min-width: 1440px) {
+  .atalhos-lista { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .home-content { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Quiz e áreas do aplicativo são blocos independentes, em sequência. */
+@media screen {
+  .home-content > nav[aria-labelledby="titulo-atalhos"] {
+    width: 100%;
+    padding-top: 12px;
+  }
+  .home-content > .banner-nivel-card {
+    width: 100%;
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-primaria);
+    background: var(--cor-card);
+    margin: 0;
+  }
+}
+@media screen and (min-width: 640px) {
+  .home-content { row-gap: 36px; }
+  .home-content > .banner-nivel-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 280px);
+    align-items: center;
+    gap: 32px;
+    padding: 28px 32px;
+  }
+  .banner-nivel-info { max-width: 48rem; }
+  .banner-nivel-title { font-size: 1.5rem; }
+  .banner-nivel-desc { line-height: 1.6; }
+  .home-content > .banner-nivel-card .btn-primary {
+    width: 100%;
+    align-self: center;
+    white-space: normal;
+    padding: 14px 20px;
+    min-height: 52px;
+  }
+}
+@media screen and (min-width: 960px) {
+  .home-content { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
+  .home-content > nav[aria-labelledby="titulo-atalhos"] { padding-top: 20px; border-top: 1px solid var(--cor-borda); }
+}
+/* No desktop, apresentação e acesso ao quiz aparecem na primeira tela. */
+@media screen and (min-width: 960px) {
+  .home-intro { min-height: 0; }
+  .home-header { min-height: 0; padding-top: 24px; padding-bottom: 32px; }
+  .hero-copy {
+    flex: none;
+    min-height: clamp(200px, 30svh, 340px);
+    padding: 12px 0;
+    column-gap: 40px;
+  }
+  .hero-symbol { width: clamp(140px, 16vw, 220px); }
+  .home-title { font-size: clamp(2rem, 3vw, 3rem); }
+  .home-subtitle { font-size: 1rem; line-height: 1.6; }
+  .scroll-hint { display: none; }
+  .home-content { padding-top: 24px; }
+  .home-content > .banner-nivel-card { padding-block: 22px; }
+}
+/* Primeira tela do desktop reservada à apresentação e ao quiz. */
+@media screen and (min-width: 960px) {
+  .home-intro { min-height: 65svh; }
+  .home-header { flex: 1; display: flex; justify-content: center; }
+  .hero-copy { flex: 1; }
+  .home-content > .banner-nivel-card {
+    min-height: calc(35svh - 24px);
+  }
+}
+
+/* Destaque somente no título do menu lateral. */
+@media screen and (min-width: 960px) {
+  .app-bottom-nav::before {
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 12px 14px 24px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  #form-apoio { align-items: start; }
+  #form-apoio .form-group-wide { grid-column: 1 / -1; }
+}

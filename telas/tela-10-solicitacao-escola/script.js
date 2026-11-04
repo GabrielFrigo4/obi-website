@@ -84,7 +84,7 @@ function fallbackCopiaTexto(texto, callbackSucesso, callbackErro) {
 }
 
 function limparErrosCampos() {
-  var campos = ['nome-estudante', 'nome-escola', 'cidade-escola', 'contato-retorno'];
+  var campos = ['nome-estudante', 'nome-escola', 'cidade-escola', 'contato-retorno', 'serie-estudante'];
   campos.forEach(function (id) {
     var campo = document.getElementById(id);
     if (campo) {
@@ -139,6 +139,12 @@ function validarFormulario() {
     return false;
   }
 
+  var campoSerie = document.getElementById('serie-estudante');
+  if (!campoSerie || !campoSerie.value) {
+    marcarErro(campoSerie, 'Selecione seu ano ou série escolar.');
+    return false;
+  }
+
   if (!campoContato || !campoContato.value.trim()) {
     marcarErro(campoContato, 'Por favor, informe um contato (WhatsApp ou e-mail) para retorno.');
     return false;
@@ -180,6 +186,7 @@ function enviarSolicitacao(evento) {
     salvarResposta('solicitacao_escola', escola);
     salvarResposta('solicitacao_cidade', cidade);
     salvarResposta('solicitacao_contato', contato);
+    salvarResposta('solicitacao_serie', document.getElementById('serie-estudante').value);
     salvarResposta('solicitacao_data', dataAtual);
     salvarResposta('solicitacao_protocolo', protocolo);
   }
@@ -199,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Limpeza dinâmica de erro ao digitar (Heurística 9 de Nielsen)
-  var campos = ['nome-estudante', 'nome-escola', 'cidade-escola', 'contato-retorno'];
+  var campos = ['nome-estudante', 'nome-escola', 'cidade-escola', 'contato-retorno', 'serie-estudante'];
   campos.forEach(function (id) {
     var campo = document.getElementById(id);
     if (campo) {

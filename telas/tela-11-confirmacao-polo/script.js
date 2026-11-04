@@ -7,6 +7,8 @@
 
 function inicializarProtocoloEResumo() {
   var respostas = (typeof obterRespostas === 'function') ? obterRespostas() : {};
+  var serie = document.getElementById('resumo-serie');
+  if (serie) serie.textContent = respostas.solicitacao_serie || 'Não informado';
   var display = document.getElementById('protocolo-display');
   
   var protocolo = respostas['solicitacao_protocolo'] ||

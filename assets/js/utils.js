@@ -28,10 +28,12 @@ function atualizarBotoesZoom(escala) {
 
 function alterarTamanhoFonte(variacao) {
   const chave = 'obi_escala_fonte';
-  let escalaAtual = 1.0;
+  let escalaAtual = parseFloat(document.documentElement.style.fontSize) / 16 || 1;
   
   try {
-    escalaAtual = parseFloat(localStorage.getItem(chave)) || 1.0;
+    escalaAtual = parseFloat(document.documentElement.style.fontSize) / 16 || 1;
+    const salva = Number.parseFloat(localStorage.getItem(chave));
+    if (Number.isFinite(salva)) escalaAtual = salva;
   } catch (e) {}
   
   // Limites simples e seguros: entre 85% e 130%
@@ -217,12 +219,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Restaurar fonte salva
   let escalaSalva = 1.0;
   try {
-    escalaSalva = parseFloat(localStorage.getItem('obi_escala_fonte')) || 1.0;
+    const salva = Number.parseFloat(localStorage.getItem('obi_escala_fonte'));
+    escalaSalva = Number.isFinite(salva) ? Math.min(1.3, Math.max(.85, salva)) : 1;
   } catch (e) {}
 
-  if (escalaSalva !== 1.0) {
-    document.documentElement.style.fontSize = (16 * escalaSalva) + 'px';
-  }
   atualizarBotoesZoom(escalaSalva);
 
   // Restaurar alto contraste salvo e atualizar acessibilidade (aria-pressed)
@@ -330,7 +330,7 @@ function injetarBarraNavegacaoInferior() {
     abaAtiva = 'estudos';
   } else if (pathname.includes('tela-10') || pathname.includes('tela-11') || pathname.includes('tela-12')) {
     abaAtiva = 'apoio';
-  } else if (pathname.includes('tela-01-home') || !emTelas || pathname.endsWith('index.html') || pathname === '/' || pathname === '') {
+  } else if (pathname.includes('tela-01-home') || !emTelas || pathname === '/' || pathname === '') {
     abaAtiva = 'inicio';
   } else {
     abaAtiva = '';

@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apoio para Sua Escola · Central OBI UFABC</title>
+  <script src="../../assets/js/preferences.js"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../../assets/css/screens.css">
   <script src="../../assets/js/utils.js" defer></script>
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
 </head>
 <body>
 
-  <main class="mobile-viewport">
+  <main class="mobile-viewport layout-form">
 
     <header class="accessibility-bar" aria-label="Controles de Acessibilidade">
       <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
@@ -120,7 +122,8 @@
             </select>
           </div>
 
-          <div class="form-group">
+<div class="form-group"><label for="serie-estudante" class="form-label">Ano / série <span class="required" aria-hidden="true">*</span></label><select id="serie-estudante" name="serie-estudante" class="form-control" required><option value="">Selecione</option><option value="1º ano do Ensino Fundamental">1º ano do Ensino Fundamental</option><option value="2º ano do Ensino Fundamental">2º ano do Ensino Fundamental</option><option value="3º ano do Ensino Fundamental">3º ano do Ensino Fundamental</option><option value="4º ano do Ensino Fundamental">4º ano do Ensino Fundamental</option><option value="5º ano do Ensino Fundamental">5º ano do Ensino Fundamental</option><option value="6º ano do Ensino Fundamental">6º ano do Ensino Fundamental</option><option value="7º ano do Ensino Fundamental">7º ano do Ensino Fundamental</option><option value="8º ano do Ensino Fundamental">8º ano do Ensino Fundamental</option><option value="9º ano do Ensino Fundamental">9º ano do Ensino Fundamental</option><option value="1º ano do Ensino Médio">1º ano do Ensino Médio</option><option value="2º ano do Ensino Médio">2º ano do Ensino Médio</option><option value="3º ano do Ensino Médio">3º ano do Ensino Médio</option><option value="4º ano do Ensino Técnico">4º ano do Ensino Técnico</option><option value="1º ano do Ensino Superior">1º ano do Ensino Superior</option><option value="Outro">Outro</option></select></div>
+          <div class="form-group form-group-wide">
             <label for="contato-retorno" class="form-label">
               Contato para Retorno <span class="required" aria-hidden="true">*</span>
             </label>
@@ -136,7 +139,8 @@
             <span id="dica-contato" class="field-hint">WhatsApp, telefone ou e-mail para confirmarmos seu protocolo.</span>
           </div>
 
-          <div class="privacy-notice">
+
+<div class="privacy-notice">
             <span>Seus dados são usados exclusivamente pela extensão da UFABC para viabilizar sua participação gratuita na OBI. Proteção de privacidade garantida (sem cookies ou rastreadores).</span>
           </div>
 
