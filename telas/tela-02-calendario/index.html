@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calendário Oficial OBI 2026 · Central OBI UFABC</title>
+  <title>Calendário OBI 2026 · Central OBI UFABC</title>
   <meta name="description" content="Calendário oficial acessível da OBI 2026: datas das fases 1, 2 e nacional, lembretes locais e prazos da Iniciação e Programação.">
   <script src="../../assets/js/preferences.js"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
@@ -36,131 +36,41 @@
 
       <header>
         <h1 class="screen-title screen-title-compact">
-          Calendário Oficial OBI 2026
+          Calendário OBI 2026
         </h1>
         <p class="screen-subtitle screen-subtitle-compact">
           Prazos de inscrição, datas de aplicação e etapas oficiais da Olimpíada.
         </p>
       </header>
 
-      <div class="mod-tabs" role="tablist" aria-label="Modalidades da OBI">
+      <div class="mod-tabs" role="tablist" aria-label="Modalidades e competições da OBI">
         <button type="button" class="mod-tab" id="tab-iniciacao" role="tab" tabindex="-1" aria-controls="painel-calendario" aria-selected="false" data-modalidade="iniciacao">
           Iniciação (Fundamental)
         </button>
         <button type="button" class="mod-tab active" id="tab-programacao" role="tab" tabindex="0" aria-controls="painel-calendario" aria-selected="true" data-modalidade="programacao">
           Programação (Fund./Médio/Sup.)
         </button>
+        <button type="button" class="mod-tab" id="tab-cf" role="tab" tabindex="-1" aria-controls="painel-calendario" aria-selected="false" data-modalidade="cf">Competição Feminina</button>
       </div>
 
       <section id="painel-calendario" role="tabpanel" tabindex="0" aria-labelledby="tab-programacao">
-        <div class="timeline" id="timeline-container">
-          
-          <article data-evento="inscricoes" class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Inscrições das Escolas</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-            <p class="evento-detalhe"></p>
-            <button type="button" class="btn-agenda" hidden>Adicionar à agenda</button>
-          </article>
-
-          <article data-evento="treinos" class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Período de Treinamento</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-          </article>
-
-          <article data-evento="fase1" class="timeline-item destaque">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Fase 1 (Prova Local)</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-            <p class="evento-detalhe"></p>
-            <button type="button" class="btn-agenda" hidden>Adicionar à agenda</button>
-
-            <div class="switch-row">
-              <label for="switch-aviso-48h" class="switch-label">
-                Incluir lembrete de 48h no arquivo desta fase
-              </label>
-              <input type="checkbox" id="switch-aviso-48h" class="switch-input">
-            </div>
-          </article>
-
-          <article data-evento="fase2" class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Fase 2 (Estadual)</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-            <p class="evento-detalhe"></p>
-            <button type="button" class="btn-agenda" hidden>Adicionar à agenda</button>
-          </article>
-
-          <article data-evento="fase3" class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Fase 3 (Nacional)</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-            <p class="evento-detalhe"></p>
-            <button type="button" class="btn-agenda" hidden>Adicionar à agenda</button>
-          </article>
-
-          <article data-evento="resultado" class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-header">
-              <h2 class="timeline-title">Resultado Final & Premiação</h2>
-              <span class="timeline-badge badge-breve">A confirmar</span>
-            </div>
-            <p class="timeline-date">Carregando datas da edição 2026…</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="alerts-card" aria-labelledby="titulo-alertas">
-        <div class="alerts-header">
-          <h2 id="titulo-alertas" class="alertas-title">Lembretes nos arquivos .ics</h2>
-        </div>
-        <p class="alerts-sub">Escolha Google Agenda ou Outlook para salvar sem baixar arquivos. Para outros aplicativos, baixe o .ics e importe no calendário. Os controles abaixo se aplicam apenas ao arquivo .ics; nos serviços online, configure o lembrete antes de salvar. O lembrete depende do aplicativo e das permissões de notificação. Para períodos de vários dias, o alerta considera o primeiro dia; ajuste para o dia da sua prova.</p>
-        <label class="checkbox-row" for="chk-alertas-todos">
-          <input type="checkbox" id="chk-alertas-todos" class="switch-input">
-          <span>Incluir lembrete de 48h ao baixar qualquer fase</span>
-        </label>
+        <div class="timeline" id="timeline-container"></div>
+        <details class="cal-outros"><summary>Publicações, resultados e prazos da coordenação</summary><div class="timeline" id="timeline-complementar"></div></details>
+        <details class="cal-outros"><summary>Competições internacionais</summary><div class="timeline" id="timeline-internacional"></div></details>
       </section>
 
       <p id="agenda-status" class="feedback-status visible status-info" role="status" aria-live="polite"></p>
-      <p class="evento-detalhe">Os arquivos não sincronizam alterações futuras. Importar o mesmo evento novamente pode gerar duplicatas. Eventos encerrados não geram lembretes futuros.</p>
       <noscript>Ative o JavaScript para carregar as datas e baixar eventos, ou consulte o calendário oficial no rodapé.</noscript>
 
-      <div class="conexao-box">
-        <p><strong>Não sabe sua categoria ou o que estudar?</strong></p>
-        <div class="alertas-actions">
-          <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-primary btn-compact">
-            Fazer Quiz Diagnóstico
-          </a>
-          <a href="../tela-03-checklist/index.html" class="btn-secondary btn-compact">
-            Abrir Trilha de Estudos & Checklist
-          </a>
-        </div>
-      </div>
-
       <aside class="origin-notice" aria-label="Fonte das datas">
-        <strong>Edição 2026 · Datas conferidas em 24/11/2026</strong>
-        <p>Este calendário é um material de apoio da Central OBI UFABC. Em caso de divergência, prevalecem as datas publicadas no calendário oficial da OBI, disponível no link abaixo.</p>
+        <strong id="calendario-fonte-data"></strong>
+        <p>Este calendário é um material de apoio da Central OBI UFABC. As datas não são atualizadas automaticamente. Em caso de divergência, prevalecem as datas publicadas no calendário oficial da OBI, disponível no link abaixo.</p>
       </aside>
 
       <footer class="cal-footer">
         <p>Todos os prazos seguem o Horário Oficial de Brasília.</p>
         <div class="cal-footer-links">
+          <a href="https://olimpiada.ic.unicamp.br/calendario/" target="_blank" rel="noopener noreferrer" aria-label="Calendário oficial completo (abre em nova aba)">Calendário oficial completo</a>
           <a href="../tela-12-comunidade-extensao/index.html">
             Reportar data divergente ou erro
           </a>

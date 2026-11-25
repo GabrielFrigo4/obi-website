@@ -72,74 +72,46 @@ function adicionarEventoAgenda(titulo, inicio, fim, descricao, lembrete = false,
     link.click();
     link.remove();
     setTimeout(function liberarArquivo() { URL.revokeObjectURL(url); }, 30000);
-    informarAgenda('Download solicitado: ' + titulo + '. Abra o arquivo .ics no seu calendário ou use Importar e confirme a inclusão.' + (lembrete ? ' O arquivo inclui um lembrete de 48 horas antes do início do período; confira o horário e o alerta no aplicativo.' : '') + ' Não há sincronização automática. Importar novamente pode duplicar o evento.');
+    informarAgenda('Arquivo solicitado. Abra-o no seu aplicativo de calendário para adicionar o evento.');
     return true;
   } catch (erro) {
     informarAgenda('Não foi possível baixar o evento. Tente novamente ou consulte o calendário oficial.');
     return false;
   }
 }
-function hojeBrasilia() {
-  const partes = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date());
-  const parte = tipo => partes.find(p => p.type === tipo).value;
-  return parte('year') + '-' + parte('month') + '-' + parte('day');
-}
 function alternarModalidade(modalidade) {
-  const dados = window.OBICalendario.modalidades[modalidade];
+  const calendario = window.OBICalendario;
+  const dados = calendario.modalidades[modalidade];
   if (!dados) return;
   document.querySelectorAll('.mod-tab').forEach(function atualizarAba(botao) {
     const ativa = botao.dataset.modalidade === modalidade;
-    botao.classList.toggle('active', ativa);
-    botao.setAttribute('aria-selected', String(ativa));
+    botao.classList.toggle('active', ativa); botao.setAttribute('aria-selected', String(ativa));
   });
   if (typeof sincronizarAbasAcessiveis === 'function') sincronizarAbasAcessiveis(document.querySelector('.mod-tabs'), document.getElementById('tab-' + modalidade));
-  const hoje = hojeBrasilia();
-  const formato = new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric' });
-  document.querySelectorAll('[data-evento]').forEach(function atualizarEvento(card) {
-    const chave = card.dataset.evento, datas = dados[chave];
-    const selo = card.querySelector('.timeline-badge');
-    const dataTexto = card.querySelector('.timeline-date');
-    const botao = card.querySelector('.btn-agenda');
-    if (!datas) {
-      dataTexto.textContent = 'Data a confirmar com a organização responsável.';
-      selo.textContent = 'A confirmar'; selo.className = 'timeline-badge badge-breve';
-      if (botao) botao.hidden = true;
-      return;
-    }
-    dataTexto.textContent = formato.format(dataAgendaValida(datas[0])) + (datas[0] !== datas[1] ? ' a ' + formato.format(dataAgendaValida(datas[1])) : '');
-    selo.textContent = hoje > datas[1] ? 'Encerrado' : hoje < datas[0] ? 'Em breve' : chave === 'inscricoes' ? 'Inscrições abertas' : 'Em andamento';
-    selo.className = 'timeline-badge ' + (hoje > datas[1] ? 'badge-concluido' : hoje < datas[0] ? 'badge-breve' : 'badge-andamento');
-    const detalhe = card.querySelector('.evento-detalhe');
-    if (detalhe) detalhe.textContent = chave === 'fase3' ? dados.nacional : chave === 'inscricoes' ? 'Prazo de cadastro das escolas para ' + dados.nome + '.' : 'Janela de aplicação. Confirme o dia e o horário da sua prova com a escola.';
-    if (botao) {
-      botao.hidden = false;
-      botao.dataset.agendaTitulo = card.querySelector('h2').textContent + ' — OBI 2026 — ' + dados.nome;
-      botao.dataset.agendaInicio = datas[0]; botao.dataset.agendaFim = datas[1];
-      botao.dataset.agendaId = 'obi-2026-' + modalidade + '-' + chave;
-      botao.dataset.agendaDesc = (detalhe ? detalhe.textContent : '') + '\nEvento de dia inteiro para marcar o período oficial, não a duração da prova. Ajuste o horário no seu calendário.\nFonte: ' + window.OBICalendario.fonte;
-    }
+  const containers = {principal:document.getElementById('timeline-container'),complementar:document.getElementById('timeline-complementar'),internacional:document.getElementById('timeline-internacional')};
+  Object.values(containers).forEach(el=>el.replaceChildren());
+  calendario.listar(modalidade).forEach(function criarEvento(evento) {
+    const card = document.createElement('article'); card.className = 'timeline-item'; card.dataset.evento = evento.id;
+    const header = document.createElement('div'); header.className = 'timeline-header';
+    const titulo = document.createElement('h2'); titulo.className = 'timeline-title'; titulo.textContent = evento.titulo;
+    const selo = document.createElement('span'); const estado = calendario.estado(evento);
+    selo.className = 'timeline-badge ' + (estado === 'Encerrado' ? 'badge-concluido' : estado === 'Em breve' ? 'badge-breve' : 'badge-andamento'); selo.textContent = estado;
+    header.append(titulo,selo);
+    const data = document.createElement('p'); data.className = 'timeline-date'; data.textContent = calendario.periodo(evento) + (evento.horaLimite ? ' · prazo final às '+evento.horaLimite+' (Brasília)' : '');
+    const detalhe = document.createElement('p'); detalhe.className = 'evento-detalhe'; detalhe.textContent = evento.descricao;
+    const botao = document.createElement('button'); botao.type = 'button'; botao.className = 'btn-agenda'; botao.textContent = 'Adicionar à agenda';
+    botao.setAttribute('aria-label','Adicionar '+evento.titulo+' à agenda');
+    botao.dataset.agendaTitulo = evento.titulo+' — OBI '+calendario.edicao+' — '+dados.nome;
+    botao.dataset.agendaInicio = evento.inicio; botao.dataset.agendaFim = evento.fim;
+    botao.dataset.agendaId = 'obi-'+calendario.edicao+'-'+modalidade+'-'+evento.id;
+    botao.dataset.agendaDesc = evento.descricao+'\nPeríodo oficial em evento de dia inteiro. Confirme e ajuste o horário no aplicativo.\nFonte: '+calendario.fontes[evento.fonte];
+    botao.dataset.tipo = evento.tipo;
+    card.append(header,data,detalhe,botao); containers[evento.grupo].append(card);
   });
+  document.getElementById('calendario-fonte-data').textContent = 'Edição '+calendario.edicao+' · Datas conferidas em '+calendario.formatar(calendario.conferidoEm);
   if (typeof salvarResposta === 'function') salvarResposta('calendario_modalidade_visualizada', modalidade);
 }
-function salvarAvisoLembrete(ativo) { try { localStorage.setItem('obi_lembrete_48h', String(ativo)); } catch (erro) {} }
-function salvarAlertaGeral(ativo) { try { localStorage.setItem('obi_lembrete_todas_fases', String(ativo)); } catch (erro) {} }
 document.addEventListener('DOMContentLoaded', function iniciarCalendario() {
-  const fase = document.getElementById('switch-aviso-48h');
-  const geral = document.getElementById('chk-alertas-todos');
-  try {
-    geral.checked = localStorage.getItem('obi_lembrete_todas_fases') === 'true';
-    fase.checked = geral.checked || localStorage.getItem('obi_lembrete_48h') === 'true';
-  } catch (erro) {}
-  fase.addEventListener('change', function configurarFase() {
-    salvarAvisoLembrete(fase.checked);
-    if (!fase.checked) { geral.checked = false; salvarAlertaGeral(false); }
-    informarAgenda('Preferência alterada. Baixe e importe o evento para aplicar o lembrete; eventos já salvos não são alterados.');
-  });
-  geral.addEventListener('change', function configurarTodas() {
-    fase.checked = geral.checked;
-    salvarAlertaGeral(geral.checked); salvarAvisoLembrete(fase.checked);
-    informarAgenda('Preferência alterada. O lembrete será incluído nos próximos arquivos das fases que você baixar. Importe cada arquivo na sua agenda.');
-  });
   document.querySelectorAll('.mod-tab').forEach(function vincularAba(botao) {
     botao.addEventListener('click', function selecionarModalidade() { alternarModalidade(botao.dataset.modalidade); });
   });
@@ -159,18 +131,17 @@ document.addEventListener('DOMContentLoaded', function iniciarCalendario() {
       informarAgenda('Conclua a inclusão na aba do calendário: confira o período, configure o lembrete e clique em Salvar. O site não recebe confirmação do salvamento.');
     });
   });
-  document.querySelectorAll('.btn-agenda').forEach(function vincularDownload(botao) {
-    botao.addEventListener('click', function baixarEvento() {
-      const chave = botao.closest('[data-evento]').dataset.evento;
-      const lembrete = chave.startsWith('fase') && (geral.checked || chave === 'fase1' && fase.checked);
-      const dados = botao.dataset;
-      const links = gerarLinksAgenda(dados.agendaTitulo, dados.agendaInicio, dados.agendaFim, dados.agendaDesc);
-      document.getElementById('agenda-google').href = links.google;
-      document.getElementById('agenda-outlook').href = links.outlook;
-      origemAgenda = botao;
-      eventoAgenda = { titulo: dados.agendaTitulo, inicio: dados.agendaInicio, fim: dados.agendaFim, descricao: dados.agendaDesc, lembrete, id: dados.agendaId };
-      dialogoAgenda.showModal();
-    });
+  document.getElementById('painel-calendario').addEventListener('click', function abrirOpcoesAgenda(evento) {
+    const botao = evento.target.closest('.btn-agenda');
+    if (!botao) return;
+    const dados = botao.dataset;
+    const lembrete = false;
+    const links = gerarLinksAgenda(dados.agendaTitulo,dados.agendaInicio,dados.agendaFim,dados.agendaDesc);
+    document.getElementById('agenda-google').href = links.google;
+    document.getElementById('agenda-outlook').href = links.outlook;
+    origemAgenda = botao;
+    eventoAgenda = {titulo:dados.agendaTitulo,inicio:dados.agendaInicio,fim:dados.agendaFim,descricao:dados.agendaDesc,lembrete,id:dados.agendaId};
+    dialogoAgenda.showModal();
   });
   const respostas = typeof obterRespostas === 'function' ? obterRespostas() : {};
   const salva = respostas.calendario_modalidade_visualizada;

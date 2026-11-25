@@ -8,9 +8,9 @@ const context = {window: {}, TextEncoder, URL, URLSearchParams, Intl, Date, Blob
 vm.createContext(context);
 for (const file of ['assets/js/calendar-data.js','telas/tela-02-calendario/script.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,file),'utf8'),context);
 let total = 0;
-for (const [mod, dados] of Object.entries(context.window.OBICalendario.modalidades)) {
- for (const fase of ['inscricoes','fase1','fase2','fase3']) {
-  const [inicio,fim] = dados[fase];
+for (const evento of context.window.OBICalendario.eventos) {
+  const mod = evento.modalidades[0], fase = evento.id;
+  const inicio = evento.inicio, fim = evento.fim;
   const ics = context.gerarEventoIcs('OBI — '+mod, inicio, fim, 'Descrição, com; acentos\nOutra linha', true, mod+'-'+fase);
   assert.match(ics,/DTSTAMP:\d{8}T\d{6}Z/);
   assert.ok(ics.includes('DTSTART;VALUE=DATE:'+inicio.replaceAll('-','')));
@@ -22,7 +22,6 @@ for (const [mod, dados] of Object.entries(context.window.OBICalendario.modalidad
   assert.ok(ics.includes('Descrição\\, com\\; acentos\\nOutra linha'));
   for(const line of ics.split('\r\n')) assert.ok(Buffer.byteLength(line)<=75);
   total++;
- }
 }
 const make = (inicio,fim,alarm) => context.gerarEventoIcs('A',inicio,fim,'Descrição',alarm,'teste');
 assert.ok(!make('2026-09-26','2026-09-26',false).includes('VALARM'));

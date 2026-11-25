@@ -349,3 +349,6 @@
 
 #campo-data-fase1 { min-height: 48px; min-width: 0; width: 100%; font: inherit; color-scheme: light; }
 body.high-contrast #campo-data-fase1 { color-scheme: dark; }
+
+.kit-campo select { min-height: 48px; width: 100%; font: inherit; color: var(--cor-texto-principal); background: var(--cor-card); border: 1px solid var(--cor-borda-controle); border-radius: var(--raio-botao); padding: 10px; }
+.kit-campo input[readonly] { background: var(--cor-fundo-suave); }

@@ -42,22 +42,20 @@
 
         <li>
           <section class="central-card kit-card" aria-labelledby="titulo-aviso">
-            <h2 id="titulo-aviso" class="kit-card-titulo">Aviso: data da Fase 1</h2>
+            <h2 id="titulo-aviso" class="kit-card-titulo">Aviso por modalidade e etapa</h2>
 
-            <p class="aviso-pendente">
-              <strong>Data a confirmar:</strong> a Fase 1 da OBI 2026 já aconteceu (27 a 29/05 na Iniciação e 10 a 12/06 na Programação). Preencha abaixo com a data oficial da próxima prova, conferida no calendário da OBI.
-            </p>
-
-            <div class="kit-campo">
-              <label for="campo-data-fase1">Data da Fase 1</label>
-              <input type="date" id="campo-data-fase1" required max="9999-12-31"
-                     aria-describedby="ajuda-data-fase1">
-              <span id="ajuda-data-fase1" class="kit-ajuda">
-                Escolha no calendário o dia definido pela escola. Consulte as datas oficiais em
-                <a href="https://olimpiada.ic.unicamp.br/calendario/datas_importantes" target="_blank" rel="noopener noreferrer" class="origin-link origin-official" aria-label="Abrir recurso externo (abre em nova aba)">olimpiada.ic.unicamp.br <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>.
-              </span>
+            <p id="kit-fonte-data" class="kit-ajuda"></p>
+            <div class="kit-campo"><label for="campo-modalidade">Modalidade ou competição</label>
+              <select id="campo-modalidade" class="form-control"><option value="iniciacao">Iniciação</option><option value="programacao">Programação</option><option value="cf">Competição Feminina</option></select>
             </div>
-
+            <div class="kit-campo"><label for="campo-etapa">Etapa ou prazo</label><select id="campo-etapa" class="form-control"></select></div>
+            <p id="periodo-oficial" class="kit-ajuda"></p>
+            <p id="estado-etapa" class="kit-ajuda"></p>
+            <div class="kit-campo"><label for="campo-data-aviso">Data do aviso</label>
+              <input type="date" id="campo-data-aviso" required aria-describedby="ajuda-data-aviso periodo-oficial status-aviso">
+              <span id="ajuda-data-aviso" class="kit-ajuda">Para provas com vários dias, escolha o dia confirmado pela escola. Prazos e eventos de data única são preenchidos automaticamente.</span>
+            </div>
+            <a id="fonte-etapa" href="https://olimpiada.ic.unicamp.br/calendario/" target="_blank" rel="noopener noreferrer" aria-label="Consultar a fonte oficial da etapa (abre em nova aba)">Consultar fonte oficial da etapa</a>
             <p id="mensagem-aviso" class="kit-mensagem"></p>
             <label for="manual-aviso" class="sr-only">Texto do aviso para copiar manualmente</label>
             <textarea id="manual-aviso" class="kit-manual" readonly hidden aria-label="Texto do aviso para copiar manualmente"></textarea>
@@ -130,6 +128,7 @@
 
   </main>
 
+  <script src="../../assets/js/calendar-data.js" defer></script>
   <script src="script.js" defer></script>
 
   <!-- Tradução automática de português para Libras (VLibras) -->

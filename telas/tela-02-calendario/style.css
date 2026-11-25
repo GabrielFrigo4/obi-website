@@ -379,3 +379,8 @@
 .agenda-opcoes :is(a, button) { width: 100%; white-space: normal; }
 
 .agenda-dialog #agenda-titulo { text-align: center; }
+
+.cal-content .mod-tabs { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.cal-outros { margin-top: 24px; border: 1px solid var(--cor-borda); border-radius: var(--raio-borda); padding: 16px; }
+.cal-outros > summary { min-height: 48px; cursor: pointer; font-weight: 700; color: var(--cor-primaria); }
+.cal-outros .timeline { margin-top: 16px; }

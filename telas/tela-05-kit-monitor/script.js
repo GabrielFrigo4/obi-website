@@ -1,30 +1,62 @@
-var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_importantes';
-
-    var LINKS_DE_TREINO = [
-      { nome: 'Provas anteriores da OBI, com correção automática', url: 'https://olimpiada.ic.unicamp.br/pratique/' }
-    ];
-
-    function formatarDataDoAviso(valor) {
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(valor)) return '';
-      var data = new Date(valor + 'T12:00:00Z');
-      if (!Number.isFinite(data.getTime()) || data.toISOString().slice(0, 10) !== valor) return '';
-      var partes = valor.split('-');
-      var diaSemana = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', timeZone: 'UTC' }).format(data);
-      return partes[2] + '/' + partes[1] + '/' + partes[0] + ' (' + diaSemana + ')';
-    }
-
-    function montarMensagemAviso() {
-      var campo = document.getElementById('campo-data-fase1');
-      var data = campo ? campo.value.trim() : '';
-      var textoData = formatarDataDoAviso(data) || '[selecione a data]';
-      return 'Atenção, turma! A Fase 1 da OBI está chegando.\n' +
-             'A prova será em ' + textoData + '.\n' +
-             'Confirmem a inscrição com a sua escola.\n' +
-             'Calendário oficial: ' + URL_CALENDARIO_OBI;
-    }
-
+'use strict';
+var versaoAviso = 0;
+var LINKS_DE_TREINO = [{nome:'Exercícios oficiais por modalidade e nível',url:'https://olimpiada.ic.unicamp.br/pratique/'}];
+function formatarDataDoAviso(valor) {
+  if (!window.OBICalendario.dataValida(valor)) return '';
+  const dia = new Intl.DateTimeFormat('pt-BR',{weekday:'long',timeZone:'UTC'}).format(new Date(valor+'T12:00:00Z'));
+  return window.OBICalendario.formatar(valor)+' ('+dia+')';
+}
+function selecaoDoAviso() {
+  return {modalidade:document.getElementById('campo-modalidade').value,etapa:document.getElementById('campo-etapa').value,data:document.getElementById('campo-data-aviso').value};
+}
+function montarMensagemAviso() {
+  const c = window.OBICalendario, selecao = selecaoDoAviso();
+  const validacao = c.validarAviso(selecao.modalidade,selecao.etapa,selecao.data);
+  if (!validacao.valido) return '';
+  const e = validacao.evento;
+  const prazo = ['prazo','inscricao'].includes(e.tipo);
+  const linhas = ['OBI '+c.edicao+' — '+c.modalidades[selecao.modalidade].nome, e.titulo];
+  linhas.push(e.tipo === 'evento' ? 'Período oficial: '+c.periodo(e)+'.' : (prazo ? 'Prazo final: ' : 'Data: ')+formatarDataDoAviso(selecao.data)+(e.horaLimite ? ', às '+e.horaLimite+' (Brasília)' : '')+'.');
+  if (c.estado(e) === 'Encerrado' || selecao.data < c.hoje()) linhas.push('Esta data já passou. Aviso para consulta do calendário de 2026.');
+  linhas.push(e.descricao,'Calendário oficial: '+c.fontes[e.fonte]);
+  return linhas.join('\n');
+}
+function limparEstadoAviso() {
+  versaoAviso++;
+  const campo = document.getElementById('campo-data-aviso'); campo.removeAttribute('aria-invalid'); campo.setCustomValidity('');
+  mostrarStatus('aviso','',false);
+  restaurarBotao(document.querySelector('[data-copiar="aviso"]'));
+  const manual = document.getElementById('manual-aviso'); manual.hidden = true; manual.value = '';
+}
+function atualizarPreviaAviso() {
+  const mensagem = montarMensagemAviso();
+  exibirMensagem('mensagem-aviso',mensagem || 'Selecione uma data dentro do período oficial para gerar o aviso.');
+}
+function atualizarEtapa() {
+  limparEstadoAviso();
+  const c = window.OBICalendario, escolha = selecaoDoAviso(), e = c.obter(escolha.modalidade,escolha.etapa);
+  const campo = document.getElementById('campo-data-aviso');
+  campo.value = ''; campo.readOnly = false;
+  if (!e) { campo.disabled = true; atualizarPreviaAviso(); return; }
+  campo.disabled = false;
+  const limites = c.limitesAviso(e); campo.min = limites.min; campo.max = limites.max;
+  if (limites.min === limites.max) { campo.value = limites.min; campo.readOnly = true; }
+  document.getElementById('periodo-oficial').textContent = 'Período oficial: '+c.periodo(e)+(e.horaLimite ? ' · prazo final às '+e.horaLimite+' (Brasília)' : '')+'.';
+  document.getElementById('estado-etapa').textContent = c.estado(e) === 'Encerrado' ? 'Evento encerrado. O aviso indicará que a data já passou.' : c.estado(e)+'.';
+  document.getElementById('fonte-etapa').href = c.fontes[e.fonte];
+  atualizarPreviaAviso();
+}
+function atualizarOpcoesEtapas() {
+  const c = window.OBICalendario, modalidade = document.getElementById('campo-modalidade').value;
+  const etapas = document.getElementById('campo-etapa'); etapas.replaceChildren();
+  const lista = c.listar(modalidade).filter(e=>e.grupo !== 'internacional');
+  lista.forEach(function criarOpcao(e) { const opt = document.createElement('option'); opt.value=e.id; opt.textContent=e.titulo+' · '+c.periodo(e); etapas.appendChild(opt); });
+  const proxima = lista.find(e=>c.estado(e) !== 'Encerrado') || lista[0];
+  if (proxima) etapas.value=proxima.id;
+  atualizarEtapa();
+}
     function montarMensagemTreino() {
-      var linhas = ['Pessoal, aqui estão os links para praticar algoritmos:'];
+      var linhas = ['Pessoal, aqui estão os exercícios de lógica e programação da OBI:'];
       LINKS_DE_TREINO.forEach(function (item) {
         linhas.push('• ' + item.nome + ': ' + item.url);
       });
@@ -68,7 +100,7 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
     }
 
     function atualizarMensagens() {
-      exibirMensagem('mensagem-aviso', montarMensagemAviso());
+      atualizarPreviaAviso();
       exibirMensagem('mensagem-treino', montarMensagemTreino());
       exibirMensagem('mensagem-guia', montarMensagemGuia());
     }
@@ -138,19 +170,23 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       restaurarBotao(botao);
 
       if (chave === 'aviso') {
-        var campo = document.getElementById('campo-data-fase1');
-        if (!formatarDataDoAviso(campo.value) || !campo.checkValidity()) {
-          campo.setAttribute('aria-invalid', 'true');
-          mostrarStatus('aviso', 'Selecione uma data válida para a Fase 1 antes de copiar o aviso.', true);
-          campo.focus();
-          return;
+        const escolha = selecaoDoAviso();
+        const validacao = window.OBICalendario.validarAviso(escolha.modalidade,escolha.etapa,escolha.data);
+        const campo = document.getElementById('campo-data-aviso');
+        if (!validacao.valido) {
+          campo.setAttribute('aria-invalid','true'); campo.setCustomValidity(validacao.erro);
+          document.getElementById('manual-aviso').hidden = true;
+          document.getElementById('manual-aviso').value = '';
+          mostrarStatus('aviso',validacao.erro,true); campo.focus(); return;
         }
-        campo.removeAttribute('aria-invalid');
+        campo.removeAttribute('aria-invalid'); campo.setCustomValidity('');
       }
 
       var texto = MENSAGENS[chave]();
       mostrarStatus(chave, 'Copiando…', false);
+      const versaoAoCopiar = versaoAviso;
       copiarTexto(texto).then(function (copiou) {
+        if (chave === 'aviso' && versaoAoCopiar !== versaoAviso) return;
         if (copiou) {
           document.getElementById('manual-' + chave).hidden = true;
           aoCopiarComSucesso(botao, chave);
@@ -161,19 +197,15 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      atualizarMensagens();
-
-      document.getElementById('campo-data-fase1').addEventListener('input', function (evento) {
-        evento.target.removeAttribute('aria-invalid');
-        document.getElementById('status-aviso').textContent = '';
-        restaurarBotao(document.querySelector('[data-copiar="aviso"]'));
-        document.getElementById('manual-aviso').hidden = true;
-        exibirMensagem('mensagem-aviso', montarMensagemAviso());
-      });
-
+    document.addEventListener('DOMContentLoaded', function iniciarAreaProfessor() {
+      const c = window.OBICalendario;
+      document.getElementById('kit-fonte-data').textContent = 'OBI '+c.edicao+' · Datas conferidas em '+c.formatar(c.conferidoEm)+'. Mesma fonte usada na página Calendário.';
+      atualizarOpcoesEtapas(); atualizarMensagens();
+      document.getElementById('campo-modalidade').addEventListener('change',atualizarOpcoesEtapas);
+      document.getElementById('campo-etapa').addEventListener('change',atualizarEtapa);
+      document.getElementById('campo-data-aviso').addEventListener('input',function atualizarData() { limparEstadoAviso(); atualizarPreviaAviso(); });
       document.querySelectorAll('[data-copiar]').forEach(function (botao) {
-        botao.addEventListener('click', function () { aoClicarEmCopiar(botao); });
+        botao.addEventListener('click',function () { aoClicarEmCopiar(botao); });
       });
     });
 
