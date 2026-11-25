@@ -18,7 +18,7 @@
   p.screen-subtitle, .screen-subtitle-compact { line-height: 1.6; margin-bottom: 24px; }
   :is(.card-section-title, .section-heading-sm, .checklist-title, .practice-card-title, .kit-card-titulo, .section-header-title) { line-height: 1.4; }
   :is(.btn-primary, .btn-secondary, .btn-agenda, .btn-copiar, .btn-whatsapp, .btn-print) { border-radius: var(--raio-botao); line-height: 1.4; text-align: center; font-weight: 700; }
-  .btn-primary { min-height: 52px; padding: 14px 18px; box-shadow: 0 3px 8px rgb(80 10 4 / 12%); }
+  .btn-primary { min-height: 52px; padding: 14px 18px; box-shadow: 0 3px 8px var(--cor-sombra-botao); }
   .btn-secondary { min-height: 50px; }
   .screen-actions { gap: 12px; padding-top: 8px; }
   .progress-container { margin-bottom: 24px; }
@@ -53,7 +53,7 @@
   :is(.message-preview-box, .kit-mensagem) { border-radius: 8px; padding: 16px; }
   .protocol-code { overflow-wrap: anywhere; }
   .material-info { min-width: 0; overflow-wrap: anywhere; }
-  .app-bottom-nav { box-shadow: 0 -4px 18px rgb(65 30 20 / 6%); }
+  .app-bottom-nav { box-shadow: 0 -4px 18px var(--cor-sombra-menu); }
   .bottom-nav-item.active { background: var(--cor-primaria-fundo); }
   body:not(.high-contrast) :is(.option-card, .option-card:hover, .option-card.selected,
       .result-highlight-card, .timeline-item, .timeline-item.destaque, .central-card,
@@ -61,8 +61,8 @@
       .material-link-card, .material-link-card:hover, .faq-item, .step-details) { background: var(--cor-card); }
   body:not(.high-contrast) .option-card.selected { border-color: var(--cor-primaria); box-shadow: inset 4px 0 var(--cor-primaria), 0 0 0 1px var(--cor-primaria); }
   body:not(.high-contrast) :is(.btn-secondary, .btn-agenda, .btn-print, .kit-card-titulo, .checklist-title, .practice-card-title) { color: var(--cor-primaria); }
-  body:not(.high-contrast) .btn-whatsapp { background: #15803d; }
-  body:not(.high-contrast) .btn-whatsapp:hover { background: #166534; }
+  body:not(.high-contrast) .btn-whatsapp { background: var(--cor-whatsapp-fundo); }
+  body:not(.high-contrast) .btn-whatsapp:hover { background: var(--cor-whatsapp-hover); }
   body:not(.high-contrast) .timeline-item.destaque { box-shadow: var(--sombra-suave); }
 }
 

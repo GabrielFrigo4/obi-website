@@ -13,8 +13,13 @@
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <script src="../../assets/js/external-links.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/reading-settings.css">
+  <script src="../../assets/js/reading-settings.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <script src="../../assets/js/accessibility.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
   <main class="mobile-viewport layout-form">
 
@@ -22,14 +27,12 @@
       <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <img class="brand-symbol" src="../../assets/img/obi-ufabc.jpeg" alt="" width="36" height="36"><span>OBI <small>UFABC</small></span>
       </a>
-      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
-        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Acessibilidade">
+        <button id="btn-reading-settings" class="btn-a11y" type="button" aria-haspopup="dialog" aria-controls="ajustes-leitura">Acessibilidade <svg class="reading-chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </header>
 
-    <section class="screen-content" aria-labelledby="screen-title">
+    <section class="screen-content skip-target" id="conteudo-principal" tabindex="-1" aria-labelledby="screen-title">
 
       <h1 id="screen-title" class="screen-title">Apoio para Sua Escola</h1>
       <p class="screen-subtitle">Escolha como prefere viabilizar sua participação gratuita na OBI com o suporte da UFABC:</p>
@@ -154,6 +157,55 @@
 
   <!-- Tradução automática de português para Libras (VLibras) -->
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
+
+  <dialog id="ajustes-leitura" class="reading-dialog" aria-labelledby="ajustes-titulo" aria-describedby="ajustes-descricao">
+    <div class="reading-heading">
+      <h2 id="ajustes-titulo">Acessibilidade</h2>
+      <button type="button" class="btn-secondary" id="fechar-ajustes" aria-label="Fechar ajustes de acessibilidade" autofocus><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="reading-body">
+    <p id="ajustes-descricao">Personalize sua leitura. As preferências são salvas automaticamente.</p>
+    <div class="reading-fields">
+      <fieldset class="reading-size">
+        <legend>Tamanho do texto</legend>
+        <div class="reading-size-controls">
+          <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        </div>
+      </fieldset>
+      <button type="button" id="btn-contrast" class="reading-contrast-toggle" aria-pressed="false">
+        <span>Alto contraste</span>
+        <span class="reading-toggle-state" aria-hidden="true">Desativado</span>
+      </button>
+
+      <label for="leitura-espaco">Espaçamento
+        <select id="leitura-espaco" data-reading="espaco">
+          <option value="normal">Padrão</option>
+          <option value="confortavel">Confortável</option>
+          <option value="amplo">Amplo</option>
+        </select>
+      </label>
+      <label for="leitura-paleta">Paleta de leitura
+        <select id="leitura-paleta" data-reading="paleta" aria-describedby="paleta-ajuda">
+          <option value="padrao">Original</option>
+          <option value="quente">Quente</option>
+          <option value="fria">Fria</option>
+          <option value="monocromatica">Preto e branco</option>
+        </select>
+      </label>
+      <p id="paleta-ajuda">O alto contraste tem prioridade sobre a paleta escolhida.</p>
+      <label for="leitura-movimento">Movimento
+        <select id="leitura-movimento" data-reading="movimento">
+          <option value="sistema">Automático</option>
+          <option value="reduzir">Reduzido</option>
+        </select>
+      </label>
+    </div>
+    <p id="ajustes-status" role="status" aria-live="polite"></p>
+    <button type="button" class="btn-secondary" id="restaurar-leitura">Restaurar padrão</button>
+    </div>
+  </dialog>
 
 </body>
 </html>

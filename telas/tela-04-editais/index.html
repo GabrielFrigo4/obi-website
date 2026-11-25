@@ -3,17 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editais Simplificados · Central OBI UFABC</title>
+  <title>Regras e materiais · Central OBI UFABC</title>
   <script src="../../assets/js/preferences.js"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
   <script src="../../assets/js/utils.js" defer></script>
+  <script src="../../assets/js/study-data.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="../../assets/css/screens.css">
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <script src="../../assets/js/external-links.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/reading-settings.css">
+  <script src="../../assets/js/reading-settings.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <script src="../../assets/js/accessibility.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
   <main class="mobile-viewport">
 
@@ -21,29 +27,14 @@
       <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <img class="brand-symbol" src="../../assets/img/obi-ufabc.jpeg" alt="" width="36" height="36"><span>OBI <small>UFABC</small></span>
       </a>
-      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
-        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Acessibilidade">
+        <button id="btn-reading-settings" class="btn-a11y" type="button" aria-haspopup="dialog" aria-controls="ajustes-leitura">Acessibilidade <svg class="reading-chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </header>
 
-    <div class="central-header">
-      <p class="central-title">Central OBI UFABC</p>
-    </div>
+<div class="screen-content central-content skip-target" id="conteudo-principal" tabindex="-1">
 
-    <nav class="central-tabs" aria-label="Seções da Central OBI">
-      <a href="../tela-04-editais/index.html" class="central-tab" aria-current="page">
-        Editais Simplificados
-      </a>
-      <a href="../tela-05-kit-monitor/index.html" class="central-tab">
-        Kit do Monitor
-      </a>
-    </nav>
-
-    <div class="screen-content central-content">
-
-      <h1 class="sr-only">Editais Simplificados da OBI</h1>
+      <h1 class="screen-title">Regras e materiais</h1>
 
       <aside class="origin-notice" aria-label="Origem e responsabilidade das informações">
         <strong>Informações de apoio, não um edital oficial</strong>
@@ -55,23 +46,9 @@
           Qual é a sua categoria / modalidade?
         </h2>
         <div class="central-card">
-          <ul class="categoria-lista">
-            <li>
-              <span class="categoria-nivel">Ensino Fundamental (até o 9º ano):</span>
-              <span class="categoria-modalidade">Iniciação Nível 1 ou 2</span>
-              <span class="categoria-detalhe">Nível 1: 6º e 7º ano · Nível 2: 8º e 9º ano · Júnior: 4º e 5º ano.</span>
-            </li>
-            <li>
-              <span class="categoria-nivel">Ensino Médio ou Técnico:</span>
-              <span class="categoria-modalidade">Programação Nível 1 ou 2</span>
-              <span class="categoria-detalhe">Nível 1: até o 1º ano do Médio · Nível 2: até o 3º ano · Sênior: 4º ano do Técnico.</span>
-            </li>
-            <li>
-              <span class="categoria-nivel">Ensino Superior (Graduação):</span>
-              <span class="categoria-modalidade">Programação Sênior</span>
-              <span class="categoria-detalhe">Para quem está no 1º ano da graduação, pela primeira vez.</span>
-            </li>
-          </ul>
+          <p>Escolha um dos oito níveis para abrir sua trilha, materiais e fontes oficiais.</p>
+          <ul class="categoria-lista" id="lista-niveis-materiais"></ul>
+          <p>Até 20 anos em 1º de julho de 2026, exceto Sênior, que não tem limite de idade. A escolaridade é verificada na Fase Local; a inscrição é feita pela escola.</p>
           <a href="../tela-06-quiz-pergunta-1/index.html" class="btn-secondary btn-edital-quiz">
             Descobrir minha categoria em 1 minuto (Quiz)
           </a>
@@ -106,20 +83,24 @@
           Transparência
         </h2>
         <p class="transparencia-texto">
-          Resumo conferido em 28/10/2026 no regulamento da OBI 2026. Para detalhes jurídicos, consulte a fonte original:
+          Resumo conferido em 25/11/2026 no regulamento e nas ementas da OBI 2026. Consulte as fontes oficiais:
         </p>
+        <div class="study-source-links">
+          <a class="btn-secondary" href="https://olimpiada.ic.unicamp.br/prepare/ementas/" target="_blank" rel="noopener noreferrer" aria-label="Ementas das modalidades (abre em nova aba)">Ementas das modalidades</a>
+          <a class="btn-secondary" href="https://olimpiada.ic.unicamp.br/prepare/estude/" target="_blank" rel="noopener noreferrer" aria-label="Cursos e materiais indicados pela OBI (abre em nova aba)">Cursos e materiais indicados pela OBI</a>
+        </div>
         <a href="https://olimpiada.ic.unicamp.br/info/regulamento/" target="_blank" rel="noopener noreferrer"
            class="btn-primary btn-edital origin-link origin-official"
            aria-label="Abrir o regulamento oficial completo da OBI (abre em nova aba)">
-          Abrir regulamento oficial completo <span aria-hidden="true">&nearr;</span></a>
+          Abrir regulamento oficial completo <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
       </section>
 
       <footer class="central-footer">
-        <p>Privacidade: nenhum dado seu é enviado ou monitorado. Só guardamos no seu navegador o tamanho da fonte e o contraste.</p>
+        <p>Privacidade: nenhum dado seu é enviado ou monitorado. As preferências, respostas do quiz e marcações de estudo ficam neste navegador.</p>
         <div class="central-footer-links">
           <a href="../tela-12-comunidade-extensao/index.html">Reportar erro ou dúvida no edital</a>
           <a href="https://olimpiada.ic.unicamp.br/" target="_blank" rel="noopener noreferrer"
-             aria-label="Site oficial da OBI (abre em nova aba)" class="origin-link origin-official">Site oficial OBI <span aria-hidden="true">&nearr;</span></a>
+             aria-label="Site oficial da OBI (abre em nova aba)" class="origin-link origin-official">Site oficial OBI <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
         </div>
       </footer>
 
@@ -130,6 +111,55 @@
   <script src="script.js" defer></script>
   <!-- Tradução automática de português para Libras (VLibras) -->
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
+
+  <dialog id="ajustes-leitura" class="reading-dialog" aria-labelledby="ajustes-titulo" aria-describedby="ajustes-descricao">
+    <div class="reading-heading">
+      <h2 id="ajustes-titulo">Acessibilidade</h2>
+      <button type="button" class="btn-secondary" id="fechar-ajustes" aria-label="Fechar ajustes de acessibilidade" autofocus><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="reading-body">
+    <p id="ajustes-descricao">Personalize sua leitura. As preferências são salvas automaticamente.</p>
+    <div class="reading-fields">
+      <fieldset class="reading-size">
+        <legend>Tamanho do texto</legend>
+        <div class="reading-size-controls">
+          <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        </div>
+      </fieldset>
+      <button type="button" id="btn-contrast" class="reading-contrast-toggle" aria-pressed="false">
+        <span>Alto contraste</span>
+        <span class="reading-toggle-state" aria-hidden="true">Desativado</span>
+      </button>
+
+      <label for="leitura-espaco">Espaçamento
+        <select id="leitura-espaco" data-reading="espaco">
+          <option value="normal">Padrão</option>
+          <option value="confortavel">Confortável</option>
+          <option value="amplo">Amplo</option>
+        </select>
+      </label>
+      <label for="leitura-paleta">Paleta de leitura
+        <select id="leitura-paleta" data-reading="paleta" aria-describedby="paleta-ajuda">
+          <option value="padrao">Original</option>
+          <option value="quente">Quente</option>
+          <option value="fria">Fria</option>
+          <option value="monocromatica">Preto e branco</option>
+        </select>
+      </label>
+      <p id="paleta-ajuda">O alto contraste tem prioridade sobre a paleta escolhida.</p>
+      <label for="leitura-movimento">Movimento
+        <select id="leitura-movimento" data-reading="movimento">
+          <option value="sistema">Automático</option>
+          <option value="reduzir">Reduzido</option>
+        </select>
+      </label>
+    </div>
+    <p id="ajustes-status" role="status" aria-live="polite"></p>
+    <button type="button" class="btn-secondary" id="restaurar-leitura">Restaurar padrão</button>
+    </div>
+  </dialog>
 
 </body>
 </html>

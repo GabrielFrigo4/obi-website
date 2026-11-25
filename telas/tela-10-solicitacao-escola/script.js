@@ -14,6 +14,14 @@ function copiarMensagemProfessor() {
 
   if (!textoEl) return;
   var texto = textoEl.textContent.trim();
+  if (btn) btn.classList.remove('copied');
+  if (btnTexto) btnTexto.textContent = 'Copiar mensagem para o professor';
+  if (feedback) {
+    feedback.textContent = 'Copiando…';
+    feedback.classList.remove('is-hidden');
+    feedback.style.display = 'block';
+  }
+
 
   function feedbackSucesso() {
     if (btn) btn.classList.add('copied');
@@ -25,15 +33,6 @@ function copiarMensagemProfessor() {
       feedback.style.display = 'block';
     }
 
-    setTimeout(function () {
-      if (btn) btn.classList.remove('copied');
-      if (btnTexto) btnTexto.textContent = 'Copiar mensagem para o professor';
-      if (btnIcone) btnIcone.textContent = '';
-      if (feedback) {
-        feedback.classList.add('is-hidden');
-        feedback.style.display = 'none';
-      }
-    }, 3000);
   }
 
   function feedbackErro() {

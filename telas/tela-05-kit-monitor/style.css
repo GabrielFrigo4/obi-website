@@ -85,14 +85,14 @@
       background-color: var(--cor-card);
       border: 1px solid var(--cor-borda);
       border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 2px 8px var(--cor-sombra-painel);
       padding: 16px;
     }
 
     .aviso-pendente {
-      background-color: #fef3c7;
-      color: #78350f;
-      border: 1px solid #fde68a;
+      background-color: var(--cor-aviso-destaque-fundo);
+      color: var(--cor-aviso-texto-forte);
+      border: 1px solid var(--cor-aviso-borda);
       border-radius: var(--raio-botao);
       padding: 10px 12px;
       font-size: var(--tamanho-pequeno);
@@ -257,7 +257,7 @@
     }
 
     .kit-campo input[aria-invalid="true"] {
-      border-color: #b91c1c;
+      border-color: var(--cor-erro-texto);
     }
 
     .kit-ajuda {
@@ -281,7 +281,7 @@
     }
 
     .kit-status.erro {
-      color: #b91c1c;
+      color: var(--cor-erro-texto);
     }
 
     .kit-manual {
@@ -346,3 +346,6 @@
 
 /* Classes para substituição de estilos inline */
 .btn-outline-primaria { border-color: var(--cor-primaria); color: var(--cor-primaria); }
+
+#campo-data-fase1 { min-height: 48px; min-width: 0; width: 100%; font: inherit; color-scheme: light; }
+body.high-contrast #campo-data-fase1 { color-scheme: dark; }

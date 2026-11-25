@@ -1,0 +1,53 @@
+/* Executar: node testes_calendario_ics.js (sem dependências externas). */
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const status = {textContent: ''};
+const context = {window: {}, TextEncoder, URL, URLSearchParams, Intl, Date, Blob, setTimeout: fn => fn(), document: {addEventListener() {}, getElementById() {return status;}}};
+vm.createContext(context);
+for (const file of ['assets/js/calendar-data.js','telas/tela-02-calendario/script.js']) vm.runInContext(fs.readFileSync(path.join(__dirname,file),'utf8'),context);
+let total = 0;
+for (const [mod, dados] of Object.entries(context.window.OBICalendario.modalidades)) {
+ for (const fase of ['inscricoes','fase1','fase2','fase3']) {
+  const [inicio,fim] = dados[fase];
+  const ics = context.gerarEventoIcs('OBI — '+mod, inicio, fim, 'Descrição, com; acentos\nOutra linha', true, mod+'-'+fase);
+  assert.match(ics,/DTSTAMP:\d{8}T\d{6}Z/);
+  assert.ok(ics.includes('DTSTART;VALUE=DATE:'+inicio.replaceAll('-','')));
+  const final = new Date(fim+'T00:00:00Z');final.setUTCDate(final.getUTCDate()+1);
+  assert.ok(ics.includes('DTEND;VALUE=DATE:'+final.toISOString().slice(0,10).replaceAll('-','')));
+  assert.ok(ics.includes('TRIGGER:-P2D'));
+  assert.ok(ics.endsWith('END:VCALENDAR\r\n'));
+  assert.equal((ics.match(/BEGIN:VEVENT/g)||[]).length,1);
+  assert.ok(ics.includes('Descrição\\, com\\; acentos\\nOutra linha'));
+  for(const line of ics.split('\r\n')) assert.ok(Buffer.byteLength(line)<=75);
+  total++;
+ }
+}
+const make = (inicio,fim,alarm) => context.gerarEventoIcs('A',inicio,fim,'Descrição',alarm,'teste');
+assert.ok(!make('2026-09-26','2026-09-26',false).includes('VALARM'));
+assert.throws(()=>make('2026-02-30','2026-03-01',false));
+assert.throws(()=>make('2026-03-02','2026-03-01',false));
+assert.ok(make('2026-12-31','2026-12-31',false).includes('DTEND;VALUE=DATE:20270101'));
+const longa='Descrição çã😀'.repeat(40);
+const folded=context.dobrarLinhaIcs(longa);
+assert.equal(folded.replace(/\r\n /g,''),longa);
+for(const line of folded.split('\r\n'))assert.ok(Buffer.byteLength(line)<=75);
+assert.equal(make('2026-01-01','2026-01-01',false).match(/UID:.+/)[0],make('2026-01-01','2026-01-01',true).match(/UID:.+/)[0]);
+context.URL={createObjectURL(){throw Error('bloqueado');}};
+assert.equal(context.adicionarEventoAgenda('A','2026-01-01','2026-01-01',''),false);
+assert.match(status.textContent,/Não foi possível/);
+console.log('PASS: '+total+' eventos oficiais; datas inclusivas, virada de ano, alarme opcional, escape, UTF-8, UID estável e falha de download.');
+
+context.URL = URL;
+const links = context.gerarLinksAgenda('OBI & ação + teste', '2026-12-30', '2026-12-31', 'Descrição; com acento');
+const google = new URL(links.google), outlook = new URL(links.outlook);
+assert.equal(google.hostname, 'calendar.google.com');
+assert.equal(google.searchParams.get('dates'), '20261230/20270101');
+assert.equal(google.searchParams.get('text'), 'OBI & ação + teste');
+assert.equal(outlook.hostname, 'outlook.live.com');
+assert.equal(outlook.searchParams.get('enddt'), '2027-01-01T00:00:00');
+assert.equal(outlook.searchParams.get('allday'), 'true');
+assert.equal(outlook.searchParams.get('body'), 'Descrição; com acento');
+assert.throws(() => context.gerarLinksAgenda('A', '2026-02-30', '2026-03-01', ''));
+console.log('PASS: links Google e Outlook, codificação dos textos e término exclusivo.');

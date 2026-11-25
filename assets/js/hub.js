@@ -22,7 +22,7 @@ function sincronizarEstadoDoUsuario() {
     const resultado = (typeof window.calcularModalidadeOBI === 'function') ? window.calcularModalidadeOBI() : null;
 
     if (elBadge) {
-      elBadge.textContent = 'Diagnóstico Concluído';
+      elBadge.textContent = resultado ? 'Diagnóstico concluído' : 'Atualize seu diagnóstico';
       elBadge.className = 'badge badge-success';
     }
     if (elTitulo && resultado) {
@@ -32,22 +32,16 @@ function sincronizarEstadoDoUsuario() {
       elDesc.textContent = resultado.resumo;
     }
     if (elBtn) {
-      elBtn.href = 'telas/tela-09-resultado-nivel/index.html';
-      elBtn.textContent = 'Ver Meu Nível Recomendado';
+      elBtn.href = resultado ? 'telas/tela-09-resultado-nivel/index.html' : 'telas/tela-06-quiz-pergunta-1/index.html';
+      elBtn.textContent = resultado ? 'Ver resultado do diagnóstico' : 'Atualizar meu diagnóstico';
     }
   }
 
   const elSubChecklist = document.getElementById('subtexto-progresso-checklist');
   if (elSubChecklist) {
     try {
-      const categorias = ['iniciacao', 'prog_jr', 'nivel_1', 'nivel_2', 'senior'];
-      let totalMarcados = 0;
-      categorias.forEach(function (cat) {
-        const obj = JSON.parse(localStorage.getItem('obi_checklist_' + cat) || '{}');
-        if (obj && typeof obj === 'object') {
-          totalMarcados += Object.keys(obj).filter(function (k) { return Boolean(obj[k]); }).length;
-        }
-      });
+      const estudos = window.OBIEstudos;
+      const totalMarcados = estudos ? Object.keys(estudos.categorias).reduce((total, cat) => total + estudos.concluidos(cat), 0) : 0;
 
       if (totalMarcados > 0) {
         elSubChecklist.textContent = totalMarcados + ' tópico(s) concluído(s) na sua trilha';

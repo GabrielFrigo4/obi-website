@@ -85,14 +85,14 @@
       background-color: var(--cor-card);
       border: 1px solid var(--cor-borda);
       border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 2px 8px var(--cor-sombra-painel);
       padding: 16px;
     }
 
     .aviso-pendente {
-      background-color: #fef3c7;
-      color: #78350f;
-      border: 1px solid #fde68a;
+      background-color: var(--cor-aviso-destaque-fundo);
+      color: var(--cor-aviso-texto-forte);
+      border: 1px solid var(--cor-aviso-borda);
       border-radius: var(--raio-botao);
       padding: 10px 12px;
       font-size: var(--tamanho-pequeno);
@@ -223,8 +223,8 @@
       display: block;
       margin-top: 4px;
       font-size: var(--tamanho-pequeno);
-      color: #78350f;
-      background-color: #fef3c7;
+      color: var(--cor-aviso-texto-forte);
+      background-color: var(--cor-aviso-destaque-fundo);
       border-radius: 6px;
       padding: 4px 8px;
     }
@@ -276,3 +276,8 @@
 /* Classes para substituição de estilos inline */
 .btn-edital-quiz { margin-top: 14px; min-height: 48px; font-size: 0.85rem; border-color: var(--cor-primaria); color: var(--cor-primaria); }
 .btn-edital-checklist { margin-top: 14px; min-height: 48px; font-size: 0.85rem; }
+
+#lista-niveis-materiais { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+#lista-niveis-materiais > li { display: flex; flex-direction: column; gap: 12px; padding: 16px; border: 1px solid var(--cor-borda); border-radius: var(--raio-borda); }
+#lista-niveis-materiais > li > a { margin-top: auto; }
+.study-source-links { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 16px; }

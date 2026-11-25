@@ -112,7 +112,7 @@
 }
 
 .form-label .required {
-  color: #dc2626;
+  color: var(--cor-erro-realce);
   font-weight: 700;
   margin-left: 4px;
 }
@@ -138,8 +138,8 @@
 }
 
 .form-control.input-erro {
-  border-color: #dc2626;
-  background-color: #fef2f2;
+  border-color: var(--cor-erro-realce);
+  background-color: var(--cor-erro-fundo);
 }
 
 .field-hint {
@@ -156,9 +156,9 @@
   font-weight: 600;
   line-height: 1.4;
   margin-bottom: 18px;
-  background-color: #fef2f2;
-  border: 1.5px solid #fecaca;
-  color: #991b1b;
+  background-color: var(--cor-erro-fundo);
+  border: 1.5px solid var(--cor-erro-borda);
+  color: var(--cor-erro-texto-forte);
 }
 
 .privacy-notice {

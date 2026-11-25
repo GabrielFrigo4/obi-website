@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comunidade e Suporte Gratuito · Central OBI UFABC</title>
+  <title>Ajuda e comunidade · Central OBI UFABC</title>
   <script src="../../assets/js/preferences.js"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css">
   <link rel="stylesheet" href="../../assets/css/base.css">
@@ -13,8 +13,13 @@
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="../../assets/css/responsive.css">
   <script src="../../assets/js/external-links.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/reading-settings.css">
+  <script src="../../assets/js/reading-settings.js" defer></script>
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <script src="../../assets/js/accessibility.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
   <main class="mobile-viewport">
 
@@ -22,16 +27,14 @@
       <a href="../../index.html" class="brand-link" aria-label="Ir para a página inicial da Central OBI UFABC">
         <img class="brand-symbol" src="../../assets/img/obi-ufabc.jpeg" alt="" width="36" height="36"><span>OBI <small>UFABC</small></span>
       </a>
-      <div class="accessibility-controls" role="group" aria-label="Ajustes visuais de fonte e contraste">
-        <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button id="btn-contrast" class="btn-a11y" type="button" aria-label="Alternar modo de alto contraste" aria-pressed="false">◐ Contraste</button>
+      <div class="accessibility-controls" role="group" aria-label="Acessibilidade">
+        <button id="btn-reading-settings" class="btn-a11y" type="button" aria-haspopup="dialog" aria-controls="ajustes-leitura">Acessibilidade <svg class="reading-chevron" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
     </header>
 
-    <section class="screen-content" aria-labelledby="screen-title">
+    <section class="screen-content skip-target" id="conteudo-principal" tabindex="-1" aria-labelledby="screen-title">
 
-      <h1 id="screen-title" class="screen-title">Comunidade e Suporte Gratuito</h1>
+      <h1 id="screen-title" class="screen-title">Ajuda e comunidade</h1>
       <p class="screen-subtitle">Projeto de extensão universitária da UFABC. Aqui ninguém estuda sozinho para a OBI.</p>
 
       <section class="whatsapp-card" aria-label="Grupo de Estudos">
@@ -49,7 +52,7 @@
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.78 14.07c-.24.68-1.39 1.3-1.92 1.38-.49.08-1.12.11-3.6-0.92-3.17-1.31-5.21-4.52-5.37-4.73-.16-.21-1.29-1.72-1.29-3.28s.82-2.33 1.11-2.65c.29-.32.64-.4 0.86-.4.21 0 .43 0 .61.01.2 0 .46-.07.72.55.27.63.92 2.25 1 2.42.08.16.14.36.03.57-.11.22-.16.35-.32.55-.16.2-.34.45-.49.6-.16.16-.33.34-.14.67.19.33.85 1.4 1.82 2.26 1.25 1.11 2.3 1.46 2.63 1.62.33.16.52.14.72-.08.2-.23.86-1 1.09-1.35.23-.35.46-.29.77-.18.32.11 2.01.95 2.36 1.12.35.17.58.26.66.4.08.14.08.83-.16 1.51z"/>
           </svg>
-          <span>Entrar no Grupo de Apoio no WhatsApp</span> <span aria-hidden="true" class="external-arrow">↗</span></a>
+          <span>Entrar no Grupo de Apoio no WhatsApp</span> <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 
         <div class="trust-badge">
           <svg aria-hidden="true" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,11 +82,9 @@
               <strong>Provas e Gabaritos Oficiais da OBI</strong>
               <span>Cadernos de fases anteriores com soluções explicadas pela UNICAMP.</span>
             </div>
-            <svg class="external-icon" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg></a>
+            <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
 
-          <a href="https://olimpiada.ic.unicamp.br/estude/" target="_blank" rel="noopener noreferrer" class="material-link-card origin-link origin-official" aria-label="Apostilas e Aulas de Programação da OBI (abre em nova aba)">
+          <a href="https://olimpiada.ic.unicamp.br/prepare/estude/" target="_blank" rel="noopener noreferrer" class="material-link-card origin-link origin-official" aria-label="Apostilas e Aulas de Programação da OBI (abre em nova aba)">
             <div class="material-icon" aria-hidden="true">
               <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -93,11 +94,10 @@
               <strong>Apostilas e Aulas de Programação</strong>
               <span>Conteúdo didático gratuito de lógica e algoritmos para iniciantes.</span>
             </div>
-            <svg class="external-icon" aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg></a>
+            <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
         </div>
       </section>
+
 
       <section class="faq-section" aria-label="Perguntas Frequentes">
         <h2 class="section-header-title">
@@ -167,6 +167,55 @@
 
   <!-- Tradução automática de português para Libras (VLibras) -->
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js" defer></script>
+
+
+  <dialog id="ajustes-leitura" class="reading-dialog" aria-labelledby="ajustes-titulo" aria-describedby="ajustes-descricao">
+    <div class="reading-heading">
+      <h2 id="ajustes-titulo">Acessibilidade</h2>
+      <button type="button" class="btn-secondary" id="fechar-ajustes" aria-label="Fechar ajustes de acessibilidade" autofocus><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="reading-body">
+    <p id="ajustes-descricao">Personalize sua leitura. As preferências são salvas automaticamente.</p>
+    <div class="reading-fields">
+      <fieldset class="reading-size">
+        <legend>Tamanho do texto</legend>
+        <div class="reading-size-controls">
+          <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
+        </div>
+      </fieldset>
+      <button type="button" id="btn-contrast" class="reading-contrast-toggle" aria-pressed="false">
+        <span>Alto contraste</span>
+        <span class="reading-toggle-state" aria-hidden="true">Desativado</span>
+      </button>
+
+      <label for="leitura-espaco">Espaçamento
+        <select id="leitura-espaco" data-reading="espaco">
+          <option value="normal">Padrão</option>
+          <option value="confortavel">Confortável</option>
+          <option value="amplo">Amplo</option>
+        </select>
+      </label>
+      <label for="leitura-paleta">Paleta de leitura
+        <select id="leitura-paleta" data-reading="paleta" aria-describedby="paleta-ajuda">
+          <option value="padrao">Original</option>
+          <option value="quente">Quente</option>
+          <option value="fria">Fria</option>
+          <option value="monocromatica">Preto e branco</option>
+        </select>
+      </label>
+      <p id="paleta-ajuda">O alto contraste tem prioridade sobre a paleta escolhida.</p>
+      <label for="leitura-movimento">Movimento
+        <select id="leitura-movimento" data-reading="movimento">
+          <option value="sistema">Automático</option>
+          <option value="reduzir">Reduzido</option>
+        </select>
+      </label>
+    </div>
+    <p id="ajustes-status" role="status" aria-live="polite"></p>
+    <button type="button" class="btn-secondary" id="restaurar-leitura">Restaurar padrão</button>
+    </div>
+  </dialog>
 
 </body>
 </html>

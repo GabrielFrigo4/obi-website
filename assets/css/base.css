@@ -379,9 +379,9 @@ p.screen-subtitle {
 }
 
 .feedback-status.status-aviso {
-  background-color: #fffbeb;
-  border: 1px solid #fde68a;
-  color: #92400e;
+  background-color: var(--cor-aviso-fundo);
+  border: 1px solid var(--cor-aviso-borda);
+  color: var(--cor-aviso-texto);
   font-weight: 600;
 }
 
@@ -673,7 +673,7 @@ body.high-contrast .accessibility-bar { background: #000; }
   color: var(--cor-texto-principal);
   box-shadow: 0 24px 80px rgb(0 0 0 / 25%);
 }
-.external-dialog::backdrop { background: rgb(20 10 8 / 60%); }
+.external-dialog::backdrop { background: var(--cor-sobreposicao); }
 .external-dialog h2 { font-size: 1.1rem; line-height: 1.3; margin-bottom: 8px; }
 .external-dialog p { font-size: .875rem; line-height: 1.5; color: var(--cor-texto-secundario); }
 .external-dialog-destination {
@@ -690,3 +690,22 @@ body.high-contrast .accessibility-bar { background: #000; }
 .external-dialog .external-dialog-destination { color: var(--cor-primaria); font-size: .8rem; }
 body:has(.external-dialog[open]) { overflow: hidden; }
 @media print { .external-dialog { display: none; } }
+
+/* Uma única seta para destinos externos, independente da fonte escolhida. */
+.external-link-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  vertical-align: -3px;
+  color: currentColor;
+}
+.atalho-link > .external-link-icon { margin-left: auto; }
+
+/* Indica a pergunta atual, sem apresentar respostas como concluídas. */
+.quiz-step-label { font-weight: 700; color: var(--cor-texto-secundario); margin-bottom: 10px; }
+.quiz-step-track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.quiz-step-track span { height: 6px; border-radius: 999px; background: var(--cor-borda); }
+.quiz-step-track .quiz-step-current { background: var(--cor-primaria); }
+.copy-status-persistent { display: block; margin-top: 12px; color: var(--cor-texto-principal); font-size: .875rem; line-height: 1.5; }
+.copy-status-persistent:empty { display: none; }

@@ -10,7 +10,7 @@ function inicializarAvisoLinksExternos() {
     '<p id="external-dialog-description">Você será direcionado para este site em uma nova aba.</p>' +
     '<p id="external-dialog-destination" class="external-dialog-destination"></p>' +
     '<div class="external-dialog-actions"><button type="button" class="btn-secondary" autofocus>Cancelar</button>' +
-    '<a class="btn-primary" target="_blank" rel="noopener noreferrer" data-external-continue>Abrir site <span aria-hidden="true">↗</span></a></div>';
+    '<a class="btn-primary" target="_blank" rel="noopener noreferrer" data-external-continue>Abrir site <svg class="external-link-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>';
   document.body.appendChild(dialogo);
   const cancelar = dialogo.querySelector('button');
   const continuar = dialogo.querySelector('a');

@@ -53,3 +53,31 @@ body.high-contrast {
   --anel-foco: 3px solid #facc15;
   --sombra-suave: none;
 }
+
+/* Estados e sombras compartilhados entre todas as telas. */
+:root {
+  --cor-aviso-fundo: #fffbeb;
+  --cor-aviso-borda: #fde68a;
+  --cor-aviso-texto: #92400e;
+  --cor-aviso-destaque-fundo: #fef3c7;
+  --cor-aviso-texto-forte: #78350f;
+  --cor-estado-concluido-fundo: #e2e8f0;
+  --cor-estado-concluido-texto: #475569;
+  --cor-estado-pendente-fundo: #f1f5f9;
+  --cor-estado-pendente-texto: #64748b;
+  --cor-erro-borda-forte: #ef4444;
+  --cor-erro-fundo: #fef2f2;
+  --cor-erro-texto: #b91c1c;
+  --cor-erro-realce: #dc2626;
+  --cor-erro-borda: #fecaca;
+  --cor-erro-texto-forte: #991b1b;
+  --cor-whatsapp-fundo: #15803d;
+  --cor-whatsapp-hover: #166534;
+  --cor-sobreposicao: rgb(20 10 8 / 60%);
+  --cor-sombra-card: rgb(110 12 5 / 5%);
+  --cor-sombra-card-hover: rgb(110 12 5 / 10%);
+  --cor-sombra-botao: rgb(80 10 4 / 12%);
+  --cor-sombra-menu: rgb(65 30 20 / 6%);
+  --cor-sombra-destaque: rgba(29, 78, 216, 0.12);
+  --cor-sombra-painel: rgba(15, 23, 42, 0.08);
+}

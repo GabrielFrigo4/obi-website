@@ -353,3 +353,50 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter:
   .app-bottom-nav .nav-icon { width: 20px; height: 20px; flex: 0 0 20px; margin: 0; }
   .app-bottom-nav .nav-text { font-size: 12px; line-height: 16px; white-space: nowrap; overflow-wrap: normal; }
 }
+
+/* Hierarquia visual das páginas de conteúdo e calendário. */
+.central-tabs { margin-top: 20px; }
+.central-content > .screen-title { margin-bottom: 0; }
+.timeline-header { flex-direction: column; gap: 12px; }
+.timeline-title { line-height: 1.4; }
+.timeline-badge { align-self: flex-start; }
+.timeline-date { line-height: 1.6; overflow-wrap: anywhere; }
+.timeline-item .btn-agenda { width: 100%; justify-content: center; }
+.timeline-item .switch-row { margin-top: 4px; gap: 12px; }
+.badge-breve { color: var(--cor-texto-secundario); background: var(--cor-fundo-suave); }
+body:not(.high-contrast) .badge-aberta {
+  color: var(--cor-primaria);
+  background: var(--cor-primaria-fundo);
+  border-color: var(--cor-primaria-borda);
+}
+@media (min-width: 960px) {
+  .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; }
+  .timeline-item { min-width: 0; padding: 24px; gap: 16px; }
+}
+@media (min-width: 1280px) {
+  .timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 639px) {
+  .timeline { padding-left: 20px; }
+  .timeline::before { left: 7px; }
+  .timeline-dot { left: -21px; width: 14px; height: 14px; }
+}
+
+/* Destinos adicionais no desktop; barra mobile com cinco links. */
+.app-bottom-nav .nav-label-full { display: none; }
+.app-bottom-nav .desktop-nav-only { display: none; }
+.app-bottom-nav .bottom-nav-item.active { background: var(--cor-primaria-fundo); }
+@media (min-width: 960px) {
+  .app-bottom-nav { overflow-y: auto; gap: 6px; }
+  .app-bottom-nav .desktop-nav-only { display: flex; }
+  .app-bottom-nav .nav-label-full { display: inline; white-space: normal; line-height: 1.4; }
+  .app-bottom-nav .nav-label-short { display: none; }
+  .app-bottom-nav .bottom-nav-item { min-height: 48px; padding: 10px 12px; flex-shrink: 0; }
+}
+.result-next-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+.result-next-links > a { min-width: 0; }
+@media (max-width: 639px) { .result-next-links > a { width: 100%; } }
+
+.practice-links [hidden], .screen-actions [hidden] { display: none; }
+
+.result-next-links [hidden] { display: none; }

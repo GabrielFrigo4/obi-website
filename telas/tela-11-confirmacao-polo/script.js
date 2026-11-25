@@ -63,17 +63,16 @@ function copiarProtocolo() {
 
   if (!display) return;
   var texto = display.textContent.trim();
+  if (btn) btn.classList.remove('copied');
+  if (btnTexto) btnTexto.textContent = 'Copiar';
+  if (feedback) feedback.textContent = 'Copiando…';
+
 
   function aposCopiar() {
     if (btn) btn.classList.add('copied');
     if (btnTexto) btnTexto.textContent = 'Copiado!';
     if (feedback) feedback.textContent = 'Protocolo ' + texto + ' copiado para a área de transferência com sucesso.';
 
-    setTimeout(function () {
-      if (btn) btn.classList.remove('copied');
-      if (btnTexto) btnTexto.textContent = 'Copiar';
-      if (feedback) feedback.textContent = '';
-    }, 2500);
   }
 
   function falhaCopia() {

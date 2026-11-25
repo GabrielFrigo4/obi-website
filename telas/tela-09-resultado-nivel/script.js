@@ -11,36 +11,19 @@ function inicializarResultadoNivel() {
     respostas && (respostas.ano_escolar || respostas.preferencia || respostas.escola_apoio)
   );
 
-  var resultado;
-  if (typeof calcularModalidadeOBI === 'function') {
-    resultado = calcularModalidadeOBI();
-  } else {
-    var pref = respostas.preferencia || respostas.preferencia_estudo;
-    if (pref === 'iniciacao' || pref === 'logica') {
-      resultado = {
-        titulo: 'Modalidade Iniciação — Nível 2',
-        resumo: 'Indicada para estudantes que preferem resolver problemas lógicos no papel, sem uso de código.',
-        precisaApoio: respostas.escola_apoio === 'escola_sem_cadastro',
-        topicosEstudo: [
-          'Raciocínio combinatório e restrições lógicas',
-          'Problemas de caminho, grafos visuais e tabela verdade',
-          'Resolução de cadernos anteriores da Modalidade Iniciação'
-        ]
-      };
-    } else {
-      resultado = {
-        titulo: 'Modalidade Programação — Nível Júnior',
-        resumo: 'Ideal para começar a resolver desafios com código no seu ritmo, sem pressão.',
-        precisaApoio: respostas.escola_apoio === 'escola_sem_cadastro',
-        topicosEstudo: [
-          'Entrada, saída e estruturas condicionais (if/else)',
-          'Laços de repetição (for/while) e vetores simples',
-          'Simulação passo a passo em Python ou C++'
-        ]
-      };
+  const resultado = typeof calcularModalidadeOBI === 'function' ? calcularModalidadeOBI() : null;
+  if (!resultado) { window.location.replace('../tela-06-quiz-pergunta-1/index.html'); return; }
+  const categoriaTrilha = window.OBIEstudos.categoriaDoNivel[resultado.nivelCodigo];
+  const linkTrilha = document.getElementById('link-trilha-resultado');
+  if (linkTrilha) {
+    linkTrilha.hidden = !categoriaTrilha;
+    if (categoriaTrilha) {
+      linkTrilha.href = '../tela-03-checklist/index.html?cat=' + categoriaTrilha;
+      linkTrilha.textContent = 'Estudar ' + window.OBIEstudos.categorias[categoriaTrilha].titulo;
     }
   }
-
+  const neps = document.querySelector('.practice-links a[href="https://neps.academy/br"]');
+  if (neps) neps.hidden = !categoriaTrilha || window.OBIEstudos.categorias[categoriaTrilha].iniciacao;
   // 1. Tratar acesso direto vs diagnóstico personalizado
   var elAvisoPadrao = document.getElementById('aviso-diagnostico-padrao');
   var btnRefazer = document.getElementById('btn-refazer-diagnostico');
@@ -121,7 +104,7 @@ function inicializarResultadoNivel() {
   var elAnuncio = document.getElementById('status-anuncio-categoria');
   if (elAnuncio && resultado) {
     setTimeout(function () {
-      elAnuncio.textContent = 'Diagnóstico concluído. Sua categoria recomendada é: ' +
+      elAnuncio.textContent = 'Diagnóstico concluído. ' +
         resultado.titulo + '. ' + resultado.resumo;
     }, 200);
   }

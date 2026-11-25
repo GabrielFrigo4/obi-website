@@ -11,7 +11,7 @@ function atualizarBotoesZoom(escala) {
   const btnIn = document.getElementById('btn-zoom-in');
   const btnOut = document.getElementById('btn-zoom-out');
   if (btnIn) {
-    if (escala >= 1.30) {
+    if (escala >= 2.00) {
       btnIn.setAttribute('aria-disabled', 'true');
     } else {
       btnIn.removeAttribute('aria-disabled');
@@ -36,8 +36,8 @@ function alterarTamanhoFonte(variacao) {
     if (Number.isFinite(salva)) escalaAtual = salva;
   } catch (e) {}
   
-  // Limites simples e seguros: entre 85% e 130%
-  escalaAtual = Math.min(Math.max(escalaAtual + variacao, 0.85), 1.30);
+  // Limites simples e seguros: entre 85% e 200%
+  escalaAtual = Math.min(Math.max(escalaAtual + variacao, 0.85), 2.00);
   document.documentElement.style.fontSize = (16 * escalaAtual) + 'px';
   
   try {
@@ -50,7 +50,9 @@ function alterarTamanhoFonte(variacao) {
 function atualizarEstadoAcessibilidadeContraste(estaAtivo) {
   const botoes = document.querySelectorAll('#btn-contrast');
   botoes.forEach(function (btn) {
-    btn.setAttribute('aria-pressed', estaAtivo ? 'true' : 'false');
+    btn.setAttribute('aria-pressed', String(estaAtivo));
+    const estado = btn.querySelector('.reading-toggle-state');
+    if (estado) estado.textContent = estaAtivo ? 'Ativado' : 'Desativado';
   });
 }
 
@@ -107,111 +109,34 @@ function obterProtocolo() {
 
 // 5. Cálculo Oficial da Modalidade OBI com base nas Respostas
 function calcularModalidadeOBI() {
-  const respostas = obterRespostas();
-  const anoEscolar = respostas.ano_escolar;
-  const preferencia = respostas.preferencia || respostas.preferencia_estudo;
-  const escolaApoio = respostas.escola_apoio;
-
-  const precisaApoio = escolaApoio !== 'fundamental_com_apoio' &&
-                       escolaApoio !== 'medio_com_apoio' &&
-                       escolaApoio !== 'escola_participa';
-
-  if (anoEscolar === 'fundamental_1' && preferencia === 'logica') {
-    return {
-      titulo: 'Modalidade Iniciação — Nível 1',
-      resumo: 'Indicada para estudantes do 6º e 7º ano. Prova focada em raciocínio lógico e enigmas no papel, sem precisar programar.',
-      nivelCodigo: 'iniciacao_1',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Lógica proposicional e dedução simples',
-        'Ordenação e agrupamento de elementos',
-        'Problemas de caminho e tabela verdade'
-      ]
-    };
-  }
-
-  if (anoEscolar === 'fundamental_2' && preferencia === 'logica') {
-    return {
-      titulo: 'Modalidade Iniciação — Nível 2',
-      resumo: 'Indicada para estudantes do 8º e 9º ano. Desafios analíticos e problemas lógicos no papel, sem uso de código.',
-      nivelCodigo: 'iniciacao_2',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Raciocínio combinatório e restrições',
-        'Grafos visuais e relações de ordem',
-        'Resolução de provas anteriores do Nível 2'
-      ]
-    };
-  }
-
-  if ((anoEscolar === 'fundamental_1' || anoEscolar === 'fundamental_2') && preferencia === 'codigo') {
-    return {
-      titulo: 'Modalidade Programação — Nível Júnior',
-      resumo: 'Ideal para estudantes do Ensino Fundamental que querem dar os primeiros passos resolvendo problemas com código no computador.',
-      nivelCodigo: 'prog_jr',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Entrada, saída e condicionais (if/else)',
-        'Laços de repetição (for/while) e vetores simples',
-        'Simulação passo a passo em Python ou C++'
-      ]
-    };
-  }
-
-  if (anoEscolar === 'medio' && preferencia === 'logica') {
-    return {
-      titulo: 'Modalidade Programação — Nível Júnior / Nível 1',
-      resumo: 'No Ensino Médio a prova é na modalidade Programação. Com as oficinas da UFABC, você aprende a transformar sua lógica em código do zero!',
-      nivelCodigo: 'prog_medio_jr',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Lógica de programação básica em Python',
-        'Estruturas condicionais e repetição',
-        'Resolução guiada no Neps Academy'
-      ]
-    };
-  }
-
-  if (anoEscolar === 'medio' && preferencia === 'codigo') {
-    return {
-      titulo: 'Modalidade Programação — Nível 1 ou 2',
-      resumo: 'Indicada para estudantes do Ensino Médio ou Técnico (Nível 1 até o 2º ano; Nível 2 até o 3º/4º ano) com desafios práticos de algoritmos.',
-      nivelCodigo: 'prog_1_2',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Vetores, matrizes e ordenação eficiente',
-        'Busca binária e algoritmos gulosos',
-        'Introdução a grafos e programação dinâmica'
-      ]
-    };
-  }
-
-  if (anoEscolar === 'superior') {
-    return {
-      titulo: 'Modalidade Programação — Nível Sênior',
-      resumo: 'Indicada para estudantes no 1º ano da graduação. Foco em estruturas de dados e algoritmos no computador.',
-      nivelCodigo: 'prog_sr',
-      precisaApoio: precisaApoio,
-      topicosEstudo: [
-        'Estruturas de dados e complexidade',
-        'Grafos (BFS, DFS, Dijkstra)',
-        'Programação dinâmica e teoria dos números'
-      ]
-    };
-  }
-
-  // Caso padrão (se o usuário abrir a Tela 9 direto sem passar pela Tela 6)
-  return {
-    titulo: 'Modalidade Programação — Nível Júnior',
-    resumo: 'Ideal para começar a resolver desafios com código no seu ritmo, com suporte gratuito da UFABC.',
-    nivelCodigo: 'prog_jr',
-    precisaApoio: precisaApoio,
-    topicosEstudo: [
-      'Entrada, saída e estruturas condicionais',
-      'Laços de repetição e listas básicas',
-      'Treino prático nos cadernos oficiais da OBI'
-    ]
+  // Edição 2026: https://olimpiada.ic.unicamp.br/info/regulamento/
+  // Recomenda o nível da faixa escolar, mesmo havendo níveis superiores elegíveis.
+  const r = obterRespostas(), ano = r.ano_escolar;
+  const preferencia = r.preferencia || r.preferencia_estudo;
+  const ef = /^ef_[1-9]$/.test(ano || '') ? Number(ano.slice(3)) : 0;
+  if ((!ef && !['em_1','em_2','em_3','tecnico_4','superior_1','outro'].includes(ano)) ||
+      !['ate_20','acima_20'].includes(r.faixa_idade) || !['logica','codigo'].includes(preferencia) || !r.escola_apoio) return null;
+  const precisaApoio = !['fundamental_com_apoio','medio_com_apoio','escola_participa'].includes(r.escola_apoio);
+  const senior = ['tecnico_4','superior_1'].includes(ano);
+  if (ano === 'outro' || (!senior && r.faixa_idade === 'acima_20')) return {
+    elegivel: false, nivelCodigo: null, precisaApoio,
+    titulo: 'Não foi possível indicar um nível para a OBI 2026',
+    resumo: ano === 'outro' ? 'A escolaridade informada não corresponde às faixas previstas neste quiz. Consulte o regulamento e o coordenador da sua escola.' : 'Os níveis para sua escolaridade exigem no máximo 20 anos em 1º de julho de 2026. O Nível Sênior tem critérios escolares próprios.', topicosEstudo: []
   };
+  let codigo, nivel, modalidade = 'Programação';
+  if (ef >= 4 && preferencia === 'logica') {
+    modalidade = 'Iniciação'; codigo = ef <= 5 ? 'iniciacao_jr' : ef <= 7 ? 'iniciacao_1' : 'iniciacao_2';
+    nivel = ef <= 5 ? 'Júnior' : ef <= 7 ? '1' : '2';
+  } else {
+    codigo = senior ? 'prog_sr' : ef ? (ef <= 7 ? 'prog_mirim' : 'prog_jr') : ano === 'em_1' ? 'prog_1' : 'prog_2';
+    nivel = {prog_sr:'Sênior',prog_mirim:'Mirim',prog_jr:'Júnior',prog_1:'1',prog_2:'2'}[codigo];
+  }
+  const escola = ef ? ef + 'º ano do Ensino Fundamental' : {em_1:'1º ano do Ensino Médio',em_2:'2º ano do Ensino Médio',em_3:'3º ano do Ensino Médio',tecnico_4:'4º ano do Ensino Técnico',superior_1:'1º ano da graduação, cursado pela primeira vez'}[ano];
+  let resumo = 'Recomendação para o ' + escola + ', conforme as faixas escolares da OBI 2026. ';
+  resumo += modalidade === 'Iniciação' ? 'Problemas de lógica no papel, sem programação.' : 'Problemas resolvidos com programação no computador.';
+  if (modalidade === 'Programação' && preferencia === 'logica') resumo += ' Sua preferência por lógica ajuda na preparação, mas não altera o nível definido pela escolaridade.';
+  return {elegivel:true,titulo:'Modalidade '+modalidade+' — Nível '+nivel,resumo,nivelCodigo:codigo,precisaApoio,
+    topicosEstudo: modalidade === 'Iniciação' ? ['Raciocínio lógico e dedução','Ordenação e relações entre elementos','Problemas de caminhos e contagem'] : ['Entrada, saída e estruturas condicionais','Repetição, vetores e resolução de problemas','Provas anteriores do nível recomendado']};
 }
 
 // 6. Inicialização automática ao carregar a página
@@ -220,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let escalaSalva = 1.0;
   try {
     const salva = Number.parseFloat(localStorage.getItem('obi_escala_fonte'));
-    escalaSalva = Number.isFinite(salva) ? Math.min(1.3, Math.max(.85, salva)) : 1;
+    escalaSalva = Number.isFinite(salva) ? Math.min(2, Math.max(.85, salva)) : 1;
   } catch (e) {}
 
   atualizarBotoesZoom(escalaSalva);
@@ -328,7 +253,13 @@ function injetarBarraNavegacaoInferior() {
     abaAtiva = 'datas';
   } else if (pathname.includes('tela-03-checklist')) {
     abaAtiva = 'estudos';
-  } else if (pathname.includes('tela-10') || pathname.includes('tela-11') || pathname.includes('tela-12')) {
+  } else if (pathname.includes('tela-10') || pathname.includes('tela-11')) {
+    abaAtiva = 'escola';
+  } else if (pathname.includes('tela-04')) {
+    abaAtiva = 'regras';
+  } else if (pathname.includes('tela-05')) {
+    abaAtiva = 'professor';
+  } else if (pathname.includes('tela-12')) {
     abaAtiva = 'apoio';
   } else if (pathname.includes('tela-01-home') || !emTelas || pathname === '/' || pathname === '') {
     abaAtiva = 'inicio';
@@ -355,36 +286,62 @@ function injetarBarraNavegacaoInferior() {
     },
     {
       id: 'datas',
-      rotulo: 'Datas',
+      rotulo: 'Calendário', curto: 'Datas',
       svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
       href: linkDatas
     },
     {
       id: 'estudos',
-      rotulo: 'Estudos',
+      rotulo: 'Trilha de estudos', curto: 'Estudos',
       svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
       href: linkEstudos
     },
     {
       id: 'apoio',
-      rotulo: 'Apoio',
+      rotulo: 'Ajuda e comunidade', curto: 'Ajuda',
       svg: '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
       href: linkApoio
     }
   ];
 
+  const iconeDocumento = '<svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>';
+  abas.splice(4, 0,
+    { id: 'regras', rotulo: 'Regras e materiais', href: prefixoTelas + 'tela-04-editais/index.html', svg: iconeDocumento, desktop: true },
+    { id: 'professor', rotulo: 'Área do professor', href: prefixoTelas + 'tela-05-kit-monitor/index.html', svg: iconeDocumento, desktop: true },
+    { id: 'escola', rotulo: 'Apoio escolar', href: prefixoTelas + 'tela-10-solicitacao-escola/index.html', svg: abas[4].svg, desktop: true }
+  );
   abas.forEach(function (aba) {
     const item = document.createElement('a');
     item.href = aba.href;
-    item.className = 'bottom-nav-item' + (abaAtiva === aba.id ? ' active' : '');
+    item.className = 'bottom-nav-item' + (aba.desktop ? ' desktop-nav-only' : '') + (abaAtiva === aba.id ? ' active' : '');
+    item.dataset.navId = aba.id;
     if (abaAtiva === aba.id) {
       item.setAttribute('aria-current', 'page');
     }
     item.setAttribute('aria-label', aba.rotulo + (abaAtiva === aba.id ? ' (página atual)' : ''));
-    item.innerHTML = aba.svg + '<span class="nav-text">' + aba.rotulo + '</span>';
+    item.innerHTML = aba.svg + '<span class="nav-text nav-label-full">' + aba.rotulo + '</span>' + '<span class="nav-text nav-label-short" aria-hidden="true">' + (aba.curto || aba.rotulo) + '</span>';
     nav.appendChild(item);
   });
 
+  function atualizarAbaResponsiva() {
+    const desktop = window.matchMedia('(min-width: 960px)').matches;
+    const grupoMobile = { escola: 'apoio', regras: 'estudos', professor: 'apoio' };
+    const destinoAtivo = desktop ? abaAtiva : (grupoMobile[abaAtiva] || abaAtiva);
+    nav.querySelectorAll('.bottom-nav-item').forEach(function atualizarItem(item) {
+      const ativo = item.dataset.navId === destinoAtivo;
+      item.classList.toggle('active', ativo);
+      item.removeAttribute('aria-current');
+      if (ativo) item.setAttribute('aria-current', destinoAtivo === abaAtiva ? 'page' : 'location');
+      const aba = abas.find(function encontrar(a) { return a.id === item.dataset.navId; });
+      item.setAttribute('aria-label', aba.rotulo + (ativo ? (destinoAtivo === abaAtiva ? ' (página atual)' : ' (seção atual)') : ''));
+    });
+  }
+  if (typeof window.matchMedia === 'function') {
+    atualizarAbaResponsiva();
+    const mediaMenu = window.matchMedia('(min-width: 960px)');
+    if (mediaMenu.addEventListener) mediaMenu.addEventListener('change', atualizarAbaResponsiva);
+    else window.addEventListener('resize', atualizarAbaResponsiva);
+  }
   container.appendChild(nav);
 
   // Reserva a altura real do menu para não encobrir o fim da página.

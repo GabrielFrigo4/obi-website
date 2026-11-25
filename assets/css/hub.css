@@ -412,7 +412,7 @@ body.high-contrast .drawer-grid {
   border-color: var(--cor-borda);
   border-left: 4px solid var(--cor-primaria);
   background: var(--cor-card);
-  box-shadow: 0 3px 10px rgb(110 12 5 / 5%);
+  box-shadow: 0 3px 10px var(--cor-sombra-card);
 }
 .atalhos-lista li:last-child .atalho-link { border-bottom: 1px solid var(--cor-borda); }
 .atalho-info { min-width: 0; gap: 5px; overflow-wrap: anywhere; }
@@ -420,7 +420,7 @@ body.high-contrast .drawer-grid {
   transform: translateY(-2px);
   border-color: var(--cor-primaria);
   background: var(--cor-card);
-  box-shadow: 0 5px 16px rgb(110 12 5 / 10%);
+  box-shadow: 0 5px 16px var(--cor-sombra-card-hover);
 }
 .atalho-link:focus-visible { outline-offset: 3px; }
 .atalho-texto { font-size: 1rem; line-height: 1.35; color: var(--cor-primaria); }

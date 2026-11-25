@@ -1,220 +1,91 @@
-const TOPICOS_CATEGORIAS = {
-      iniciacao: {
-        titulo: 'Iniciação (6º ao 9º ano - No Papel)',
-        topicos: [
-          '1. Lógica proposicional e dedução simples',
-          '2. Problemas de ordenação e agrupamento',
-          '3. Grafos visuais, caminhos e labirintos',
-          '4. Tabela verdade e operadores lógicos',
-          '5. Raciocínio combinatório e contagem',
-          '6. Resolução de cadernos anteriores da Iniciação'
-        ]
-      },
-      prog_jr: {
-        titulo: 'Programação Júnior (6º ao 9º ano)',
-        topicos: [
-          '1. Entrada e Saída Padrão (cin/cout ou input/print)',
-          '2. Estruturas Condicionais (se / senão)',
-          '3. Laços de Repetição (for / while)',
-          '4. Vetores Unidimensionais (Arrays)',
-          '5. Matrizes (Vetores Bidimensionais)',
-          '6. Funções e Modularização',
-          '7. Recursão Básica e Casos Base'
-        ]
-      },
-      nivel_1: {
-        titulo: 'Programação Nível 1 (Até 1º/2º ano do Ensino Médio)',
-        topicos: [
-          '1. Entrada/Saída rápida e formatação',
-          '2. Manipulação de Strings e Vetores',
-          '3. Algoritmos de Ordenação (sort) e Comparadores',
-          '4. Busca Binária e Dois Ponteiros',
-          '5. Algoritmos Gulosos Básicos',
-          '6. Teoria dos Números Elementar (Primos, MDC/MMC)'
-        ]
-      },
-      nivel_2: {
-        titulo: 'Programação Nível 2 (Até 3º/4º ano Técnico)',
-        topicos: [
-          '1. Estruturas de Dados STL (vector, set, map, priority_queue)',
-          '2. Teoria dos Grafos (BFS, DFS, Dijkstra)',
-          '3. Programação Dinâmica Clássica (Mochila, LCS, LIS)',
-          '4. Árvores e Menor Ancestral Comum (LCA)',
-          '5. Geometria Computacional Básica'
-        ]
-      },
-      senior: {
-        titulo: 'Programação Sênior (1º ano da Graduação)',
-        topicos: [
-          '1. Grafos Avançados (Fluxo Máximo, Componentes Conexos)',
-          '2. Programação Dinâmica Avançada e Otimizações',
-          '3. Estruturas em Árvore (Segment Tree, Fenwick Tree)',
-          '4. Teoria dos Números e Aritmética Modular',
-          '5. Algoritmos em Cadeias (KMP, Z-Algorithm)'
-        ]
-      }
-    };
-
-    let categoriaAtual = 'prog_jr';
-
-    function obterChaveChecklist(categoria) {
-      return 'obi_checklist_' + categoria;
+'use strict';
+let categoriaAtual = 'prog_jr';
+const estudos = window.OBIEstudos;
+function texto(id, valor) { const el = document.getElementById(id); if (el) el.textContent = valor; }
+function selecionarCategoria(cat) {
+  // Links antigos para a trilha genérica continuam funcionando.
+  if (cat === 'iniciacao') cat = 'iniciacao_1';
+  const dados = estudos.categorias[cat];
+  if (!dados) return;
+  categoriaAtual = cat;
+  document.querySelectorAll('.cat-tab').forEach(function atualizarAba(btn) {
+    const ativa = btn.dataset.categoria === cat;
+    btn.classList.toggle('active', ativa); btn.setAttribute('aria-selected', String(ativa)); btn.tabIndex = ativa ? 0 : -1;
+  });
+  const aba = document.getElementById('cat-' + cat);
+  if (typeof sincronizarAbasAcessiveis === 'function') sincronizarAbasAcessiveis(document.querySelector('.cat-tabs'), aba);
+  texto('cat-descricao-texto', dados.titulo + ' — ' + dados.escolaridade);
+  texto('nota-trilha', dados.nota);
+  texto('titulo-pratica', dados.iniciacao ? 'Praticar lógica e raciocínio' : 'Praticar programação');
+  texto('orientacao-pratica', dados.iniciacao ? 'Escolha uma tarefa do seu nível, resolva no papel e confira sua resposta. Você não precisa programar.' : cat === 'prog_mirim' ? 'Comece pelos cursos do Saci. O acervo de prática consultado ainda não separa o novo Nível Mirim.' : 'Resolva problemas do seu nível no ambiente oficial. Use os cursos e as resoluções como apoio quando encontrar dificuldades.');
+  const recursos = document.getElementById('recursos-programacao');
+  if (recursos) recursos.hidden = dados.iniciacao || cat === 'prog_mirim';
+  const pratica = document.getElementById('link-pratica-oficial');
+  if (pratica) { pratica.href = dados.pratica; pratica.textContent = dados.rotuloPratica; pratica.setAttribute('aria-label', dados.rotuloPratica + ' (nova aba)'); }
+  const ementa = document.getElementById('link-ementa');
+  if (ementa) { ementa.href = dados.ementa; ementa.textContent = dados.iniciacao ? 'Orientações oficiais de Iniciação' : 'Consultar ementa oficial de Programação'; ementa.setAttribute('aria-label', ementa.textContent + ' (abre em nova aba)'); }
+  texto('orientacao-acervo', cat === 'prog_mirim' ? 'O Nível Mirim começou em 2026, portanto não tem cadernos de anos anteriores com esse nome. Consulte a organização sobre os materiais de 2026; o acervo abaixo reúne as edições anteriores.' : 'No acervo oficial, selecione o ano e ' + dados.titulo + '. Em Iniciação, procure os cadernos e gabaritos; em Programação, as tarefas e soluções disponíveis.');
+  renderizarChecklist();
+}
+function renderizarChecklist() {
+  const lista = document.getElementById('lista-conteudos');
+  if (!lista) return;
+  lista.replaceChildren();
+  const marcados = estudos.progresso(categoriaAtual);
+  const nomes = { PM:'Base • desde Mirim', PJ:'Complemento • desde Júnior', P1:'Complemento • desde Nível 1', P2:'Complemento • Nível 2 e Sênior' };
+  const secoes = new Map();
+  estudos.categorias[categoriaAtual].topicos.forEach(function criarTopico(topico, index) {
+    const nomeSecao = topico.secao || 'Prática sugerida';
+    if (!secoes.has(nomeSecao)) {
+      const detalhes = document.createElement('details'), resumo = document.createElement('summary'), tituloSecao = document.createElement('span'), contador = document.createElement('span'), itens = document.createElement('ul');
+      detalhes.className = 'checklist-section'; detalhes.open = secoes.size === 0;
+      tituloSecao.textContent = nomeSecao; contador.className = 'checklist-section-count';
+      itens.className = 'checklist-items'; itens.setAttribute('aria-label', nomeSecao);
+      resumo.append(tituloSecao, contador); detalhes.append(resumo, itens); lista.append(detalhes);
+      secoes.set(nomeSecao, { itens, contador, ids: [] });
     }
-
-    function selecionarCategoria(cat) {
-      if (!TOPICOS_CATEGORIAS[cat]) return;
-      categoriaAtual = cat;
-
-      document.querySelectorAll('.cat-tab').forEach(function(btn) {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      const abaAtiva = document.getElementById('cat-' + cat);
-      if (abaAtiva) {
-        abaAtiva.classList.add('active');
-        abaAtiva.setAttribute('aria-selected', 'true');
-      }
-
-      const descEl = document.getElementById('cat-descricao-texto');
-      if (descEl) {
-        descEl.textContent = TOPICOS_CATEGORIAS[cat].titulo;
-      }
-
-      renderizarChecklist();
-    }
-
-    function renderizarChecklist() {
-      const listaEl = document.getElementById('lista-conteudos');
-      if (!listaEl) return;
-      listaEl.innerHTML = '';
-
-      const dados = TOPICOS_CATEGORIAS[categoriaAtual];
-      const chave = obterChaveChecklist(categoriaAtual);
-      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
-
-      dados.topicos.forEach(function(topico, index) {
-        const li = document.createElement('li');
-        const label = document.createElement('label');
-        label.className = 'checklist-label';
-        
-        const isChecked = !!marcados[index];
-        if (isChecked) {
-          label.classList.add('checked');
-        }
-
-        const input = document.createElement('input');
-        input.type = 'checkbox';
-        input.className = 'checklist-input';
-        input.checked = isChecked;
-        input.addEventListener('change', function() {
-          alternarItemChecklist(index, input.checked);
-        });
-
-        const span = document.createElement('span');
-        span.textContent = topico;
-
-        label.appendChild(input);
-        label.appendChild(span);
-        li.appendChild(label);
-        listaEl.appendChild(li);
-      });
-
-      atualizarBarraProgresso();
-    }
-
-    function alternarItemChecklist(index, checked) {
-      const chave = obterChaveChecklist(categoriaAtual);
-      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
-      if (checked) {
-        marcados[index] = true;
-      } else {
-        delete marcados[index];
-      }
-      localStorage.setItem(chave, JSON.stringify(marcados));
-      renderizarChecklist();
-    }
-
-    function atualizarBarraProgresso() {
-      const dados = TOPICOS_CATEGORIAS[categoriaAtual];
-      const chave = obterChaveChecklist(categoriaAtual);
-      const marcados = JSON.parse(localStorage.getItem(chave) || '{}');
-
-      const total = dados.topicos.length;
-      const concluidos = Object.keys(marcados).length;
-      const porcentagem = total > 0 ? Math.round((concluidos / total) * 100) : 0;
-
-      const statTexto = document.getElementById('stat-texto');
-      const progressFill = document.getElementById('progress-fill-el');
-      const progressBar = document.getElementById('progress-bar-el');
-
-      if (statTexto) {
-        statTexto.textContent = concluidos + ' de ' + total + ' tópicos concluídos (' + porcentagem + '%)';
-      }
-      if (progressFill) {
-        progressFill.style.width = porcentagem + '%';
-      }
-      if (progressBar) {
-        progressBar.setAttribute('aria-valuenow', porcentagem);
-      }
-    }
-
-    function limparProgressoAtual() {
-      if (confirm('Deseja limpar todo o progresso dos tópicos desta categoria?')) {
-        const chave = obterChaveChecklist(categoriaAtual);
-        localStorage.removeItem(chave);
-        renderizarChecklist();
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      // 1. Vincular abas de categoria
-      const botoesCategoria = document.querySelectorAll('.cat-tab[data-categoria]');
-      botoesCategoria.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          const cat = btn.getAttribute('data-categoria');
-          selecionarCategoria(cat);
-        });
-      });
-
-      // 2. Vincular botão de limpar progresso
-      const btnLimpar = document.getElementById('btn-limpar-progresso');
-      if (btnLimpar) {
-        btnLimpar.addEventListener('click', limparProgressoAtual);
-      }
-
-      // 3. Checar parâmetros de URL e respostas salvas
-      const urlParams = new URLSearchParams(window.location.search);
-      const catParam = urlParams.get('cat');
-
-      if (catParam && TOPICOS_CATEGORIAS[catParam]) {
-        selecionarCategoria(catParam);
-        return;
-      }
-
-      if (typeof obterRespostas === 'function') {
-        const respostas = obterRespostas();
-        if (respostas.ano_escolar === 'fundamental_1' && respostas.preferencia === 'logica') {
-          selecionarCategoria('iniciacao');
-          return;
-        } else if (respostas.ano_escolar === 'fundamental_2' && respostas.preferencia === 'logica') {
-          selecionarCategoria('iniciacao');
-          return;
-        } else if (respostas.ano_escolar === 'medio' && (respostas.preferencia === 'codigo' || respostas.preferencia === 'logica')) {
-          selecionarCategoria('nivel_1');
-          return;
-        } else if (respostas.ano_escolar === 'superior') {
-          selecionarCategoria('senior');
-          return;
-        }
-      }
-
-      selecionarCategoria('prog_jr');
+    const secao = secoes.get(nomeSecao); secao.ids.push(topico.id);
+    const li = document.createElement('li'), label = document.createElement('label'), input = document.createElement('input');
+    label.className = 'checklist-label'; label.classList.toggle('checked', marcados[topico.id] === true);
+    input.type = 'checkbox'; input.className = 'checklist-input'; input.checked = marcados[topico.id] === true;
+    input.addEventListener('change', function marcar() {
+      const valores = estudos.progresso(categoriaAtual);
+      if (input.checked) valores[topico.id] = true; else delete valores[topico.id];
+      try { localStorage.setItem(estudos.chave(categoriaAtual), JSON.stringify(valores)); }
+      catch (erro) { input.checked = !input.checked; texto('stat-texto', 'Não foi possível salvar. Libere o armazenamento do navegador para marcar seu progresso.'); return; }
+      label.classList.toggle('checked', input.checked); atualizarContadores(); atualizarBarraProgresso();
     });
-
-    // Exportações globais limpas para ambiente de testes e compatibilidade
-    if (typeof window !== 'undefined') {
-      window.selecionarCategoria = selecionarCategoria;
-      window.limparProgressoAtual = limparProgressoAtual;
-      window.renderizarChecklist = renderizarChecklist;
-      window.atualizarBarraProgresso = atualizarBarraProgresso;
-    }
+    const bloco = document.createElement('span'), titulo = document.createElement('strong'), descricao = document.createElement('small');
+    bloco.className = 'checklist-topic'; titulo.textContent = (index + 1) + '. ' + topico.titulo; descricao.textContent = topico.explicacao;
+    bloco.append(titulo, descricao);
+    if (nomes[topico.grupo]) { const origem = document.createElement('small'); origem.className = 'checklist-group-label'; origem.textContent = nomes[topico.grupo]; bloco.append(origem); }
+    label.append(input, bloco); li.append(label); secao.itens.append(li);
+  });
+  function atualizarContadores() {
+    const valores = estudos.progresso(categoriaAtual);
+    secoes.forEach(function contar(secao) { secao.contador.textContent = secao.ids.filter(id => valores[id] === true).length + ' de ' + secao.ids.length; });
+  }
+  atualizarContadores();
+  atualizarBarraProgresso();
+}
+function atualizarBarraProgresso() {
+  const total = estudos.categorias[categoriaAtual].topicos.length, concluidos = estudos.concluidos(categoriaAtual);
+  const porcentagem = total ? Math.round(concluidos / total * 100) : 0;
+  texto('stat-texto', concluidos + ' de ' + total + ' tópicos concluídos (' + porcentagem + '%)');
+  const fill = document.getElementById('progress-fill-el'), bar = document.getElementById('progress-bar-el');
+  if (fill) fill.style.width = porcentagem + '%';
+  if (bar) bar.setAttribute('aria-valuenow', porcentagem);
+}
+function limparProgressoAtual() {
+  if (!confirm('Limpar as marcações de ' + estudos.categorias[categoriaAtual].titulo + '?')) return;
+  try { localStorage.removeItem(estudos.chave(categoriaAtual)); renderizarChecklist(); }
+  catch (erro) { texto('stat-texto', 'Não foi possível limpar as marcações neste navegador.'); }
+}
+document.addEventListener('DOMContentLoaded', function iniciarTrilhas() {
+  document.querySelectorAll('.cat-tab[data-categoria]').forEach(function observar(btn) { btn.addEventListener('click', function abrirTrilha() { selecionarCategoria(btn.dataset.categoria); }); });
+  document.getElementById('btn-limpar-progresso').addEventListener('click', limparProgressoAtual);
+  const cat = new URLSearchParams(window.location.search).get('cat');
+  if (cat === 'iniciacao' || estudos.categorias[cat]) { selecionarCategoria(cat); return; }
+  const resultado = typeof calcularModalidadeOBI === 'function' ? calcularModalidadeOBI() : null;
+  selecionarCategoria(resultado && estudos.categoriaDoNivel[resultado.nivelCodigo] || 'prog_jr');
+});

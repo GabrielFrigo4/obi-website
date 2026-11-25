@@ -4,10 +4,19 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       { nome: 'Provas anteriores da OBI, com correção automática', url: 'https://olimpiada.ic.unicamp.br/pratique/' }
     ];
 
+    function formatarDataDoAviso(valor) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(valor)) return '';
+      var data = new Date(valor + 'T12:00:00Z');
+      if (!Number.isFinite(data.getTime()) || data.toISOString().slice(0, 10) !== valor) return '';
+      var partes = valor.split('-');
+      var diaSemana = new Intl.DateTimeFormat('pt-BR', { weekday: 'long', timeZone: 'UTC' }).format(data);
+      return partes[2] + '/' + partes[1] + '/' + partes[0] + ' (' + diaSemana + ')';
+    }
+
     function montarMensagemAviso() {
       var campo = document.getElementById('campo-data-fase1');
       var data = campo ? campo.value.trim() : '';
-      var textoData = data || '[preencha a data]';
+      var textoData = formatarDataDoAviso(data) || '[selecione a data]';
       return 'Atenção, turma! A Fase 1 da OBI está chegando.\n' +
              'A prova será em ' + textoData + '.\n' +
              'Confirmem a inscrição com a sua escola.\n' +
@@ -92,17 +101,13 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       return copiou;
     }
 
-    var temporizadores = {};
 
     function mostrarStatus(chave, mensagem, ehErro) {
       var status = document.getElementById('status-' + chave);
       if (!status) return;
       status.textContent = mensagem;
       status.classList.toggle('erro', !!ehErro);
-      clearTimeout(temporizadores[chave]);
-      if (!ehErro) {
-        temporizadores[chave] = setTimeout(function () { status.textContent = ''; }, 3000);
-      }
+
     }
 
     function restaurarBotao(botao) {
@@ -117,8 +122,6 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       botao.classList.add('copiado');
       rotulo.textContent = 'Copiado!';
       mostrarStatus(chave, 'Texto copiado! Agora é só colar no grupo.', false);
-      clearTimeout(botao.temporizadorRotulo);
-      botao.temporizadorRotulo = setTimeout(function () { restaurarBotao(botao); }, 2500);
     }
 
     function oferecerCopiaManual(chave, texto) {
@@ -132,12 +135,13 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
 
     function aoClicarEmCopiar(botao) {
       var chave = botao.getAttribute('data-copiar');
+      restaurarBotao(botao);
 
       if (chave === 'aviso') {
         var campo = document.getElementById('campo-data-fase1');
-        if (!campo.value.trim()) {
+        if (!formatarDataDoAviso(campo.value) || !campo.checkValidity()) {
           campo.setAttribute('aria-invalid', 'true');
-          mostrarStatus('aviso', 'Preencha a data da Fase 1 antes de copiar o aviso.', true);
+          mostrarStatus('aviso', 'Selecione uma data válida para a Fase 1 antes de copiar o aviso.', true);
           campo.focus();
           return;
         }
@@ -145,12 +149,12 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       }
 
       var texto = MENSAGENS[chave]();
+      mostrarStatus(chave, 'Copiando…', false);
       copiarTexto(texto).then(function (copiou) {
         if (copiou) {
           document.getElementById('manual-' + chave).hidden = true;
           aoCopiarComSucesso(botao, chave);
         } else {
-          clearTimeout(botao.temporizadorRotulo);
           restaurarBotao(botao);
           oferecerCopiaManual(chave, texto);
         }
@@ -163,6 +167,8 @@ var URL_CALENDARIO_OBI = 'https://olimpiada.ic.unicamp.br/calendario/datas_impor
       document.getElementById('campo-data-fase1').addEventListener('input', function (evento) {
         evento.target.removeAttribute('aria-invalid');
         document.getElementById('status-aviso').textContent = '';
+        restaurarBotao(document.querySelector('[data-copiar="aviso"]'));
+        document.getElementById('manual-aviso').hidden = true;
         exibirMensagem('mensagem-aviso', montarMensagemAviso());
       });
 

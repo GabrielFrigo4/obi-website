@@ -304,15 +304,15 @@
       font-size: 0.875rem;
       font-weight: 700;
       border-radius: var(--raio-botao);
-      border: 1.5px solid #ef4444;
-      background-color: #fef2f2;
-      color: #b91c1c;
+      border: 1.5px solid var(--cor-erro-borda-forte);
+      background-color: var(--cor-erro-fundo);
+      color: var(--cor-erro-texto);
       cursor: pointer;
       transition: all 0.15s ease;
     }
 
     .btn-reset-progress:hover {
-      background-color: #ef4444;
+      background-color: var(--cor-erro-borda-forte);
       color: #ffffff;
     }
 
@@ -448,3 +448,22 @@
 .progress-fill-initial { width: 0%; }
 .checklist-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
 .btn-compact { min-height: 48px; padding: 8px 14px; font-size: 0.85rem; }
+
+.checklist-topic { display: grid; gap: 6px; min-width: 0; }
+.checklist-topic strong { font-weight: 600; }
+.checklist-topic small { font-size: .875rem; line-height: 1.6; color: var(--cor-texto-secundario); }
+#recursos-programacao[hidden] { display: none; }
+#link-pratica-oficial { margin-block: 12px; }
+
+.chk-content .cat-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 8px; }
+.chk-content .cat-tab { white-space: normal; min-width: 0; overflow-wrap: anywhere; transition: none; }
+.study-source-links { display: flex; flex-wrap: wrap; gap: 12px; }
+.study-source-links > a { flex: 1 1 220px; min-width: 0; }
+.checklist-group-label { color: var(--cor-primaria); font-size: .8rem; font-weight: 600; }
+@media (min-width: 960px) { .chk-content .cat-tabs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+.checklist-sections { display: grid; gap: 12px; }
+.checklist-section { border: 1px solid var(--cor-borda); border-radius: var(--raio-borda); overflow: hidden; }
+.checklist-section > summary { min-height: 48px; padding: 16px; cursor: pointer; color: var(--cor-primaria); background: var(--cor-fundo-suave); font-weight: 700; overflow-wrap: anywhere; }
+.checklist-section-count { display: inline-block; margin-inline-start: 12px; color: var(--cor-texto-secundario); font-size: .85rem; font-weight: 400; }
+.checklist-section > .checklist-items { padding: 12px; }

@@ -1,0 +1,811 @@
+{
+  "fonte": "https://olimpiada.ic.unicamp.br/prepare/ementas/ementa_prog/",
+  "consulta": "2026-11-25",
+  "sha256": "ddc37564df57cba4e5e720ff789435eb88e0914c05ec94c11802497158edf0ea",
+  "itens": [
+    {
+      "id": "ementa2026_001",
+      "nivelInicial": "PM",
+      "itemFonte": 1,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_002",
+      "nivelInicial": "PM",
+      "itemFonte": 2,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_003",
+      "nivelInicial": "PM",
+      "itemFonte": 3,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_004",
+      "nivelInicial": "PM",
+      "itemFonte": 4,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_005",
+      "nivelInicial": "PM",
+      "itemFonte": 5,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_006",
+      "nivelInicial": "PM",
+      "itemFonte": 6,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_007",
+      "nivelInicial": "PM",
+      "itemFonte": 7,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_008",
+      "nivelInicial": "PM",
+      "itemFonte": 8,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_009",
+      "nivelInicial": "PJ",
+      "itemFonte": 9,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_010",
+      "nivelInicial": "PJ",
+      "itemFonte": 10,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_011",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_011_1",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 1
+    },
+    {
+      "id": "ementa2026_011_2",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 2
+    },
+    {
+      "id": "ementa2026_011_3",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 3
+    },
+    {
+      "id": "ementa2026_011_4",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 4
+    },
+    {
+      "id": "ementa2026_011_5",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 5
+    },
+    {
+      "id": "ementa2026_011_6",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 6
+    },
+    {
+      "id": "ementa2026_011_7",
+      "nivelInicial": "PM",
+      "itemFonte": 11,
+      "subitem": 7
+    },
+    {
+      "id": "ementa2026_012",
+      "nivelInicial": "PJ",
+      "itemFonte": 12,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_013",
+      "nivelInicial": "P1",
+      "itemFonte": 13,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_014",
+      "nivelInicial": "PM",
+      "itemFonte": 14,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_015",
+      "nivelInicial": "PM",
+      "itemFonte": 15,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_016",
+      "nivelInicial": "PM",
+      "itemFonte": 16,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_017",
+      "nivelInicial": "PM",
+      "itemFonte": 17,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_018",
+      "nivelInicial": "PM",
+      "itemFonte": 18,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_019",
+      "nivelInicial": "PM",
+      "itemFonte": 19,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_020",
+      "nivelInicial": "PM",
+      "itemFonte": 20,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_021",
+      "nivelInicial": "PM",
+      "itemFonte": 21,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_022",
+      "nivelInicial": "PJ",
+      "itemFonte": 22,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_023",
+      "nivelInicial": "P1",
+      "itemFonte": 23,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_024",
+      "nivelInicial": "P1",
+      "itemFonte": 24,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_025",
+      "nivelInicial": "P1",
+      "itemFonte": 25,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_026",
+      "nivelInicial": "P1",
+      "itemFonte": 26,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_027",
+      "nivelInicial": "PM",
+      "itemFonte": 27,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_028",
+      "nivelInicial": "PM",
+      "itemFonte": 28,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_029",
+      "nivelInicial": "PM",
+      "itemFonte": 29,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_030",
+      "nivelInicial": "PM",
+      "itemFonte": 30,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_031",
+      "nivelInicial": "PM",
+      "itemFonte": 31,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_032",
+      "nivelInicial": "PJ",
+      "itemFonte": 32,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_033",
+      "nivelInicial": "P1",
+      "itemFonte": 33,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_034",
+      "nivelInicial": "PM",
+      "itemFonte": 34,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_035",
+      "nivelInicial": "PM",
+      "itemFonte": 35,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_036",
+      "nivelInicial": "PM",
+      "itemFonte": 36,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_037",
+      "nivelInicial": "PM",
+      "itemFonte": 37,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_038",
+      "nivelInicial": "PM",
+      "itemFonte": 38,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_039",
+      "nivelInicial": "PM",
+      "itemFonte": 39,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_040",
+      "nivelInicial": "PM",
+      "itemFonte": 40,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_041",
+      "nivelInicial": "PM",
+      "itemFonte": 41,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_042",
+      "nivelInicial": "PM",
+      "itemFonte": 42,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_043",
+      "nivelInicial": "PM",
+      "itemFonte": 43,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_044",
+      "nivelInicial": "PM",
+      "itemFonte": 44,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_045",
+      "nivelInicial": "PM",
+      "itemFonte": 45,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_046",
+      "nivelInicial": "PM",
+      "itemFonte": 46,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_047",
+      "nivelInicial": "PM",
+      "itemFonte": 47,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_048",
+      "nivelInicial": "PM",
+      "itemFonte": 48,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_049",
+      "nivelInicial": "PM",
+      "itemFonte": 49,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_050",
+      "nivelInicial": "PM",
+      "itemFonte": 50,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_051",
+      "nivelInicial": "PM",
+      "itemFonte": 51,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_052",
+      "nivelInicial": "P1",
+      "itemFonte": 52,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_053",
+      "nivelInicial": "PM",
+      "itemFonte": 53,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_054",
+      "nivelInicial": "PM",
+      "itemFonte": 54,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_054_1",
+      "nivelInicial": "PM",
+      "itemFonte": 54,
+      "subitem": 1
+    },
+    {
+      "id": "ementa2026_054_2",
+      "nivelInicial": "PM",
+      "itemFonte": 54,
+      "subitem": 2
+    },
+    {
+      "id": "ementa2026_054_3",
+      "nivelInicial": "PM",
+      "itemFonte": 54,
+      "subitem": 3
+    },
+    {
+      "id": "ementa2026_054_4",
+      "nivelInicial": "PM",
+      "itemFonte": 54,
+      "subitem": 4
+    },
+    {
+      "id": "ementa2026_055",
+      "nivelInicial": "PM",
+      "itemFonte": 55,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_056",
+      "nivelInicial": "PM",
+      "itemFonte": 56,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_057",
+      "nivelInicial": "PM",
+      "itemFonte": 57,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_058",
+      "nivelInicial": "PM",
+      "itemFonte": 58,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_059",
+      "nivelInicial": "P1",
+      "itemFonte": 59,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_060",
+      "nivelInicial": "P1",
+      "itemFonte": 60,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_061",
+      "nivelInicial": "P1",
+      "itemFonte": 61,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_062",
+      "nivelInicial": "PM",
+      "itemFonte": 62,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_063",
+      "nivelInicial": "PM",
+      "itemFonte": 63,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_064",
+      "nivelInicial": "PM",
+      "itemFonte": 64,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_065",
+      "nivelInicial": "PM",
+      "itemFonte": 65,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_066",
+      "nivelInicial": "PM",
+      "itemFonte": 66,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_067",
+      "nivelInicial": "PM",
+      "itemFonte": 67,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_068",
+      "nivelInicial": "PM",
+      "itemFonte": 68,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_069",
+      "nivelInicial": "P1",
+      "itemFonte": 69,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_070",
+      "nivelInicial": "P1",
+      "itemFonte": 70,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_071",
+      "nivelInicial": "P2",
+      "itemFonte": 71,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_072",
+      "nivelInicial": "P2",
+      "itemFonte": 72,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_073",
+      "nivelInicial": "PM",
+      "itemFonte": 73,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_074",
+      "nivelInicial": "PM",
+      "itemFonte": 74,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_075",
+      "nivelInicial": "PM",
+      "itemFonte": 75,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_076",
+      "nivelInicial": "PM",
+      "itemFonte": 76,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_077",
+      "nivelInicial": "P2",
+      "itemFonte": 77,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_078",
+      "nivelInicial": "P2",
+      "itemFonte": 78,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_079",
+      "nivelInicial": "PM",
+      "itemFonte": 79,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_080",
+      "nivelInicial": "PM",
+      "itemFonte": 80,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_081",
+      "nivelInicial": "PM",
+      "itemFonte": 81,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_082",
+      "nivelInicial": "PM",
+      "itemFonte": 82,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_083",
+      "nivelInicial": "PM",
+      "itemFonte": 83,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_084",
+      "nivelInicial": "P1",
+      "itemFonte": 84,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_085",
+      "nivelInicial": "P1",
+      "itemFonte": 85,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_086",
+      "nivelInicial": "P1",
+      "itemFonte": 86,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_087",
+      "nivelInicial": "P1",
+      "itemFonte": 87,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_088",
+      "nivelInicial": "P1",
+      "itemFonte": 88,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_089",
+      "nivelInicial": "P1",
+      "itemFonte": 89,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_090",
+      "nivelInicial": "P2",
+      "itemFonte": 90,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_091",
+      "nivelInicial": "P2",
+      "itemFonte": 91,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_092",
+      "nivelInicial": "P2",
+      "itemFonte": 92,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_093",
+      "nivelInicial": "PM",
+      "itemFonte": 93,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_093_1",
+      "nivelInicial": "PM",
+      "itemFonte": 93,
+      "subitem": 1
+    },
+    {
+      "id": "ementa2026_093_2",
+      "nivelInicial": "PM",
+      "itemFonte": 93,
+      "subitem": 2
+    },
+    {
+      "id": "ementa2026_093_3",
+      "nivelInicial": "PM",
+      "itemFonte": 93,
+      "subitem": 3
+    },
+    {
+      "id": "ementa2026_094",
+      "nivelInicial": "PM",
+      "itemFonte": 94,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_095",
+      "nivelInicial": "P1",
+      "itemFonte": 95,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_096",
+      "nivelInicial": "P1",
+      "itemFonte": 96,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_097",
+      "nivelInicial": "P1",
+      "itemFonte": 97,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_098",
+      "nivelInicial": "P2",
+      "itemFonte": 98,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_099",
+      "nivelInicial": "P2",
+      "itemFonte": 99,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_099_1",
+      "nivelInicial": "P2",
+      "itemFonte": 99,
+      "subitem": 1
+    },
+    {
+      "id": "ementa2026_099_2",
+      "nivelInicial": "P2",
+      "itemFonte": 99,
+      "subitem": 2
+    },
+    {
+      "id": "ementa2026_100",
+      "nivelInicial": "P2",
+      "itemFonte": 100,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_101",
+      "nivelInicial": "P1",
+      "itemFonte": 101,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_102",
+      "nivelInicial": "P1",
+      "itemFonte": 102,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_103",
+      "nivelInicial": "P2",
+      "itemFonte": 103,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_104",
+      "nivelInicial": "P2",
+      "itemFonte": 104,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_105",
+      "nivelInicial": "P2",
+      "itemFonte": 105,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_106",
+      "nivelInicial": "P2",
+      "itemFonte": 106,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_107",
+      "nivelInicial": "P2",
+      "itemFonte": 107,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_108",
+      "nivelInicial": "P2",
+      "itemFonte": 108,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_109",
+      "nivelInicial": "P2",
+      "itemFonte": 109,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_110",
+      "nivelInicial": "P2",
+      "itemFonte": 110,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_110_1",
+      "nivelInicial": "P2",
+      "itemFonte": 110,
+      "subitem": 1
+    },
+    {
+      "id": "ementa2026_110_2",
+      "nivelInicial": "P2",
+      "itemFonte": 110,
+      "subitem": 2
+    },
+    {
+      "id": "ementa2026_110_3",
+      "nivelInicial": "P2",
+      "itemFonte": 110,
+      "subitem": 3
+    },
+    {
+      "id": "ementa2026_111",
+      "nivelInicial": "P2",
+      "itemFonte": 111,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_112",
+      "nivelInicial": "P2",
+      "itemFonte": 112,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_113",
+      "nivelInicial": "P2",
+      "itemFonte": 113,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_114",
+      "nivelInicial": "P2",
+      "itemFonte": 114,
+      "subitem": null
+    },
+    {
+      "id": "ementa2026_115",
+      "nivelInicial": "P2",
+      "itemFonte": 115,
+      "subitem": null
+    }
+  ]
+}
