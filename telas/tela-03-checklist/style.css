@@ -228,7 +228,7 @@
     }
 
     .practice-row:hover {
-      border-color: var(--cor-primaria);
+      border-color: var(--cor-texto-sobre-primaria-fundo);
       background-color: var(--cor-primaria-fundo);
     }
 
@@ -282,7 +282,7 @@
       text-decoration: none;
       border: 1px solid var(--cor-primaria-borda);
       background-color: var(--cor-primaria-fundo);
-      color: var(--cor-primaria);
+      color: var(--cor-texto-sobre-primaria-fundo);
       min-height: 48px;
       display: inline-flex;
       align-items: center;

@@ -12,7 +12,7 @@
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
   border: 1px solid var(--cor-primaria-borda);
   padding: 3px 8px;
@@ -194,7 +194,7 @@ body.high-contrast .action-card {
 body.high-contrast .card-step-badge {
   background-color: #1e3a8a;
   border-color: #ffffff;
-  color: #93c5fd;
+  color: #ffffff;
 }
 
 body.high-contrast .message-preview-box {

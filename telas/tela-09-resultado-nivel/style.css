@@ -225,7 +225,7 @@
 
 .calendar-date {
   font-weight: 700;
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
   padding: 3px 8px;
   border-radius: 4px;
@@ -365,7 +365,7 @@ body.high-contrast .calendar-item {
 
 body.high-contrast .calendar-date {
   background-color: #1e3a8a;
-  color: #93c5fd;
+  color: #ffffff;
   border: 1px solid #ffffff;
 }
 

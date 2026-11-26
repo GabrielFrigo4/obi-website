@@ -156,7 +156,7 @@ body {
 }
 .btn-back:hover {
   background-color: var(--cor-primaria-fundo);
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-texto-sobre-primaria-fundo);
 }
 .btn-back:active { box-shadow: none; }
 
@@ -264,7 +264,7 @@ p.screen-subtitle {
 }
 
 .option-card.selected {
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
   box-shadow: 0 0 0 1px var(--cor-primaria);
 }
@@ -403,6 +403,7 @@ body.high-contrast .btn-back {
 body.high-contrast .btn-back:hover {
   background-color: #1e3a8a;
   border-color: #ffffff;
+  color: #ffffff;
 }
 
 body.high-contrast .btn-a11y {
@@ -414,6 +415,7 @@ body.high-contrast .btn-a11y {
 body.high-contrast .btn-a11y:hover {
   background-color: #1e3a8a;
   border-color: #ffffff;
+  color: #ffffff;
 }
 
 body.high-contrast .options-legend,
@@ -430,12 +432,14 @@ body.high-contrast .option-card {
 body.high-contrast .option-card:hover {
   border-color: var(--cor-primaria);
   background-color: #1e3a8a;
+  color: #ffffff;
 }
 
 body.high-contrast .option-card.selected {
   border: 2.5px solid var(--cor-primaria);
   background-color: #1e3a8a;
   box-shadow: 0 0 0 1px #ffffff;
+  color: #ffffff;
 }
 
 body.high-contrast .option-text strong {
@@ -560,7 +564,7 @@ body.high-contrast :focus-visible {
 }
 
 .bottom-nav-item:hover {
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
 }
 
@@ -587,7 +591,7 @@ body.high-contrast .bottom-nav-item {
 
 body.high-contrast .bottom-nav-item:hover,
 body.high-contrast .bottom-nav-item.active {
-  color: #93c5fd;
+  color: #ffffff;
   background-color: #1e3a8a;
   border: 1px solid #ffffff;
 }

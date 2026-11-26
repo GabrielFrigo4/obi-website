@@ -89,7 +89,7 @@
 
 .badge-primary {
   background-color: var(--cor-primaria-fundo);
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   border: 1px solid var(--cor-primaria-borda);
 }
 
@@ -159,7 +159,7 @@
 }
 
 .atalho-link:hover {
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
   transform: translateY(-1px);
 }
@@ -288,7 +288,7 @@
 }
 
 .screen-link-card:hover {
-  border-color: var(--cor-primaria);
+  border-color: var(--cor-texto-sobre-primaria-fundo);
   background-color: var(--cor-primaria-fundo);
 }
 
@@ -362,11 +362,12 @@ body.high-contrast .atalho-link:hover,
 body.high-contrast .screen-link-card:hover {
   background-color: #1e3a8a;
   border-color: #facc15;
+  color: #ffffff;
 }
 
 body.high-contrast .badge-primary {
   background-color: #1e3a8a;
-  color: #93c5fd;
+  color: #ffffff;
   border-color: #ffffff;
 }
 

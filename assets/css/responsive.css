@@ -365,7 +365,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scrollbar-gutter:
 .timeline-item .switch-row { margin-top: 4px; gap: 12px; }
 .badge-breve { color: var(--cor-texto-secundario); background: var(--cor-fundo-suave); }
 body:not(.high-contrast) .badge-aberta {
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   background: var(--cor-primaria-fundo);
   border-color: var(--cor-primaria-borda);
 }

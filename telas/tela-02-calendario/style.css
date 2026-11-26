@@ -138,7 +138,7 @@
     }
 
     .badge-concluido { background: var(--cor-estado-concluido-fundo); color: var(--cor-estado-concluido-texto); }
-    .badge-andamento { background: var(--cor-primaria-fundo); color: var(--cor-primaria); border: 1px solid var(--cor-primaria-borda); }
+    .badge-andamento { background: var(--cor-primaria-fundo); color: var(--cor-texto-sobre-primaria-fundo); border: 1px solid var(--cor-primaria-borda); }
     .badge-aberta { background: var(--cor-aviso-destaque-fundo); color: var(--cor-aviso-texto); border: 1px solid var(--cor-aviso-borda); }
     .badge-breve { background: var(--cor-estado-pendente-fundo); color: var(--cor-estado-pendente-texto); }
 

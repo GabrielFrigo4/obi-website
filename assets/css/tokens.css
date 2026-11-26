@@ -81,3 +81,7 @@ body.high-contrast {
   --cor-sombra-destaque: rgba(29, 78, 216, 0.12);
   --cor-sombra-painel: rgba(15, 23, 42, 0.08);
 }
+
+/* Texto de blocos destacados, incluindo o azul do alto contraste. */
+:root { --cor-texto-sobre-primaria-fundo: var(--cor-primaria); }
+body.high-contrast { --cor-texto-sobre-primaria-fundo: #ffffff; }

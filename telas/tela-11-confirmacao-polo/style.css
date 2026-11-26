@@ -233,7 +233,7 @@
   height: 24px;
   border-radius: 50%;
   background-color: var(--cor-primaria-fundo);
-  color: var(--cor-primaria);
+  color: var(--cor-texto-sobre-primaria-fundo);
   border: 1px solid var(--cor-primaria-borda);
   font-weight: 700;
   font-size: 0.8rem;
