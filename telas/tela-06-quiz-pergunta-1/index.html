@@ -17,6 +17,7 @@
   <script src="../../assets/js/reading-settings.js" defer></script>
   <link rel="stylesheet" href="../../assets/css/accessibility.css">
   <script src="../../assets/js/accessibility.js" defer></script>
+  <script src="../../assets/js/voice-reader.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
@@ -88,6 +89,28 @@
           <button id="btn-zoom-out" class="btn-a11y" type="button" aria-label="Diminuir tamanho da fonte">A-</button>
           <button id="btn-zoom-in" class="btn-a11y" type="button" aria-label="Aumentar tamanho da fonte">A+</button>
         </div>
+      </fieldset>
+      <fieldset class="reading-voice">
+        <legend>Leitura em voz alta</legend>
+        <div class="reading-voice-controls">
+          <button id="btn-tts-toggle" class="btn-a11y reading-voice-toggle" type="button" aria-pressed="false" aria-describedby="leitura-voz-ajuda">
+            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <span>Ouvir página</span>
+            <span class="reading-voice-state" aria-hidden="true">Desativado</span>
+          </button>
+          <button id="btn-tts-pause" class="btn-a11y reading-voice-pause" type="button" aria-pressed="false" aria-disabled="true">
+            <span>Pausar</span>
+          </button>
+        </div>
+        <label class="reading-voice-rate" for="leitura-voz-velocidade">Velocidade da voz
+          <select id="leitura-voz-velocidade">
+            <option value="0.85">Lenta (0,85x)</option>
+            <option value="1" selected>Normal (1x)</option>
+            <option value="1.25">Rápida (1,25x)</option>
+            <option value="1.5">Muito rápida (1,5x)</option>
+          </select>
+        </label>
+        <p id="leitura-voz-ajuda" class="reading-voice-hint">Lê a página inteira ou o texto selecionado. Pressione Esc para parar.</p>
       </fieldset>
       <button type="button" id="btn-contrast" class="reading-contrast-toggle" aria-pressed="false">
         <span>Alto contraste</span>
